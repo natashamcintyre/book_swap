@@ -1,0 +1,38 @@
+alias interface = "Front End - Interface.js"
+alias client ="Front End - Client"
+alias server ="Back End - Server"
+alias controller = "Back End - Controller"
+alias model = "Back End - Model"
+
+List of books:
+client->server: "http request 'https://book-swap.herokuapp.com/books'"
+server->controller: "Books/index"
+controller->server: "Books/index HTML"
+server->client: "http response books index html"
+interface->controller: "API GET request for books"
+controller->model: ".all_available books from Mongo.db"
+model->controller: "JSON book list"
+controller->interface: "JSON list of books"
+interface->client: "html object list of books"
+
+Add a book:
+interface->controller: "API POST request for add a book"
+controller->model: ".create book in db"
+model->controller: "JSON book object"
+controller->interface: "JSON confirmation of saving"
+interface->controller: "API GET request for books"
+controller->model: ".all_abvailable books from Mongo.db"
+model->controller: "JSON book list"
+controller->interface: "JSON list of books"
+interface->client: "html object list of books"
+
+Make book unavialable:
+interface->controller: "API PATCH request for amending a book item"
+controller->model: ".toggle_availability for book in db"
+model->controller: "JSON book object"
+controller->interface: "JSON confirmation of update"
+interface->controller: "API GET request for books"
+controller->model: ".all_available books from db"
+model->controller: "JSON book list"
+controller->interface: "JSON list of books"
+interface->client: "html object list of books"

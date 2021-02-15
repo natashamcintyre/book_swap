@@ -1,0 +1,13 @@
+#### Class Definitions\
+CLASS "Book" as book:
+"id"
+"title"
+"author"
+"ISBN"
+"Location (postcode)"
+"Contact details (phone number)"
+"Avialable"
+"#new()"
+".all()"
+".create()"
+".toggle_availability()"
