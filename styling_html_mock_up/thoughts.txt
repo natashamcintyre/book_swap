@@ -1,0 +1,9 @@
+Things to think about it:
+
+Limit characters in title to <= 18 - keeps it on the same line - if not "..." to 18 chars
+
+Pop up will give further details and full title w/ author. 
+
+Keep blurb within pop up. 
+
+Button should/could be the book cover. 
