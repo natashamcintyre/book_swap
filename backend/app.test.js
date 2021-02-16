@@ -48,6 +48,25 @@ describe("app", function() {
     it('adds a book to bookshelf with an availability', function() {
       expect(testApp.getBookById(1).availability).to.equal(true)
     });
+
+    it("rejects incomplete books", function() {
+      let testApp2 = new BookApp
+      expect(testApp2.addBook('', 'Rudyard Kipling', 9780192822765, 'test_postcode', 'test_phoneNumber')).to.deep.equal([])
+      expect(testApp2.addBook('Just So Stories', '', 9780192822765, 'test_postcode', 'test_phoneNumber')).to.deep.equal([])
+      expect(testApp2.addBook('Just So Stories', 'Rudyard Kipling', null, 'test_postcode', 'test_phoneNumber')).to.deep.equal([])
+      expect(testApp2.addBook('Just So Stories', 'Rudyard Kipling', 9780192822765, '', 'test_phoneNumber')).to.deep.equal([])
+      expect(testApp2.addBook('Just So Stories', 'Rudyard Kipling', 9780192822765, 'test_postcode', '')).to.deep.equal([])
+    })
+
+    it("rejects false update", function() {
+      let testApp2 = new BookApp
+      expect(testApp2.updateAvailabilityById(1)).to.deep.equal([])
+    })
+
+    it("errors if no message to delete", function() {
+      let testApp2 = new BookApp
+      expect(testApp2.deleteBookById(1)).to.deep.equal('Book not found on bookshelf')
+    })
   });
 
   describe('#update_availability', function() {
