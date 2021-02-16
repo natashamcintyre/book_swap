@@ -26,4 +26,9 @@ describe('MyApp', () => {
     const component = mount(<MyApp />);
     expect(component.exists('input#title')).toBe(true);
   });
+
+  it('has submit button', () => {
+    const component = mount(<MyApp />);
+    expect(component.exists('button#submit')).toBe(true);
+  });
 });
