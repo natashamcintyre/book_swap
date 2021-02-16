@@ -7,3 +7,14 @@ Pop up will give further details and full title w/ author.
 Keep blurb within pop up. 
 
 Button should/could be the book cover. 
+
+Icons/Nav Bar Items
+  - Sign up
+  - Sign in
+  - Sign out 
+  - My Bookshelf - directs to /user/bookshelf
+    - Incoming Books
+    - Outgoing Books
+    - Add a book
+  - Wishlist - directs to /user/wishlist 
+  - Search form button - "Find a new book..."

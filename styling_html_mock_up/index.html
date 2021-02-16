@@ -11,16 +11,27 @@
 </head>
 <body>
   <nav class="navbar navbar-expand-md">
+    <div class="container-fluid">
     <a class="navbar-brand" href="#">
       <img src="images/logo.png" width="150" height="150">
     </a>
-    <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
+    <!-- <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
         <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="col-12 col-md-6 col-lg-8 offset-lg-9 offset-md-7 offset-sm-9">
+    </button> -->
+    <div class="searchform col-6">
       <form class="form-inline search-form">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search author, title, ISBN number... " aria-label="Search">
+        <input class="form-control col-4 mr-sm-2" type="search" placeholder="Search author, title, ISBN number... " aria-label="Search">
+        <div class="searchform-append">
+        <button class="btn btn-outline-secondary btn-sm">Find a book</button>
+        </div>
       </form>
+    </div>
+    <div class="col-2 offset-2">
+      <a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a> <!-- these are to be turned into icons -->
+      <a href="#"><span class="glyphicon glyphicon-log-in"></span> Log In</a> 
+      <a href="#"><span class="glyphicon glyphicon-log-in"></span> Log Out</a>
+      <a href="#"><span class="glyphicon glyphicon-log-in"></span> My Bookshelf</a>
+      <a href="#"><span class="glyphicon glyphicon-log-in"></span> Wishlist</a>
     </div>
   </nav>
 

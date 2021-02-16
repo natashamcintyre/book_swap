@@ -77,3 +77,10 @@ body {
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
   margin-bottom: 16px;
 }
+
+.searchform button {
+  border: 1px solid rgb(87, 195, 245);
+  background: rgb(87, 195, 245);
+  border-radius: 0;
+  color: rgb(13, 43, 109);
+}
