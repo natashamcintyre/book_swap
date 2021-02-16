@@ -4,26 +4,29 @@ import path from 'path'
 
 class BookApp {
   constructor (filepath) {
-    // this.bookshelf = []
     this.id_counter = 1
     this.filepath = filepath
     this.bookshelf = filepath ? this.readFromJson() : []
   }
 
   addBook (title, author, isbn, postcode, phoneNumber) {
-    const book = {
-      id: this.id_counter,
-      title: title,
-      author: author,
-      isbn: isbn,
-      postcode: postcode,
-      phoneNumber: phoneNumber,
-      availability: true
+    if (title && author && isbn && postcode && phoneNumber) {
+      const book = {
+        id: this.id_counter,
+        title: title,
+        author: author,
+        isbn: isbn,
+        postcode: postcode,
+        phoneNumber: phoneNumber,
+        availability: true
+      }
+      this.bookshelf.push(book)
+      this.id_counter++
+      this.writeToJson()
+      return this.bookshelf
+    } else {
+      throw 'Invalid book entry'
     }
-    this.bookshelf.push(book)
-    this.id_counter++
-    this.writeToJson()
-    return this.bookshelf
   }
 
   getBookshelf () {
@@ -35,35 +38,44 @@ class BookApp {
   }
 
   updateAvailabilityById (id) {
-    const index = this.bookshelf.findIndex(book => book.id === id)
-    this.bookshelf[index].availability = this.bookshelf[index].availability !== true
-    this.writeToJson()
-    return this.bookshelf
+    let index = this.bookshelf.findIndex(book => book.id === id)
+    if (index >= 0) {
+      this.bookshelf[index].availability = this.bookshelf[index].availability !== true
+      this.writeToJson()
+      return this.bookshelf
+    } else {
+      throw 'Book not found on bookshelf'
+    }
   }
 
   deleteBookById (id) {
-    this.bookshelf = this.bookshelf.filter(book => book.id != id)
-    this.writeToJson()
-    return this.bookshelf
+    let index = this.bookshelf.findIndex(book => book.id === id)
+    if (index >= 0) {
+      this.bookshelf = this.bookshelf.filter(book => book.id !== id)
+      this.writeToJson()
+      return this.bookshelf
+    } else {
+      throw 'Book not found on bookshelf'
+    }
   }
 
-  writeToJson() {
+  writeToJson () {
     if (this.filepath) {
       const jsonItem = JSON.stringify(this.bookshelf)
 
-      fs.writeFileSync(__dirname+path.normalize(this.filepath), jsonItem, (err) => {
-        if (err) throw err;
+      fs.writeFileSync(__dirname + path.normalize(this.filepath), jsonItem, (err) => {
+        if (err) throw err
       })
     }
   }
 
-  readFromJson(){
+  readFromJson () {
     return JSON.parse(fs.readFileSync(
-      __dirname+path.normalize(this.filepath),"utf8",(err,data)=>{
-      if (err) throw err
+      __dirname + path.normalize(this.filepath), 'utf8', (err, data) => {
+        if (err) throw err
       })
     )
-   }
+  }
 }
 
 export default BookApp
