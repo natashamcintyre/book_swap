@@ -16,39 +16,57 @@ describe("app", function() {
       testApp.addBook('Just So Stories', 'Rudyard Kipling', 9780192822765, 'test_postcode', 'test_phoneNumber')
     })
 
+    afterEach(() => {
+      testApp.bookshelf = []
+      testApp.id_counter = 1
+    })
+
     it('adds a book to bookshelf with a title', function() {
-      expect(testApp.getBookshelf()[0].title).to.equal('Just So Stories')
+      expect(testApp.getBookById(1).title).to.equal('Just So Stories')
     });
 
     it('adds a book to bookshelf with a author', function() {
-      expect(testApp.getBookshelf()[0].author).to.equal('Rudyard Kipling')
+      expect(testApp.getBookById(1).author).to.equal('Rudyard Kipling')
     });
 
     it('adds a book to bookshelf with a ISBN', function() {
-      expect(testApp.getBookshelf()[0].isbn).to.equal(9780192822765)
+      expect(testApp.getBookById(1).isbn).to.equal(9780192822765)
     });
 
     it('adds a book to bookshelf with a postcode', function() {
-      expect(testApp.getBookshelf()[0].postcode).to.equal('test_postcode')
+      expect(testApp.getBookById(1).postcode).to.equal('test_postcode')
     });
 
     it('adds a book to bookshelf with a phoneNumber', function() {
-      expect(testApp.getBookshelf()[0].phoneNumber).to.equal('test_phoneNumber')
+      expect(testApp.getBookById(1).phoneNumber).to.equal('test_phoneNumber')
     });
 
     it('adds a book to bookshelf with an id', function() {
-      expect(testApp.getBookshelf()[0].id).to.equal(1)
+      expect(testApp.getBookById(1).id).to.equal(1)
     });
 
     it('adds a book to bookshelf with an availability', function() {
-      expect(testApp.getBookshelf()[0].availability).to.equal(true)
+      expect(testApp.getBookById(1).availability).to.equal(true)
     });
   });
 
   describe('#update_availability', function() {
-    it('updates availability from true to false', function() {
+    beforeEach( () => {
       testApp.addBook('Just So Stories', 'Rudyard Kipling', 9780192822765, 'test_postcode', 'test_phoneNumber')
-      expect(testApp.update_availability(1)).to.be(false)
     })
-  })
+
+    afterEach(() => {
+      testApp.bookshelf = []
+      testApp.id_counter = 1
+    })
+
+    it('updates availability from true to false', function() {
+      expect(testApp.updateAvailability(1)).to.equal(false)
+    })
+
+    it('updates availability from false to true', function() {
+      testApp.updateAvailability(1)
+      expect(testApp.updateAvailability(1)).to.equal(true)
+    });
+  });
 });
