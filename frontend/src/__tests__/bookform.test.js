@@ -52,19 +52,24 @@ it('renders without crashing', () => {
     expect(component.state('currentTitle')).toEqual('Test Title');
   });
 
+  it('should update state author when text entered', () => {
+    const component = shallow(<BookForm />);
+    component.find('input#author').simulate('change', {
+      target: { value: 'Test Author' }
+    })
+    expect(component.state('currentAuthor')).toEqual('Test Author');
+  });
+
   it('Clear message box on submit', () => {
-    const component = mount(<BookForm 
-        submitBook={function(item){return true}}
-        />);
-        component.find('input#title').simulate('change',{
-            target: {value: 'Test Title'} 
-        })
-        expect(component.state('currentTitle')).toEqual('Test Title');
-        component.find('form').simulate('submit')
+    const component = mount(<BookForm submitBook={ function(item) {return true} }/>);
+    component.find('input#title').simulate('change',{
+        target: {value: 'Test Title'}
+    })
+    expect(component.state('currentTitle')).toEqual('Test Title');
+    component.find('form').simulate('submit')
 
-        expect(component.find('input#title').props().value).toEqual('');
-            expect(component.state('currentTitle')).toEqual('');
-
+    expect(component.find('input#title').props().value).toEqual('');
+    expect(component.state('currentTitle')).toEqual('');
   })
 
 });

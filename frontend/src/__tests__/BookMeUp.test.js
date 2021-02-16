@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MyApp from '../App';
+import BookMeUp from '../BookMeUp';
 
 import mockAxios from '../__mocks__/axios.js'
 import Enzyme from 'enzyme';
@@ -9,7 +9,7 @@ import { mount } from 'enzyme'
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('MyApp', () => {
+describe('BookMeUp', () => {
   beforeEach(() => {
     mockAxios.post.mockImplementation(() =>
     Promise.resolve({ data: [] }));
@@ -20,17 +20,12 @@ describe('MyApp', () => {
   })
 
   it('renders without crashing', () => {
-    const component = mount(<MyApp />);
+    const component = mount(<BookMeUp />);
     expect(component).toMatchSnapshot();
   });
 
-  it('has available books list', () => {
-    const component = mount(<MyApp />);
-    expect(component.exists('ul#books_list')).toBe(true);
-  });
-
   it('posts data and clears book form on submit success', () => {
-    const component = mount(<MyApp />);
+    const component = mount(<BookMeUp />);
     component.find('input#title').simulate('change', {
       target: { value: "test_title" } })
     // component.find('input#author').simulate('change', {
@@ -43,9 +38,9 @@ describe('MyApp', () => {
     //   target: { value: "test_phone_number" } })
     component.find('form').simulate('submit')
 
-    expect(mockAxios.post).toHaveBeenCalledWith("http://localhost:3001/message", {"content": "test_title"});
+    expect(mockAxios.post).toHaveBeenCalledWith("http://localhost:3001/add-book", {"content": "test_title"});
 
-    expect(component.instance().refs.bookFormRef.state.currentBook).toEqual('');
+    expect(component.instance().refs.bookFormRef.state.currentTitle).toEqual('');
 
   })
 

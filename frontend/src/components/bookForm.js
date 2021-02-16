@@ -11,19 +11,20 @@ class BookForm extends React.Component {
 
   changeTitleValue(change){
     this.setState({
-      currentTitle: change 
+      currentTitle: change
     })
   }
 
-  componentDidUpdate(){
-    console.log(this.state.currentTitle)
+  processSubmit(e) {
+    e.preventDefault();
+    this.props.submitBook(this.state.currentTitle);
+    this.changeTitleValue('');
   }
 
   render() {
     return (
       <div className="add_book">
-        <form id="book_form">
-          
+        <form ref='formRef' id="book_form" onSubmit={ (e) => this.processSubmit(e) }>
           <input type="text" name="title" id="title" placeholder="Title" onChange={(e) => this.changeTitleValue(e.target.value)} value={this.state.currentTitle} />
           <input type="text" name="author" id="author" placeholder="Author" />
           <input type="text" name="ISBN" id="ISBN" placeholder="ISBN" />
