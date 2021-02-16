@@ -44,4 +44,12 @@ it('renders without crashing', () => {
     expect(component.exists('button#submit')).toBe(true);
   });
 
+  it('should update state title when text entered', () => {
+    const component = shallow(<BookForm />);
+    component.find('input#title').simulate('change', {
+      target: { value: 'Test Title' }
+    })
+    expect(component.state('currentTitle')).toEqual('Test Title');
+  });
+
 });
