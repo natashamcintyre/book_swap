@@ -49,4 +49,24 @@ describe('MyApp', () => {
     expect(component.exists('ul#books_list')).toBe(true);
   });
 
+  it('posts data and clears book form submit success', () => {
+    const component = mount(<MyApp />);
+    component.find('input#title').simulate('change', {
+      target: { value: "test_title" } })
+    // component.find('input#author').simulate('change', {
+    //   target: { value: "test_author" } })
+    // component.find('input#ISBN').simulate('change', {
+    //   target: { value: "test_ISBN" } })
+    // component.find('input#postcode').simulate('change', {
+    //   target: { value: "test_postcode" } })
+    // component.find('input#phone_number').simulate('change', {
+    //   target: { value: "test_phone_number" } })
+    component.find('form').simulate('submit')
+
+    expect(mockAxios.post).toHaveBeenCalledWith("http://localhost:3001/message", {"content": "test_title"});
+
+    expect(component.instance().refs.bookFormRef.state.currentBook).toEqual('');
+
+  })
+
 });
