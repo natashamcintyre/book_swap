@@ -39,5 +39,16 @@ describe("app", function() {
     it('adds a book to bookshelf with an id', function() {
       expect(testApp.getBookshelf()[0].id).to.equal(1)
     });
+
+    it('adds a book to bookshelf with an availability', function() {
+      expect(testApp.getBookshelf()[0].availability).to.equal(true)
+    });
   });
+
+  describe('#update_availability', function() {
+    it('updates availability from true to false', function() {
+      testApp.addBook('Just So Stories', 'Rudyard Kipling', 9780192822765, 'test_postcode', 'test_phoneNumber')
+      expect(testApp.update_availability(1)).to.be(false)
+    })
+  })
 });
