@@ -1,16 +1,15 @@
 body {
   padding: 0;
   margin: 0;
-  background: rgb(0, 128, 128)
 }
 
 .navbar {
-  background:rgb(128, 3, 3)
+  background: rgb(128, 3, 3);
 }
 
 .nav-link,
 .navbar-brand {
-  color:rgb(0, 128, 128);
+  color: rgb(0, 128, 128);
   cursor: pointer;
 }
 
@@ -24,4 +23,36 @@ body {
 
 .navbar-collapse {
   justify-content: flex-end;
+}
+
+.header {
+  background-color: rgb(0, 128, 128);
+}
+
+.description {
+  left: 50%;
+  position: absolute;
+  top: 45%;
+  transform: translate(-50%, -55%);
+  text-align: center;
+}
+.description h1 {
+  color: rgb(128, 3, 3);
+}
+.description p {
+  color: #fff;
+  font-size: 1.3rem;
+  line-height: 1.5;
+}
+
+.description button {
+  border: 1px solid rgb(128, 3, 3);
+  background: rgb(128, 3, 3);
+  border-radius: 0;
+  color: #fff;
+}
+.description button:hover {
+  border: 1px solid #fff;
+  background: #fff;
+  color: #000;
 }
