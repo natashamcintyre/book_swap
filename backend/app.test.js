@@ -69,4 +69,11 @@ describe("app", function() {
       expect(testApp.updateAvailability(1)).to.equal(true)
     });
   });
+
+  describe('#mock database', function() {
+    it('app reads from given file path', function() {
+      let testFileApp = new BookApp("/\///json/\//testBooks.json")
+      expect(testFileApp.bookshelf.length).to.equal(1)
+    })
+  })
 });
