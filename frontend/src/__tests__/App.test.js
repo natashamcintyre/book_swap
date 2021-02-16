@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MyApp from './App';
+import MyApp from '../App';
 
+import mockAxios from '../__mocks__/axios.js'
 import Enzyme from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import { mount } from 'enzyme'
@@ -9,6 +10,15 @@ import { mount } from 'enzyme'
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('MyApp', () => {
+  beforeEach(() => {
+    mockAxios.post.mockImplementation(() =>
+    Promise.resolve({ data: [] }));
+  });
+
+  afterEach(() => {
+    mockAxios.post.mockClear()
+  })
+
   it('renders without crashing', () => {
     const component = mount(<MyApp />);
     expect(component).toMatchSnapshot();
@@ -49,7 +59,7 @@ describe('MyApp', () => {
     expect(component.exists('ul#books_list')).toBe(true);
   });
 
-  it('posts data and clears book form submit success', () => {
+  it('posts data and clears book form on submit success', () => {
     const component = mount(<MyApp />);
     component.find('input#title').simulate('change', {
       target: { value: "test_title" } })
