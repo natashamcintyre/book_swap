@@ -1,9 +1,13 @@
 'use strict'
+import fs from 'fs'
+import path from 'path'
 
 class BookApp {
-  constructor () {
-    this.bookshelf = []
+  constructor (filepath) {
+    // this.bookshelf = []
     this.id_counter = 1
+    this.filepath = filepath
+    this.bookshelf = filepath ? this.readFromJson() : []
   }
 
   addBook (title, author, isbn, postcode, phoneNumber) {
@@ -34,6 +38,14 @@ class BookApp {
     this.bookshelf[index].availability = this.bookshelf[index].availability !== true
     return this.bookshelf[index].availability
   }
+
+  readFromJson(){
+    return JSON.parse(fs.readFileSync(
+      __dirname+path.normalize(this.filepath),"utf8",(err,data)=>{
+      if (err) throw err
+      })
+    )
+   }
 }
 
 export default BookApp
