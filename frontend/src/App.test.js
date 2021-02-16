@@ -45,9 +45,8 @@ describe('MyApp', () => {
   });
 
   it('has available books list', () => {
-  const component = mount(<MyApp />);
-  expect(component.exists('ul#books_list')).toBe(true);
-});
-
+    const component = mount(<MyApp />);
+    expect(component.exists('ul#books_list')).toBe(true);
+  });
 
 });
