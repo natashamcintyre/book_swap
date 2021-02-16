@@ -22,7 +22,8 @@ class BookApp {
     }
     this.bookshelf.push(book)
     this.id_counter++
-    return book
+    this.writeToJson()
+    return this.bookshelf
   }
 
   getBookshelf () {
@@ -33,10 +34,27 @@ class BookApp {
     return this.bookshelf.filter(book => book.id === id)[0]
   }
 
-  updateAvailability (id) {
+  updateAvailabilityById (id) {
     const index = this.bookshelf.findIndex(book => book.id === id)
     this.bookshelf[index].availability = this.bookshelf[index].availability !== true
-    return this.bookshelf[index].availability
+    this.writeToJson()
+    return this.bookshelf
+  }
+
+  deleteBookById (id) {
+    this.bookshelf = this.bookshelf.filter(book => book.id != id)
+    this.writeToJson()
+    return this.bookshelf
+  }
+
+  writeToJson() {
+    if (this.filepath) {
+      const jsonItem = JSON.stringify(this.bookshelf)
+
+      fs.writeFileSync(__dirname+path.normalize(this.filepath), jsonItem, (err) => {
+        if (err) throw err;
+      })
+    }
   }
 
   readFromJson(){

@@ -61,12 +61,14 @@ describe("app", function() {
     })
 
     it('updates availability from true to false', function() {
-      expect(testApp.updateAvailability(1)).to.equal(false)
+      testApp.updateAvailabilityById(1)
+      expect(testApp.getBookById(1).availability).to.equal(false)
     })
 
     it('updates availability from false to true', function() {
-      testApp.updateAvailability(1)
-      expect(testApp.updateAvailability(1)).to.equal(true)
+      testApp.updateAvailabilityById(1)
+      testApp.updateAvailabilityById(1)
+      expect(testApp.getBookById(1).availability).to.equal(true)
     });
   });
 
@@ -81,13 +83,13 @@ describe("app", function() {
     })
 
     it("delete method deletes a message", function() {
-      testApp.delete(1);
+      testApp.deleteBookById(1);
       expect(testApp.bookshelf.length).to.equal(0);
     });
 
     it("id's are always unique", function() {
       testApp.addBook('testTitle2', 'testAuthor2', 123, 'testPostcode2', 'testPhoneNumber2')
-      testApp.delete(2)
+      testApp.deleteBookById(2)
       testApp.addBook('testTitle3', 'testAuthor3', 1234, 'testPostcode3', 'testPhoneNumber3')
       expect(testApp.bookshelf[1].id).to.equal(3)
     });
@@ -95,15 +97,15 @@ describe("app", function() {
     it("app deletes correctly", function() {
       testApp.addBook('testTitle2', 'testAuthor2', 123, 'testPostcode2', 'testPhoneNumber2')
       testApp.addBook('testTitle3', 'testAuthor3', 1234, 'testPostcode3', 'testPhoneNumber3')
-      testApp.delete(1)
-      testApp.delete(3)
+      testApp.deleteBookById(1)
+      testApp.deleteBookById(3)
       expect(testApp.getBookById(2).id).to.equal(2)
     });
 
     it("app updates correctly", function() {
       testApp.addBook('testTitle2', 'testAuthor2', 123, 'testPostcode2', 'testPhoneNumber2')
-      testApp.delete(1)
-      testApp.updateAvailability(2)
+      testApp.deleteBookById(1)
+      testApp.updateAvailabilityById(2)
       expect(testApp.getBookById(2).availability).to.equal(false)
     });
   })
@@ -119,7 +121,7 @@ describe("app", function() {
       let testFileApp2 = new BookApp("/\///json/\//testBooks.json")
       expect(testFileApp2.bookshelf.length).to.equal(1)
 
-      testFileApp2.delete(1)
+      testFileApp2.deleteBookById(1)
       let testFileApp3 = new BookApp("/\///json/\//testBooks.json")
       expect(testFileApp3.bookshelf.length).to.equal(0)
     })
