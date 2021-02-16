@@ -1,11 +1,3 @@
-// import { render, screen } from '@testing-library/react';
-
-// test('renders learn react link', () => {
-//   render(<App />);
-//   const linkElement = screen.getByText(/learn react/i);
-//   expect(linkElement).toBeInTheDocument();
-// });
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import MyApp from './App';
@@ -51,5 +43,11 @@ describe('MyApp', () => {
     const component = mount(<MyApp />);
     expect(component.exists('button#submit')).toBe(true);
   });
+
+  it('has available books list', () => {
+  const component = mount(<MyApp />);
+  expect(component.exists('ul#books_list')).toBe(true);
+});
+
 
 });
