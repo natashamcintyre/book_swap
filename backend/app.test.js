@@ -12,9 +12,14 @@ describe("app", function() {
   });
 
   describe("#addBook", function() {
-    it('adds a book to bookshelf', function() {
+    it('adds a book to bookshelf with a title', function() {
       testApp.addBook('Just So Stories')
-      expect(testApp.getBookshelf()).to.eql(['Just So Stories'])
+      expect(testApp.getBookshelf()[0].title).to.equal('Just So Stories')
+    });
+
+    it('adds a book to bookshelf with an id', function() {
+      testApp.addBook('Just So Stories')
+      expect(testApp.getBookshelf()[0].id).to.equal(1)
     });
   });
 });
