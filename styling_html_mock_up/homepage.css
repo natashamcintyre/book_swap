@@ -4,12 +4,12 @@ body {
 }
 
 .navbar {
-  background: rgb(128, 3, 3);
+  background: rgb(246, 246, 246);
 }
 
 .nav-link,
 .navbar-brand {
-  color: rgb(0, 128, 128);
+  color: rgb(5, 36, 107);
   cursor: pointer;
 }
 
@@ -26,7 +26,7 @@ body {
 }
 
 .header {
-  background-color: rgb(0, 128, 128);
+  background-color: rgb(13, 43, 109);
 }
 
 .description {
@@ -37,7 +37,7 @@ body {
   text-align: center;
 }
 .description h1 {
-  color: rgb(128, 3, 3);
+  color: rgb(87, 195, 245);
 }
 .description p {
   color: #fff;
@@ -46,10 +46,10 @@ body {
 }
 
 .description button {
-  border: 1px solid rgb(128, 3, 3);
-  background: rgb(128, 3, 3);
+  border: 1px solid rgb(87, 195, 245);
+  background: rgb(87, 195, 245);
   border-radius: 0;
-  color: #fff;
+  color: rgb(13, 43, 109);
 }
 .description button:hover {
   border: 1px solid #fff;
