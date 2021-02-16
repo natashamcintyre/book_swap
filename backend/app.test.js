@@ -1,3 +1,5 @@
+"use strict";
+
 import { expect } from "chai";
 import BookApp from './app.js'
 
@@ -7,13 +9,12 @@ describe("app", function() {
 
   it('has a bookshelf', function() {
     expect(testApp.bookshelf).to.be.an('array')
-  })
+  });
 
   describe("#addBook", function() {
     it('adds a book to bookshelf', function() {
       testApp.addBook('Just So Stories')
-      expect(testApp.bookshelf[0]).to.equal('Just So Stories')
-    })
-  })
-
-})
+      expect(testApp.getBookshelf()).to.eql(['Just So Stories'])
+    });
+  });
+});
