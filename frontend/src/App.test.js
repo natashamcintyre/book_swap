@@ -31,4 +31,10 @@ describe('MyApp', () => {
     const component = mount(<MyApp />);
     expect(component.exists('button#submit')).toBe(true);
   });
+
+  it('has input textbox for book author', () => {
+    const component = mount(<MyApp />);
+    expect(component.exists('input#author')).toBe(true);
+  });
+
 });
