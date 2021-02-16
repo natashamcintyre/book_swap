@@ -6,10 +6,6 @@ class BookApp {
     this.id_counter = 1
   }
 
-  getBookshelf () {
-    return this.bookshelf
-  }
-
   addBook (title, author, isbn, postcode, phoneNumber) {
     const book = {
       id: this.id_counter,
@@ -23,6 +19,14 @@ class BookApp {
     this.bookshelf.push(book)
     this.id_counter++
     return book
+  }
+
+  getBookshelf () {
+    return this.bookshelf
+  }
+
+  getBookById (id) {
+    return this.bookshelf.filter(book => book.id === id)[0]
   }
 
   updateAvailability (id) {
