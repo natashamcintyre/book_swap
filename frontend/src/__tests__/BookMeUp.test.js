@@ -19,6 +19,11 @@ describe('BookMeUp', () => {
     mockAxios.post.mockClear()
   })
 
+  it('Loads data from api', () => {
+    mount(<BookMeUp />);
+    expect(mockAxios.get).toHaveBeenCalledTimes(1);
+  });
+
   it('renders without crashing', () => {
     const component = mount(<BookMeUp />);
     expect(component).toMatchSnapshot();
@@ -43,5 +48,7 @@ describe('BookMeUp', () => {
     expect(component.instance().refs.bookFormRef.state.currentTitle).toEqual('');
 
   })
+
+
 
 });
