@@ -17,4 +17,22 @@ describe("Books API endpoint tests", function() {
         done()
       })
   })
+
+  it.only("submit a book", function(done) {
+    var data = {
+      content: "Just So Stories"
+    };
+    const res = request(app)
+    .post("/book")
+    .send(data)
+    .set("Accept", "application/json")
+    res.expect(200)
+    .end(function(err, res) {
+      if (err) {
+        return done(err)
+      }
+      expect(res.body[0].content).to.equal('Just So Stories');
+      done()
+    })
+  })
 })

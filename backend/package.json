@@ -4,13 +4,14 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "env NODE_ENV=test nyc mocha -r esm ./test/model.test.js --exit",
+    "test": "env NODE_ENV=test nyc mocha -r esm ./test/*.js --exit",
     "start": "node -r esm app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "esm": "^3.2.25",
     "express": "^4.17.1"
   },
