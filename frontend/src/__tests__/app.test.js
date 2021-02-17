@@ -96,7 +96,7 @@ describe('BookMeUp erroring', () => {
     component.find('input#phone_number').simulate('change', {
       target: { value: "" } })
 
-    await componenet.find('form').simulate('submit')
+    await component.find('form').simulate('submit')
     await component.update()
     expect(mockAxios.post).toHaveBeenCalledTimes(1)
     expect(component.state().error).toEqual({"response": {"data": "error text from json mock"}});

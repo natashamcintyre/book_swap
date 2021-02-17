@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import BookList from './components/bookList.js';
 import BookForm from './components/bookForm.js';
+import ErrorHandler from './components/errorHandler.js'
 
 import axios from 'axios';
 const PORT = 'http://localhost:3001';
@@ -11,16 +12,18 @@ class BookMeUp extends Component {
   constructor(){
     super()
     this.state = {
-      books: []
+      books: [],
+      error: ""
     }
   }
 
   getBooks=()=>{
     axios.get(`${PORT}/`)
     .then((result)=>{
-      this.setState({
-        books: result.data
+      this.setBooks(result.data)
       })
+    .catch((err)=>{
+      this.setError(err)
     })
   }
 
@@ -33,6 +36,24 @@ class BookMeUp extends Component {
       postcode: postcode,
       phoneNumber: phoneNumber
     })
+    .then((result)=>{
+      this.getBooks()
+    })
+    .catch((err)=>{
+      this.setError(err)
+    })
+  }
+
+  setError(error){
+    this.setState({
+      error: error
+    })
+  }
+
+  setBooks(books){
+    this.setState({
+      books: books
+    })
   }
 
   componentDidMount(){
@@ -42,6 +63,7 @@ class BookMeUp extends Component {
   render() {
     return (
       <div className="container">
+        <ErrorHandler error={this.state.error}/>
         <BookForm ref="bookFormRef" submitBook={ this.submitBook }/>
         <BookList />
       </div>
