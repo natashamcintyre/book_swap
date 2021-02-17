@@ -5,7 +5,7 @@ class BookList extends React.Component {
       if (this.props.books){
     return(
       <div className="book_list">
-        <ul id="books_list">
+        <ul id="books_list" key='books_list'>
           {this.props.books.map(book=>{
             return <li className='book' key={book.id}>{book.title} by {book.author}</li>
           })}

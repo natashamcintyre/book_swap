@@ -11,6 +11,8 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('BookMeUp', () => {
   beforeEach(() => {
+    mockAxios.get.mockImplementation(() =>
+    Promise.resolve({ data: [] }));
     mockAxios.post.mockImplementation(() =>
     Promise.resolve({ data: [] }));
   });
