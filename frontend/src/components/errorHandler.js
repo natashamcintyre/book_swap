@@ -3,7 +3,7 @@ import React from 'react'
 class ErrorHandler extends React.Component {
   render () {
     let result;
-    console.log(this.props.error.response)
+    console.log(this.props.error)
     if (this.props.error) {
       result = `Error: ${this.props.error.response.data}`
     }

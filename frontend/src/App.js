@@ -12,8 +12,7 @@ class BookMeUp extends Component {
   constructor(){
     super()
     this.state = {
-      books: [],
-      error: ""
+      books: []
     }
   }
 
@@ -23,6 +22,8 @@ class BookMeUp extends Component {
       this.setBooks(result.data)
       })
     .catch((err)=>{
+      console.log("ERROR GET")
+      console.log(err)  
       this.setError(err)
     })
   }
@@ -40,6 +41,7 @@ class BookMeUp extends Component {
       this.getBooks()
     })
     .catch((err)=>{
+      console.log("ERROR SUBMIT")
       this.setError(err)
     })
   }
