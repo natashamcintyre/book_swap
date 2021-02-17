@@ -15,14 +15,14 @@ it('renders without crashing', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('has available books list', () => {
-    const component = mount(<BookList />);
-    expect(component.exists('ul#books_list')).toBe(true);
-  });
+  // it('has available books list', () => {
+  //   const component = mount(<BookList />);
+  //   expect(component.exists('ul#books_list')).toBe(true);
+  // });
 
   it('takes books as props and displays them',() => {
     const component = shallow(<BookList
-        books={[{title: 'testTitle', author: 'testAuthor'}]} />); 
+        books={[{title: 'testTitle', author: 'testAuthor'}]} />);
         expect(component.find('ul#books_list').children().length).toBe(1);
   });
 
