@@ -2,9 +2,18 @@
 import fs from 'fs'
 import path from 'path'
 
+function newID(array){
+  if (array.length > 0) {
+    return array[array.length-1].id + 1;
+  } else {
+    return 1
+  }
+}
+
+
 class BookApp {
   constructor (filepath) {
-    this.id_counter = 1
+    // this.id_counter = 1
     this.filepath = filepath
     this.bookshelf = filepath ? this.readFromJson() : []
   }
@@ -12,7 +21,7 @@ class BookApp {
   addBook (title, author, isbn, postcode, phoneNumber) {
     if (title && author && isbn && postcode && phoneNumber) {
       const book = {
-        id: this.id_counter,
+        id: newID(this.bookshelf),
         title: title,
         author: author,
         isbn: isbn,
@@ -21,7 +30,6 @@ class BookApp {
         availability: true
       }
       this.bookshelf.push(book)
-      this.id_counter++
       this.writeToJson()
       return this.bookshelf
     } else {

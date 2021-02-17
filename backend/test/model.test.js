@@ -86,14 +86,13 @@ describe('app', function () {
     })
   })
 
-  describe('delete method', function () {
+  describe('#delete method', function () {
     beforeEach(() => {
       testApp.addBook('Just So Stories', 'Rudyard Kipling', 9780192822765, 'test_postcode', 'test_phoneNumber')
     })
 
     afterEach(() => {
       testApp.bookshelf = []
-      testApp.id_counter = 1
     })
 
     it('delete method deletes a message', function () {
@@ -103,7 +102,7 @@ describe('app', function () {
 
     it("id's are always unique", function () {
       testApp.addBook('testTitle2', 'testAuthor2', 123, 'testPostcode2', 'testPhoneNumber2')
-      testApp.deleteBookById(2)
+      testApp.deleteBookById(1)
       testApp.addBook('testTitle3', 'testAuthor3', 1234, 'testPostcode3', 'testPhoneNumber3')
       expect(testApp.bookshelf[1].id).to.equal(3)
     })
@@ -132,17 +131,17 @@ describe('app', function () {
   describe('#mock database', function () {
     it('reads/writes to given file path', function () {
       let testFileApp = new BookApp('///json//testBooks.json')
-      expect(testFileApp.bookshelf.length).to.equal(0)
-
-      testFileApp.addBook('Just So Stories', 'Rudyard Kipling', 9780192822765, 'test_postcode', 'test_phoneNumber')
       expect(testFileApp.bookshelf.length).to.equal(1)
 
-      let testFileApp2 = new BookApp('///json//testBooks.json')
-      expect(testFileApp2.bookshelf.length).to.equal(1)
+      testFileApp.addBook('Just So Stories', 'Rudyard Kipling', 9780192822765, 'test_postcode', 'test_phoneNumber')
+      expect(testFileApp.bookshelf.length).to.equal(2)
 
-      testFileApp2.deleteBookById(1)
+      let testFileApp2 = new BookApp('///json//testBooks.json')
+      expect(testFileApp2.bookshelf.length).to.equal(2)
+
+      testFileApp2.deleteBookById(2)
       let testFileApp3 = new BookApp('///json//testBooks.json')
-      expect(testFileApp3.bookshelf.length).to.equal(0)
+      expect(testFileApp3.bookshelf.length).to.equal(1)
     })
   })
 })
