@@ -1,7 +1,7 @@
 'use strict'
 
 import { expect } from 'chai'
-import BookApp from './app.js'
+import BookApp from '../lib/model.js'
 
 describe('app', function () {
   let testApp
