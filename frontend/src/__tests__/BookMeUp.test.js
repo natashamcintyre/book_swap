@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import BookMeUp from '../BookMeUp';
+import BookMeUp from '../App';
 
 import mockAxios from '../__mocks__/axios.js'
 import Enzyme from 'enzyme';
