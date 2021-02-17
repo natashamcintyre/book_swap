@@ -37,15 +37,20 @@ describe('BookMeUp', () => {
       target: { value: "test_title" } })
     component.find('input#author').simulate('change', {
       target: { value: "test_author" } })
-    // component.find('input#ISBN').simulate('change', {
-    //   target: { value: "test_ISBN" } })
-    // component.find('input#postcode').simulate('change', {
-    //   target: { value: "test_postcode" } })
-    // component.find('input#phone_number').simulate('change', {
-    //   target: { value: "test_phone_number" } })
+    component.find('input#ISBN').simulate('change', {
+      target: { value: "test_ISBN" } })
+    component.find('input#postcode').simulate('change', {
+      target: { value: "test_postcode" } })
+    component.find('input#phone_number').simulate('change', {
+      target: { value: "test_phone_number" } })
     component.find('form').simulate('submit')
 
-    expect(mockAxios.post).toHaveBeenCalledWith("http://localhost:3001/add-book", {"title": "test_title", 'author': 'test_author'});
+    expect(mockAxios.post).toHaveBeenCalledWith("http://localhost:3001/add-book",
+        { "title": "test_title",
+        'author': 'test_author',
+        'isbn': 'test_ISBN',
+        'postcode': 'test_postcode',
+        'phone_number': 'test_phone_number'});
 
     expect(component.instance().refs.bookFormRef.state.currentTitle).toEqual('');
 
