@@ -6,7 +6,7 @@ CLASS "Book" as book:
 "ISBN"
 "Location (postcode)"
 "Contact details (phone number)"
-"Avialable"
+"Available"
 "#new()"
 ".all()"
 ".create()"
