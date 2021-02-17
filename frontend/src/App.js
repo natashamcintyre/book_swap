@@ -8,12 +8,31 @@ import axios from 'axios';
 const PORT = 'http://localhost:3001';
 
 class BookMeUp extends Component {
+  constructor(){
+    super()
+    this.state = {
+      books: []
+    }
+  }
+
+  getBooks=()=>{
+    axios.get(`${PORT}/`)
+    .then((result)=>{
+      this.setState({
+        books: result.data
+      })
+    })
+  }
 
   submitBook = (data) => {
     // ADDRESS NEEDS CHECKING WITH BACKEND API
     axios.post(`${PORT}/add-book`, {
       content: data
     })
+  }
+
+  componentDidMount(){
+    this.getBooks()
   }
 
   render() {
