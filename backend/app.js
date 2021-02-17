@@ -1,21 +1,14 @@
 import express from 'express'
-const app = express()
-import BookApp from './lib/model'
+const app = express();
 
-let bookApp;
-if (process.env.npm_lifecycle_event == "test") {
-  bookApp = new BookApp("/\///json/\//testBooks.json")
-} else {
-  bookApp = new BookApp("/\///json/\//books.json")
-}
- 
-app.get('/', async (req, res) => {
-  let result = bookApp.getBookshelf()
-    res.json(result)
-})
 
-app.listen(3001, function (){
+app.use(express.json())
+app.use(express.urlencoded({ extended: true}))
+
+app.use(routes);
+
+const server = app.listen(3001, function (){
   console.log("Connected");
 })
 
-export default app
+export default server;
