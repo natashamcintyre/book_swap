@@ -6,7 +6,7 @@ import Enzyme from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import { mount, shallow } from 'enzyme'
 
-Enzyme.confirgure({ adapter: new Adapter()})
+Enzyme.configure({ adapter: new Adapter()})
 
 describe('Error', () => {
 
@@ -21,11 +21,9 @@ describe('Error', () => {
   });
 
   it('displays with error', async () => {
-    const component = mount(<ErrorHandler
-      error={errorMock}
-      />);
-      await component.update()
-    expect(component.find('#error').text()).toBe({"response": {"data": "error text from json mock"}});
+    const component = mount(<ErrorHandler error={errorMock}/>);
+    await component.update()
+    expect(component.find('#error').text()).toBe('Error: error text from json mock');
   });
 
 })
