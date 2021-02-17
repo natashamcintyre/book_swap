@@ -35,8 +35,8 @@ describe('BookMeUp', () => {
     const component = mount(<BookMeUp />);
     component.find('input#title').simulate('change', {
       target: { value: "test_title" } })
-    // component.find('input#author').simulate('change', {
-    //   target: { value: "test_author" } })
+    component.find('input#author').simulate('change', {
+      target: { value: "test_author" } })
     // component.find('input#ISBN').simulate('change', {
     //   target: { value: "test_ISBN" } })
     // component.find('input#postcode').simulate('change', {
@@ -45,7 +45,7 @@ describe('BookMeUp', () => {
     //   target: { value: "test_phone_number" } })
     component.find('form').simulate('submit')
 
-    expect(mockAxios.post).toHaveBeenCalledWith("http://localhost:3001/add-book", {"content": "test_title"});
+    expect(mockAxios.post).toHaveBeenCalledWith("http://localhost:3001/add-book", {"title": "test_title", 'author': 'test_author'});
 
     expect(component.instance().refs.bookFormRef.state.currentTitle).toEqual('');
 
