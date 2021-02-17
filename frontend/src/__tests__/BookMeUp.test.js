@@ -50,7 +50,7 @@ describe('BookMeUp', () => {
         'author': 'test_author',
         'isbn': 'test_ISBN',
         'postcode': 'test_postcode',
-        'phone_number': 'test_phone_number'});
+        'phoneNumber': 'test_phone_number'});
 
     expect(component.instance().refs.bookFormRef.state.currentTitle).toEqual('');
 
