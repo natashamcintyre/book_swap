@@ -24,10 +24,11 @@ class BookMeUp extends Component {
     })
   }
 
-  submitBook = (data) => {
+  submitBook = (title, author) => {
     // ADDRESS NEEDS CHECKING WITH BACKEND API
     axios.post(`${PORT}/add-book`, {
-      content: data
+      title: title,
+      author: author
     })
   }
 
