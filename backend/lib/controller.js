@@ -3,14 +3,15 @@
 import BookModel from './model'
 
 function getBookshelf() {
-  return new Promise((resolve, reject) => {
-    var result = bookApp.getBookshelf()
-    if (result !== []) {
-      resolve(result)
-    } else {
-      reject(result)
-    }
-  })
+  return BookModel.find()
+  // return new Promise((resolve, reject) => {
+  //   var result = bookApp.getBookshelf()
+  //   if (result !== []) {
+  //     resolve(result)
+  //   } else {
+  //     reject(result)
+  //   }
+  // })
 }
 
 function addBook(data) {

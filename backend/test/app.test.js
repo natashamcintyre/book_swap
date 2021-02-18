@@ -64,16 +64,14 @@ describe("Books API endpoint tests", function() {
     const res = request(app)
     .get("/")
 
-    res.expect([ {id: 1, title: 'Just So Stories', author: 'Rudyard Kipling', isbn: 9780192822765, postcode: 'test_postcode', phoneNumber: 'test_phoneNumber', availability: true } ])
-    
     res.expect(200)
       .end(function(err, res) {
         if (err) {
           return done(err)
         }
 
-      console.log(res.body)
-      expect(res.body.data.length).to.equal(1)
+      expect(res.body.length).to.equal(2)
+      expect(res.body[0].data).to.deep.equal( {title: 'Just So Stories', author: 'Rudyard Kipling', isbn: 9780192822765, postcode: 'test_postcode', phoneNumber: 'test_phoneNumber' } )
       done()
     })
   })

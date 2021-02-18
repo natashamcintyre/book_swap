@@ -20,7 +20,6 @@ db.on('error', err => {
 app.use(express.json())
 app.use(express.urlencoded({ extended: true}))
 app.use(bodyParse.json());
-
 app.use('/', routes);
 
 const server = app.listen(3001, function (){
@@ -32,4 +31,3 @@ app.listen(config.port, function(){
  })
 
 export default server;
-
