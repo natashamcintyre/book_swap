@@ -70,7 +70,7 @@ describe("Books API endpoint tests", function() {
           return done(err)
         }
 
-      expect(res.body.length).to.equal(2)
+      expect(res.body.length).to.equal(1)
       expect(res.body[0].data).to.deep.equal( {title: 'Just So Stories', author: 'Rudyard Kipling', isbn: 9780192822765, postcode: 'test_postcode', phoneNumber: 'test_phoneNumber' } )
       done()
     })
