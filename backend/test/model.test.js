@@ -1,11 +1,18 @@
 'use strict'
 
 import { expect } from 'chai'
-import BookApp from './app.js'
+import BookApp from '../lib/model.js'
 
 describe('app', function () {
   let testApp
   testApp = new BookApp()
+  let testBook = {
+    title:"Just So Stories",
+    author:"Rudyard Kipling",
+    isbn:9780192822765,
+    postcode:"test_postcode",
+    phoneNumber:"test_phoneNumber"
+  }
 
   it('has a bookshelf', function () {
     expect(testApp.bookshelf).to.be.an('array')
@@ -13,7 +20,7 @@ describe('app', function () {
 
   describe('#addBook', function () {
     beforeEach(() => {
-      testApp.addBook('Just So Stories', 'Rudyard Kipling', 9780192822765, 'test_postcode', 'test_phoneNumber')
+      testApp.addBook(testBook)
     })
 
     afterEach(() => {
@@ -51,17 +58,17 @@ describe('app', function () {
 
     it('rejects incomplete books', function () {
       let testApp2 = new BookApp()
-      expect(() => { testApp2.addBook('', 'Rudyard Kipling', 9780192822765, 'test_postcode', 'test_phoneNumber') }).to.throw('Invalid book entry')
-      expect(() => { testApp2.addBook('Just So Stories', '', 9780192822765, 'test_postcode', 'test_phoneNumber') }).to.throw('Invalid book entry')
-      expect(() => { testApp2.addBook('Just So Stories', 'Rudyard Kipling', null, 'test_postcode', 'test_phoneNumber') }).to.throw('Invalid book entry')
-      expect(() => { testApp2.addBook('Just So Stories', 'Rudyard Kipling', 9780192822765, '', 'test_phoneNumber') }).to.throw('Invalid book entry')
-      expect(() => { testApp2.addBook('Just So Stories', 'Rudyard Kipling', 9780192822765, 'test_postcode', '') }).to.throw('Invalid book entry')
+      expect(() => { testApp2.addBook({ title:'', author:'Rudyard Kipling', isbn:9780192822765, postcode:'test_postcode', phoneNumber:'test_phoneNumber' }) }).to.throw('Invalid book entry')
+      expect(() => { testApp2.addBook({ title:'Just So Stories', author:'', isbn:9780192822765, postcode:'test_postcode', phoneNumber:'test_phoneNumber' }) }).to.throw('Invalid book entry')
+      expect(() => { testApp2.addBook({ title:'Just So Stories', author:'Rudyard Kipling', isbn:null, postcode:'test_postcode', phoneNumber:'test_phoneNumber' }) }).to.throw('Invalid book entry')
+      expect(() => { testApp2.addBook({ title:'Just So Stories', author:'Rudyard Kipling', isbn:9780192822765, postcode:'', phoneNumber:'test_phoneNumber' }) }).to.throw('Invalid book entry')
+      expect(() => { testApp2.addBook({ title:'Just So Stories', author:'Rudyard Kipling', isbn:9780192822765, postcode:'test_postcode', phoneNumber:'' }) }).to.throw('Invalid book entry')
     })
   })
 
   describe('#update_availability', function () {
     beforeEach(() => {
-      testApp.addBook('Just So Stories', 'Rudyard Kipling', 9780192822765, 'test_postcode', 'test_phoneNumber')
+      testApp.addBook(testBook)
     })
 
     afterEach(() => {
@@ -86,14 +93,13 @@ describe('app', function () {
     })
   })
 
-  describe('delete method', function () {
+  describe('#delete method', function () {
     beforeEach(() => {
-      testApp.addBook('Just So Stories', 'Rudyard Kipling', 9780192822765, 'test_postcode', 'test_phoneNumber')
+      testApp.addBook(testBook)
     })
 
     afterEach(() => {
       testApp.bookshelf = []
-      testApp.id_counter = 1
     })
 
     it('delete method deletes a message', function () {
@@ -102,22 +108,22 @@ describe('app', function () {
     })
 
     it("id's are always unique", function () {
-      testApp.addBook('testTitle2', 'testAuthor2', 123, 'testPostcode2', 'testPhoneNumber2')
-      testApp.deleteBookById(2)
-      testApp.addBook('testTitle3', 'testAuthor3', 1234, 'testPostcode3', 'testPhoneNumber3')
+      testApp.addBook({ title:'testTitle2', author:'testAuthor2', isbn:123, postcode:'testPostcode2', phoneNumber:'testPhoneNumber2'})
+      testApp.deleteBookById(1)
+      testApp.addBook({ title:'testTitle3', author:'testAuthor3', isbn:1234, postcode:'testPostcode3', phoneNumber:'testPhoneNumber3'})
       expect(testApp.bookshelf[1].id).to.equal(3)
     })
 
     it('app deletes correctly', function () {
-      testApp.addBook('testTitle2', 'testAuthor2', 123, 'testPostcode2', 'testPhoneNumber2')
-      testApp.addBook('testTitle3', 'testAuthor3', 1234, 'testPostcode3', 'testPhoneNumber3')
+      testApp.addBook({ title:'testTitle2', author:'testAuthor2', isbn:123, postcode:'testPostcode2', phoneNumber:'testPhoneNumber2'})
+      testApp.addBook({ title:'testTitle3', author:'testAuthor3', isbn:1234, postcode:'testPostcode3', phoneNumber:'testPhoneNumber3'})
       testApp.deleteBookById(1)
       testApp.deleteBookById(3)
       expect(testApp.getBookById(2).id).to.equal(2)
     })
 
     it('app updates correctly', function () {
-      testApp.addBook('testTitle2', 'testAuthor2', 123, 'testPostcode2', 'testPhoneNumber2')
+      testApp.addBook({ title:'testTitle2', author:'testAuthor2', isbn:123, postcode:'testPostcode2', phoneNumber:'testPhoneNumber2'})
       testApp.deleteBookById(1)
       testApp.updateAvailabilityById(2)
       expect(testApp.getBookById(2).availability).to.equal(false)
@@ -132,17 +138,17 @@ describe('app', function () {
   describe('#mock database', function () {
     it('reads/writes to given file path', function () {
       let testFileApp = new BookApp('///json//testBooks.json')
-      expect(testFileApp.bookshelf.length).to.equal(0)
-
-      testFileApp.addBook('Just So Stories', 'Rudyard Kipling', 9780192822765, 'test_postcode', 'test_phoneNumber')
       expect(testFileApp.bookshelf.length).to.equal(1)
 
-      let testFileApp2 = new BookApp('///json//testBooks.json')
-      expect(testFileApp2.bookshelf.length).to.equal(1)
+      testFileApp.addBook(testBook)
+      expect(testFileApp.bookshelf.length).to.equal(2)
 
-      testFileApp2.deleteBookById(1)
+      let testFileApp2 = new BookApp('///json//testBooks.json')
+      expect(testFileApp2.bookshelf.length).to.equal(2)
+
+      testFileApp2.deleteBookById(2)
       let testFileApp3 = new BookApp('///json//testBooks.json')
-      expect(testFileApp3.bookshelf.length).to.equal(0)
+      expect(testFileApp3.bookshelf.length).to.equal(1)
     })
   })
 })
