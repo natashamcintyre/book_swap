@@ -22,7 +22,7 @@ describe('app', function () {
     })
 
     it('adds a book to bookshelf with a title', function () {
-      expect(testApp.getBookById(1).title).to.equal('Just No Stories')
+      expect(testApp.getBookById(1).title).to.equal('Just So Stories')
     })
 
     it('adds a book to bookshelf with a author', function () {
