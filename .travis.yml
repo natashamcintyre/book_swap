@@ -4,6 +4,7 @@ services:
  node_js: 
   - "10" 
 before_script: 
+  - mongo testBooks
   - cd backend
   - npm install mocha chai
   - npm run test
