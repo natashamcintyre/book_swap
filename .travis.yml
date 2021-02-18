@@ -1,0 +1,12 @@
+language: node_js
+ node_js: 
+  - "10" 
+before_script: 
+  - cd backend
+  - npm install mocha chai
+  - npm run test
+  - cd ..
+  - cd frontend
+  - npm install enzyme
+script:
+  - npm run test
