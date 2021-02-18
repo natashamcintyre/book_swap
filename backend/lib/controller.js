@@ -8,7 +8,7 @@ if (process.env.npm_lifecycle_event == "test") {
 
 import BookApp from './model.js'
 
-function getBookshelf(){
+function getBookshelf() {
   return new Promise((resolve, reject) => {
     var result = bookApp.getBookshelf()
     if (result !== []) {
@@ -19,6 +19,20 @@ function getBookshelf(){
   })
 }
 
+function addBook(data) {
+  console.log(`in controller addBook, data is ${data}`)
+  return new Promise((resolve, reject) => {
+    console.log(`in promise`)
+    var result = bookApp.addBook(data)
+    if (result !== []) {
+      resolve(result)
+    } else {
+      reject(result)
+    }
+  })
+}
+
 module.exports = {
-  getBookshelf
+  getBookshelf,
+  addBook
 }

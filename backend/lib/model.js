@@ -18,15 +18,16 @@ class BookApp {
     this.bookshelf = filepath ? this.readFromJson() : []
   }
 
-  addBook (title, author, isbn, postcode, phoneNumber) {
-    if (title && author && isbn && postcode && phoneNumber) {
+  addBook(data) {
+    console.log(`in model addBook`)
+    if (data.title && data.author && data.isbn && data.postcode && data.phoneNumber) {
       const book = {
         id: newID(this.bookshelf),
-        title: title,
-        author: author,
-        isbn: isbn,
-        postcode: postcode,
-        phoneNumber: phoneNumber,
+        title: data.title,
+        author: data.author,
+        isbn: data.isbn,
+        postcode: data.postcode,
+        phoneNumber: data.phoneNumber,
         availability: true
       }
       this.bookshelf.push(book)
