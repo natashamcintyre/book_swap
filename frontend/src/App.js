@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import BookList from './components/bookList.js';
 import BookForm from './components/bookForm.js';
+import ErrorHandler from './components/errorHandler.js'
 
 import axios from 'axios';
 const PORT = 'http://localhost:3001';
@@ -18,16 +19,42 @@ class BookMeUp extends Component {
   getBooks=()=>{
     axios.get(`${PORT}/`)
     .then((result)=>{
-      this.setState({
-        books: result.data
+      this.setBooks(result.data)
       })
+    .catch((err)=>{
+      console.log("ERROR GET")
+      console.log(err)  
+      this.setError(err)
     })
   }
 
-  submitBook = (data) => {
+  submitBook = (title, author, isbn, postcode, phoneNumber) => {
     // ADDRESS NEEDS CHECKING WITH BACKEND API
     axios.post(`${PORT}/add-book`, {
-      content: data
+      title: title,
+      author: author,
+      isbn: isbn,
+      postcode: postcode,
+      phoneNumber: phoneNumber
+    })
+    .then((result)=>{
+      this.getBooks()
+    })
+    .catch((err)=>{
+      console.log("ERROR SUBMIT")
+      this.setError(err)
+    })
+  }
+
+  setError(error){
+    this.setState({
+      error: error
+    })
+  }
+
+  setBooks(books){
+    this.setState({
+      books: books
     })
   }
 
@@ -38,6 +65,7 @@ class BookMeUp extends Component {
   render() {
     return (
       <div className="container">
+        <ErrorHandler error={this.state.error}/>
         <BookForm ref="bookFormRef" submitBook={ this.submitBook }/>
         <BookList />
       </div>

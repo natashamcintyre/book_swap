@@ -49,7 +49,7 @@ it('renders without crashing', () => {
     component.find('input#title').simulate('change', {
       target: { value: 'Test Title' }
     })
-    expect(component.state('currentTitle')).toEqual('Test Title');
+    expect(component.state('title')).toEqual('Test Title');
   });
 
   it('should update state author when text entered', () => {
@@ -57,7 +57,7 @@ it('renders without crashing', () => {
     component.find('input#author').simulate('change', {
       target: { value: 'Test Author' }
     })
-    expect(component.state('currentAuthor')).toEqual('Test Author');
+    expect(component.state('author')).toEqual('Test Author');
   });
 
   it('Clear message box on submit', () => {
@@ -65,11 +65,11 @@ it('renders without crashing', () => {
     component.find('input#title').simulate('change',{
         target: {value: 'Test Title'}
     })
-    expect(component.state('currentTitle')).toEqual('Test Title');
+    expect(component.state('title')).toEqual('Test Title');
     component.find('form').simulate('submit')
 
     expect(component.find('input#title').props().value).toEqual('');
-    expect(component.state('currentTitle')).toEqual('');
+    expect(component.state('title')).toEqual('');
   })
 
 });
