@@ -1,8 +1,8 @@
-# book_swap
+# Book Me Up
 A web application, to allow users to offer books for use by a community of users other users.
 
 ## Motivation
-To demonstrate the ability to build a high quality single page web app, in a new framework as part of a team.
+To demonstrate the ability to build a high quality single page web app, in a new framework as part of a team. Also, to enjoy ourselves.
 
 ## Build status
 Build status of continuous integration i.e. travis, appveyor etc. Ex. -
