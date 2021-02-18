@@ -1,16 +1,15 @@
 body {
   padding: 0;
   margin: 0;
-  background: rgb(0, 128, 128)
 }
 
 .navbar {
-  background:rgb(128, 3, 3)
+  background: rgb(246, 246, 246);
 }
 
 .nav-link,
 .navbar-brand {
-  color:rgb(0, 128, 128);
+  color: rgb(5, 36, 107);
   cursor: pointer;
 }
 
@@ -24,4 +23,57 @@ body {
 
 .navbar-collapse {
   justify-content: flex-end;
+}
+
+.header {
+  background-color: rgb(13, 43, 109);
+}
+
+.description {
+  left: 50%;
+  position: absolute;
+  top: 45%;
+  transform: translate(-50%, -55%);
+  text-align: center;
+}
+.description h1 {
+  color: rgb(87, 195, 245);
+}
+.description p {
+  color: #fff;
+  font-size: 1.3rem;
+  line-height: 1.5;
+}
+
+.description button {
+  border: 1px solid rgb(87, 195, 245);
+  background: rgb(87, 195, 245);
+  border-radius: 0;
+  color: rgb(13, 43, 109);
+}
+.description button:hover {
+  border: 1px solid #fff;
+  background: #fff;
+  color: #000;
+}
+
+.features {
+  margin: 4em auto;
+  padding: 1em;
+  position: relative;
+}
+
+.feature-title {
+  color: #333;
+  font-size: 1.3rem; 
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.features img {
+  -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+  -mox-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+  margin-bottom: 16px;
 }
