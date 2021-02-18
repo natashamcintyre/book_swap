@@ -14,4 +14,4 @@ const server = app.listen(3001, function (){
 })
 
 export default server;
-module.exports = app; 
+
