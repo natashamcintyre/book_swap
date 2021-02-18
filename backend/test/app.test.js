@@ -26,12 +26,13 @@ describe("Books API endpoint tests", function() {
     .post("/add-book")
     .send(data)
     .set("Accept", "application/json")
+
     res.expect(200)
     .end(function(err, res) {
       if (err) {
         return done(err)
       }
-      expect(res.body[0].title).to.equal('Just So Stories');
+      expect(res.body.data.title).to.equal('Just So Stories');
       done()
     })
   })
@@ -62,13 +63,17 @@ describe("Books API endpoint tests", function() {
   it("gets from backend bookshelf", function(done){
     const res = request(app)
     .get("/")
+
     res.expect([ {id: 1, title: 'Just So Stories', author: 'Rudyard Kipling', isbn: 9780192822765, postcode: 'test_postcode', phoneNumber: 'test_phoneNumber', availability: true } ])
+    
     res.expect(200)
       .end(function(err, res) {
         if (err) {
           return done(err)
         }
-      expect(res.body.length).to.equal(1)
+
+      console.log(res.body)
+      expect(res.body.data.length).to.equal(1)
       done()
     })
   })
