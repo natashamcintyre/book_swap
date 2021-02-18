@@ -20,10 +20,14 @@ describe("Books API endpoint tests", function() {
 
   it("submit a book", function(done) {
     var data = {
-      content: "Just So Stories"
+      title:"Just So Stories",
+      author:"Rudyard Kipling",
+      isbn:9780192822765,
+      postcode:"test_postcode",
+      phoneNumber:"test_phoneNumber"
     };
     const res = request(app)
-    .post("/book")
+    .post("/add-book")
     .send(data)
     .set("Accept", "application/json")
     res.expect(200)
