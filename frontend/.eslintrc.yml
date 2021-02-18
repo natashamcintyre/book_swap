@@ -1,9 +1,12 @@
 env:
   browser: true
   es2021: true
+  jest: true
 extends:
   - 'plugin:react/recommended'
+  - 'plugin:cypress/recommended'
   - standard
+parser: "babel-eslint"
 parserOptions:
   ecmaFeatures:
     jsx: true
@@ -11,4 +14,5 @@ parserOptions:
   sourceType: module
 plugins:
   - react
+  - enzyme
 rules: {}

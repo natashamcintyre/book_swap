@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class ErrorHandler extends React.Component {
   render () {
@@ -9,6 +10,10 @@ class ErrorHandler extends React.Component {
     }
     return <div id='error'>{result}</div>
   }
+}
+
+ErrorHandler.propTypes = {
+  error: PropTypes.error
 }
 
 export default ErrorHandler

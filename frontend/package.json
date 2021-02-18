@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.2",
@@ -20,7 +21,8 @@
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "jest-enzyme"
     ]
   },
   "browserslist": {
@@ -38,9 +40,12 @@
   "devDependencies": {
     "@wojtekmaj/enzyme-adapter-react-17": "^0.4.1",
     "axios": "^0.21.1",
+    "babel-eslint": "^10.1.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
     "eslint": "^7.20.0",
+    "eslint-plugin-cypress": "^2.11.2",
+    "eslint-plugin-enzyme": "^0.2.0",
     "standard": "^16.0.3"
   }
 }

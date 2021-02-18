@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class BookList extends React.Component {
   render () {
@@ -20,6 +21,10 @@ class BookList extends React.Component {
       )
     }
   }
+}
+
+BookList.propTypes = {
+  books: PropTypes.array.isRequired
 }
 
 export default BookList
