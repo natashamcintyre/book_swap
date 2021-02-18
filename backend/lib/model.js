@@ -2,14 +2,13 @@
 import fs from 'fs'
 import path from 'path'
 
-function newID(array){
+function newID (array) {
   if (array.length > 0) {
-    return array[array.length-1].id + 1;
+    return array[array.length - 1].id + 1
   } else {
     return 1
   }
 }
-
 
 class BookApp {
   constructor (filepath) {
@@ -18,8 +17,8 @@ class BookApp {
     this.bookshelf = filepath ? this.readFromJson() : []
   }
 
-  addBook(data) {
-    console.log(`in model addBook`)
+  addBook (data) {
+    console.log('in model addBook')
     if (data.title && data.author && data.isbn && data.postcode && data.phoneNumber) {
       const book = {
         id: newID(this.bookshelf),
@@ -47,7 +46,7 @@ class BookApp {
   }
 
   updateAvailabilityById (id) {
-    let index = this.bookshelf.findIndex(book => book.id === id)
+    const index = this.bookshelf.findIndex(book => book.id === id)
     if (index >= 0) {
       this.bookshelf[index].availability = this.bookshelf[index].availability !== true
       this.writeToJson()
@@ -58,7 +57,7 @@ class BookApp {
   }
 
   deleteBookById (id) {
-    let index = this.bookshelf.findIndex(book => book.id === id)
+    const index = this.bookshelf.findIndex(book => book.id === id)
     if (index >= 0) {
       this.bookshelf = this.bookshelf.filter(book => book.id !== id)
       this.writeToJson()

@@ -1,16 +1,15 @@
-let bookApp;
+import BookApp from './model.js'
+let bookApp
 
-if (process.env.npm_lifecycle_event == "test") {
-  bookApp = new BookApp(`/\///json/\//testBooks.json`)
+if (process.env.npm_lifecycle_event === 'test') {
+  bookApp = new BookApp('///json//testBooks.json')
 } else {
-  bookApp = new BookApp(`/\///json/\//books.json`)
+  bookApp = new BookApp('///json//books.json')
 }
 
-import BookApp from './model.js'
-
-function getBookshelf() {
+function getBookshelf () {
   return new Promise((resolve, reject) => {
-    var result = bookApp.getBookshelf()
+    const result = bookApp.getBookshelf()
     if (result !== []) {
       resolve(result)
     } else {
@@ -19,11 +18,9 @@ function getBookshelf() {
   })
 }
 
-function addBook(data) {
-  console.log(`in controller addBook, data is ${data}`)
+function addBook (data) {
   return new Promise((resolve, reject) => {
-    console.log(`in promise`)
-    var result = bookApp.addBook(data)
+    const result = bookApp.addBook(data)
     if (result !== []) {
       resolve(result)
     } else {
