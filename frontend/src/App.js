@@ -7,6 +7,7 @@ import ErrorHandler from './components/errorHandler.js'
 import Navigation from './components/navigation.js'
 import Header from './components/header.js'
 
+
 import axios from 'axios';
 const PORT = 'http://localhost:3001';
 
@@ -62,13 +63,12 @@ class BookMeUp extends Component {
   }
 
   render() {
+    // console.log(this.state)
     return (
       <div className="container">
-        <ErrorHandler error={this.state.error}/>
+        <ErrorHandler error='Error: error text from json mock'/>
         <Navigation />
-        {/*
         <Header />
-        */}
         <BookForm ref="bookFormRef" submitBook={ this.submitBook }/>
         <BookList />
       </div>
