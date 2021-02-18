@@ -1,4 +1,4 @@
-# book_swap
+# Book Me Up
 A web application, to allow users to offer books for use by a community of users other users.
 
 ## Motivation
