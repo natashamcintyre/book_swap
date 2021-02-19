@@ -2,7 +2,6 @@ import BookModel from './model'
 
 function getBookshelf() {
   return BookModel.find()
-
 }
 
 function addBook(data) {
