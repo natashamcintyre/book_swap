@@ -8,6 +8,6 @@ describe('user can add a book', () => {
     cy.get('input[name="phone_number"]').type('08546374586').should("have.value", "08546374586")
     cy.get('input[name="postcode"]').type('ABC123').should("have.value", "ABC123")
     cy.get('form').submit()
-    cy.get('li[className="book"]').should('exist')
+    cy.get('li[class="book"]').should('exist')
   })
 })
