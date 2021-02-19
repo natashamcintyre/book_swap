@@ -2,10 +2,6 @@ import {Router} from "express"
 const bookApp = require('./controller.js')
 const router = Router()
 
-router.get('/index', async (req, res) => {
-  res.sendFile(path.join(__dirname+'../views/index.html'))
-})
-
 router.get('/', async (req, res) => {
   await bookApp.getBookshelf()
   .then((books) => res.json(books))

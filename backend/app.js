@@ -22,11 +22,8 @@ app.use(express.urlencoded({ extended: true}))
 app.use(bodyParse.json());
 app.use('/', routes);
 
-const server = app.listen(3001, function (){
-  console.log("Connected");
-})
 
-app.listen(config.port, function(){
+const server = app.listen(config.port, function(){
   console.log('App listening on port ' + config.port);
  })
 
