@@ -56,6 +56,14 @@ Run the following to run the test coverage for the front end.
 ```
 $ npm test -- --coverage --watchAll=false
 ```
+Run the following to open the test runner for end to end testing:
+```
+cd backend
+npm start
+cd ../frontend
+npm start
+$ npx cypress open
+```
 
 ## How to use?
 If people like your project they’ll want to learn how they can use it. To do so include step by step guide to use your project.
