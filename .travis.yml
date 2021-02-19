@@ -10,3 +10,4 @@ before_script: 
   - npm install enzyme
 script:
   - npm run test
+  - cypress run
