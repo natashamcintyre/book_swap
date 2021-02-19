@@ -1,6 +1,6 @@
 import request from "supertest";
 import mongoose from "mongoose"
-import {expect} from "chai";
+import { expect } from "chai";
 import app from "../app.js"
 
 
@@ -8,11 +8,11 @@ describe("Books API endpoint tests", function() {
 
   before(function (done) {
     mongoose.connect("mongodb://localhost/testBooks", { useNewUrlParser: true, useFindAndModify: false }, function(){
-    mongoose.connection.db.dropDatabase(function(){
-    done()
+      mongoose.connection.db.dropDatabase(function(){
+        done()
+      })
     })
-    })
-    })
+  })
 
   it("submit a book", function(done) {
     var data = {

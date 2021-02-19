@@ -24,6 +24,7 @@ app.use(express.urlencoded({ extended: true}))
 app.use(bodyParse.json());
 app.use(cors());
 app.use('/', routes);
+// app.use('/', routes);
 
 const server = app.listen(config.port, function(){
   console.log('App listening on port ' + config.port);
