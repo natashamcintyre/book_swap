@@ -67,7 +67,7 @@ class BookMeUp extends Component {
     // console.log(this.state)
     return (
       <div className="container">
-        <ErrorHandler error='Error: error text from json mock'/>
+        <ErrorHandler error={ this.state.error }/>
         <Navigation />
         <Header />
         <BookForm ref="bookFormRef" submitBook={ this.submitBook }/>
