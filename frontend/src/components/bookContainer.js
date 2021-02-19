@@ -7,7 +7,7 @@ class BookContainer extends React.Component {
             <div id= 'react'>
             <div className='row'>
                 <div className= "col-lg-2 col-md-4 col-sm-12">
-                    <li>
+                    <li key={this.props.book.id}>
                         <p>{this.props.book.id}</p>
                         <p>{this.props.book.title}</p>
                         <p>{this.props.book.author}</p>

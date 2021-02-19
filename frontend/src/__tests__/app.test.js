@@ -46,7 +46,7 @@ describe('BookMeUp', () => {
       target: { value: "test_postcode" } })
     component.find('input#phone_number').simulate('change', {
       target: { value: "test_phone_number" } })
-    component.find('form').simulate('submit')
+    component.find('form#book_form').simulate('submit')
 
     expect(mockAxios.post).toHaveBeenCalledWith("http://localhost:3001/add-book",
         { "title": "test_title",
@@ -96,7 +96,7 @@ describe('BookMeUp erroring', () => {
     component.find('input#phone_number').simulate('change', {
       target: { value: "" } })
 
-    await component.find('form').simulate('submit')
+    await component.find('form#book_form').simulate('submit')
     await component.update()
     expect(mockAxios.post).toHaveBeenCalledTimes(1)
     expect(component.state().error).toEqual({"response": {"data": "error text from json mock"}});
