@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "env NODE_ENV=test nyc mocha -r esm ./test/*.js --exit",
-    "start": "node -r esm app.js"
+    "start": "node -r esm app.js",
+    "publishToHeroku": "cd ../ && git subtree push --prefix backend heroku-bookmeup-backend main || true"
   },
   "keywords": [],
   "author": "",
