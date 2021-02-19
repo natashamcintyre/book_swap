@@ -1,4 +1,6 @@
 import React from 'react';
+import BookContainer from './bookContainer.js'
+// maybe delete the above line
 
 class BookList extends React.Component {
   render() {
@@ -7,7 +9,7 @@ class BookList extends React.Component {
       <div className="book_list">
         <ul id="books_list" key='books_list'>
           {this.props.books.map(book=>{
-            return <li className='book' key={book.id}>{book.title} by {book.author}</li>
+            < BookContainer className='book' book={book}/>
           })}
         </ul>
       </div>
@@ -21,6 +23,7 @@ class BookList extends React.Component {
   )}
  }
 }
+
 
 
 export default BookList;
