@@ -1,7 +1,9 @@
 import express from 'express'
+import cors from 'cors'
 const app = express();
 const routes = require('./lib/routes.js')
 import bodyParse from "body-parser"
+
 import mongoose from 'mongoose'
 import config from './config/config';
 
@@ -20,8 +22,8 @@ db.on('error', err => {
 app.use(express.json())
 app.use(express.urlencoded({ extended: true}))
 app.use(bodyParse.json());
+app.use(cors());
 app.use('/', routes);
-
 
 const server = app.listen(config.port, function(){
   console.log('App listening on port ' + config.port);
