@@ -1,15 +1,17 @@
 language: node_js
+env:
+  - CYPRESS_RECORD_Key=22f68b8b-95b9-4456-9b9a-5771862e4cb6
  node_js: 
   - "10" 
 before_script: 
   - cd backend
   - npm install mocha chai
   - npm run test
-  - npm start &
+  - npm start & --silent
   - cd ..
   - cd frontend
   - npm install enzyme
 script:
   - npm run test
-  - npm start &
-  - cypress run
+  - npm start & --silent
+  - cypress run --record
