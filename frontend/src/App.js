@@ -6,6 +6,7 @@ import BookForm from './components/bookForm.js';
 import ErrorHandler from './components/errorHandler.js'
 import Navigation from './components/navigation.js'
 import Header from './components/header.js'
+import BookContainer from './components/book_container.js'
 
 
 import axios from 'axios';
@@ -71,6 +72,7 @@ class BookMeUp extends Component {
         <Header />
         <BookForm ref="bookFormRef" submitBook={ this.submitBook }/>
         <BookList />
+        <BookContainer />
       </div>
     );
   }
