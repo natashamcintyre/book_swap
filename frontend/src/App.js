@@ -66,7 +66,7 @@ class BookMeUp extends Component {
         {/*
         <Header />
         */}
-        <BookForm ref="bookFormRef" submitBook={ this.submitBook }/>
+        <BookForm id="bookForm" submitBook={ this.submitBook }/>
         <BookList books={ this.state.books }/>
       </div>
     )
