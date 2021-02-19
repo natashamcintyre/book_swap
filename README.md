@@ -1,8 +1,8 @@
-# book_swap
+# Book Me Up
 A web application, to allow users to offer books for use by a community of users other users.
 
 ## Motivation
-To demonstrate the ability to build a high quality single page web app, in a new framework as part of a team.
+To demonstrate the ability to build a high quality single page web app, in a new framework as part of a team. Also, to enjoy ourselves.
 
 ## Build status
 Build status of continuous integration i.e. travis, appveyor etc. Ex. -
@@ -39,6 +39,10 @@ Depending on the size of the project, if it is small and simple enough the refer
 
 ## Tests
 Describe and show how to run the tests with code examples.
+Run the following to run the test coverage for the front end.
+```
+$ npm test -- --coverage --watchAll=false
+```
 
 ## How to use?
 If people like your project they’ll want to learn how they can use it. To do so include step by step guide to use your project.
