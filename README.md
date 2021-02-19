@@ -52,6 +52,10 @@ Depending on the size of the project, if it is small and simple enough the refer
 
 ## Tests
 Describe and show how to run the tests with code examples.
+Run the following to run the test coverage for the front end.
+```
+$ npm test -- --coverage --watchAll=false
+```
 
 ## How to use?
 If people like your project they’ll want to learn how they can use it. To do so include step by step guide to use your project.

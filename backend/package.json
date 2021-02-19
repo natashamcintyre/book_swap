@@ -5,13 +5,15 @@
   "main": "app.js",
   "scripts": {
     "test": "env NODE_ENV=test nyc mocha -r esm ./test/*.js --exit",
-    "start": "node -r esm app.js"
+    "start": "node -r esm app.js",
+    "publishToHeroku": "cd ../ && git subtree push --prefix backend heroku-bookmeup-backend main || true"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "mongoose": "^5.11.17"
