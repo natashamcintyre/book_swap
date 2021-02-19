@@ -47,6 +47,7 @@
     "eslint": "^7.20.0",
     "eslint-plugin-cypress": "^2.11.2",
     "eslint-plugin-enzyme": "^0.2.0",
+    "eslint-plugin-react": "^7.22.0",
     "standard": "^16.0.3"
   }
 }
