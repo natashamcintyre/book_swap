@@ -39,7 +39,7 @@ You will need homebrew, if you don't please install [Homebrew](https://brew.sh/)
 
 If you have note upgraded to MacOs Catalina or above, then;
 * ```$ sudo mkdir -p /data/db```
-* ``$ sudo chown -R `id -un` /data/db```
+* ```$ sudo chown -R `id -un` /data/db```
 
 If you do have Catalina or above:
 * ```$ sudo mkdir -p /System/Volumes/Data/data/db```
