@@ -20,7 +20,7 @@ class BookMeUp extends Component {
     }
   }
 
-  getBooks=()=>{
+  getBooks = () => {
     axios.get(`${PORT}/`)
     .then((result)=>{
       this.setBooks(result.data)

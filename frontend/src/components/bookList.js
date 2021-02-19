@@ -19,7 +19,7 @@ class BookList extends React.Component {
   } else {
     return(
     <div className="book_list">
-      <ul id='book_list'>no books</ul>
+      <ul id='books_list'>no books</ul>
     </div>
   )}
  }
