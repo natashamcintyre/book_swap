@@ -31,7 +31,20 @@ What makes your project stand out?
 Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
 
 ## Installation
-Provide step by step series of examples and explanations about how to get a development env running.
+### Database Installation
+You will need homebrew, if you don't please install [Homebrew](https://brew.sh/).
+
+`$ brew tap mongodb/brew`
+`$ brew install mongodb-community`
+
+If you have note upgraded to MacOs Catalina or above, then;
+`$ sudo mkdir -p /data/db`
+`sudo chown -R `id -un` /data/db`
+
+If you do have Caratalina or above:
+`sudo mkdir -p /Syste,/Volumes/Data/data/db`
+`sudo chown -R `id -un` /System/Volumes/Data/data/db` 
+
 
 ## API Reference
 
@@ -42,6 +55,16 @@ Describe and show how to run the tests with code examples.
 
 ## How to use?
 If people like your project they’ll want to learn how they can use it. To do so include step by step guide to use your project.
+
+### Database Setup
+Mongodb needs to be running for the app to work:
+`$ brew services run mongodb-community`
+
+To check it's working:
+`$ brew services list`
+
+To Stop:
+`$ brew services stop mongodb-community`
 
 ## Contribute
 
