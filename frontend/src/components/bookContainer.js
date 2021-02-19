@@ -8,10 +8,10 @@ class BookContainer extends React.Component {
             <div className='row'>
                 <div className= "col-lg-2 col-md-4 col-sm-12">
                     <li>
-                        <p>{this.props.book-id}</p>
-                        <p>{this.props.book-title}</p>
-                        <p>{this.props.book-author}</p>
-                        <p>{this.props.book-isbn}</p>
+                        <p>{this.props.book.id}</p>
+                        <p>{this.props.book.title}</p>
+                        <p>{this.props.book.author}</p>
+                        <p>{this.props.book.isbn}</p>
                     </li>
                 </div>
             </div>

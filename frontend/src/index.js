@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BookMeUp name='cathal'/>
+    <BookMeUp />
   </React.StrictMode>,
   document.getElementById('root')
 );

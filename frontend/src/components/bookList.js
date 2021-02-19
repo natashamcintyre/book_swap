@@ -9,8 +9,7 @@ class BookList extends React.Component {
       <div className="book_list">
         <ul id="books_list" key='books_list'>
           {this.props.books.map(book=>{
-            // return <li className='book' key={book.id}>{book.title} by {book.author}</li>
-            < BookContainer className='book' book-id={book.id} book-title={book.title} book-author={book.author} book-isbn={book.isbn}/>
+            < BookContainer className='book' book={book}/>
           })}
         </ul>
       </div>
