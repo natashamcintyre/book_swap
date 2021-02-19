@@ -34,16 +34,16 @@ Show what the library does as concisely as possible, developers should be able t
 ### Database Installation
 You will need homebrew, if you don't please install [Homebrew](https://brew.sh/).
 
-`$ brew tap mongodb/brew`
-`$ brew install mongodb-community`
+* ```$ brew tap mongodb/brew```
+* ```$ brew install mongodb-community```
 
 If you have note upgraded to MacOs Catalina or above, then;
-`$ sudo mkdir -p /data/db`
-`sudo chown -R `id -un` /data/db`
+* ```$ sudo mkdir -p /data/db```
+* ``$ sudo chown -R `id -un` /data/db```
 
-If you do have Caratalina or above:
-`sudo mkdir -p /Syste,/Volumes/Data/data/db`
-`sudo chown -R `id -un` /System/Volumes/Data/data/db` 
+If you do have Catalina or above:
+* ```$ sudo mkdir -p /System/Volumes/Data/data/db```
+* ```$ sudo chown -R `id -un` /System/Volumes/Data/data/db```
 
 
 ## API Reference
@@ -58,13 +58,13 @@ If people like your project they’ll want to learn how they can use it. To do s
 
 ### Database Setup
 Mongodb needs to be running for the app to work:
-`$ brew services run mongodb-community`
+* ```$ brew services run mongodb-community```
 
 To check it's working:
-`$ brew services list`
+* ```$ brew services list```
 
 To Stop:
-`$ brew services stop mongodb-community`
+* ```$ brew services stop mongodb-community```
 
 ## Contribute
 
