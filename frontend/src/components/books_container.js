@@ -1,7 +1,7 @@
-import React from 'react'; 
+import React from 'react'
 
 class BooksContainer extends React.Component {
-  render() {
+  render () {
     return (
     <div className="container features">
       <div id= 'react'>
@@ -26,6 +26,6 @@ class BooksContainer extends React.Component {
     </div>
     )
   }
-} 
+}
 
-export default BooksContainer;
+export default BooksContainer

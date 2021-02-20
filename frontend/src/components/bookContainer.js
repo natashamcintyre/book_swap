@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 import BookList from './bookList.js'
 
 class BookContainer extends React.Component {
-    render() {
-        return (
+  render () {
+    return (
             <div id= 'react'>
             <div className='row'>
                 <div className= "col-lg-2 col-md-4 col-sm-12">
@@ -16,8 +16,8 @@ class BookContainer extends React.Component {
                 </div>
             </div>
            </div>
-        )
-    }
+    )
+  }
 }
 
-export default BookContainer;
+export default BookContainer

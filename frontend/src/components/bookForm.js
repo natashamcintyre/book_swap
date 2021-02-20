@@ -1,8 +1,7 @@
-import React from 'react';
+import React from 'react'
 
 class BookForm extends React.Component {
-
-  constructor(){
+  constructor () {
     super()
     this.state = {
       title: '',
@@ -13,47 +12,47 @@ class BookForm extends React.Component {
     }
   }
 
-  changeTitleValue(change){
+  changeTitleValue (change) {
     this.setState({
       title: change
     })
   }
 
-  changeAuthorValue(change){
+  changeAuthorValue (change) {
     this.setState({
       author: change
     })
   }
 
-  changeIsbnValue(change){
+  changeIsbnValue (change) {
     this.setState({
       isbn: change
     })
   }
 
-  changePostcodeValue(change){
+  changePostcodeValue (change) {
     this.setState({
       postcode: change
     })
   }
 
-  changePhoneNumberValue(change){
+  changePhoneNumberValue (change) {
     this.setState({
       phoneNumber: change
     })
   }
 
-  processSubmit(e) {
-    e.preventDefault();
-    this.props.submitBook(this.state.title, this.state.author, this.state.isbn, this.state.postcode, this.state.phoneNumber);
-    this.changeTitleValue('');
-    this.changeAuthorValue('');
-    this.changeIsbnValue('');
-    this.changePostcodeValue('');
-    this.changePhoneNumberValue('');
+  processSubmit (e) {
+    e.preventDefault()
+    this.props.submitBook(this.state.title, this.state.author, this.state.isbn, this.state.postcode, this.state.phoneNumber)
+    this.changeTitleValue('')
+    this.changeAuthorValue('')
+    this.changeIsbnValue('')
+    this.changePostcodeValue('')
+    this.changePhoneNumberValue('')
   }
 
-  render() {
+  render () {
     return (
       <div className="add_book">
         <form id="book_form" onSubmit={ (e) => this.processSubmit(e) }>
@@ -65,7 +64,7 @@ class BookForm extends React.Component {
           <button type="submit" name="submit" id="submit">Submit</button>
         </form>
       </div>
-    );
+    )
   }
 }
 

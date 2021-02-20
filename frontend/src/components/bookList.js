@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 import BookContainer from './bookContainer.js'
 
 class BookList extends React.Component {
-  render() {
+  render () {
     if (this.props.books) {
-      return(
+      return (
         <div className="book_list">
           <ul id="books_list" key='books_list'>
             {this.props.books.map(book =>
@@ -14,7 +14,7 @@ class BookList extends React.Component {
         </div>
       )
     } else {
-      return(
+      return (
       <div className="book_list">
         <ul id='books_list'>no books</ul>
       </div>
@@ -23,6 +23,4 @@ class BookList extends React.Component {
   }
 }
 
-
-
-export default BookList;
+export default BookList
