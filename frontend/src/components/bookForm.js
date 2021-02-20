@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class BookForm extends React.Component {
   constructor () {
@@ -66,6 +67,10 @@ class BookForm extends React.Component {
       </div>
     )
   }
+}
+
+BookForm.propTypes = {
+  submitBook: PropTypes.func
 }
 
 export default BookForm

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import BookContainer from './bookContainer.js'
 
 class BookList extends React.Component {
@@ -21,6 +22,10 @@ class BookList extends React.Component {
       )
     }
   }
+}
+
+BookList.propTypes = {
+  books: PropTypes.array
 }
 
 export default BookList

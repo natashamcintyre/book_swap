@@ -1,5 +1,5 @@
 import React from 'react'
-import BookList from './bookList.js'
+import PropTypes from 'prop-types'
 
 class BookContainer extends React.Component {
   render () {
@@ -18,6 +18,10 @@ class BookContainer extends React.Component {
            </div>
     )
   }
+}
+
+BookContainer.propTypes = {
+  book: PropTypes.oject
 }
 
 export default BookContainer
