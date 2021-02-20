@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 import BookList from './components/bookList.js'
 import BookForm from './components/bookForm.js'
 import ErrorHandler from './components/errorHandler.js'
@@ -51,7 +52,7 @@ class BookMeUp extends Component {
 
     })
     .then((result) =>{
-      console.log(result)
+      this.titleParse(result)
     })
     .catch((err)=>{
       console.log(err)
@@ -74,6 +75,13 @@ class BookMeUp extends Component {
   componentDidMount(){
     this.getBooks()
   }
+  
+  titleParse(result) {
+    console.log(result)
+    this.setState({
+      bookTitle: result.data.title
+    })
+  }
 
   render() {
     return (
@@ -81,7 +89,8 @@ class BookMeUp extends Component {
         <ErrorHandler error={ this.state.error }/>
         <Navigation />
         <Header />
-        <BookSearch id="bookSearch" submitISBN={ this.submitISBN }/>
+        <BookSearch id="bookSearch" submitISBN={ this.submitISBN } bookTitle={ this.bookTitle }/>
+        <div id="temp_title" >{this.state.bookTitle} </div>
         <BookForm id="bookForm" submitBook={ this.submitBook }/>
         <BookList books={ this.state.books }/>
         <BooksContainer />

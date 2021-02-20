@@ -41,9 +41,9 @@ describe('BookMeUp', () => {
   it('Renders the title of the book from openlibrary', () => {
     const component = mount(<BookMeUp />)
     component.find('input#ISBNSearch').simulate('change', {
-      target: { value: "9780099590088" } })
+      target: { value: 9780099590088 } })
     component.find('form#book_search').simulate('submit')
-
+    
     const title = component.find('div#temp_title')
     expect(title.value).toBe('Sapiens')
   })

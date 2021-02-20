@@ -16,6 +16,8 @@ class BookSearch extends React.Component {
     })
   }
 
+  
+
   processSearch(e) {
     e.preventDefault()
     this.props.submitISBN(this.state.isbn)
@@ -23,7 +25,6 @@ class BookSearch extends React.Component {
   }
 
   render() {
-    console.log('inside bookSearch render')
     return (
       <div className="add_book">
         <form id="book_search" onSubmit={ (e) => this.processSearch(e) }>
