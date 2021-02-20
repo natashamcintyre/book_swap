@@ -8,7 +8,7 @@ class ErrorHandler extends React.Component {
       result = `Error: ${this.props.error.response.data}`
     }
     return <div id='error'>{result}</div>
-  };
+  }
 }
 
 ErrorHandler.propTypes = {
