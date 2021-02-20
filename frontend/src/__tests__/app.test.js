@@ -1,11 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import BookMeUp from '../App';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import BookMeUp from '../App'
 
 import mockAxios from '../__mocks__/axios.js'
 import errorMock from '../__mocks__/error.json'
-import Enzyme from 'enzyme';
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
+import Enzyme from 'enzyme'
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17'
 import { mount } from 'enzyme'
 
 Enzyme.configure({ adapter: new Adapter() });
@@ -29,12 +29,23 @@ describe('BookMeUp', () => {
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
   });
 
-  it('Loads book details from api using isbn', () => {
+  it('Calls external api to get book details using isbn', () => {
     const component = mount(<BookMeUp />)
     component.find('input#ISBN').simulate('change', {
       target: { value: "test_ISBN" } })
-    component.find('button#FindBook').simulate('click');
-    expect(mockAxios.post).toHaveBeenCalledWith("https://openlibrary.org/isbn/test_ISBN.json") 
+    component.find('a#FindBook').simulate('click')
+    expect(mockAxios.get).toHaveBeenCalledWith("https://openlibrary.org/isbn/test_ISBN.json")
+  })
+
+  it('autopopulates title field with data from external api', () => {
+    mockAxios.get.mockImplementation(() =>
+      Promise.resolve({ data: { title: 'Test Title' } })
+    )
+    const component = mount(<BookMeUp />)
+    component.find('input#ISBN').simulate('change', {
+      target: { value: "test_ISBN" } })
+    component.find('a#FindBook').simulate('click')
+    expect(component.find('input#title').props().value).toEqual('Test Title')
   })
 
   it('renders without crashing', () => {

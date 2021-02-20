@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'
+import axios from 'axios'
 
 class BookForm extends React.Component {
 
@@ -43,6 +44,11 @@ class BookForm extends React.Component {
     })
   }
 
+  getBookDetails(e) {
+    e.preventDefault()
+    axios.get(`https://openlibrary.org/isbn/${this.state.isbn}.json`)
+  }
+
   processSubmit(e) {
     e.preventDefault();
     this.props.submitBook(this.state.title, this.state.author, this.state.isbn, this.state.postcode, this.state.phoneNumber);
@@ -57,9 +63,10 @@ class BookForm extends React.Component {
     return (
       <div className="add_book">
         <form id="book_form" onSubmit={ (e) => this.processSubmit(e) }>
+          <input type="text" name="ISBN" id="ISBN" placeholder="ISBN" onChange={(e) => this.changeIsbnValue(e.target.value)} value={this.state.isbn} />
+          <a id="FindBook" onClick={ (e) => this.getBookDetails(e) }>Find My Book!</a>
           <input type="text" name="title" id="title" placeholder="Title" onChange={(e) => this.changeTitleValue(e.target.value)} value={this.state.title} />
           <input type="text" name="author" id="author" placeholder="Author" onChange={(e) => this.changeAuthorValue(e.target.value)} value={this.state.author} />
-          <input type="text" name="ISBN" id="ISBN" placeholder="ISBN" onChange={(e) => this.changeIsbnValue(e.target.value)} value={this.state.isbn} />
           <input type="text" name="phone_number" id="phone_number" placeholder="Phone number" onChange={(e) => this.changePhoneNumberValue(e.target.value)} value={this.state.phoneNumber} />
           <input type="text" name="postcode" id="postcode" placeholder="Postcode" onChange={(e) => this.changePostcodeValue(e.target.value)} value={this.state.postcode} />
           <button type="submit" name="submit" id="submit">Submit</button>
