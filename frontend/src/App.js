@@ -1,17 +1,16 @@
-import React, { Component } from 'react';
-import BookList from './components/bookList.js';
-import BookForm from './components/bookForm.js';
+import React, { Component } from 'react'
+import BookList from './components/bookList.js'
+import BookForm from './components/bookForm.js'
 import ErrorHandler from './components/errorHandler.js'
 import Navigation from './components/navigation.js'
 import Header from './components/header.js'
-import BooksContainer from './components/books_container.js'
+import BooksContainer from './components/booksContainer.js'
 
-
-import axios from 'axios';
-const PORT = 'http://localhost:3001';
+import axios from 'axios'
+const PORT = 'http://localhost:3001'
 
 class BookMeUp extends Component {
-  constructor(){
+  constructor () {
     super()
     this.state = {
       books: []
@@ -20,12 +19,12 @@ class BookMeUp extends Component {
 
   getBooks = () => {
     axios.get(`${PORT}/`)
-    .then((result)=>{
-      this.setBooks(result.data)
+      .then((result) => {
+        this.setBooks(result.data)
       })
-    .catch((err)=>{
-      this.setError(err)
-    })
+      .catch((err) => {
+        this.setError(err)
+      })
   }
 
   submitBook = (title, author, isbn, postcode, phoneNumber) => {
@@ -37,31 +36,31 @@ class BookMeUp extends Component {
       postcode: postcode,
       phoneNumber: phoneNumber
     })
-    .then((result)=>{
-      this.getBooks()
-    })
-    .catch((err)=>{
-      this.setError(err)
-    })
+      .then((result) => {
+        this.getBooks()
+      })
+      .catch((err) => {
+        this.setError(err)
+      })
   }
 
-  setError(error){
+  setError (error) {
     this.setState({
       error: error
     })
   }
 
-  setBooks(books){
+  setBooks (books) {
     this.setState({
       books: books
     })
   }
 
-  componentDidMount(){
+  componentDidMount () {
     this.getBooks()
   }
 
-  render() {
+  render () {
     return (
       <div className="container">
         <ErrorHandler error={ this.state.error }/>
@@ -71,8 +70,8 @@ class BookMeUp extends Component {
         <BookList books={ this.state.books }/>
         <BooksContainer />
       </div>
-    );
+    )
   }
 }
 
-export default BookMeUp;
+export default BookMeUp

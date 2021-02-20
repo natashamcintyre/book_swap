@@ -64,6 +64,12 @@ cd ../frontend
 npm start
 $ npx cypress open
 ```
+### Linting
+We are using ESlint for frontend and backend linting.
+
+To run from each of the project directories:
+
+`$ npx eslint .`
 
 ## How to use?
 If people like your project they’ll want to learn how they can use it. To do so include step by step guide to use your project.

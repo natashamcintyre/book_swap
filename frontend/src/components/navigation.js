@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
 class Navigation extends React.Component {
-  render() {
-    return(
+  render () {
+    return (
       <nav className="navbar navbar-expand-md">
         <a className="navbar-brand" href="#">
           <img src="images/logo.png" width="150" height="150"></img>
@@ -23,7 +23,8 @@ class Navigation extends React.Component {
           <a href="#"><span className="glyphicon glyphicon-log-in"></span> Wishlist</a>
         </div>
       </nav>
-  )}
- }
+    )
+  }
+}
 
-export default Navigation;
+export default Navigation
