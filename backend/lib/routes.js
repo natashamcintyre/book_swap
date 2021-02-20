@@ -18,10 +18,6 @@ router.post('/add-book', async (req, res) => {
   .catch((err) => res.status(404).json(err))
 });
 
-router.get('/user/new', async (req, res) => {
-  res.render('signup')
-})
-
 router.post('/user/new', async (req, res) => {
   try {
     let { username, email, password, passwordCheck, location } = req.body;
@@ -58,13 +54,12 @@ router.post('/user/new', async (req, res) => {
   }
 });
 
-
 router.get('/user', auth, async (req, res) => {
   const user = await User.findById(req.user);
   res.json({
     displayName: user.displayName,
     id: user._id,
-  });
-});
+  })
+})
 
 module.exports = router
