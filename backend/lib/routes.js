@@ -18,7 +18,7 @@ router.post('/add-book', async (req, res) => {
   .catch((err) => res.status(404).json(err))
 });
 
-router.post('/register', async (req, res) => {
+router.post('/user/new', async (req, res) => {
   try {
     let { username, email, password, passwordCheck, location } = req.body;
 
@@ -38,7 +38,7 @@ router.post('/register', async (req, res) => {
     if (existingUser || existingEmail)
       return res
         .status(400)
-        .json({ msg: "An account with this username and email exists"})
+        .json({ msg: "An account with this username or email address already exists"})
 
     const newUser = new User({
       username,
