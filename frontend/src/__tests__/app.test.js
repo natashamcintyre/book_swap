@@ -29,6 +29,14 @@ describe('BookMeUp', () => {
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
   });
 
+  it('Loads book details from api using isbn', () => {
+    const component = mount(<BookMeUp />)
+    component.find('input#ISBN').simulate('change', {
+      target: { value: "test_ISBN" } })
+    component.find('button#FindBook').simulate('click');
+    expect(mockAxios.post).toHaveBeenCalledWith("https://openlibrary.org/isbn/test_ISBN.json") 
+  })
+
   it('renders without crashing', () => {
     const component = mount(<BookMeUp />);
     expect(component).toMatchSnapshot();
