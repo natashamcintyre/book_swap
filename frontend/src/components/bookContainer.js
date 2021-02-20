@@ -7,7 +7,7 @@ class BookContainer extends React.Component {
             <div id= 'react'>
             <div className='row'>
                 <div className= "col-lg-2 col-md-4 col-sm-12">
-                    <li key={this.props.book._id}>
+                    <li key={this.props.book._id} className='book'>
                         <p>Book ID will need deleting! {this.props.book._id}</p>
                         <p>{this.props.book.data.title}</p>
                         <p>{this.props.book.data.author}</p>
