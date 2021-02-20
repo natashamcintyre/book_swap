@@ -7,7 +7,6 @@ import axios from 'axios'
 const PORT = 'http://localhost:3001'
 
 class Home extends React.Component {
-
   constructor() {
     super()
     this.state = {
@@ -51,7 +50,7 @@ class Home extends React.Component {
     })
   }
 
-  setError = (error) => {
+  setError(error) {
     this.setState({
       error: error
     })
@@ -63,7 +62,7 @@ class Home extends React.Component {
         <p>home</p>
         <ErrorHandler error={ this.state.error }/>
         <BookForm id="bookForm" submitBook={ this.submitBook }/>
-        <BookList books={ this.state.books }/> 
+        <BookList books={ this.state.books }/>
       </div>
   )}
  }
