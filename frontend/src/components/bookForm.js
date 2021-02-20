@@ -50,7 +50,6 @@ class BookForm extends React.Component {
   // }
 
   processSubmit(e) {
-    console.log('inside search processSubmit for BookForm')
     e.preventDefault();
     this.props.submitBook(this.state.title, this.state.author, this.state.isbn, this.state.postcode, this.state.phoneNumber);
     this.changeTitleValue('');

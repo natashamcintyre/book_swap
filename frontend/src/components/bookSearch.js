@@ -17,7 +17,6 @@ class BookSearch extends React.Component {
   }
 
   processSearch(e) {
-    console.log('inside search processSearch for BookSearch')
     e.preventDefault()
     this.props.submitISBN(this.state.isbn)
     this.changeIsbnValue('')

@@ -30,13 +30,22 @@ describe('BookMeUp', () => {
   });
 
   it('Calls external api to get book details using isbn', () => {
-    console.log('inside test')
     const component = mount(<BookMeUp />)
     component.find('input#ISBNSearch').simulate('change', {
       target: { value: "test_ISBN" } })
     component.find('form#book_search').simulate('submit')
     expect(mockAxios.get).toHaveBeenCalledTimes(2)
     expect(mockAxios.get.mock.calls[1][0]).toBe("https://openlibrary.org/isbn/test_ISBN.json")
+  })
+
+  it('Renders the title of the book from openlibrary', () => {
+    const component = mount(<BookMeUp />)
+    component.find('input#ISBNSearch').simulate('change', {
+      target: { value: "9780099590088" } })
+    component.find('form#book_search').simulate('submit')
+
+    const title = component.find('div#temp_title')
+    expect(title.value).toBe('Sapiens')
   })
 
   // it('autopopulates title field with data from external api', () => {
