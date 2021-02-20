@@ -14,5 +14,5 @@ before_script:
   - npm install enzyme
 script:
   - npm run test
-  # - npm start --silent &
-  # - cypress run --record
+  - npm start --silent &
+  - cypress run --record
