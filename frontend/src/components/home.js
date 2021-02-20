@@ -59,7 +59,6 @@ class Home extends React.Component {
   render() {
     return(
       <div>
-        <p>home</p>
         <ErrorHandler error={ this.state.error }/>
         <BookForm id="bookForm" submitBook={ this.submitBook }/>
         <BookList books={ this.state.books }/>

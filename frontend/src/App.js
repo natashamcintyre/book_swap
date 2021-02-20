@@ -22,18 +22,6 @@ class BookMeUp extends Component {
         <div className="container">
           <Navigation />
           <Header />
-          <Users />
-          <div class="routes">
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/signup">Sign Up</Link>
-              </li>
-            </ul>
-          </div>
-
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/signup" component={Users} />
