@@ -38,14 +38,19 @@ describe('BookMeUp', () => {
     expect(mockAxios.get.mock.calls[1][0]).toBe("https://openlibrary.org/isbn/test_ISBN.json")
   })
 
-  it('Renders the title of the book from openlibrary', () => {
+  it('Renders the title of the book from openlibrary', async () => {
     const component = mount(<BookMeUp />)
+
+    mockAxios.get.mockImplementation(() =>
+    Promise.resolve({ data: { title: "Sapiens" } }));
+
     component.find('input#ISBNSearch').simulate('change', {
       target: { value: 9780099590088 } })
     component.find('form#book_search').simulate('submit')
-    
-    const title = component.find('div#temp_title')
-    expect(title.value).toBe('Sapiens')
+
+    await component.update()
+
+    expect(component.find('#temp_title').text()).toBe('Sapiens');
   })
 
   // it('autopopulates title field with data from external api', () => {

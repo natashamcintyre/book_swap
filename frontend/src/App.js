@@ -75,22 +75,23 @@ class BookMeUp extends Component {
   componentDidMount(){
     this.getBooks()
   }
-  
+
   titleParse(result) {
-    console.log(result)
+    console.log(result.data.title)
     this.setState({
       bookTitle: result.data.title
     })
   }
 
   render() {
+    console.log(this.state.bookTitle)
     return (
       <div className="container">
         <ErrorHandler error={ this.state.error }/>
         <Navigation />
         <Header />
         <BookSearch id="bookSearch" submitISBN={ this.submitISBN } bookTitle={ this.bookTitle }/>
-        <div id="temp_title" >{this.state.bookTitle} </div>
+        <div id="temp_title" >{this.state.bookTitle}</div>
         <BookForm id="bookForm" submitBook={ this.submitBook }/>
         <BookList books={ this.state.books }/>
         <BooksContainer />
