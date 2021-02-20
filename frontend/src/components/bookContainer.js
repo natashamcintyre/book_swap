@@ -21,7 +21,7 @@ class BookContainer extends React.Component {
 }
 
 BookContainer.propTypes = {
-  book: PropTypes.oject
+  book: PropTypes.object
 }
 
 export default BookContainer
