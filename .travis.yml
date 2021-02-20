@@ -7,12 +7,12 @@ services: mongodb
 before_script:
   - cd backend
   - npm install mocha chai
-  - npm test
+  - npm run test
   - npm start --silent &
   - cd ..
   - cd frontend
   - npm install enzyme
 script:
-  - npm test
+  - npm run test
   - npm start --silent &
   - cypress run --record
