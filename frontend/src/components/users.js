@@ -1,5 +1,8 @@
 import React from 'react'
 
+import axios from 'axios'
+const PORT = 'http://localhost:3001'
+
 class Users extends React.Component {
   constructor () {
     super()
@@ -48,6 +51,28 @@ class Users extends React.Component {
     // post user to back end.
     // if save is successful, navigate to homepage
     // else display error and stay on this page. Highlight error area???
+  }
+
+  addUser = (username, email, password, passwordCheck, location) => {
+    axios.post(`${PORT}/user-new`, {
+      username: username,
+      email: email,
+      password: password,
+      passwordCheck: passwordCheck,
+      location: location
+    })
+    .then((result)=>{
+      console.log(result)
+    })
+    .catch((err)=>{
+      this.setError(err)
+    })
+  }
+
+  setError(error) {
+    this.setState({
+      error: error
+    })
   }
 
   render() {
