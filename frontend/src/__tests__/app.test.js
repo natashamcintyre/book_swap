@@ -30,21 +30,23 @@ describe('BookMeUp', () => {
   });
 
   it('Calls external api to get book details using isbn', () => {
+    console.log('inside test')
     const component = mount(<BookMeUp />)
     component.find('input#ISBNSearch').simulate('change', {
       target: { value: "test_ISBN" } })
-    component.find('button#search').simulate('click')
-    expect(mockAxios.get).toHaveBeenCalledWith("https://openlibrary.org/isbn/test_ISBN.json")
+    component.find('form#book_search').simulate('submit')
+    expect(mockAxios.get).toHaveBeenCalledTimes(2)
+    expect(mockAxios.get.mock.calls[1][0]).toBe("https://openlibrary.org/isbn/test_ISBN.json")
   })
 
-  // it('autopopulates title field with data from external api', () => { 
+  // it('autopopulates title field with data from external api', () => {
   //   mockAxios.get.mockImplementation(() =>
   //     Promise.resolve({ data: { title: 'Test Title' } })
   //   )
   //   const component = mount(<BookMeUp />)
   //   component.find('input#ISBN').simulate('change', { // find the isbn (getBookDetails)
   //     target: { value: "test_ISBN" } })
-  //   component.find('a#FindBook').simulate('click') 
+  //   component.find('a#FindBook').simulate('click')
   //   expect(component.find('input#title').props().value).toEqual('Test Title') // return ${this.state.title}
   // })
 
