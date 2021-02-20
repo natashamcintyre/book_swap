@@ -18,6 +18,10 @@ router.post('/add-book', async (req, res) => {
   .catch((err) => res.status(404).json(err))
 });
 
+router.get('/user/new', async (req, res) => {
+  res.render('signup')
+})
+
 router.post('/user/new', async (req, res) => {
   try {
     let { username, email, password, passwordCheck, location } = req.body;

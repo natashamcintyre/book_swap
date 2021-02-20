@@ -16,7 +16,7 @@ class Navigation extends React.Component {
           </form>
         </div>
         <div className="col-2 offset-2">
-          <a href="#"><span className="glyphicon glyphicon-user"></span> Sign Up</a><br/>
+          <a href="/signup" id='new_user'><span className="glyphicon glyphicon-user"></span> Sign Up</a><br/>
           <a href="#"><span className="glyphicon glyphicon-log-in"></span> Log In</a><br/>
           <a href="#"><span className="glyphicon glyphicon-log-in"></span> Log Out</a><br/>
           <a href="#"><span className="glyphicon glyphicon-log-in"></span> My Bookshelf</a><br/>
