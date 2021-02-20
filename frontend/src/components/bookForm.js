@@ -44,10 +44,10 @@ class BookForm extends React.Component {
     })
   }
 
-  getBookDetails(e) {
-    e.preventDefault()
-    axios.get(`https://openlibrary.org/isbn/${this.state.isbn}.json`)
-  }
+  // getBookDetails(e) {
+  //   e.preventDefault()
+  //   axios.get(`https://openlibrary.org/isbn/${this.state.isbn}.json`)
+  // }
 
   processSubmit(e) {
     e.preventDefault();
@@ -64,7 +64,6 @@ class BookForm extends React.Component {
       <div className="add_book">
         <form id="book_form" onSubmit={ (e) => this.processSubmit(e) }>
           <input type="text" name="ISBN" id="ISBN" placeholder="ISBN" onChange={(e) => this.changeIsbnValue(e.target.value)} value={this.state.isbn} />
-          <a id="FindBook" onClick={ (e) => this.getBookDetails(e) }>Find My Book!</a>
           <input type="text" name="title" id="title" placeholder="Title" onChange={(e) => this.changeTitleValue(e.target.value)} value={this.state.title} />
           <input type="text" name="author" id="author" placeholder="Author" onChange={(e) => this.changeAuthorValue(e.target.value)} value={this.state.author} />
           <input type="text" name="phone_number" id="phone_number" placeholder="Phone number" onChange={(e) => this.changePhoneNumberValue(e.target.value)} value={this.state.phoneNumber} />
