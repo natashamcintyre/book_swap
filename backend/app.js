@@ -25,7 +25,8 @@ app.use(bodyParse.json());
 app.use(cors());
 app.use('/', routes);
 
-app.get('localhost:3001/homepage', (req, res) => {
+// this was for heroku deployment testing
+app.get('/homepage', (req, res) => {
   res.send("This is our homepage");
 })
 
