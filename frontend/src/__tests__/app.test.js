@@ -42,15 +42,15 @@ describe('BookMeUp', () => {
     const component = mount(<BookMeUp />)
 
     mockAxios.get.mockImplementation(() =>
-    Promise.resolve({ data: { title: "Sapiens" } }));
+    Promise.resolve({ data: { title: "test_title" } }));
 
     component.find('input#ISBNSearch').simulate('change', {
-      target: { value: 9780099590088 } })
+      target: { value: "test_ISBN" } })
     component.find('form#book_search').simulate('submit')
 
     await component.update()
 
-    expect(component.find('#temp_title').text()).toBe('Sapiens');
+    expect(component.find('#temp_title').text()).toBe('test_title');
   })
 
   // it('autopopulates title field with data from external api', () => {
