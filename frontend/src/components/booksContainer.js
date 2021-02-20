@@ -19,7 +19,7 @@ class BooksContainer extends React.Component {
         <div className="col-lg-2 col-md-4 col-sm-12">
           <h3 className="feature-title">Lord of the Rings</h3>
           <img src="images/lordoftherings.jpg" className="img-fluid"></img>
-          <p>What about their legs? They're fresh.</p>
+          <p>What about their legs? They are fresh.</p>
         </div>
       </div>
     </div>
