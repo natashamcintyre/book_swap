@@ -1,5 +1,3 @@
-// import logo from './logo.svg';
-// import './App.css';
 import React, { Component } from 'react';
 import BookList from './components/bookList.js';
 import BookForm from './components/bookForm.js';
@@ -64,13 +62,12 @@ class BookMeUp extends Component {
   }
 
   render() {
-    // console.log(this.state)
     return (
       <div className="container">
         <ErrorHandler error={ this.state.error }/>
         <Navigation />
         <Header />
-        <BookForm ref="bookFormRef" submitBook={ this.submitBook }/>
+        <BookForm id="bookForm" submitBook={ this.submitBook }/>
         <BookList books={ this.state.books }/>
         <BooksContainer />
       </div>

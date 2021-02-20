@@ -55,7 +55,7 @@ describe('BookMeUp', () => {
         'postcode': 'test_postcode',
         'phoneNumber': 'test_phone_number'});
 
-    expect(component.instance().refs.bookFormRef.state.title).toEqual('');
+    expect(component.find('input#title').props().value).toEqual('');
   })
 });
 

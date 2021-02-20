@@ -56,7 +56,7 @@ class BookForm extends React.Component {
   render() {
     return (
       <div className="add_book">
-        <form ref='formRef' id="book_form" onSubmit={ (e) => this.processSubmit(e) }>
+        <form id="book_form" onSubmit={ (e) => this.processSubmit(e) }>
           <input type="text" name="title" id="title" placeholder="Title" onChange={(e) => this.changeTitleValue(e.target.value)} value={this.state.title} />
           <input type="text" name="author" id="author" placeholder="Author" onChange={(e) => this.changeAuthorValue(e.target.value)} value={this.state.author} />
           <input type="text" name="ISBN" id="ISBN" placeholder="ISBN" onChange={(e) => this.changeIsbnValue(e.target.value)} value={this.state.isbn} />
