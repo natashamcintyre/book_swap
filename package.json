@@ -2,6 +2,9 @@
   "name": "bookmeup",
   "description": "",
   "version": "1.0.0",
+  "scripts": {
+    "start": "node backend/app.js",
+  },
   "engines": {
     "node": "14.15.4"
   }
