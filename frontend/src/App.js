@@ -18,7 +18,8 @@ class BookMeUp extends Component {
     this.state = {
       books: [],
       bookISBN: '',
-      bookTitle: ''
+      bookTitle: '',
+      bookAuthor: ''
     }
   }
 
@@ -52,13 +53,13 @@ class BookMeUp extends Component {
   }
 
   submitISBN = (isbn) => {
-    this.setISBN(isbn)
-
     axios.get(`${OPENLIBRARY}/isbn/${isbn}.json`, {
 
     })
     .then((result) =>{
+      this.setISBN(result.data.isbn_13[0])
       this.setTitle(result.data.title)
+      this.setAuthor(result.data.authors[0]['key'].split('/')[2])
     })
     .catch((err)=>{
       console.log(err)
@@ -81,17 +82,26 @@ class BookMeUp extends Component {
     this.getBooks()
   }
 
+  setISBN(isbn) {
+    this.setState({
+      bookISBN: isbn
+    })
+  }
+
   setTitle(title) {
     this.setState({
       bookTitle: title
     })
   }
 
-  setISBN(isbn) {
+  setAuthor(author) {
     this.setState({
-      bookISBN: isbn
+      bookAuthor: author
     })
   }
+
+
+
   render() {
     console.log(this.state.bookTitle)
     return (
@@ -99,7 +109,7 @@ class BookMeUp extends Component {
         <ErrorHandler error={ this.state.error }/>
         <Navigation />
         <BookSearch id="bookSearch" submitISBN={ this.submitISBN } />
-        <BookForm id="bookForm" submitBook={ this.submitBook } bookTitle={ this.state.bookTitle }/>
+        <BookForm id="bookForm" submitBook={ this.submitBook } bookISBN={ this.state.bookISBN } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor }/>
         <BookList books={ this.state.books }/>
         <BooksContainer />
       </div>

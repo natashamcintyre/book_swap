@@ -48,6 +48,11 @@ describe('BookMeUp', () => {
       target: { value: "test_ISBN" } })
     component.find('form#book_search').simulate('submit')
 
+
+    await component.find('input#ISBN').update()
+
+    expect(component.find('input#ISBN').props().value).toBe('test_ISBN');
+
     await component.find('input#title').update()
 
     expect(component.find('input#title').props().value).toBe('test_title');
