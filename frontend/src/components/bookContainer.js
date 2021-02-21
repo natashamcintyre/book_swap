@@ -1,11 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Col } from 'react-grid-system'
 
 class BookContainer extends React.Component {
   render () {
     return (
-      <Col lg={2} md={4} sm={12}>
+      <div className='book-container col-12 col-md-4 col-lg-2'>
           <div className='book-data' key={this.props.book._id}>
             {/* <p>Book ID will need deleting! {this.props.book._id}</p> */}
             <div className="book-title">
@@ -18,7 +17,7 @@ class BookContainer extends React.Component {
               {this.props.book.data.isbn}
             </div>
           </div>
-      </Col>
+      </div>
     )
   }
 }

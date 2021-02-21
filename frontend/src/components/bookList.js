@@ -1,23 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import BookContainer from './bookContainer.js'
-import { Container, Row } from 'react-grid-system'
 
 class BookList extends React.Component {
   render () {
     if (this.props.books) {
       return (
-        <Container>
-          <div className="book_list">
-            <div id="books_list" key='books_list'>
-              <Row>
+        <div className='container col-12'>
+          <div className="book_list" id="books_list" key='books_list'>
+              <div className='row'>
                 {this.props.books.map(book =>
                   < BookContainer key={book._id} className='book' book={book}/>
                 )}
-              </Row>
-            </div>
+              </div>
           </div>
-        </Container>
+        </div>
       )
     } else {
       return (

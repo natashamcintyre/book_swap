@@ -7,6 +7,14 @@ i {
   color: rgb(13, 43, 109);
 }
 
+.book-container {
+  text-align: center;
+  height: 150px;
+  margin: 3px;
+  padding: 6px;
+  border: 1px solid rgb(13, 43, 109);
+}
+
 .book-title {
   font-weight: bold;
 }
