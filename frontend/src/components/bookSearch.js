@@ -3,10 +3,9 @@ import axios from 'axios'
 
 class BookSearch extends React.Component {
   constructor() {
-
-  super()
-  this.state = {
-    isbn: ''
+    super()
+    this.state = {
+      isbn: ''
     }
   }
 
@@ -15,8 +14,6 @@ class BookSearch extends React.Component {
       isbn:change
     })
   }
-
-  
 
   processSearch(e) {
     e.preventDefault()

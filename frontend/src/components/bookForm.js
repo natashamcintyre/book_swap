@@ -3,7 +3,7 @@ import axios from 'axios'
 
 class BookForm extends React.Component {
 
-  constructor(){
+  constructor(props){
     super()
     this.state = {
       title: '',
@@ -12,6 +12,14 @@ class BookForm extends React.Component {
       postcode: '',
       phoneNumber: ''
     }
+
+    this.setTitle(props.bookTitle)
+  }
+
+  setTitle (title) {
+    this.setState({
+      title: title
+    })
   }
 
   changeTitleValue(change){
@@ -44,11 +52,6 @@ class BookForm extends React.Component {
     })
   }
 
-  // getBookDetails(e) {
-  //   e.preventDefault()
-  //   axios.get(`https://openlibrary.org/isbn/${this.state.isbn}.json`)
-  // }
-
   processSubmit(e) {
     e.preventDefault();
     this.props.submitBook(this.state.title, this.state.author, this.state.isbn, this.state.postcode, this.state.phoneNumber);
@@ -63,7 +66,7 @@ class BookForm extends React.Component {
     return (
       <div className="add_book">
         <form id="book_form" onSubmit={ (e) => this.processSubmit(e) }>
-          <input type="text" name="ISBN" id="ISBN" placeholder="ISBN" onChange={(e) => this.changeIsbnValue(e.target.value)} value={this.state.isbn} />
+          <input type="text" name="ISBN" id="ISBN" placeholder="ISBN"  onChange={(e) => this.changeIsbnValue(e.target.value)} value={this.state.isbn} />
           <input type="text" name="title" id="title" placeholder="Title" onChange={(e) => this.changeTitleValue(e.target.value)} value={this.state.title} />
           <input type="text" name="author" id="author" placeholder="Author" onChange={(e) => this.changeAuthorValue(e.target.value)} value={this.state.author} />
           <input type="text" name="phone_number" id="phone_number" placeholder="Phone number" onChange={(e) => this.changePhoneNumberValue(e.target.value)} value={this.state.phoneNumber} />

@@ -38,7 +38,7 @@ describe('BookMeUp', () => {
     expect(mockAxios.get.mock.calls[1][0]).toBe("https://openlibrary.org/isbn/test_ISBN.json")
   })
 
-  it('Renders the title of the book from openlibrary', async () => {
+  it('Renders the title of the book from openlibrary in the BookForm Title field', async () => {
     const component = mount(<BookMeUp />)
 
     mockAxios.get.mockImplementation(() =>
@@ -50,19 +50,8 @@ describe('BookMeUp', () => {
 
     await component.update()
 
-    expect(component.find('#temp_title').text()).toBe('test_title');
+    expect(component.find('input#title').props().value).toBe('test_title');
   })
-
-  // it('autopopulates title field with data from external api', () => {
-  //   mockAxios.get.mockImplementation(() =>
-  //     Promise.resolve({ data: { title: 'Test Title' } })
-  //   )
-  //   const component = mount(<BookMeUp />)
-  //   component.find('input#ISBN').simulate('change', { // find the isbn (getBookDetails)
-  //     target: { value: "test_ISBN" } })
-  //   component.find('a#FindBook').simulate('click')
-  //   expect(component.find('input#title').props().value).toEqual('Test Title') // return ${this.state.title}
-  // })
 
   it('renders without crashing', () => {
     const component = mount(<BookMeUp />);

@@ -16,7 +16,8 @@ class BookMeUp extends Component {
   constructor(){
     super()
     this.state = {
-      books: []
+      books: [],
+      bookTitle: ''
     }
   }
 
@@ -52,13 +53,12 @@ class BookMeUp extends Component {
 
     })
     .then((result) =>{
-      this.titleParse(result)
+      this.setTitle(result.data.title)
     })
     .catch((err)=>{
       console.log(err)
     })
   }
-
 
   setError(error){
     this.setState({
@@ -76,23 +76,19 @@ class BookMeUp extends Component {
     this.getBooks()
   }
 
-  titleParse(result) {
-    console.log(result.data.title)
+  setTitle(title) {
     this.setState({
-      bookTitle: result.data.title
+      bookTitle: title
     })
   }
 
   render() {
-    console.log(this.state.bookTitle)
     return (
       <div className="container">
         <ErrorHandler error={ this.state.error }/>
         <Navigation />
-        <Header />
-        <BookSearch id="bookSearch" submitISBN={ this.submitISBN } bookTitle={ this.bookTitle }/>
-        <div id="temp_title" >{this.state.bookTitle}</div>
-        <BookForm id="bookForm" submitBook={ this.submitBook }/>
+        <BookSearch id="bookSearch" submitISBN={ this.submitISBN } />
+        <BookForm id="bookForm" submitBook={ this.submitBook } bookTitle={ this.state.bookTitle }/>
         <BookList books={ this.state.books }/>
         <BooksContainer />
       </div>
