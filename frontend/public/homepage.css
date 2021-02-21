@@ -19,30 +19,12 @@ body {
   background: rgb(246, 246, 246);
 }
 
-.nav-link,
-.navbar-brand {
-  color: rgb(5, 36, 107);
-  cursor: pointer;
-}
-
-.nav-link {
-  margin-right: 1em !important;
-}
-
-.nav-link:hover {
-  color: white;
-}
-
-.navbar-collapse {
-  justify-content: flex-end;
-}
-
 .header {
   background-color: rgb(13, 43, 109);
 }
 
 .header-content {
-  padding: 30px;
+  padding: 80px 30px;
   text-align: center;
   color: rgb(87, 195, 245);
 }
@@ -54,33 +36,6 @@ body {
   color: rgb(13, 43, 109);
 }
 .header-content button:hover {
-  border: 1px solid #fff;
-  background: #fff;
-  color: #000;
-}
-
-.description {
-  left: 50%;
-  /* top: 45%; */
-  transform: translate(-50%, -55%);
-  text-align: center;
-}
-.description h1 {
-  color: rgb(87, 195, 245);
-}
-.description p {
-  color: #fff;
-  font-size: 1.3rem;
-  line-height: 1.5;
-}
-
-.description button {
-  border: 1px solid rgb(87, 195, 245);
-  background: rgb(87, 195, 245);
-  border-radius: 0;
-  color: rgb(13, 43, 109);
-}
-.description button:hover {
   border: 1px solid #fff;
   background: #fff;
   color: #000;
