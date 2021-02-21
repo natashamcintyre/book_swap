@@ -1,12 +1,7 @@
-import React from 'react'
 import BookMeUp from '../App'
 
 import mockAxios from '../__mocks__/axios.js'
 import errorMock from '../__mocks__/error.json'
-import Enzyme, { mount } from 'enzyme'
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17'
-
-Enzyme.configure({ adapter: new Adapter() })
 
 describe('BookMeUp', () => {
   beforeEach(() => {

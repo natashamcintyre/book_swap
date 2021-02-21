@@ -1,10 +1,4 @@
-import React from 'react'
 import BookContainer from '../components/bookContainer'
-
-import Enzyme, { mount } from 'enzyme'
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17'
-
-Enzyme.configure({ adapter: new Adapter() })
 
 describe('bookContainer', () => {
   it('renders without crashing', () => {

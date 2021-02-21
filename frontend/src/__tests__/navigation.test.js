@@ -1,10 +1,4 @@
-import React from 'react'
-import Navigation from '../components/navigation.js'
-
-import Enzyme, { mount } from 'enzyme'
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17'
-
-Enzyme.configure({ adapter: new Adapter() })
+import Navigation from '../components/navigation'
 
 describe('navigation', () => {
   it('renders without crashing', () => {
