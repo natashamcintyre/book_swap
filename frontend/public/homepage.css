@@ -41,10 +41,27 @@ body {
   background-color: rgb(13, 43, 109);
 }
 
+.header-content {
+  padding: 30px;
+  text-align: center;
+  color: rgb(87, 195, 245);
+}
+
+.header-content button {
+  border: 1px solid rgb(87, 195, 245);
+  background: rgb(87, 195, 245);
+  border-radius: 0;
+  color: rgb(13, 43, 109);
+}
+.header-content button:hover {
+  border: 1px solid #fff;
+  background: #fff;
+  color: #000;
+}
+
 .description {
   left: 50%;
-  position: absolute;
-  top: 45%;
+  /* top: 45%; */
   transform: translate(-50%, -55%);
   text-align: center;
 }
