@@ -53,14 +53,13 @@ class Users extends React.Component {
         // else display error and stay on this page. Highlight error area???
     }
 
-    addUser = (username, email, password, passwordCheck, location) => {
-        console.log('addUser method')
+    addUser = (username, email, location, password, passwordCheck) => {
         axios.post(`${PORT}/user-new`, {
           username: username,
           email: email,
+          location: location,
           password: password,
-          passwordCheck: passwordCheck,
-          location: location
+          passwordCheck: passwordCheck
         })
         .then((result)=>{
           console.log(result)
@@ -68,7 +67,7 @@ class Users extends React.Component {
         .catch((err)=>{
           this.setError(err)
         })
-    }
+      }
     
       setError(error) {
         this.setState({

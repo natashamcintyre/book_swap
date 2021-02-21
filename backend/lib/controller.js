@@ -6,7 +6,8 @@ function getBookshelf() {
 
 function addBook(data) {
   let newBook = new BookModel({data: data})
-  return newBook.save()
+  let savedBook = newBook.save()
+  return savedBook
 }
 
 module.exports = {
