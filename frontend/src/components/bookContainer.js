@@ -1,27 +1,30 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Col } from 'react-grid-system'
 
 class BookContainer extends React.Component {
   render () {
     return (
-            <div id= 'react'>
-            <div className='row'>
-                <div className= "col-lg-2 col-md-4 col-sm-12">
-                    <li key={this.props.book._id}>
-                        <p>Book ID will need deleting! {this.props.book._id}</p>
-                        <p>{this.props.book.data.title}</p>
-                        <p>{this.props.book.data.author}</p>
-                        <p>{this.props.book.data.isbn}</p>
-                    </li>
-                </div>
+      <Col lg={2} md={4} sm={12}>
+          <div key={this.props.book._id}>
+            {/* <p>Book ID will need deleting! {this.props.book._id}</p> */}
+            <div className="book-title">
+              {this.props.book.data.title}
             </div>
-           </div>
+            <div className="book-author">
+              {this.props.book.data.author}
+            </div>
+            <div className="book-isbn">
+              {this.props.book.data.isbn}
+            </div>
+          </div>
+      </Col>
     )
   }
 }
 
 BookContainer.propTypes = {
-  book: PropTypes.oject
+  book: PropTypes.object
 }
 
 export default BookContainer

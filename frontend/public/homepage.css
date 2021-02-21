@@ -3,6 +3,18 @@ body {
   margin: 0;
 }
 
+.book-title {
+  font-weight: bold;
+}
+
+.book-author {
+  font-style: italic;
+}
+
+.book-isbn {
+  font-size: 12px;
+}
+
 .navbar {
   background: rgb(246, 246, 246);
 }
@@ -65,7 +77,7 @@ body {
 
 .feature-title {
   color: #333;
-  font-size: 1.3rem; 
+  font-size: 1.3rem;
   font-weight: 700;
   margin-bottom: 20px;
   text-transform: uppercase;
