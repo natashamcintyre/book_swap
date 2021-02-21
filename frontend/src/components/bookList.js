@@ -4,13 +4,14 @@ import BookContainer from './bookContainer.js'
 
 class BookList extends React.Component {
   render() {
+    console.log(this.props.books)
       if (this.props.books){
     return(
       <div className="book_list">
         <ul id="books_list" key='books_list'>
-          {this.props.books.map(book=>{
+          {this.props.books.map(book=>
             < BookContainer className='book' book={book}/>
-          })}
+          )}
         </ul>
       </div>
 

@@ -1,12 +1,12 @@
 // import logo from './logo.svg';
 // import './App.css';
 import React, { Component } from 'react'
-// import BookList from './components/bookList.js'
-// import BookForm from './components/bookForm.js'
+import BookList from './components/bookList.js'
+import BookForm from './components/bookForm.js'
 import ErrorHandler from './components/errorHandler.js'
 import Navigation from './components/navigation.js'
 import Header from './components/header.js'
-// import BooksContainer from './components/books_container.js'
+import BooksContainer from './components/books_container.js'
 import {
   BrowserRouter as Router,
   Switch,
@@ -30,6 +30,7 @@ class BookMeUp extends Component {
     axios.get(`${PORT}/`)
     .then((result)=>{
       this.setBooks(result.data)
+      console.log(result.data)
       })
     .catch((err)=>{
       this.setError(err)
@@ -69,8 +70,12 @@ class BookMeUp extends Component {
     this.getBooks()
   }
 
+  // rerenderParentCallback() {
+  //   this.forceUpdate();
+  // }
+
   render() {
-    // console.log(this.state)
+    console.log(this.state)
     return (
       <div className="container">
         <ErrorHandler error={ this.state.error }/>
