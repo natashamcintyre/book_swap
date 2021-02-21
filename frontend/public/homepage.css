@@ -45,6 +45,13 @@ i {
   color: rgb(13, 43, 109);
 }
 
+.add_book {
+  margin: 10px;
+  padding: 10px;
+  background: rgb(13, 43, 109);
+  color: rgb(87, 195, 245);
+}
+
 #book_form button {
   border: 1px solid rgb(87, 195, 245);
   background: rgb(87, 195, 245);
