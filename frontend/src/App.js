@@ -61,7 +61,6 @@ class BookMeUp extends Component {
 
     })
     .then((result) =>{
-      console.log(result.data[`ISBN:${isbn}`].cover.large)
       this.setISBN(isbn)
       this.setTitle(result.data[`ISBN:${isbn}`].title)
       this.setAuthor(result.data[`ISBN:${isbn}`].authors[0].name)
@@ -106,19 +105,13 @@ class BookMeUp extends Component {
     })
   }
 
-  setImage(url) {
-    this.setState({
-      bookImageURL: url
-    })
-  }
-
   render() {
     return (
       <div className="container">
         <ErrorHandler error={ this.state.error }/>
         <Navigation />
         <BookSearch id="bookSearch" submitISBN={ this.submitISBN } />
-        <BookForm id="bookForm" submitBook={ this.submitBook } bookISBN={ this.state.bookISBN } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } bookImage={ this.state.bookImageURL }/>
+        <BookForm id="bookForm" submitBook={ this.submitBook } bookISBN={ this.state.bookISBN } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } />
         <BookList books={ this.state.books }/>
         <BooksContainer />
       </div>
