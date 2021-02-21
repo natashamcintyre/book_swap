@@ -90,6 +90,7 @@ class BookForm extends React.Component {
           <input type="text" name="postcode" id="postcode" placeholder="Postcode" onChange={(e) => this.changePostcodeValue(e.target.value)} value={this.state.postcode} />
           <button type="submit" name="submit" id="submit">Submit</button>
         </form>
+        <img key={ this.props.bookImageURL } src={ this.props.bookImageURL } />
       </div>
     );
   }
