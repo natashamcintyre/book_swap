@@ -18,31 +18,31 @@ router.post('/add-book', async (req, res) => {
   .catch((err) => res.status(404).json(err))
 });
 
-router.get('/user/new', async (req, res) => {
-  res.render('signup')
-})
-
-router.post('/user/new', async (req, res) => {
+router.post('/user-new', async (req, res) => {
+  console.log('in the route')
   try {
     let { username, email, password, passwordCheck, location } = req.body;
 
-    if(!username || !email || !password || !passwordCheck || !location)
-      return res.status(400).json({ msg: "Not all fields have been filled"});
-    if(password.length < 6)
+    if(!username || !email || !password || !passwordCheck || !location) {
+      return res.status(400).json({ msg: "Not all fields have been filled"})
+    }
+    if (password.length < 6) {
       return res
         .status(400)
-        .json({ msg: "Password needs to be 6 characters or longer"});
-    if(password !== passwordCheck)
+        .json({ msg: "Password needs to be 6 characters or longer"})
+    }
+    if (password !== passwordCheck) {
       return res
         .status(400)
-        .json({ msg: "Enter the password twice to be verified"});
-
+        .json({ msg: "Enter the password twice to be verified"})
+    }
     const existingUser = await User.findOne({  username: username});
     const existingEmail = await User.findOne({ email: email});
-    if (existingUser || existingEmail)
+    if (existingUser || existingEmail) {
       return res
         .status(400)
         .json({ msg: "An account with this username or email address already exists"})
+    } 
 
     const newUser = new User({
       username,
@@ -60,10 +60,10 @@ router.post('/user/new', async (req, res) => {
 
 
 router.get('/user', auth, async (req, res) => {
-  const user = await User.findById(req.user);
+  const user = await User.findById(req.user)
   res.json({
     displayName: user.displayName,
-    id: user._id,
+    id: user._id
   });
 });
 
