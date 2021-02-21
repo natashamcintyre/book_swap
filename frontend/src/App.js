@@ -17,6 +17,7 @@ class BookMeUp extends Component {
     super()
     this.state = {
       books: [],
+      bookISBN: '',
       bookTitle: ''
     }
   }
@@ -46,9 +47,13 @@ class BookMeUp extends Component {
     .catch((err)=>{
       this.setError(err)
     })
+
+    this.setTitle('')
   }
 
   submitISBN = (isbn) => {
+    this.setISBN(isbn)
+
     axios.get(`${OPENLIBRARY}/isbn/${isbn}.json`, {
 
     })
@@ -66,7 +71,7 @@ class BookMeUp extends Component {
     })
   }
 
-  setBooks(books){
+  setBooks(books) {
     this.setState({
       books: books
     })
@@ -82,7 +87,13 @@ class BookMeUp extends Component {
     })
   }
 
+  setISBN(isbn) {
+    this.setState({
+      bookISBN: isbn
+    })
+  }
   render() {
+    console.log(this.state.bookTitle)
     return (
       <div className="container">
         <ErrorHandler error={ this.state.error }/>

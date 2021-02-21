@@ -6,26 +6,12 @@ class BookForm extends React.Component {
   constructor(props){
     super()
     this.state = {
-      title: '',
       author: '',
       isbn: '',
       postcode: '',
       phoneNumber: ''
     }
 
-    this.setTitle(props.bookTitle)
-  }
-
-  setTitle (title) {
-    this.setState({
-      title: title
-    })
-  }
-
-  changeTitleValue(change){
-    this.setState({
-      title: change
-    })
   }
 
   changeAuthorValue(change){
@@ -54,7 +40,7 @@ class BookForm extends React.Component {
 
   processSubmit(e) {
     e.preventDefault();
-    this.props.submitBook(this.state.title, this.state.author, this.state.isbn, this.state.postcode, this.state.phoneNumber);
+    this.props.submitBook(this.props.bookTitle, this.state.author, this.state.isbn, this.state.postcode, this.state.phoneNumber);
     this.changeTitleValue('');
     this.changeAuthorValue('');
     this.changeIsbnValue('');
@@ -67,7 +53,7 @@ class BookForm extends React.Component {
       <div className="add_book">
         <form id="book_form" onSubmit={ (e) => this.processSubmit(e) }>
           <input type="text" name="ISBN" id="ISBN" placeholder="ISBN"  onChange={(e) => this.changeIsbnValue(e.target.value)} value={this.state.isbn} />
-          <input type="text" name="title" id="title" placeholder="Title" onChange={(e) => this.changeTitleValue(e.target.value)} value={this.state.title} />
+          <input type="text" name="title" id="title" placeholder="Title" value={this.props.bookTitle} />
           <input type="text" name="author" id="author" placeholder="Author" onChange={(e) => this.changeAuthorValue(e.target.value)} value={this.state.author} />
           <input type="text" name="phone_number" id="phone_number" placeholder="Phone number" onChange={(e) => this.changePhoneNumberValue(e.target.value)} value={this.state.phoneNumber} />
           <input type="text" name="postcode" id="postcode" placeholder="Postcode" onChange={(e) => this.changePostcodeValue(e.target.value)} value={this.state.postcode} />
