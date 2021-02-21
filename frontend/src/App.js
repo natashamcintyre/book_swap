@@ -1,5 +1,3 @@
-// import logo from './logo.svg';
-// import './App.css';
 import React, { Component } from 'react'
 import BookList from './components/bookList.js'
 import BookForm from './components/bookForm.js'
@@ -15,12 +13,11 @@ import {
   Link
 } from 'react-router-dom'
 
-
-import axios from 'axios';
-const PORT = 'http://localhost:3001';
+import axios from 'axios'
+const PORT = 'http://localhost:3001'
 
 class BookMeUp extends Component {
-  constructor(){
+  constructor () {
     super()
     this.state = {
       books: []
@@ -29,13 +26,12 @@ class BookMeUp extends Component {
 
   getBooks = () => {
     axios.get(`${PORT}/`)
-    .then((result)=>{
-      this.setBooks(result.data)
-      console.log(result.data)
+      .then((result) => {
+        this.setBooks(result.data)
       })
-    .catch((err)=>{
-      this.setError(err)
-    })
+      .catch((err) => {
+        this.setError(err)
+      })
   }
 
   submitBook = (title, author, isbn, postcode, phoneNumber) => {
@@ -47,27 +43,27 @@ class BookMeUp extends Component {
       postcode: postcode,
       phoneNumber: phoneNumber
     })
-    .then((result)=>{
-      this.getBooks()
-    })
-    .catch((err)=>{
-      this.setError(err)
-    })
+      .then((result) => {
+        this.getBooks()
+      })
+      .catch((err) => {
+        this.setError(err)
+      })
   }
 
-  setError(error){
+  setError (error) {
     this.setState({
       error: error
     })
   }
 
-  setBooks(books){
+  setBooks (books) {
     this.setState({
       books: books
     })
   }
 
-  componentDidMount(){
+  componentDidMount () {
     this.getBooks()
   }
 
@@ -99,4 +95,4 @@ class BookMeUp extends Component {
   }
 }
 
-export default BookMeUp;
+export default BookMeUp

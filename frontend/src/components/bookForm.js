@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 class BookForm extends React.Component {
-
-  constructor(){
+  constructor () {
     super()
     this.state = {
       title: '',
@@ -13,50 +13,50 @@ class BookForm extends React.Component {
     }
   }
 
-  changeTitleValue(change){
+  changeTitleValue (change) {
     this.setState({
       title: change
     })
   }
 
-  changeAuthorValue(change){
+  changeAuthorValue (change) {
     this.setState({
       author: change
     })
   }
 
-  changeIsbnValue(change){
+  changeIsbnValue (change) {
     this.setState({
       isbn: change
     })
   }
 
-  changePostcodeValue(change){
+  changePostcodeValue (change) {
     this.setState({
       postcode: change
     })
   }
 
-  changePhoneNumberValue(change){
+  changePhoneNumberValue (change) {
     this.setState({
       phoneNumber: change
     })
   }
 
-  processSubmit(e) {
-    e.preventDefault();
-    this.props.submitBook(this.state.title, this.state.author, this.state.isbn, this.state.postcode, this.state.phoneNumber);
-    this.changeTitleValue('');
-    this.changeAuthorValue('');
-    this.changeIsbnValue('');
-    this.changePostcodeValue('');
-    this.changePhoneNumberValue('');
+  processSubmit (e) {
+    e.preventDefault()
+    this.props.submitBook(this.state.title, this.state.author, this.state.isbn, this.state.postcode, this.state.phoneNumber)
+    this.changeTitleValue('')
+    this.changeAuthorValue('')
+    this.changeIsbnValue('')
+    this.changePostcodeValue('')
+    this.changePhoneNumberValue('')
   }
 
-  render() {
+  render () {
     return (
       <div className="add_book">
-        <form ref='formRef' id="book_form" onSubmit={ (e) => this.processSubmit(e) }>
+        <form id="book_form" onSubmit={ (e) => this.processSubmit(e) }>
           <input type="text" name="title" id="title" placeholder="Title" onChange={(e) => this.changeTitleValue(e.target.value)} value={this.state.title} />
           <input type="text" name="author" id="author" placeholder="Author" onChange={(e) => this.changeAuthorValue(e.target.value)} value={this.state.author} />
           <input type="text" name="ISBN" id="ISBN" placeholder="ISBN" onChange={(e) => this.changeIsbnValue(e.target.value)} value={this.state.isbn} />
@@ -65,8 +65,12 @@ class BookForm extends React.Component {
           <button type="submit" name="submit" id="submit">Submit</button>
         </form>
       </div>
-    );
+    )
   }
+}
+
+BookForm.propTypes = {
+  submitBook: PropTypes.func
 }
 
 export default BookForm

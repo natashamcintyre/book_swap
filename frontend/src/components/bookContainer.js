@@ -1,10 +1,9 @@
-import React from 'react';
-import BookList from './bookList.js'
+import React from 'react'
+import PropTypes from 'prop-types'
 
 class BookContainer extends React.Component {
-    render() {
-        console.log(this.props.book._id)
-        return (
+  render () {
+    return (
             <div id= 'react'>
             <div className='row'>
                 <div className= "col-lg-2 col-md-4 col-sm-12">
@@ -16,8 +15,12 @@ class BookContainer extends React.Component {
                 </div>
             </div>
            </div>
-        )
-    }
+    )
+  }
 }
 
-export default BookContainer;
+BookContainer.propTypes = {
+  book: PropTypes.oject
+}
+
+export default BookContainer
