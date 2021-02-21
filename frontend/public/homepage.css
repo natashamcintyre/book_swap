@@ -3,6 +3,10 @@ body {
   margin: 0;
 }
 
+i {
+  color: rgb(13, 43, 109);
+}
+
 .book-title {
   font-weight: bold;
 }
@@ -36,9 +40,33 @@ body {
   color: rgb(13, 43, 109);
 }
 .header-content button:hover {
-  border: 1px solid #fff;
-  background: #fff;
-  color: #000;
+  border: 1px solid rgb(246, 246, 246);
+  background: rgb(246, 246, 246);
+  color: rgb(13, 43, 109);
+}
+
+#book_form button {
+  border: 1px solid rgb(87, 195, 245);
+  background: rgb(87, 195, 245);
+  border-radius: 0;
+  color: rgb(13, 43, 109);
+}
+#book_form button:hover {
+  border: 1px solid rgb(13, 43, 109);
+  background: rgb(13, 43, 109);
+  color: rgb(246, 246, 246);
+}
+
+.navbar button {
+  border: 1px solid rgb(87, 195, 245);
+  background: rgb(87, 195, 245);
+  border-radius: 0;
+  color: rgb(13, 43, 109);
+}
+.navbar button:hover {
+  border: 1px solid rgb(13, 43, 109);
+  background: rgb(13, 43, 109);
+  color: r  rgb(246, 246, 246);
 }
 
 .features {
