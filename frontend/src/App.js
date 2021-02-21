@@ -57,13 +57,13 @@ class BookMeUp extends Component {
   }
 
   submitISBN = (isbn) => {
-    axios.get(`${OPENLIBRARY}/isbn/${isbn}.json`, {
+    axios.get(`${OPENLIBRARY}/api/books?bibkeys=ISBN:${isbn}&format=json&jscmd=data`, {
 
     })
     .then((result) =>{
-      this.setISBN(result.data.isbn_13[0])
-      this.setTitle(result.data.title)
-      this.setAuthor(result.data.authors[0]['key'].split('/')[2])
+      this.setISBN(isbn)
+      this.setTitle(result.data[`ISBN:${isbn}`].title)
+      this.setAuthor(result.data[`ISBN:${isbn}`].authors[0].name)
     })
     .catch((err)=>{
       console.log(err)
