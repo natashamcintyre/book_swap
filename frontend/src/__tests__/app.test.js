@@ -42,20 +42,24 @@ describe('BookMeUp', () => {
     const component = mount(<BookMeUp />)
 
     mockAxios.get.mockImplementation(() =>
-    Promise.resolve({ data: { title: "test_title" } }));
+    Promise.resolve({ data: { isbn_13: ['test_ISBN'], title: "test_title", authors: [ { key: "/authors/test_author" }]  } }));
 
     component.find('input#ISBNSearch').simulate('change', {
       target: { value: "test_ISBN" } })
     component.find('form#book_search').simulate('submit')
 
+    await component.find('BookSearch')
+    await component.update()
+    await component.find('BookForm').update()
 
     await component.find('input#ISBN').update()
-
-    expect(component.find('input#ISBN').props().value).toBe('test_ISBN');
+    expect(component.find('input#ISBN').props().defaultValue).toBe('test_ISBN');
 
     await component.find('input#title').update()
+    expect(component.find('input#title').props().defaultValue).toBe('test_title');
 
-    expect(component.find('input#title').props().value).toBe('test_title');
+    await component.find('input#author').update()
+    expect(component.find('input#author').props().defaultValue).toBe('test_author');
   })
 
   it('renders without crashing', () => {
@@ -63,14 +67,24 @@ describe('BookMeUp', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('posts data and clears book form on submit success', () => {
+  it('posts data and clears book form on submit success', async () => {
     const component = mount(<BookMeUp />);
-    component.find('input#title').simulate('change', {
-      target: { value: "test_title" } })
-    component.find('input#author').simulate('change', {
-      target: { value: "test_author" } })
-    component.find('input#ISBN').simulate('change', {
+
+    mockAxios.get.mockImplementation(() =>
+    Promise.resolve({ data: { isbn_13: ['test_ISBN'], title: "test_title", authors: [ { key: "/authors/test_author" }]  } }));
+
+    component.find('input#ISBNSearch').simulate('change', {
       target: { value: "test_ISBN" } })
+    component.find('form#book_search').simulate('submit')
+
+    await component.find('BookSearch')
+    await component.update()
+    await component.find('BookForm').update()
+
+    await component.find('input#ISBN').update()
+    await component.find('input#title').update()
+    await component.find('input#author').update()
+
     component.find('input#postcode').simulate('change', {
       target: { value: "test_postcode" } })
     component.find('input#phone_number').simulate('change', {
@@ -84,7 +98,11 @@ describe('BookMeUp', () => {
         'postcode': 'test_postcode',
         'phoneNumber': 'test_phone_number'});
 
-    expect(component.find('input#title').props().value).toEqual('');
+    expect(component.find('input#title').props().defaultValue).toEqual('');
+    expect(component.find('input#author').props().defaultValue).toEqual('');
+    expect(component.find('input#ISBN').props().defaultValue).toEqual('');
+    expect(component.find('input#postcode').props().value).toEqual('');
+    expect(component.find('input#phone_number').props().value).toEqual('');
   })
 });
 

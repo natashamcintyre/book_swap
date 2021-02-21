@@ -49,7 +49,11 @@ class BookMeUp extends Component {
       this.setError(err)
     })
 
+    this.setISBN('')
     this.setTitle('')
+    this.setAuthor('')
+
+
   }
 
   submitISBN = (isbn) => {
@@ -68,7 +72,7 @@ class BookMeUp extends Component {
 
   setError(error){
     this.setState({
-      error: error
+      error: error,
     })
   }
 
@@ -100,10 +104,7 @@ class BookMeUp extends Component {
     })
   }
 
-
-
   render() {
-    console.log(this.state.bookTitle)
     return (
       <div className="container">
         <ErrorHandler error={ this.state.error }/>
