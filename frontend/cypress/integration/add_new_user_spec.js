@@ -2,7 +2,7 @@ describe('signing up', () => {
   it('allows new user to register', () => {
     cy.visit('http://localhost:3000')
     cy.get('#new_user').click()
-    cy.url().should('eq', 'http://localhost:3000/signup')
+    cy.url().should('eq', 'http://localhost:3000/sign-up')
     cy.get('form').should('exist')
     cy.get('input[name="username"]').type('Argy-Bargy').should("have.value", "Argy-Bargy")
     cy.get('input[name="email"]').type('argybargy@test.com').should("have.value", "argybargy@test.com")

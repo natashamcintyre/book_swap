@@ -83,10 +83,16 @@ class BookMeUp extends Component {
           <ErrorHandler error={ this.state.error }/>
           <Navigation />
           <Header />
-          <BookForm ref="bookFormRef" submitBook={ this.submitBook }/>
-          <BookList books={ this.state.books }/>
-          <Users />
-          <BooksContainer />
+          <Switch>
+            <Route exact path="/">
+              <BookForm ref="bookFormRef" submitBook={ this.submitBook }/>
+              <BookList books={ this.state.books }/>
+            </Route>
+            <Route path='/sign-up'>
+              <Users />
+              <BooksContainer />
+            </Route>
+          </Switch>
         </div>
       </Router>
     );
