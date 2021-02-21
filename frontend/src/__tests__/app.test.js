@@ -35,14 +35,14 @@ describe('BookMeUp', () => {
       target: { value: "test_ISBN" } })
     component.find('form#book_search').simulate('submit')
     expect(mockAxios.get).toHaveBeenCalledTimes(2)
-    expect(mockAxios.get.mock.calls[1][0]).toBe("https://openlibrary.org/isbn/test_ISBN.json")
+    expect(mockAxios.get.mock.calls[1][0]).toBe("https://openlibrary.org/api/books?bibkeys=ISBN:test_ISBN&format=json&jscmd=data")
   })
 
   it('Renders the title of the book from openlibrary in the BookForm Title field', async () => {
     const component = mount(<BookMeUp />)
 
     mockAxios.get.mockImplementation(() =>
-    Promise.resolve({ data: { isbn_13: ['test_ISBN'], title: "test_title", authors: [ { key: "/authors/test_author" }]  } }));
+    Promise.resolve({ data: { 'ISBN:test_ISBN': { title: "test_title", authors: [ { name: "test_author" }]  } } }));
 
     component.find('input#ISBNSearch').simulate('change', {
       target: { value: "test_ISBN" } })
@@ -71,7 +71,7 @@ describe('BookMeUp', () => {
     const component = mount(<BookMeUp />);
 
     mockAxios.get.mockImplementation(() =>
-    Promise.resolve({ data: { isbn_13: ['test_ISBN'], title: "test_title", authors: [ { key: "/authors/test_author" }]  } }));
+    Promise.resolve({ data: { 'ISBN:test_ISBN': { title: "test_title", authors: [ { name: "test_author" }]  } } }));
 
     component.find('input#ISBNSearch').simulate('change', {
       target: { value: "test_ISBN" } })
