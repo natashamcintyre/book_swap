@@ -1,14 +1,12 @@
-import React from 'react';
+import React from 'react'
 import {
   BrowserRouter as Router,
-  Link,
-  Switch,
-  Route,
+  Link
 } from 'react-router-dom'
 
 class Navigation extends React.Component {
-  render() {
-    return(
+  render () {
+    return (
       <Router>
         <nav className="navbar navbar-expand-md">
           <Link to="/" className="navbar-brand">
@@ -31,7 +29,8 @@ class Navigation extends React.Component {
           </div>
         </nav>
       </Router>
-  )}
- }
+    )
+  }
+}
 
 export default Navigation
