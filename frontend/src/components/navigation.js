@@ -3,7 +3,7 @@ import React from 'react'
 class Navigation extends React.Component {
   render () {
     return (
-      <nav className="navbar sticky-top navbar-expand-md">
+      <nav className="navbar sticky-top">
         <div className='navbar-logo col-2'>
           <a className="navbar-brand" href="#">
             <img src="images/bookmeup.png" width="150"></img>
