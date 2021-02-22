@@ -7,9 +7,10 @@ const BookSchema = mongoose.Schema({
 })
 
 BookSchema.post('validate', function (doc, next) {
-  if (!doc.data.title || !doc.data.author || !doc.data.isbn || !doc.data.postcode || !doc.data.phoneNumber) {
-    next('Invalid book entry')
-  }
+  // console.log('inside BookSchema Post')
+  // if (!doc.data.book || !doc.data.postcode || !doc.data.phoneNumber) {
+  //   next('Invalid book entry')
+  // }
   next()
 })
 
