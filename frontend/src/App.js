@@ -76,6 +76,36 @@ class BookMeUp extends Component {
       })
   }
 
+  addUser = (username, email, location, password, passwordCheck) => {
+    axios.post(`${PORT}/user-new`, {
+      username: username,
+      email: email,
+      location: location,
+      password: password,
+      passwordCheck: passwordCheck
+    })
+      .then((result) => {
+        console.log(result)
+      })
+      .catch((err) => {
+        this.setError(err)
+      })
+  }
+
+  signinUser = (username, password) => {
+    axios.post(`${PORT}/login`, {
+      username: this.state.username,
+      password: this.state.password
+    })
+     .then((result) => {
+        console.log(result)
+
+      })
+     .catch((err) => {
+        this.setError(err)
+      })
+   }
+
   setError (error) {
     this.setState({
       error: error
@@ -119,8 +149,8 @@ class BookMeUp extends Component {
           <Header />
           <Switch>
             <Route path="/sign-up">
-              <UserSignup />
-              <UserSignin />
+              <UserSignup id="usersignupform" addUser={ this.addUser } />
+              <UserSignin id="usersigninform" signinUser={ this.signinUser }/>
               <BooksContainer />
             </Route>
             <Route exact path="/">

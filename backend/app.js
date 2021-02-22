@@ -2,9 +2,6 @@ import express from 'express'
 import cors from 'cors'
 import bodyParse from 'body-parser'
 import mongoose from 'mongoose'
-
-const session = require('express-session');
-const MongoStore = require('connect-mongo').default
 // var passport = require('passport');
 // var crypto = require('crypto');
 // const LocalStrategy = require('passport-local').Strategy;
@@ -12,8 +9,11 @@ const MongoStore = require('connect-mongo').default
 import config from './config/config'
 import passport from './config/passportSetup'
 
-require('dotenv').config();
-const routes = require('./lib/routes.js');
+const session = require('express-session')
+const MongoStore = require('connect-mongo').default
+
+require('dotenv').config()
+const routes = require('./lib/routes.js')
 const app = express()
 
 mongoose.connect(config.db, {
@@ -34,22 +34,24 @@ db.on('error', err => {
 // app.use(express.urlencoded({ extended: true }))
 app.use(bodyParse.json())
 app.use(cors())
-app.use('/user-new', routes)
-app.use('/login', routes)
-app.use('/', routes)
 
-// const sessionStore = new MongoStore({ mongooseConnection: db, collection: 'sessions' })
+const sessionStore = MongoStore.create({ mongoUrl: config.db, collection: 'sessions' })
 
 app.use(session({
   secret: 'very very secret',
   resave: false,
   saveUninitialized: true,
-  store: MongoStore.create({ mongoUrl: db, collection: 'sessions' })
+  store: sessionStore
 }))
 
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.initialize())
+app.use(passport.session())
 
+// Routes must be after passport and session set up
+app.use('/user-new', routes)
+app.use('/user', routes)
+app.use('/login', routes)
+app.use('/', routes)
 // this was for heroku deployment testing
 app.get('/homepage', (req, res) => {
   res.send('This is our homepage')

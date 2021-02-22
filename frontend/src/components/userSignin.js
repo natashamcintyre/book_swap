@@ -1,7 +1,5 @@
 import React from 'react'
-import axios from 'axios'
-
-const PORT = 'http://localhost:3001'
+import PropTypes from 'prop-types'
 
 class UserSignin extends React.Component {
   constructor () {
@@ -26,36 +24,26 @@ class UserSignin extends React.Component {
 
    processSubmit (e) {
      e.preventDefault()
-     axios.post(`${PORT}/login`, {
-       username: this.state.username,
-       password: this.state.password
-     })
-      .then((result) => {
-       console.log(result)
-      // redirect to homepage
-       })
-      .catch((err) => {
-        this.setError(err)
-       })
-    }
-
-    setError (error) {
-      this.setState({
-        error: error
-      })
+     this.props.signinUser(this.state.username, this.state.password)
+     this.changeUsernameValue('')
+     this.changePasswordValue('')
     }
 
    render () {
      return (
       <div className="user_signin">
-        <form id="user_login" onSubmit ={ (e)  => this.processSubmit(e) }>
-          <input type="text" name="username" id="username" placeholder="Enter Username" onChange={(e) => this.changeUsernameValue(e.target.value) } value={this.state.username} />
-          <input type="password" name="password" id="new_password" placeholder="Type your password" onChange={(e) => this.changePasswordValue(e.target.value)} value={this.state.password} />
-          <button type="submit" name="submit" id="submit">Log In</button>
+        <form id="user_signin_form" onSubmit ={ (e)  => this.processSubmit(e) }>
+          <input type="text" name="username" id="signin_username" placeholder="Enter Username" onChange={(e) => this.changeUsernameValue(e.target.value) } value={this.state.username} />
+          <input type="password" name="password" id="signin_password" placeholder="Type your password" onChange={(e) => this.changePasswordValue(e.target.value)} value={this.state.password} />
+          <button type="submit" name="submit" id="signin_submit">Log In</button>
         </form>
       </div>
      )
    }
+}
+
+UserSignin.propTypes = {
+  signinUser: PropTypes.func
 }
 
 export default UserSignin
