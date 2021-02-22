@@ -22,6 +22,7 @@ class BookMeUp extends Component {
     super()
     this.state = {
       books: [],
+      book: {},
       bookISBN: '',
       bookTitle: '',
       bookAuthor: ''
@@ -39,18 +40,23 @@ class BookMeUp extends Component {
   }
 
   submitBook = (title, author, isbn, postcode, phoneNumber) => {
+    console.log('inside submit book')
+    console.log(     { book: JSON.stringify(this.state.book),
+          postcode: postcode,
+          phoneNumber: phoneNumber } )
     // ADDRESS NEEDS CHECKING WITH BACKEND API
     axios.post(`${PORT}/add-book`, {
-      title: title,
-      author: author,
-      isbn: isbn,
+      book: 'book',
       postcode: postcode,
       phoneNumber: phoneNumber
+
     })
       .then((result) => {
+        console.log('result')
         this.getBooks()
       })
       .catch((err) => {
+        console.log('error')
         this.setError(err)
       })
 
@@ -65,9 +71,10 @@ class BookMeUp extends Component {
     })
       .then((result) => {
         this.setISBN(isbn)
+        this.setBook(result.data[`ISBN:${isbn}`])
         this.setTitle(result.data[`ISBN:${isbn}`].title)
         this.setAuthor(result.data[`ISBN:${isbn}`].authors[0].name)
-        this.setImage(result.data[`ISBN:${isbn}`].cover.large)
+
       })
       .catch((err) => {
         console.log(err)
@@ -88,6 +95,12 @@ class BookMeUp extends Component {
 
   componentDidMount () {
     this.getBooks()
+  }
+
+  setBook (book) {
+    this.setState({
+      book: book
+    })
   }
 
   setISBN (isbn) {
