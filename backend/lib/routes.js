@@ -12,6 +12,20 @@ router.get('/', async (req, res) => {
     .catch((err) => res.status(404).json(err))
 })
 
+router.get('/search', async (req, res) => {
+
+  console.log('hello from /search route')
+  console.log(req.query)
+
+  let searchString = req.query.searchString;
+
+  console.log(searchString)
+
+  await bookApp.getBookshelf(searchString)
+    .then((books) => res.json(books))
+    .catch((err) => res.status(404).json(err))
+})
+
 router.post('/add-book', async (req, res) => {
   await bookApp.addBook(req.body)
     .then((book) => res.json(book))

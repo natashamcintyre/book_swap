@@ -27,6 +27,7 @@ app.use(bodyParse.json())
 app.use(cors())
 app.use('/user-new', routes)
 app.use('/', routes)
+app.use('/search', routes)
 
 // this was for heroku deployment testing
 app.get('/homepage', (req, res) => {

@@ -14,11 +14,10 @@ describe('Books API endpoint tests', function () {
 
   it('submit a book', function (done) {
     const data = {
-      book: { title: 'test_title', author: 'test_author' },
+      book: JSON.stringify({ title: 'test_title', author: 'test_author' }),
       user: { username: 'brad', email: 'brad@example', location: 'postcode' }
     }
 
-    console.log('pre request')
     const res = request(app)
       .post('/add-book')
       .send(data)
@@ -30,7 +29,7 @@ describe('Books API endpoint tests', function () {
           return done(err)
         }
 
-        expect(res.body.book.title).to.equal('test_title')
+        expect(JSON.parse(res.body.book).title).to.equal('test_title')
         expect(res.body.users[0].username).to.equal('brad')
         done()
       })
@@ -66,7 +65,40 @@ describe('Books API endpoint tests', function () {
         }
 
         expect(res.body.length).to.equal(1)
-        expect(res.body[0].book).to.deep.equal({ title: 'test_title', author: 'test_author' })
+        expect(JSON.parse(res.body[0].book)).to.deep.equal({ title: 'test_title', author: 'test_author' })
+        done()
+      })
+  })
+
+  it('gets from backend bookshelf with search', function (done) {
+    const data = {
+      book: JSON.stringify({ title: 'another_title', author: 'test_author' }),
+      user: { username: 'brad', email: 'brad@example', location: 'postcode' }
+    }
+
+    let res = {};
+
+    request(app)
+      .post('/add-book')
+      .send(data)
+      .set('Accept', 'application/json')
+      .then(
+        res = request(app)
+          .get('/search?searchString=test_title')
+      )
+
+
+    res.expect(200)
+      .end(function (err, res) {
+        if (err) {
+          return done(err)
+        }
+
+        console.log('hello from test')
+        console.log(res.body)
+
+        expect(res.body.length).to.equal(1)
+        expect(JSON.parse(res.body[0].book)).to.deep.equal({ title: 'test_title', author: 'test_author' })
         done()
       })
   })
