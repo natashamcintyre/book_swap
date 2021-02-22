@@ -76,19 +76,19 @@ class BookForm extends React.Component {
             </div>
           </div>
           <div className='row'>
-            <label className="text-right col-6 col-form-label">Phone Number: </label>
-            <div className="col-6">
+            <label className="text-right col-sm-6 col-form-label">Phone Number: </label>
+            <div className="col-sm-6">
               <input type="text" className='col-12' name="phone_number" id="phone_number" onChange={(e) => this.changePhoneNumberValue(e.target.value)} value={this.state.phoneNumber} />
             </div>
           </div>
           <div className='row'>
-            <label className="text-right col-6 col-form-label">Postcode: </label>
-            <div className="col-6">
+            <label className="text-right col-sm-6 col-form-label">Postcode: </label>
+            <div className="col-sm-6">
               <input type="text" className='col-12' name="postcode" id="postcode" onChange={(e) => this.changePostcodeValue(e.target.value)} value={this.state.postcode} />
             </div>
           </div>
           <div className="form-group row">
-            <div className="col-6 offset-6">
+            <div className="col-sm-6 offset-6">
               <button className="col-12 btn btn-md" type="submit" name="submit" id="submit">Submit</button>
             </div>
           </div>

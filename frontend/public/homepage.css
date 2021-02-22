@@ -15,18 +15,6 @@ i {
   border: 1px solid rgb(13, 43, 109);
 }
 
-.book-title {
-  font-weight: bold;
-}
-
-.book-author {
-  font-style: italic;
-}
-
-.book-isbn {
-  font-size: 12px;
-}
-
 .navbar {
   background: rgb(246, 246, 246);
 }
@@ -103,4 +91,38 @@ i {
   -mox-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
   margin-bottom: 16px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 200px;
+  /* left: 0;
+  top: 0; */
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgb(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+  background-color: rgb(13, 43, 109);
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #fff;
+  width: 80%;
+}
+
+.close {
+  color: rgb(87, 195, 245);
+  font-size: 28px;
+}
+
+.close:hover,
+.close:focus {
+  color: rgb(87, 195, 245);
+  text-decoration: none;
+  cursor: pointer;
 }

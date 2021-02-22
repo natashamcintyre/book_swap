@@ -5,7 +5,6 @@ import ErrorHandler from './components/errorHandler.js'
 import Navigation from './components/navigation.js'
 import Header from './components/header.js'
 import BooksContainer from './components/booksContainer.js'
-// import { Container } from 'react-grid-system'
 
 import axios from 'axios'
 const PORT = 'http://localhost:3001'
