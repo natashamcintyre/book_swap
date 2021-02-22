@@ -40,15 +40,10 @@ class BookMeUp extends Component {
   }
 
   submitBook = (title, author, isbn, postcode, phoneNumber) => {
-    console.log('inside submit book')
-    console.log(     { book: JSON.stringify(this.state.book),
-          postcode: postcode,
-          phoneNumber: phoneNumber } )
     // ADDRESS NEEDS CHECKING WITH BACKEND API
     axios.post(`${PORT}/add-book`, {
       book: JSON.stringify(this.state.book),
-      postcode: postcode,
-      phoneNumber: phoneNumber
+      user: { username: 'brad' , email: 'brad@example' , location: 'BS3 2LH' }
     })
       .then((result) => {
         console.log('result')

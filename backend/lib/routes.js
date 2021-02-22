@@ -13,7 +13,6 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/add-book', async (req, res) => {
-  console.log('inside add book route')
   await bookApp.addBook(req.body)
     .then((result) => res.json(result))
     .catch((err) => res.status(404).json(err))

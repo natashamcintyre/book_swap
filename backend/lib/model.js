@@ -3,14 +3,14 @@
 import mongoose from 'mongoose'
 
 const BookSchema = mongoose.Schema({
-  data: Object
+  book: Object,
+  users: Array
 })
 
 BookSchema.post('validate', function (doc, next) {
-  console.log('inside BookSchema Post')
-  if (!doc.data.book || !doc.data.postcode || !doc.data.phoneNumber) {
-    next('Invalid book entry')
-  }
+    if (!doc.data.book || !doc.data.user ) {
+      next('Invalid book entry')
+    }
   next()
 })
 

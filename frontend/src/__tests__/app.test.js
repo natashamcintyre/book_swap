@@ -88,11 +88,8 @@ describe('BookMeUp', () => {
 
     expect(mockAxios.post).toHaveBeenCalledWith('http://localhost:3001/add-book',
       {
-        title: 'test_title',
-        author: 'test_author',
-        isbn: 'test_ISBN',
-        postcode: 'test_postcode',
-        phoneNumber: 'test_phone_number'
+        book: {title: 'test_title', authors: [ name: "test_author"], idenifiers: {isbn_13: "test_ISBN"},
+        user: { username: 'brad' , email: 'brad@example' , location: 'BS3 2LH' }
       })
 
     expect(component.find('input#title').props().defaultValue).toEqual('')
