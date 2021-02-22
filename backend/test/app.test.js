@@ -14,12 +14,11 @@ describe('Books API endpoint tests', function () {
 
   it('submit a book', function (done) {
     const data = {
-      title: 'Just So Stories',
-      author: 'Rudyard Kipling',
-      isbn: 9780192822765,
-      postcode: 'test_postcode',
-      phoneNumber: 'test_phoneNumber'
+      book: { title: 'test_title', author: 'test_author'},
+      user: { username: 'brad', email: 'brad@example', location: 'postcode'}
     }
+
+    console.log('pre request')
     const res = request(app)
       .post('/add-book')
       .send(data)
@@ -30,17 +29,17 @@ describe('Books API endpoint tests', function () {
         if (err) {
           return done(err)
         }
-        expect(res.body.data.title).to.equal('Just So Stories')
+
+        expect(res.body.book.title).to.equal('test_title')
+        expect(res.body.users[0].username).to.equal('brad')
         done()
       })
   })
 
   it('submit wrong book data and get an error', function (done) {
     const data = {
-      title: 'Just So Stories',
-      isbn: 9780192822765,
-      postcode: 'test_postcode',
-      phoneNumber: 'test_phoneNumber'
+      book: '',
+      user: { username: 'brad' , email: 'brad@example' , location: 'BS3 2LH' }
     }
     const res = request(app)
       .post('/add-book')
@@ -67,7 +66,7 @@ describe('Books API endpoint tests', function () {
         }
 
         expect(res.body.length).to.equal(1)
-        expect(res.body[0].data).to.deep.equal({ title: 'Just So Stories', author: 'Rudyard Kipling', isbn: 9780192822765, postcode: 'test_postcode', phoneNumber: 'test_phoneNumber' })
+        expect(res.body[0].book).to.deep.equal({ title: 'test_title', author: 'test_author'})
         done()
       })
   })

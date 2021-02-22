@@ -5,9 +5,7 @@ function getBookshelf () {
 }
 
 function addBook (data) {
-  console.log('inside add book')
   const newBook = new BookModel({ book: data.book, users: data.user })
-  console.log(newBook)
   const savedBook = newBook.save()
   return savedBook
 }
