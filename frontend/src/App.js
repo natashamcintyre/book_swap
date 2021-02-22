@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import BookList from './components/bookList.js'
 import BookForm from './components/bookForm.js'
+import BookSearch from './components/bookSearch.js'
 import ErrorHandler from './components/errorHandler.js'
 import Navigation from './components/navigation.js'
 import Header from './components/header.js'
@@ -10,12 +11,11 @@ import {
   Route,
   HashRouter
 } from 'react-router-dom'
-// import BookSearch from './components/bookSearch.js'
 import BooksContainer from './components/booksContainer.js'
 
 import axios from 'axios'
 const PORT = 'http://localhost:3001'
-// const OPENLIBRARY = 'https://openlibrary.org'
+const OPENLIBRARY = 'https://openlibrary.org'
 
 class BookMeUp extends Component {
   constructor () {
@@ -59,20 +59,20 @@ class BookMeUp extends Component {
     this.setAuthor('')
   }
 
-  // submitISBN = (isbn) => {
-  //   axios.get(`${OPENLIBRARY}/api/books?bibkeys=ISBN:${isbn}&format=json&jscmd=data`, {
-  //
-  //   })
-  //     .then((result) => {
-  //       this.setISBN(isbn)
-  //       this.setTitle(result.data[`ISBN:${isbn}`].title)
-  //       this.setAuthor(result.data[`ISBN:${isbn}`].authors[0].name)
-  //       this.setImage(result.data[`ISBN:${isbn}`].cover.large)
-  //     })
-  //     .catch((err) => {
-  //       console.log(err)
-  //     })
-  // }
+  submitISBN = (isbn) => {
+    axios.get(`${OPENLIBRARY}/api/books?bibkeys=ISBN:${isbn}&format=json&jscmd=data`, {
+  
+    })
+      .then((result) => {
+        this.setISBN(isbn)
+        this.setTitle(result.data[`ISBN:${isbn}`].title)
+        this.setAuthor(result.data[`ISBN:${isbn}`].authors[0].name)
+        this.setImage(result.data[`ISBN:${isbn}`].cover.large)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
 
   setError (error) {
     this.setState({
@@ -115,15 +115,21 @@ class BookMeUp extends Component {
         <div className="homepage">
           <ErrorHandler error={ this.state.error }/>
           <Navigation />
-          <Header />
+          <Header bookISBN={ this.state.bookISBN } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor }/>
           <Switch>
             <Route path="/sign-up">
               <Users />
               <BooksContainer />
             </Route>
             <Route exact path="/">
-              {/* <BookSearch id="bookSearch" submitISBN={ this.submitISBN } /> */}
+            <button id="isbnSearchButton" className="btn btn-lg">Add a new book!</button>
+            <div id="isbnSearchModal" className="modal">
+            <div className="modal-content">
+              <span id="closeIsbnSearch" className="close">&times;</span>
+              <BookSearch id="bookSearch" submitISBN={ this.submitISBN } />
               <BookForm id="bookForm" submitBook={ this.submitBook } bookISBN={ this.state.bookISBN } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } />
+            </div>
+          </div>
               <BookList books={ this.state.books }/>
             </Route>
           </Switch>
@@ -132,5 +138,21 @@ class BookMeUp extends Component {
     )
   }
 }
+
+{/* <button id="isbnSearchButton" className="btn btn-lg">Adda new book!</button>
+          <div id="isbnSearchModal" className="modal">
+            <div className="modal-content">
+              <span id="closeIsbnSearch" className="close">&times;</span>
+              <Switch>
+                <Route exact path="/">
+                  <BookSearch id="bookSearch" submitISBN={ this.submitISBN } />
+                </Route>
+                <Route exact path="/isbnSearch">
+                  <BookForm id="bookForm" submitBook={ this.submitBook } bookISBN={ this.state.bookISBN } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } />
+                </Route>
+              </Switch>
+              <p>This is the form where you can search by isbn number</p>
+            </div>
+          </div> */}
 
 export default BookMeUp

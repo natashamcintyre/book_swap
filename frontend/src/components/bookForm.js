@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Printer from './printer.js'
 
 class BookForm extends React.Component {
   constructor () {
@@ -80,7 +81,8 @@ class BookForm extends React.Component {
   render () {
     return (
       <div className="add_book col-12 col-md-5">
-        {/* <form id="book_form" onSubmit={ (e) => this.processSubmit(e) }>
+        <Printer title={ this.state.title } author={ this.state.author } />
+        <form id="book_form" onSubmit={ (e) => this.processSubmit(e) }>
           <div className='row'>
             <label className="text-right col-sm-6 col-form-label">Title: </label>
             <div className="col-sm-6">
@@ -116,7 +118,10 @@ class BookForm extends React.Component {
               <button className="col-12 btn btn-md" type="submit" name="submit" id="submit">Submit</button>
             </div>
           </div>
-        </form> */}
+        </form>
+        {/* <p>The book you have selected is:</p>
+        <p>Title: {this.state.title}</p>
+        <p>Author: {this.state.author}</p> */}
       </div>
     )
   }
