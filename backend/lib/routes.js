@@ -6,6 +6,7 @@ const bookApp = require('./controller.js')
 const auth = require('../middleware/auth')
 const User = require('./userModel')
 const router = Router()
+const genPassword = require('../config/passportSupport')
 
 router.get('/', async (req, res) => {
   await bookApp.getBookshelf()
@@ -43,20 +44,26 @@ router.post('/user-new', async (req, res) => {
         .json({ msg: 'An account with this username or email address already exists' })
     }
 
+    const saltHash = genPassword(password)
+
+    const salt = saltHash.salt
+    const hash = saltHash.hash
     const newUser = new User({
       username,
       email,
       location,
-      password
+      hash,
+      salt
     })
     const savedUser = await newUser.save()
     res.json(savedUser)
+    res.redirect('http://localhost:3000/sign-in')
   } catch (err) {
     res.status(500).json({ error: err.message })
   }
 })
 
-router.get('/user', auth, async (req, res) => {
+router.get('/user', passport.authenticate('local'), async (req, res) => {
   const user = await User.findById(req.user)
   res.json({
     displayName: user.displayName,
@@ -64,9 +71,12 @@ router.get('/user', auth, async (req, res) => {
   })
 })
 
-router.post('/login', passport.authenticate( 'local', {failureRedirect: '/sign-in' }), (err, req, res, next) => {
+router.post('/login', passport.authenticate('local'), (err, req, res, next) => {
   if (err) next(err)
-  console.log('You are logged')
+  console.log('signe int')
+  res.redirect('/user')
 })
+
+// router.post('/login', passport.authenticate( 'local', { failureRedirect: 'http://localhost:3000/sign-in' })
 
 module.exports = router

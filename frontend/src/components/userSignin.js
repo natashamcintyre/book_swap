@@ -32,6 +32,7 @@ class UserSignin extends React.Component {
      })
       .then((result) => {
        console.log(result)
+      // redirect to homepage
        })
       .catch((err) => {
         this.setError(err)
@@ -47,8 +48,8 @@ class UserSignin extends React.Component {
    render () {
      return (
       <div className="user_signin">
-        <form id="user_login" onSubmit ={ (e)  => this.processSubmit(e) }> 
-          <input type="text" name="username" id="username" placeholder="Enter Username" onChange={(e) => this.changeUsernameValue(e.target.value) } value={this.state.username} /> 
+        <form id="user_login" onSubmit ={ (e)  => this.processSubmit(e) }>
+          <input type="text" name="username" id="username" placeholder="Enter Username" onChange={(e) => this.changeUsernameValue(e.target.value) } value={this.state.username} />
           <input type="password" name="password" id="new_password" placeholder="Type your password" onChange={(e) => this.changePasswordValue(e.target.value)} value={this.state.password} />
           <button type="submit" name="submit" id="submit">Log In</button>
         </form>

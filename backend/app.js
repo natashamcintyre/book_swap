@@ -1,19 +1,20 @@
 import express from 'express'
 import cors from 'cors'
 import bodyParse from 'body-parser'
-var passport = require('passport');
-var crypto = require('crypto');
-const LocalStrategy = require('passport-local').Strategy;
-
 import mongoose from 'mongoose'
-import config from './config/config'
 
 const session = require('express-session');
-// const MongoStore = require('connect-mongo')(session);
+const MongoStore = require('connect-mongo').default
+// var passport = require('passport');
+// var crypto = require('crypto');
+// const LocalStrategy = require('passport-local').Strategy;
+
+import config from './config/config'
+import passport from './config/passportSetup'
 
 require('dotenv').config();
-const app = express()
 const routes = require('./lib/routes.js');
+const app = express()
 
 mongoose.connect(config.db, {
   useNewUrlParser: true,
@@ -37,56 +38,15 @@ app.use('/user-new', routes)
 app.use('/login', routes)
 app.use('/', routes)
 
-
 // const sessionStore = new MongoStore({ mongooseConnection: db, collection: 'sessions' })
 
 app.use(session({
-  secret: process.env.Secret,
+  secret: 'very very secret',
   resave: false,
   saveUninitialized: true,
-  // store: sessionStore
+  store: MongoStore.create({ mongoUrl: db, collection: 'sessions' })
 }))
 
-function validPassword(password, hash, salt) {
-  var hashVerify = crypto.pbkdf2Sync(password, salt, 10000, 64, 'sha512').toString('hex');
-  return hash === hashVerify;
-}
-function genPassword(password) {
-  var salt = crypto.randomBytes(32).toString('hex');
-  var genHash = crypto.pbkdf2Sync(password, salt, 10000, 64, 'sha512').toString('hex');
-  
-  return {
-    salt: salt,
-    hash: genHash
-  };
-}
-passport.use(new LocalStrategy(
-  function(username, password, cb) {
-      User.findOne({ username: username })
-          .then((user) => {
-              if (!user) { return cb(null, false) }
-              
-              const isValid = validPassword(password, user.hash, user.salt);
-              
-              if (isValid) {
-                  return cb(null, user);
-              } else {
-                  return cb(null, false);
-              }
-          })
-          .catch((err) => {   
-              cb(err);
-          });
-}));
-passport.serializeUser(function(user, cb) {
-  cb(null, user.id);
-});
-passport.deserializeUser(function(id, cb) {
-  User.findById(id, function (err, user) {
-      if (err) { return cb(err); }
-      cb(null, user);
-  });
-});
 app.use(passport.initialize());
 app.use(passport.session());
 
