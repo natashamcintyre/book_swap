@@ -1,9 +1,9 @@
 import React from 'react'
 import axios from 'axios'
+import PropTypes from 'prop-types'
 
 class BookForm extends React.Component {
-
-  constructor(props){
+  constructor () {
     super()
     this.state = {
       isbn: '',
@@ -33,13 +33,13 @@ class BookForm extends React.Component {
     })
   }
 
-  changePostcodeValue(change){
+  changePostcodeValue (change) {
     this.setState({
       postcode: change
     })
   }
 
-  changePhoneNumberValue(change){
+  changePhoneNumberValue (change) {
     this.setState({
       phoneNumber: change
     })
@@ -77,9 +77,10 @@ class BookForm extends React.Component {
     this.changeISBNValue('');
     this.changePostcodeValue('');
     this.changePhoneNumberValue('');
+
   }
 
-  render() {
+  render () {
     return (
       <div className="add_book">
         <form id="book_form" onSubmit={ (e) => this.processSubmit(e) }>
@@ -92,8 +93,12 @@ class BookForm extends React.Component {
         </form>
         <img key={ this.props.bookImageURL } src={ this.props.bookImageURL } />
       </div>
-    );
+    )
   }
+}
+
+BookForm.propTypes = {
+  submitBook: PropTypes.func
 }
 
 export default BookForm

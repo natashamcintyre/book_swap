@@ -25,6 +25,11 @@ app.use(bodyParse.json());
 app.use(cors());
 app.use('/', routes);
 
+// this was for heroku deployment testing
+app.get('/homepage', (req, res) => {
+  res.send("This is our homepage");
+})
+
 const server = app.listen(config.port, function(){
   console.log('App listening on port ' + config.port);
  })
