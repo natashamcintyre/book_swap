@@ -59,6 +59,19 @@ class BookMeUp extends Component {
     this.setAuthor('')
   }
 
+  submitSearchString = (searchString) => {
+    console.log('hi from submitSearchString')
+    axios.get(`${PORT}/search?searchString=${searchString}`, {
+
+    })
+      .then((result) => {
+        this.setBooks(result.data)
+      })
+      .catch((err) => {
+        this.setError(err)
+      })
+  }
+
   submitISBN = (isbn) => {
     axios.get(`${OPENLIBRARY}/api/books?bibkeys=ISBN:${isbn}&format=json&jscmd=data`, {
 
@@ -119,7 +132,7 @@ class BookMeUp extends Component {
       <HashRouter>
         <div className="homepage">
           <ErrorHandler error={ this.state.error }/>
-          <Navigation />
+          <Navigation submitSearchString={ this.submitSearchString }/>
           <Header />
           <Switch>
             <Route path="/sign-up">
