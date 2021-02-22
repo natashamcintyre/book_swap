@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import passport from 'passport'
 const bookApp = require('./controller.js')
 // const bcrypt = require('bcryptjs')
 // const jwt = require('jsonwebtoken')
@@ -61,6 +62,11 @@ router.get('/user', auth, async (req, res) => {
     displayName: user.displayName,
     id: user._id
   })
+})
+
+router.post('/login', passport.authenticate( 'local', {failureRedirect: '/sign-in' }), (err, req, res, next) => {
+  if (err) next(err)
+  console.log('You are logged')
 })
 
 module.exports = router

@@ -26,8 +26,23 @@ class UserSignin extends React.Component {
 
    processSubmit (e) {
      e.preventDefault()
-     this.
-   }
+     axios.post(`${PORT}/login`, {
+       username: this.state.username,
+       password: this.state.password
+     })
+      .then((result) => {
+       console.log(result)
+       })
+      .catch((err) => {
+        this.setError(err)
+       })
+    }
+
+    setError (error) {
+      this.setState({
+        error: error
+      })
+    }
 
    render () {
      return (
