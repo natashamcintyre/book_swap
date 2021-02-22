@@ -10,4 +10,11 @@ describe('user can add a book', () => {
     cy.get('form[id="book_form"]').submit()
     cy.get('div[class="row"]').should('exist')
   })
+
+  it('displays new books based on ISBN', () => {
+    cy.visit('http:localhost:3000')
+    cy.get('.btn#addBook').click()
+    cy.get('form[id="book_search"]').should('exist')
+    cy.get('input[id="ISBNSearch"]')
+  })
 })
