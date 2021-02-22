@@ -60,36 +60,36 @@ class BookForm extends React.Component {
           <div className='row'>
             <label className="text-right col-sm-6 col-form-label">Title: </label>
             <div className="col-sm-6">
-              <input type="text" name="title" id="title" onChange={(e) => this.changeTitleValue(e.target.value)} value={this.state.title} />
+              <input type="text" className='col-12' name="title" id="title" onChange={(e) => this.changeTitleValue(e.target.value)} value={this.state.title} />
             </div>
           </div>
           <div className='row'>
             <label className="text-right col-sm-6 col-form-label">Author: </label>
             <div className="col-sm-6">
-              <input type="text" name="author" id="author" onChange={(e) => this.changeAuthorValue(e.target.value)} value={this.state.author} />
+              <input type="text" className='col-12' name="author" id="author" onChange={(e) => this.changeAuthorValue(e.target.value)} value={this.state.author} />
             </div>
           </div>
           <div className='row'>
             <label className="text-right col-sm-6 col-form-label">ISBN: </label>
             <div className="col-sm-6">
-              <input type="text" name="ISBN" id="ISBN" onChange={(e) => this.changeIsbnValue(e.target.value)} value={this.state.isbn} />
+              <input type="text" className='col-12' name="ISBN" id="ISBN" onChange={(e) => this.changeIsbnValue(e.target.value)} value={this.state.isbn} />
             </div>
           </div>
           <div className='row'>
             <label className="text-right col-6 col-form-label">Phone Number: </label>
             <div className="col-6">
-              <input type="text" name="phone_number" id="phone_number" onChange={(e) => this.changePhoneNumberValue(e.target.value)} value={this.state.phoneNumber} />
+              <input type="text" className='col-12' name="phone_number" id="phone_number" onChange={(e) => this.changePhoneNumberValue(e.target.value)} value={this.state.phoneNumber} />
             </div>
           </div>
           <div className='row'>
             <label className="text-right col-6 col-form-label">Postcode: </label>
             <div className="col-6">
-              <input type="text" name="postcode" id="postcode" onChange={(e) => this.changePostcodeValue(e.target.value)} value={this.state.postcode} />
+              <input type="text" className='col-12' name="postcode" id="postcode" onChange={(e) => this.changePostcodeValue(e.target.value)} value={this.state.postcode} />
             </div>
           </div>
           <div className="form-group row">
-            <div className="col-12">
-              <button className="col-6 offset-6 btn btn-md" type="submit" name="submit" id="submit">Submit</button>
+            <div className="col-6 offset-6">
+              <button className="col-12 btn btn-md" type="submit" name="submit" id="submit">Submit</button>
             </div>
           </div>
         </form>
