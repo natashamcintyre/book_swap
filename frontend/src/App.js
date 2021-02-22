@@ -1,12 +1,10 @@
-// import logo from './logo.svg';
-// import './App.css';
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 import BookList from './components/bookList.js'
 import BookForm from './components/bookForm.js'
 import ErrorHandler from './components/errorHandler.js'
 import Navigation from './components/navigation.js'
 import Header from './components/header.js'
-import BooksContainer from './components/books_container.js'
 import Users from './components/users.js'
 import {
   BrowserRouter as Router,
@@ -15,28 +13,32 @@ import {
   Link,
   HashRouter
 } from 'react-router-dom'
+import BookSearch from './components/bookSearch.js'
+import BooksContainer from './components/booksContainer.js'
 
-
-import axios from 'axios';
-const PORT = 'http://localhost:3001';
+import axios from 'axios'
+const PORT = 'http://localhost:3001'
+const OPENLIBRARY = 'https://openlibrary.org'
 
 class BookMeUp extends Component {
-  constructor(){
+  constructor () {
     super()
     this.state = {
-      books: []
+      books: [],
+      bookISBN: '',
+      bookTitle: '',
+      bookAuthor: ''
     }
   }
 
   getBooks = () => {
     axios.get(`${PORT}/`)
-    .then((result)=>{
-      this.setBooks(result.data)
-      console.log(result.data)
+      .then((result) => {
+        this.setBooks(result.data)
       })
-    .catch((err)=>{
-      this.setError(err)
-    })
+      .catch((err) => {
+        this.setError(err)
+      })
   }
 
   submitBook = (title, author, isbn, postcode, phoneNumber) => {
@@ -54,33 +56,72 @@ class BookMeUp extends Component {
     .catch((err)=>{
       this.setError(err)
     })
+
+    this.setISBN('')
+    this.setTitle('')
+    this.setAuthor('')
+
+
   }
 
-  setError(error){
-    this.setState({
-      error: error
+  submitISBN = (isbn) => {
+    axios.get(`${OPENLIBRARY}/api/books?bibkeys=ISBN:${isbn}&format=json&jscmd=data`, {
+
+    })
+    .then((result) =>{
+      this.setISBN(isbn)
+      this.setTitle(result.data[`ISBN:${isbn}`].title)
+      this.setAuthor(result.data[`ISBN:${isbn}`].authors[0].name)
+      this.setImage(result.data[`ISBN:${isbn}`].cover.large)
+    })
+    .catch((err)=>{
+      console.log(err)
     })
   }
 
-  setBooks(books){
+  setError (error) {
+    this.setState({
+      error: error,
+    })
+  }
+
+
+  setBooks(books) {
     this.setState({
       books: books
     })
   }
 
-  componentDidMount(){
+  componentDidMount () {
     this.getBooks()
   }
 
-  // rerenderParentCallback() {
-  //   this.forceUpdate();
-  // }
+ setISBN(isbn) {
+    this.setState({
+      bookISBN: isbn
+    })
+  }
+
+  setTitle(title) {
+    this.setState({
+      bookTitle: title
+    })
+  }
+
+  setAuthor(author) {
+    this.setState({
+      bookAuthor: author
+    })
+  }
+
+
+ 
 
   render() {
     console.log(this.state)
     return (
       <HashRouter>
-        <div className="container">
+        <div className="homepage">
           <ErrorHandler error={ this.state.error }/>
           <Navigation />
           <Header />
@@ -90,7 +131,8 @@ class BookMeUp extends Component {
               <BooksContainer />
             </Route>
             <Route exact path="/">
-              <BookForm ref="bookFormRef" submitBook={ this.submitBook }/>
+              <BookSearch id="bookSearch" submitISBN={ this.submitISBN } />
+              <BookForm id="bookForm" submitBook={ this.submitBook } bookISBN={ this.state.bookISBN } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } />
               <BookList books={ this.state.books }/>
             </Route>
           </Switch>
@@ -100,4 +142,4 @@ class BookMeUp extends Component {
   }
 }
 
-export default BookMeUp;
+export default BookMeUp

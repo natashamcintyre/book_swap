@@ -26,6 +26,10 @@ app.use(cors());
 app.use('/user-new', routes);
 app.use('/', routes);
 
+// this was for heroku deployment testing
+app.get('/homepage', (req, res) => {
+  res.send("This is our homepage");
+})
 
 
 const server = app.listen(config.port, function(){

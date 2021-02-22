@@ -3,58 +3,73 @@ body {
   margin: 0;
 }
 
+i {
+  color: rgb(13, 43, 109);
+}
+
+.book-container {
+  text-align: center;
+  height: 150px;
+  /* margin: 3px; */
+  padding: 6px;
+  border: 1px solid rgb(13, 43, 109);
+}
+
 .navbar {
   background: rgb(246, 246, 246);
-}
-
-.nav-link,
-.navbar-brand {
-  color: rgb(5, 36, 107);
-  cursor: pointer;
-}
-
-.nav-link {
-  margin-right: 1em !important;
-}
-
-.nav-link:hover {
-  color: white;
-}
-
-.navbar-collapse {
-  justify-content: flex-end;
 }
 
 .header {
   background-color: rgb(13, 43, 109);
 }
 
-.description {
-  left: 50%;
-  position: absolute;
-  top: 45%;
-  transform: translate(-50%, -55%);
+.header-content {
+  padding: 80px 30px;
   text-align: center;
-}
-.description h1 {
   color: rgb(87, 195, 245);
 }
-.description p {
-  color: #fff;
-  font-size: 1.3rem;
-  line-height: 1.5;
-}
 
-.description button {
+.header-content button {
   border: 1px solid rgb(87, 195, 245);
   background: rgb(87, 195, 245);
   border-radius: 0;
   color: rgb(13, 43, 109);
 }
-.description button:hover {
-  border: 1px solid #fff;
-  background: #fff;
-  color: #000;
+.header-content button:hover {
+  border: 1px solid rgb(246, 246, 246);
+  background: rgb(246, 246, 246);
+  color: rgb(13, 43, 109);
+}
+
+.add_book {
+  margin: 10px;
+  padding: 10px;
+  background: rgb(13, 43, 109);
+  color: rgb(87, 195, 245);
+}
+
+#book_form button {
+  border: 1px solid rgb(87, 195, 245);
+  background: rgb(87, 195, 245);
+  border-radius: 0;
+  color: rgb(13, 43, 109);
+}
+#book_form button:hover {
+  border: 1px solid rgb(13, 43, 109);
+  background: rgb(13, 43, 109);
+  color: rgb(246, 246, 246);
+}
+
+.navbar button {
+  border: 1px solid rgb(87, 195, 245);
+  background: rgb(87, 195, 245);
+  border-radius: 0;
+  color: rgb(13, 43, 109);
+}
+.navbar button:hover {
+  border: 1px solid rgb(13, 43, 109);
+  background: rgb(13, 43, 109);
+  color: r  rgb(246, 246, 246);
 }
 
 .features {
@@ -65,7 +80,7 @@ body {
 
 .feature-title {
   color: #333;
-  font-size: 1.3rem; 
+  font-size: 1.3rem;
   font-weight: 700;
   margin-bottom: 20px;
   text-transform: uppercase;
@@ -76,4 +91,36 @@ body {
   -mox-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
   margin-bottom: 16px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 200px;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgb(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+  background-color: rgb(13, 43, 109);
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #fff;
+  width: 80%;
+}
+
+.close {
+  color: rgb(87, 195, 245);
+  font-size: 28px;
+}
+
+.close:hover,
+.close:focus {
+  color: rgb(87, 195, 245);
+  text-decoration: none;
+  cursor: pointer;
 }
