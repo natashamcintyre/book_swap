@@ -4,12 +4,13 @@ import {
   Link,
   Switch,
   Route,
+  HashRouter
 } from 'react-router-dom'
 
 class Navigation extends React.Component {
   render() {
     return(
-      <Router>
+      <HashRouter>
         <nav className="navbar navbar-expand-md">
           <Link to="/" className="navbar-brand">
           <img src="images/logo.png" width="150" height="150"></img>
@@ -30,7 +31,7 @@ class Navigation extends React.Component {
             <a href="#"><span className="glyphicon glyphicon-log-in"></span> Wishlist</a>
           </div>
         </nav>
-      </Router>
+      </HashRouter>
   )}
  }
 

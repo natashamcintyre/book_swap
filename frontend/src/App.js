@@ -12,7 +12,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  HashRouter
 } from 'react-router-dom'
 
 
@@ -78,23 +79,23 @@ class BookMeUp extends Component {
   render() {
     console.log(this.state)
     return (
-      <Router>
+      <HashRouter>
         <div className="container">
           <ErrorHandler error={ this.state.error }/>
           <Navigation />
           <Header />
           <Switch>
+            <Route path="/sign-up">
+              <Users />
+              <BooksContainer />
+            </Route>
             <Route exact path="/">
               <BookForm ref="bookFormRef" submitBook={ this.submitBook }/>
               <BookList books={ this.state.books }/>
             </Route>
-            <Route path='/sign-up'>
-              <Users />
-              <BooksContainer />
-            </Route>
           </Switch>
         </div>
-      </Router>
+      </HashRouter>
     );
   }
 }
