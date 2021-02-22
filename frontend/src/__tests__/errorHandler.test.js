@@ -1,3 +1,4 @@
+import React from 'react'
 import ErrorHandler from '../components/errorHandler'
 import errorMock from '../__mocks__/error.json'
 

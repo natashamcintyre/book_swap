@@ -1,3 +1,4 @@
+import React from 'react'
 import BookMeUp from '../App'
 
 import mockAxios from '../__mocks__/axios.js'

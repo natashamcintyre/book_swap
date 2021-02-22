@@ -1,3 +1,4 @@
+import React from 'react'
 import BookList from '../components/bookList'
 
 describe('booklist', () => {
@@ -7,7 +8,7 @@ describe('booklist', () => {
   })
 
   it('renders books list', () => {
-    const component = mount(<BookList />);
-    expect(component.exists('ul#books_list')).toBe(true);
-  });
+    const component = mount(<BookList />)
+    expect(component.exists('ul#books_list')).toBe(true)
+  })
 })
