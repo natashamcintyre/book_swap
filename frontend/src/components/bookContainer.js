@@ -2,9 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 class BookContainer extends React.Component {
-
   render () {
-    let book = JSON.parse(this.props.data.book)
+    const book = JSON.parse(this.props.data.book)
     return (
       <div className='book-container col-12 col-md-4 col-lg-2'>
           <div className='book-data' key={this.props.data._id}>
@@ -24,7 +23,8 @@ class BookContainer extends React.Component {
 }
 
 BookContainer.propTypes = {
-  book: PropTypes.object
+  data: PropTypes.object
+
 }
 
 export default BookContainer

@@ -8,9 +8,9 @@ const BookSchema = mongoose.Schema({
 })
 
 BookSchema.post('validate', function (doc, next) {
-    if (!doc.book || !doc.users ) {
-      next('Invalid book entry')
-    }
+  if (!doc.book || !doc.users) {
+    next('Invalid book entry')
+  }
   next()
 })
 

@@ -68,7 +68,7 @@ describe('BookMeUp', () => {
     const component = mount(<BookMeUp />)
 
     mockAxios.get.mockImplementation(() =>
-      Promise.resolve({ data: { 'ISBN:test_ISBN': { title: 'test_title', authors: [{ name: 'test_author' }], identifiers: { isbn_13: 'test_isbn'} } } }))
+      Promise.resolve({ data: { 'ISBN:test_ISBN': { title: 'test_title', authors: [{ name: 'test_author' }], identifiers: { isbn_13: 'test_isbn' } } } }))
 
     component.find('input#ISBNSearch').simulate('change', { target: { value: 'test_ISBN' } })
     component.find('form#book_search').simulate('submit')
@@ -86,8 +86,8 @@ describe('BookMeUp', () => {
 
     component.find('form#book_form').simulate('submit')
 
-    const book = JSON.stringify( {title: 'test_title', authors: [ { name: 'test_author'}], identifiers: { isbn_13: 'test_isbn'}} )
-    const user = { username: 'brad', email: 'brad@example.com', location: 'BS3 2LH'}
+    const book = JSON.stringify({ title: 'test_title', authors: [{ name: 'test_author' }], identifiers: { isbn_13: 'test_isbn' } })
+    const user = { username: 'brad', email: 'brad@example.com', location: 'BS3 2LH' }
     const data = { book: book, user: user }
 
     expect(mockAxios.post).toHaveBeenCalledWith('http://localhost:3001/add-book', data)

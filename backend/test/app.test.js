@@ -14,8 +14,8 @@ describe('Books API endpoint tests', function () {
 
   it('submit a book', function (done) {
     const data = {
-      book: { title: 'test_title', author: 'test_author'},
-      user: { username: 'brad', email: 'brad@example', location: 'postcode'}
+      book: { title: 'test_title', author: 'test_author' },
+      user: { username: 'brad', email: 'brad@example', location: 'postcode' }
     }
 
     console.log('pre request')
@@ -39,7 +39,7 @@ describe('Books API endpoint tests', function () {
   it('submit wrong book data and get an error', function (done) {
     const data = {
       book: '',
-      user: { username: 'brad' , email: 'brad@example' , location: 'BS3 2LH' }
+      user: { username: 'brad', email: 'brad@example', location: 'BS3 2LH' }
     }
     const res = request(app)
       .post('/add-book')
@@ -66,7 +66,7 @@ describe('Books API endpoint tests', function () {
         }
 
         expect(res.body.length).to.equal(1)
-        expect(res.body[0].book).to.deep.equal({ title: 'test_title', author: 'test_author'})
+        expect(res.body[0].book).to.deep.equal({ title: 'test_title', author: 'test_author' })
         done()
       })
   })
