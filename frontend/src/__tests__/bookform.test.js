@@ -58,16 +58,15 @@ describe('bookform', () => {
     expect(component.state('author')).toEqual('Test Author')
   })
 
-
   it('Clear message box on submit', async () => {
-    const component = mount(<BookForm submitBook={ function(item) {return true} }/>);
+    const component = mount(<BookForm submitBook={ function (item) { return true } }/>)
 
-    component.find('input#phone_number').simulate('change',{
-        target: {value: 'test_phone_number'}
+    component.find('input#phone_number').simulate('change', {
+      target: { value: 'test_phone_number' }
     })
 
-    component.find('input#postcode').simulate('change',{
-        target: {value: 'test_postcode'}
+    component.find('input#postcode').simulate('change', {
+      target: { value: 'test_postcode' }
     })
 
     component.find('form').simulate('submit')
@@ -76,11 +75,10 @@ describe('bookform', () => {
     await component.update()
     await component.find('BookForm').update()
 
-
     await component.find('input#phone_number').update()
-    expect(component.find('input#phone_number').props().value).toEqual('');
+    expect(component.find('input#phone_number').props().value).toEqual('')
 
     await component.find('input#postcode').update()
-    expect(component.find('input#postcode').props().value).toEqual('');
+    expect(component.find('input#postcode').props().value).toEqual('')
   })
 })

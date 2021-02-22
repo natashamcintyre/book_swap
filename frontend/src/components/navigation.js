@@ -1,12 +1,8 @@
-import React from 'react';
+import React from 'react'
 import {
-  BrowserRouter as Router,
   Link,
-  Switch,
-  Route,
   HashRouter
 } from 'react-router-dom'
-
 
 class Navigation extends React.Component {
   render () {
@@ -37,6 +33,5 @@ class Navigation extends React.Component {
     )
   }
 }
-
 
 export default Navigation

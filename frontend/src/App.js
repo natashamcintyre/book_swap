@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
 import BookList from './components/bookList.js'
 import BookForm from './components/bookForm.js'
 import ErrorHandler from './components/errorHandler.js'
@@ -7,10 +6,8 @@ import Navigation from './components/navigation.js'
 import Header from './components/header.js'
 import Users from './components/users.js'
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
-  Link,
   HashRouter
 } from 'react-router-dom'
 import BookSearch from './components/bookSearch.js'
@@ -50,43 +47,40 @@ class BookMeUp extends Component {
       postcode: postcode,
       phoneNumber: phoneNumber
     })
-    .then((result)=>{
-      this.getBooks()
-    })
-    .catch((err)=>{
-      this.setError(err)
-    })
+      .then((result) => {
+        this.getBooks()
+      })
+      .catch((err) => {
+        this.setError(err)
+      })
 
     this.setISBN('')
     this.setTitle('')
     this.setAuthor('')
-
-
   }
 
   submitISBN = (isbn) => {
     axios.get(`${OPENLIBRARY}/api/books?bibkeys=ISBN:${isbn}&format=json&jscmd=data`, {
 
     })
-    .then((result) =>{
-      this.setISBN(isbn)
-      this.setTitle(result.data[`ISBN:${isbn}`].title)
-      this.setAuthor(result.data[`ISBN:${isbn}`].authors[0].name)
-      this.setImage(result.data[`ISBN:${isbn}`].cover.large)
-    })
-    .catch((err)=>{
-      console.log(err)
-    })
+      .then((result) => {
+        this.setISBN(isbn)
+        this.setTitle(result.data[`ISBN:${isbn}`].title)
+        this.setAuthor(result.data[`ISBN:${isbn}`].authors[0].name)
+        this.setImage(result.data[`ISBN:${isbn}`].cover.large)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   setError (error) {
     this.setState({
-      error: error,
+      error: error
     })
   }
 
-
-  setBooks(books) {
+  setBooks (books) {
     this.setState({
       books: books
     })
@@ -96,28 +90,25 @@ class BookMeUp extends Component {
     this.getBooks()
   }
 
- setISBN(isbn) {
+  setISBN (isbn) {
     this.setState({
       bookISBN: isbn
     })
   }
 
-  setTitle(title) {
+  setTitle (title) {
     this.setState({
       bookTitle: title
     })
   }
 
-  setAuthor(author) {
+  setAuthor (author) {
     this.setState({
       bookAuthor: author
     })
   }
 
-
- 
-
-  render() {
+  render () {
     console.log(this.state)
     return (
       <HashRouter>
@@ -138,7 +129,7 @@ class BookMeUp extends Component {
           </Switch>
         </div>
       </HashRouter>
-    );
+    )
   }
 }
 

@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 class BookContainer extends React.Component {
-
   render () {
     return (
       <div className='book-container col-12 col-md-4 col-lg-2'>

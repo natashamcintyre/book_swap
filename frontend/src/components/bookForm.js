@@ -1,5 +1,4 @@
 import React from 'react'
-import axios from 'axios'
 import PropTypes from 'prop-types'
 
 class BookForm extends React.Component {
@@ -12,22 +11,21 @@ class BookForm extends React.Component {
       postcode: '',
       phoneNumber: ''
     }
-
   }
 
-  changeISBNValue(change){
+  changeISBNValue (change) {
     this.setState({
       isbn: change
     })
   }
 
-  changeTitleValue(change){
+  changeTitleValue (change) {
     this.setState({
       title: change
     })
   }
 
-  changeAuthorValue(change){
+  changeAuthorValue (change) {
     this.setState({
       author: change
     })
@@ -69,15 +67,14 @@ class BookForm extends React.Component {
     }
   }
 
-  processSubmit(e) {
-    e.preventDefault();
-    this.props.submitBook(this.bookTitle(), this.bookAuthor(), this.bookISBN(), this.state.postcode, this.state.phoneNumber);
-    this.changeTitleValue('');
-    this.changeAuthorValue('');
-    this.changeISBNValue('');
-    this.changePostcodeValue('');
-    this.changePhoneNumberValue('');
-
+  processSubmit (e) {
+    e.preventDefault()
+    this.props.submitBook(this.bookTitle(), this.bookAuthor(), this.bookISBN(), this.state.postcode, this.state.phoneNumber)
+    this.changeTitleValue('')
+    this.changeAuthorValue('')
+    this.changeISBNValue('')
+    this.changePostcodeValue('')
+    this.changePhoneNumberValue('')
   }
 
   render () {
@@ -126,7 +123,10 @@ class BookForm extends React.Component {
 }
 
 BookForm.propTypes = {
-  submitBook: PropTypes.func
+  submitBook: PropTypes.func,
+  bookTitle: PropTypes.string,
+  bookISBN: PropTypes.string,
+  bookAuthor: PropTypes.string
 }
 
 export default BookForm

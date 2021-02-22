@@ -1,82 +1,82 @@
-import React from 'react';
+import React from 'react'
 import axios from 'axios'
 
 const PORT = 'http://localhost:3001'
 
 class Users extends React.Component {
-    constructor () {
-        super()
-        this.state = {
-          username: '',
-          email: '',
-          location: '',
-          password: '',
-          passwordCheck: ''
-        }
+  constructor () {
+    super()
+    this.state = {
+      username: '',
+      email: '',
+      location: '',
+      password: '',
+      passwordCheck: ''
     }
+  }
 
-    changeUsernameValue(username) {
-        this.setState({
-            username: username
-        })
-    }
-    
-    changeEmailValue(email) {
-        this.setState({
-          email: email
-        })
-    }
-    
-    changeLocationValue(location) {
-        this.setState({
-          location: location
-        })
-    }
-    
-    changePasswordValue(password) {
-        this.setState({
-          password: password
-        })
-    }
-    
-    changePasswordCheckValue(password) {
-        this.setState({
-          passwordCheck: password
-        })
-    }
+  changeUsernameValue (username) {
+    this.setState({
+      username: username
+    })
+  }
 
-    processSubmit(e) {
-        e.preventDefault()
-        this.addUser(this.state.username, this.state.email, this.state.location, this.state.password, this.state.passwordCheck)
-        // post user to back end.
-        // if save is successful, navigate to homepage
-        // else display error and stay on this page. Highlight error area???
-    }
+  changeEmailValue (email) {
+    this.setState({
+      email: email
+    })
+  }
+
+  changeLocationValue (location) {
+    this.setState({
+      location: location
+    })
+  }
+
+  changePasswordValue (password) {
+    this.setState({
+      password: password
+    })
+  }
+
+  changePasswordCheckValue (password) {
+    this.setState({
+      passwordCheck: password
+    })
+  }
+
+  processSubmit (e) {
+    e.preventDefault()
+    this.addUser(this.state.username, this.state.email, this.state.location, this.state.password, this.state.passwordCheck)
+    // post user to back end.
+    // if save is successful, navigate to homepage
+    // else display error and stay on this page. Highlight error area???
+  }
 
     addUser = (username, email, location, password, passwordCheck) => {
-        axios.post(`${PORT}/user-new`, {
-          username: username,
-          email: email,
-          location: location,
-          password: password,
-          passwordCheck: passwordCheck
-        })
-        .then((result)=>{
+      axios.post(`${PORT}/user-new`, {
+        username: username,
+        email: email,
+        location: location,
+        password: password,
+        passwordCheck: passwordCheck
+      })
+        .then((result) => {
           console.log(result)
         })
-        .catch((err)=>{
+        .catch((err) => {
           this.setError(err)
         })
-      }
-    
-      setError(error) {
-        this.setState({
-          error: error
-        })
-      }
+    }
 
-    render() {
-        return (
+    setError (error) {
+      this.setState({
+        error: error
+      })
+    }
+
+    render () {
+      return (
             <div className="new_user">
             <form id="new_user_form" onSubmit={ (e) => this.processSubmit(e) }>
               <input type="text" name="username" id="new_username" placeholder="Choose a Username" onChange={(e) => this.changeUsernameValue(e.target.value)} value={this.state.username} />
@@ -87,8 +87,8 @@ class Users extends React.Component {
               <button type="submit" name="submit" id="submit">Sign Me Up</button>
             </form>
           </div>
-        );
-      }
+      )
+    }
 }
 
-export default Users;
+export default Users

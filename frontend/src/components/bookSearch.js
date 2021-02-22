@@ -1,27 +1,27 @@
 import React from 'react'
-import axios from 'axios'
+import PropTypes from 'prop-types'
 
 class BookSearch extends React.Component {
-  constructor() {
+  constructor () {
     super()
     this.state = {
       isbn: ''
     }
   }
 
-  changeIsbnValue(change) {
+  changeIsbnValue (change) {
     this.setState({
-      isbn:change
+      isbn: change
     })
   }
 
-  processSearch(e) {
+  processSearch (e) {
     e.preventDefault()
     this.props.submitISBN(this.state.isbn)
     this.changeIsbnValue('')
   }
 
-  render() {
+  render () {
     return (
       <div className="add_book">
         <form id="book_search" onSubmit={ (e) => this.processSearch(e) }>
@@ -29,7 +29,12 @@ class BookSearch extends React.Component {
           <button type="submit" name="search" id="search">Find My Book!</button>
         </form>
       </div>
-  )}
+    )
+  }
+}
+
+BookSearch.propTypes = {
+  submitISBN: PropTypes.func
 }
 
 export default BookSearch
