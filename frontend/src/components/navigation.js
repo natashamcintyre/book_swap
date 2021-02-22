@@ -23,7 +23,7 @@ class Navigation extends React.Component {
           </div>
         </div>
         <div className="navbar-icons col-2">
-          <Link to="/sign-up"><i className='fas fa-sign-in-alt'></i></Link>
+          <Link to="/sign-up" id="new_user"><i className='fas fa-sign-in-alt'></i></Link>
           <a href="#"><i className='fas fa-sign-out-alt'></i></a>
           <a href="#"><i className='fas fa-book'></i></a>
           <a href="#"><i className='fas fa-heart'></i></a>
