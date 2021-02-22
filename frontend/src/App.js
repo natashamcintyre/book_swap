@@ -61,13 +61,15 @@ class BookMeUp extends Component {
 
   submitISBN = (isbn) => {
     axios.get(`${OPENLIBRARY}/api/books?bibkeys=ISBN:${isbn}&format=json&jscmd=data`, {
-  
+
     })
       .then((result) => {
         this.setISBN(isbn)
         this.setTitle(result.data[`ISBN:${isbn}`].title)
         this.setAuthor(result.data[`ISBN:${isbn}`].authors[0].name)
-        this.setImage(result.data[`ISBN:${isbn}`].cover.large)
+        let titleBook = result.data[`ISBN:${isbn}`].title
+        let authorBook = result.data[`ISBN:${isbn}`].authors[0].name
+        // this.setImage(result.data[`ISBN:${isbn}`].cover.large)
       })
       .catch((err) => {
         console.log(err)
@@ -122,14 +124,14 @@ class BookMeUp extends Component {
               <BooksContainer />
             </Route>
             <Route exact path="/">
-            <button id="isbnSearchButton" className="btn btn-lg">Add a new book!</button>
-            <div id="isbnSearchModal" className="modal">
-            <div className="modal-content">
-              <span id="closeIsbnSearch" className="close">&times;</span>
-              <BookSearch id="bookSearch" submitISBN={ this.submitISBN } />
-              <BookForm id="bookForm" submitBook={ this.submitBook } bookISBN={ this.state.bookISBN } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } />
-            </div>
-          </div>
+              <button id="isbnSearchButton" className="btn btn-lg">Add a new book!</button>
+              <div id="isbnSearchModal" className="modal">
+                <div className="modal-content">
+                  <span id="closeIsbnSearch" className="close">&times;</span>
+                  <BookSearch id="bookSearch" submitISBN={ this.submitISBN } />
+                  <BookForm id="bookForm" submitISBN={ this.submitISBN } submitBook={ this.submitBook } bookISBN={ this.state.bookISBN } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } />
+                </div>
+              </div>
               <BookList books={ this.state.books }/>
             </Route>
           </Switch>

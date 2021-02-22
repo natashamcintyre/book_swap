@@ -81,7 +81,12 @@ class BookForm extends React.Component {
   render () {
     return (
       <div className="add_book col-12 col-md-5">
-        <Printer title={ this.state.title } author={ this.state.author } />
+        {/* <Printer title={ this.state.title } author={ this.state.author } /> */}
+        <div>
+            <p>The book you have selected is:</p>
+            <p>Title: {this.props.bookTitle}</p>
+            <p>Author: {this.props.bookAuthor}</p>
+        </div>
         <form id="book_form" onSubmit={ (e) => this.processSubmit(e) }>
           <div className='row'>
             <label className="text-right col-sm-6 col-form-label">Title: </label>
