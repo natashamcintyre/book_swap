@@ -82,7 +82,7 @@ class BookForm extends React.Component {
     return (
       <div className="add_book col-12 col-md-5">
         {/* <Printer title={ this.state.title } author={ this.state.author } /> */}
-        <div>
+        <div id='book-confirmation'>
             <p>The book you have selected is:</p>
             <p>Title: {this.props.bookTitle}</p>
             <p>Author: {this.props.bookAuthor}</p>
