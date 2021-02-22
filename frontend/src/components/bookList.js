@@ -6,12 +6,14 @@ class BookList extends React.Component {
   render () {
     if (this.props.books) {
       return (
-        <div className="book_list">
-          <ul id="books_list" key='books_list'>
-            {this.props.books.map(book =>
-              < BookContainer key={book._id} className='book' book={book}/>
-            )}
-          </ul>
+        <div className='container col-12'>
+          <div className="book_list" id="books_list" key='books_list'>
+              <div className='row'>
+                {this.props.books.map(book =>
+                  < BookContainer key={book._id} className='book' book={book}/>
+                )}
+              </div>
+          </div>
         </div>
       )
     } else {

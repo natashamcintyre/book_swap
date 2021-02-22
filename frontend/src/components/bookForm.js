@@ -82,16 +82,44 @@ class BookForm extends React.Component {
 
   render () {
     return (
-      <div className="add_book">
+      <div className="add_book col-12 col-md-5">
         <form id="book_form" onSubmit={ (e) => this.processSubmit(e) }>
-          <input type="text" name="ISBN" id="ISBN" placeholder="ISBN" onChange={(e) => this.changeISBNValue(e.target.value)} defaultValue={this.props.bookISBN} />
-          <input type="text" name="title" id="title" placeholder="Title" onChange={(e) => this.changeTitleValue(e.target.value)} defaultValue={this.props.bookTitle} />
-          <input type="text" name="author" id="author" placeholder="Author" onChange={(e) => this.changeAuthorValue(e.target.value)} defaultValue={this.props.bookAuthor } />
-          <input type="text" name="phone_number" id="phone_number" placeholder="Phone number" onChange={(e) => this.changePhoneNumberValue(e.target.value)} value={this.state.phoneNumber} />
-          <input type="text" name="postcode" id="postcode" placeholder="Postcode" onChange={(e) => this.changePostcodeValue(e.target.value)} value={this.state.postcode} />
-          <button type="submit" name="submit" id="submit">Submit</button>
+          <div className='row'>
+            <label className="text-right col-sm-6 col-form-label">Title: </label>
+            <div className="col-sm-6">
+              <input type="text" className='col-12' name="title" id="title" placeholder="Title" onChange={(e) => this.changeTitleValue(e.target.value)} defaultValue={this.props.bookTitle} />
+            </div>
+          </div>
+          <div className='row'>
+            <label className="text-right col-sm-6 col-form-label">Author: </label>
+            <div className="col-sm-6">
+              <input type="text" className='col-12' name="author" id="author" placeholder="Author" onChange={(e) => this.changeAuthorValue(e.target.value)} defaultValue={this.props.bookAuthor } />
+            </div>
+          </div>
+          <div className='row'>
+            <label className="text-right col-sm-6 col-form-label">ISBN: </label>
+            <div className="col-sm-6">
+              <input type="text" className='col-12' name="ISBN" id="ISBN" placeholder="ISBN" onChange={(e) => this.changeISBNValue(e.target.value)} defaultValue={this.props.bookISBN} />
+            </div>
+          </div>
+          <div className='row'>
+            <label className="text-right col-sm-6 col-form-label">Phone Number: </label>
+            <div className="col-sm-6">
+              <input type="text" className='col-12' name="phone_number" id="phone_number" onChange={(e) => this.changePhoneNumberValue(e.target.value)} value={this.state.phoneNumber} />
+            </div>
+          </div>
+          <div className='row'>
+            <label className="text-right col-sm-6 col-form-label">Postcode: </label>
+            <div className="col-sm-6">
+              <input type="text" className='col-12' name="postcode" id="postcode" onChange={(e) => this.changePostcodeValue(e.target.value)} value={this.state.postcode} />
+            </div>
+          </div>
+          <div className="form-group row">
+            <div className="col-sm-6 offset-6">
+              <button className="col-12 btn btn-md" type="submit" name="submit" id="submit">Submit</button>
+            </div>
+          </div>
         </form>
-        <img key={ this.props.bookImageURL } src={ this.props.bookImageURL } />
       </div>
     )
   }

@@ -108,7 +108,7 @@ class BookMeUp extends Component {
 
   render () {
     return (
-      <div className="container">
+      <div className="homepage">
         <ErrorHandler error={ this.state.error }/>
         <Navigation />
         <BookSearch id="bookSearch" submitISBN={ this.submitISBN } />
