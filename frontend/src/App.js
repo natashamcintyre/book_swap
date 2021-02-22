@@ -5,6 +5,14 @@ import BookForm from './components/bookForm.js'
 import ErrorHandler from './components/errorHandler.js'
 import Navigation from './components/navigation.js'
 import Header from './components/header.js'
+import Users from './components/users.js'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  HashRouter
+} from 'react-router-dom'
 import BookSearch from './components/bookSearch.js'
 import BooksContainer from './components/booksContainer.js'
 
@@ -88,7 +96,7 @@ class BookMeUp extends Component {
     this.getBooks()
   }
 
-  setISBN(isbn) {
+ setISBN(isbn) {
     this.setState({
       bookISBN: isbn
     })
@@ -106,17 +114,31 @@ class BookMeUp extends Component {
     })
   }
 
-  render () {
+
+ 
+
+  render() {
+    console.log(this.state)
     return (
-      <div className="homepage">
-        <ErrorHandler error={ this.state.error }/>
-        <Navigation />
-        <BookSearch id="bookSearch" submitISBN={ this.submitISBN } />
-        <BookForm id="bookForm" submitBook={ this.submitBook } bookISBN={ this.state.bookISBN } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } />
-        <BookList books={ this.state.books }/>
-        <BooksContainer />
-      </div>
-    )
+      <HashRouter>
+        <div className="homepage">
+          <ErrorHandler error={ this.state.error }/>
+          <Navigation />
+          <Header />
+          <Switch>
+            <Route path="/sign-up">
+              <Users />
+              <BooksContainer />
+            </Route>
+            <Route exact path="/">
+              <BookSearch id="bookSearch" submitISBN={ this.submitISBN } />
+              <BookForm id="bookForm" submitBook={ this.submitBook } bookISBN={ this.state.bookISBN } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } />
+              <BookList books={ this.state.books }/>
+            </Route>
+          </Switch>
+        </div>
+      </HashRouter>
+    );
   }
 }
 
