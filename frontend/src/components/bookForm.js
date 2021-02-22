@@ -80,7 +80,7 @@ class BookForm extends React.Component {
   render () {
     return (
       <div className="add_book col-12 col-md-5">
-        <form id="book_form" onSubmit={ (e) => this.processSubmit(e) }>
+        {/* <form id="book_form" onSubmit={ (e) => this.processSubmit(e) }>
           <div className='row'>
             <label className="text-right col-sm-6 col-form-label">Title: </label>
             <div className="col-sm-6">
@@ -116,7 +116,7 @@ class BookForm extends React.Component {
               <button className="col-12 btn btn-md" type="submit" name="submit" id="submit">Submit</button>
             </div>
           </div>
-        </form>
+        </form> */}
       </div>
     )
   }

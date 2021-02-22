@@ -10,7 +10,7 @@ import {
   Route,
   HashRouter
 } from 'react-router-dom'
-import BookSearch from './components/bookSearch.js'
+// import BookSearch from './components/bookSearch.js'
 import BooksContainer from './components/booksContainer.js'
 
 import axios from 'axios'
@@ -122,7 +122,7 @@ class BookMeUp extends Component {
               <BooksContainer />
             </Route>
             <Route exact path="/">
-              <BookSearch id="bookSearch" submitISBN={ this.submitISBN } />
+              {/* <BookSearch id="bookSearch" submitISBN={ this.submitISBN } /> */}
               <BookForm id="bookForm" submitBook={ this.submitBook } bookISBN={ this.state.bookISBN } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } />
               <BookList books={ this.state.books }/>
             </Route>

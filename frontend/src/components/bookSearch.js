@@ -24,6 +24,7 @@ class BookSearch extends React.Component {
   render () {
     return (
       <div className="add_book">
+        <p>be back later</p>
         <form id="book_search" onSubmit={ (e) => this.processSearch(e) }>
           <input type="text" name="ISBN" id="ISBNSearch" placeholder="ISBN" onChange={(e) => this.changeIsbnValue(e.target.value)} value={this.state.isbn} />
           <button type="submit" name="search" id="search">Find My Book!</button>

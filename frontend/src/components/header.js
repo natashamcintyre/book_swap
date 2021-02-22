@@ -1,4 +1,5 @@
 import React from 'react'
+import BookSearch from './bookSearch.js'
 
 class Header extends React.Component {
   render () {
@@ -11,8 +12,16 @@ class Header extends React.Component {
           <button id="howToButton" className="btn btn-lg">How to get a book!</button>
           <div id="howToModal" className="modal">
             <div className="modal-content">
-              <span className="close">&times;</span>
+              <span id="closeHowTo" className="close">&times;</span>
               <p>This bit will tell you how to join in with the fun.</p>
+            </div>
+          </div>
+          <button id="isbnSearchButton" className="btn btn-lg">Adda new book!</button>
+          <div id="isbnSearchModal" className="modal">
+            <div className="modal-content">
+              <span id="closeIsbnSearch" className="close">&times;</span>
+              <BookSearch id="bookSearch" submitISBN={ this.submitISBN } />
+              <p>This is the form where you can search by isbn number</p>
             </div>
           </div>
         </div>
