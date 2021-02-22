@@ -19,23 +19,17 @@ router.post('/add-book', async (req, res) => {
 })
 
 router.post('/user-new', async (req, res) => {
-  console.log('in the new userroute')
   try {
-    console.log('in the try block')
     const { username, email, password, passwordCheck, location } = req.body
-    console.log(req.body)
     if (!username || !email || !password || !passwordCheck || !location) {
-      console.log('I should not be here1')
       return res.status(400).json({ msg: 'Not all fields have been filled' })
     }
     if (password.length < 6) {
-      console.log('I should not be here2')
       return res
         .status(400)
         .json({ msg: 'Password needs to be 6 characters or longer' })
     }
     if (password !== passwordCheck) {
-      console.log('I should not be here3')
       return res
         .status(400)
         .json({ msg: 'Enter the password twice to be verified' })
@@ -54,11 +48,7 @@ router.post('/user-new', async (req, res) => {
       location,
       password
     })
-    console.log(newUser)
-    console.log('above me is the new user')
     const savedUser = await newUser.save()
-    console.log(savedUser)
-    console.log('above me is the saved user')
     res.json(savedUser)
   } catch (err) {
     res.status(500).json({ error: err.message })
