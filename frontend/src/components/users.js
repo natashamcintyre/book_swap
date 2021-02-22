@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const PORT = 'http://localhost:3001'
 
-class Users extends React.Component {
+class UserSignup extends React.Component {
   constructor () {
     super()
     this.state = {
@@ -80,10 +80,10 @@ class Users extends React.Component {
             <div className="new_user">
             <form id="new_user_form" onSubmit={ (e) => this.processSubmit(e) }>
               <input type="text" name="username" id="new_username" placeholder="Choose a Username" onChange={(e) => this.changeUsernameValue(e.target.value)} value={this.state.username} />
-              <input type="text" name="email" id="new_email" placeholder="Enter your email address" onChange={(e) => this.changeEmailValue(e.target.value)} value={this.state.email} />
+              <input type="email" name="email" id="new_email" placeholder="Enter your email address" onChange={(e) => this.changeEmailValue(e.target.value)} value={this.state.email} />
               <input type="text" name="location" id="new_location" placeholder="Enter your postcode" onChange={(e) => this.changeLocationValue(e.target.value)} value={this.state.location} />
-              <input type="text" name="password" id="new_password" placeholder="Type your password" onChange={(e) => this.changePasswordValue(e.target.value)} value={this.state.password} />
-              <input type="text" name="passwordCheck" id="new_passwordCheck" placeholder="Type your password again" onChange={(e) => this.changePasswordCheckValue(e.target.value)} value={this.state.passwordCheck} />
+              <input type="password" name="password" id="new_password" placeholder="Type your password" onChange={(e) => this.changePasswordValue(e.target.value)} value={this.state.password} />
+              <input type="password" name="passwordCheck" id="new_passwordCheck" placeholder="Type your password again" onChange={(e) => this.changePasswordCheckValue(e.target.value)} value={this.state.passwordCheck} />
               <button type="submit" name="submit" id="submit">Sign Me Up</button>
             </form>
           </div>
@@ -91,4 +91,4 @@ class Users extends React.Component {
     }
 }
 
-export default Users
+export default UserSignup

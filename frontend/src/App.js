@@ -4,7 +4,9 @@ import BookForm from './components/bookForm.js'
 import ErrorHandler from './components/errorHandler.js'
 import Navigation from './components/navigation.js'
 import Header from './components/header.js'
-import Users from './components/users.js'
+import UserSignup from './components/users.js'
+import UserSignin from './components/userSignin.js'
+
 import {
   Switch,
   Route,
@@ -117,7 +119,8 @@ class BookMeUp extends Component {
           <Header />
           <Switch>
             <Route path="/sign-up">
-              <Users />
+              <UserSignup />
+              <UserSignin />
               <BooksContainer />
             </Route>
             <Route exact path="/">
