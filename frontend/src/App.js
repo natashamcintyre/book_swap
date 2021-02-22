@@ -126,7 +126,6 @@ class BookMeUp extends Component {
               <BooksContainer />
             </Route>
             <Route exact path="/">
-              <button id="isbnSearchButton" className="btn btn-lg">Add a new book!</button>
               <div id="isbnSearchModal" className="modal">
                 <div className="modal-content">
                   <span id="closeIsbnSearch" className="close">&times;</span>
