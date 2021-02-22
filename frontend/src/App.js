@@ -15,7 +15,7 @@ import BooksContainer from './components/booksContainer.js'
 
 import axios from 'axios'
 const PORT = 'http://localhost:3001'
-const OPENLIBRARY = 'https://openlibrary.org'
+// const OPENLIBRARY = 'https://openlibrary.org'
 
 class BookMeUp extends Component {
   constructor () {
@@ -59,20 +59,20 @@ class BookMeUp extends Component {
     this.setAuthor('')
   }
 
-  submitISBN = (isbn) => {
-    axios.get(`${OPENLIBRARY}/api/books?bibkeys=ISBN:${isbn}&format=json&jscmd=data`, {
-
-    })
-      .then((result) => {
-        this.setISBN(isbn)
-        this.setTitle(result.data[`ISBN:${isbn}`].title)
-        this.setAuthor(result.data[`ISBN:${isbn}`].authors[0].name)
-        this.setImage(result.data[`ISBN:${isbn}`].cover.large)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }
+  // submitISBN = (isbn) => {
+  //   axios.get(`${OPENLIBRARY}/api/books?bibkeys=ISBN:${isbn}&format=json&jscmd=data`, {
+  //
+  //   })
+  //     .then((result) => {
+  //       this.setISBN(isbn)
+  //       this.setTitle(result.data[`ISBN:${isbn}`].title)
+  //       this.setAuthor(result.data[`ISBN:${isbn}`].authors[0].name)
+  //       this.setImage(result.data[`ISBN:${isbn}`].cover.large)
+  //     })
+  //     .catch((err) => {
+  //       console.log(err)
+  //     })
+  // }
 
   setError (error) {
     this.setState({
