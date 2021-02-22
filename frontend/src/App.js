@@ -109,7 +109,6 @@ class BookMeUp extends Component {
   }
 
   render () {
-    console.log(this.state)
     return (
       <HashRouter>
         <div className="homepage">
