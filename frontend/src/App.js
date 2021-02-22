@@ -43,7 +43,7 @@ class BookMeUp extends Component {
     // ADDRESS NEEDS CHECKING WITH BACKEND API
     axios.post(`${PORT}/add-book`, {
       book: JSON.stringify(this.state.book),
-      user: { username: 'brad' , email: 'brad@example' , location: 'BS3 2LH' }
+      user: { username: 'brad' , email: 'brad@example.com' , location: 'BS3 2LH' }
     })
       .then((result) => {
         console.log('result')
