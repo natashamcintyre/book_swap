@@ -18,7 +18,6 @@ class BookSearchToo extends React.Component {
   processSearch (e) {
     e.preventDefault()
     this.props.submitSearchString(this.state.searchString)
-    this.changeSearchStringValue('')
   }
 
   render () {

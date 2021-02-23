@@ -30,7 +30,7 @@ describe('bookSearchToo', () => {
     expect(component.state('searchString')).toEqual('Sapiens')
   })
 
-  it('Clear message box on submit', () => {
+  it('Does not clear message box on submit', () => {
     const component = mount(<BookSearchToo submitSearchString={ function (item) { return true } }/>)
     component.find('input#book_search_too_input').simulate('change', {
       target: { value: 'Sapiens' }
@@ -38,7 +38,7 @@ describe('bookSearchToo', () => {
     expect(component.state('searchString')).toEqual('Sapiens')
     component.find('form').simulate('submit')
 
-    expect(component.find('input#book_search_too_input').props().value).toEqual('')
-    expect(component.state('searchString')).toEqual('')
+    expect(component.find('input#book_search_too_input').props().value).toEqual('Sapiens')
+    expect(component.state('searchString')).toEqual('Sapiens')
   })
 })
