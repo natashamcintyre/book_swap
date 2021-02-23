@@ -8,13 +8,15 @@ class Header extends React.Component {
           <img src="images/logo.png"></img>
           <h1>Welcome to Book Me Up!</h1>
           <p>Books will be place in here in the near future</p>
-          <button id="howToButton" className="btn btn-lg">How to get a book!</button>
+          <button id="howToButton" className="btn btn-lg m-2">How to get a book!</button>
+          <button id="isbnSearchButton" className="btn btn-lg m-2">Add a new book!</button>
           <div id="howToModal" className="modal">
             <div className="modal-content">
-              <span className="close">&times;</span>
+              <span id="closeHowTo" className="close">&times;</span>
               <p>This bit will tell you how to join in with the fun.</p>
             </div>
           </div>
+
         </div>
       </div>
     )

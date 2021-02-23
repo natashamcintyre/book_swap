@@ -5,7 +5,7 @@ class BookContainer extends React.Component {
   render () {
     return (
       <div className='book-container col-12 col-md-4 col-lg-2'>
-          <div className='book-data' key={this.props.book._id}>
+          <div className='inner-book-container' key={this.props.book._id}>
             <div className="book-title font-weight-bold">
               <h5>{this.props.book.data.title}</h5>
             </div>

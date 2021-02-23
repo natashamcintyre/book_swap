@@ -8,11 +8,17 @@ i {
 }
 
 .book-container {
-  text-align: center;
-  height: 150px;
-  /* margin: 3px; */
+  height: 250px;
   padding: 6px;
+}
+
+.inner-book-container {
+  background-color: rgb(246, 246, 246);
+  padding: 15px;
+  height: 200px;
+  text-align: center;
   border: 1px solid rgb(13, 43, 109);
+  color: rgb(13, 43, 109);
 }
 
 .navbar {
