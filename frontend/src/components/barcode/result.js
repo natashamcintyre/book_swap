@@ -9,9 +9,10 @@ class Result extends Component {
     }
 
     return (
+      // put the isbn (result.codeResult.code) into the isbn search field
       <li>
         {' '}
-        {result.codeResult.code} [{result.codeResult.format}]{' '}
+        {result.codeResult.code}
       </li>
     )
   }

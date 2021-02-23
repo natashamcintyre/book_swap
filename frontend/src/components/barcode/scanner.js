@@ -31,6 +31,7 @@ class Scanner extends Component {
       },
     )
     Quagga.onDetected(this._onDetected)
+    Quagga.stop()
   }
 
   componentWillUnmount() {
