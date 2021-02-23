@@ -49,11 +49,11 @@ class BookMeUp extends Component {
     })
       .then((result) => {
         this.getBooks()
-        // alert("Book has been added to the bookshelf. Your community thanks you.")
+        alert("Book has been added to the bookshelf. Your community thanks you.")
       })
       .catch((err) => {
         this.setError(err)
-        // alert("Book has not been added to bookshelf. Please double check the fields.")
+        alert("Book has not been added to bookshelf. Please double check the fields.")
       })
 
     this.setISBN('')
@@ -140,21 +140,5 @@ class BookMeUp extends Component {
     )
   }
 }
-
-{/* <button id="isbnSearchButton" className="btn btn-lg">Adda new book!</button>
-          <div id="isbnSearchModal" className="modal">
-            <div className="modal-content">
-              <span id="closeIsbnSearch" className="close">&times;</span>
-              <Switch>
-                <Route exact path="/">
-                  <BookSearch id="bookSearch" submitISBN={ this.submitISBN } />
-                </Route>
-                <Route exact path="/isbnSearch">
-                  <BookForm id="bookForm" submitBook={ this.submitBook } bookISBN={ this.state.bookISBN } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } />
-                </Route>
-              </Switch>
-              <p>This is the form where you can search by isbn number</p>
-            </div>
-          </div> */}
 
 export default BookMeUp

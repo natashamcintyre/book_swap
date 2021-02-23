@@ -10,7 +10,7 @@ class BookList extends React.Component {
           <div className="book_list" id="books_list" key='books_list'>
               <div className='row'>
                 {this.props.books.map(book =>
-                  < BookContainer key={book._id} className='book' book={book}/>
+                  <BookContainer key={book._id} className='book' book={book}/>
                 )}
               </div>
           </div>
