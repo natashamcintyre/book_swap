@@ -45,12 +45,10 @@ class BookMeUp extends Component {
       user: { username: 'brad', email: 'brad@example.com', location: 'BS3 2LH' }
     })
       .then((result) => {
-        console.log('result')
         this.getBooks()
         alert("Book has been added to the bookshelf. Your community thanks you.")
       })
       .catch((err) => {
-        console.log('error')
         this.setError(err)
         alert("Book has not been added to bookshelf. Please double check the fields.")
       })
