@@ -15,6 +15,6 @@ describe('bookContainer', () => {
   it('takes books as props and displays them', () => {
     const component = mount(<BookContainer
         book={{ _id: 1, data: { title: 'testTitle', author: 'testAuthor', isbn: '999', postcode: 'test postcode', phoneNumber: '0857366366' } }} />)
-    expect(component.find('div.book-data').children().length).toBe(3)
+    expect(component.find('div.inner-book-container').children().length).toBe(3)
   })
 })
