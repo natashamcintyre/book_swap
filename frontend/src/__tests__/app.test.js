@@ -101,7 +101,7 @@ describe('BookMeUp', () => {
     expect(component.state('currentUser')).toBe('')
   })
 
-  it('posts data', async () => {
+  it('submit book posts data', async () => {
     const component = mount(<BookMeUp />)
     const instance = component.instance()
 
