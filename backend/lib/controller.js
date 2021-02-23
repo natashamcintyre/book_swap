@@ -1,11 +1,15 @@
 import BookModel from './model'
 
-function getBookshelf () {
-  return BookModel.find()
+function getBookshelf (searchString) {
+  if (searchString) {
+    return BookModel.find({ $text: { $search: searchString } })
+  } else {
+    return BookModel.find()
+  }
 }
 
 function addBook (data) {
-  const newBook = new BookModel({ data: data })
+  const newBook = new BookModel({ book: data.book, users: data.user })
   const savedBook = newBook.save()
   return savedBook
 }

@@ -21,6 +21,7 @@ class BookMeUp extends Component {
     super()
     this.state = {
       books: [],
+      book: {},
       bookISBN: '',
       bookTitle: '',
       bookAuthor: ''
@@ -40,11 +41,8 @@ class BookMeUp extends Component {
   submitBook = (title, author, isbn, postcode, phoneNumber) => {
     // ADDRESS NEEDS CHECKING WITH BACKEND API
     axios.post(`${PORT}/add-book`, {
-      title: title,
-      author: author,
-      isbn: isbn,
-      postcode: postcode,
-      phoneNumber: phoneNumber
+      book: JSON.stringify(this.state.book),
+      user: { username: 'brad', email: 'brad@example.com', location: 'BS3 2LH' }
     })
       .then((result) => {
         this.getBooks()
@@ -60,12 +58,25 @@ class BookMeUp extends Component {
     this.setAuthor('')
   }
 
+  submitSearchString = (searchString) => {
+    axios.get(`${PORT}/search?searchString=${searchString}`, {
+
+    })
+      .then((result) => {
+        this.setBooks(result.data)
+      })
+      .catch((err) => {
+        this.setError(err)
+      })
+  }
+
   submitISBN = (isbn) => {
     axios.get(`${OPENLIBRARY}/api/books?bibkeys=ISBN:${isbn}&format=json&jscmd=data`, {
 
     })
       .then((result) => {
         this.setISBN(isbn)
+        this.setBook(result.data[`ISBN:${isbn}`])
         this.setTitle(result.data[`ISBN:${isbn}`].title)
         this.setAuthor(result.data[`ISBN:${isbn}`].authors[0].name)
       })
@@ -88,6 +99,12 @@ class BookMeUp extends Component {
 
   componentDidMount () {
     this.getBooks()
+  }
+
+  setBook (book) {
+    this.setState({
+      book: book
+    })
   }
 
   setISBN (isbn) {
@@ -113,7 +130,7 @@ class BookMeUp extends Component {
       <HashRouter>
         <div className="homepage">
           <ErrorHandler error={ this.state.error }/>
-          <Navigation />
+          <Navigation submitSearchString={ this.submitSearchString }/>
           <Header bookISBN={ this.state.bookISBN } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor }/>
           <Switch>
             <Route path="/sign-up">

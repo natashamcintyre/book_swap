@@ -3,17 +3,18 @@ import PropTypes from 'prop-types'
 
 class BookContainer extends React.Component {
   render () {
+    const book = JSON.parse(this.props.data.book)
     return (
       <div className='book-container col-12 col-md-4 col-lg-2'>
-          <div className='inner-book-container' key={this.props.book._id}>
+          <div className='inner-book-container' key={this.props.data._id} >
             <div className="book-title font-weight-bold">
-              <h5>{this.props.book.data.title}</h5>
+              <h5>{book.title}</h5>
             </div>
             <div className="book-author font-italic">
-              <h6>{this.props.book.data.author}</h6>
+              <h6>{book.authors[0].name}</h6>
             </div>
             <div className="book-isbn">
-              <p>{this.props.book.data.isbn}</p>
+              <p>{book.identifiers.isbn_13}</p>
             </div>
           </div>
       </div>
@@ -22,7 +23,8 @@ class BookContainer extends React.Component {
 }
 
 BookContainer.propTypes = {
-  book: PropTypes.object
+  data: PropTypes.object
+
 }
 
 export default BookContainer
