@@ -153,7 +153,9 @@ class BookMeUp extends Component {
       const user = {
         displayName: localStorage.displayName,
         id: localStorage.id,
-        success: localStorage.success
+        success: localStorage.success,
+        email: localStorage.email,
+        location: localStorage.location
       }
       this.setCurrentUser(user)
     } else {
@@ -197,6 +199,8 @@ class BookMeUp extends Component {
     localStorage.setItem('displayName', data.displayName)
     localStorage.setItem('id', data.id)
     localStorage.setItem('success', data.success)
+    localStorage.setItem('email', data.email)
+    localStorage.setItem('location', data.location)
   }
 
   render () {
