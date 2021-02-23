@@ -1,24 +1,20 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-//this generates results from scanner
+class Result extends Component {
+  render() {
+    const result = this.props.result
 
-class Result extends React.Component {
-    propTypes: {
-        result: React.PropTypes.object
+    if (!result) {
+      return null
     }
 
-    render() {
-        const result = this.props.result;
-
-        if (!result) {
-            return null;
-        }
-        return (
-            <li>
-            {result.codeResult.code} [{result.codeResult.format}]
-            </li>
-        )
-    }
-})
+    return (
+      <li>
+        {' '}
+        {result.codeResult.code} [{result.codeResult.format}]{' '}
+      </li>
+    )
+  }
+}
 
 export default Result

@@ -6,8 +6,7 @@ import Navigation from './components/navigation.js'
 import Header from './components/header.js'
 import UserSignup from './components/userSignup.js'
 import UserSignin from './components/userSignin.js'
-import adapter from 'webrtc-adapter';
-import Quagga from 'quagga';
+import BarcodeScanner from './components/barcode/barcodeScanner.js'
 
 import {
   Switch,
@@ -185,6 +184,7 @@ class BookMeUp extends Component {
               <BooksContainer />
             </Route>
             <Route exact path="/">
+              <BarcodeScanner /> 
               <IsbnSearchModal submitISBN={ this.submitISBN } submitBook={ this.submitBook } bookISBN={ this.state.bookISBN } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } />
               <BookList books={ this.state.books }/>
             </Route>
