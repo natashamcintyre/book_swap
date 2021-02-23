@@ -1,5 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {
+  HashRouter
+} from 'react-router-dom'
 
 class BookSearch extends React.Component {
   constructor () {
@@ -23,12 +26,14 @@ class BookSearch extends React.Component {
 
   render () {
     return (
+      <HashRouter>
       <div className="add_book">
         <form id="book_search" onSubmit={ (e) => this.processSearch(e) }>
           <input type="text" name="ISBN" id="ISBNSearch" placeholder="ISBN" onChange={(e) => this.changeIsbnValue(e.target.value)} value={this.state.isbn} />
           <button type="submit" name="search" id="search">Find My Book!</button>
         </form>
       </div>
+      </HashRouter>
     )
   }
 }
