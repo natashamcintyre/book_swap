@@ -28,7 +28,8 @@ class Navigation extends React.Component {
           <BookSearchToo submitSearchString={ this.props.submitSearchString }/>
         </div>
         <div className="navbar-icons col-2">
-          <Link to="/sign-up" id="new_user"><i className='fas fa-sign-in-alt'></i></Link>
+          <Link to="/sign-up" id="new_user"><i className='fa fa-plus-square'></i></Link>
+          <Link to="/sign-in" id="new_session"><i className='fas fa-sign-in-alt'></i></Link>
           <a id="logout_link" onClick={this.logout}><i className='fas fa-sign-out-alt'></i></a>
           <a href="#"><i className='fas fa-book'></i></a>
           <a href="#"><i className='fas fa-heart'></i></a>

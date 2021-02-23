@@ -179,6 +179,9 @@ class BookMeUp extends Component {
           <Switch>
             <Route path="/sign-up">
               <UserSignup id="usersignupform" addUser={ this.addUser } />
+              <BooksContainer />
+            </Route>
+            <Route path="/sign-in">
               <UserSignin id="usersigninform" signinUser={ this.signinUser }/>
               <BooksContainer />
             </Route>
