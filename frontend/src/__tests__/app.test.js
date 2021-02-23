@@ -140,62 +140,63 @@ describe('BookMeUp erroring', () => {
   })
 })
 
-// describe('user routes', () => {
-//   beforeEach(() => {
-//     mockAxios.post.mockImplementation(() =>
-//       Promise.resolve({ data: [] }))
+xdescribe('user routes', () => {
+  beforeEach(() => {
+    mockAxios.post.mockImplementation(() =>
+      Promise.resolve({ data: [] }))
 
-//     mockAxios.get.mockImplementation(() =>
-//       Promise.resolve({ data: [] }))
-//   })
+    mockAxios.get.mockImplementation(() =>
+      Promise.resolve({ data: [] }))
+  })
 
-//   afterEach(() => {
-//     mockAxios.post.mockClear()
-//     mockAxios.get.mockClear()
-// })
+  afterEach(() => {
+    mockAxios.post.mockClear()
+    mockAxios.get.mockClear()
+})
 
-// it('successfully sends api request', () => {
-//   const component = mount(<BookMeUp />)
+it('successfully sends api request', () => {
+  const component = mount(<BookMeUp />)
 
-//   mockAxios.post.mockImplementation(() =>
-//     Promise.resolve({ success: true }))
+  mockAxios.post.mockImplementation(() =>
+    Promise.resolve({ success: true }))
 
-//   expect(component.find())
-// })
+  expect(component.find())
+})
 
-//   it('redirects to homepage following successful signup', async () => {
-//     const component = mount(<BookMeUp />)
+  it('redirects to homepage following successful signup', async () => {
+    const component = mount(<BookMeUp />)
 
-//     mockAxios.post.mockImplementation(() =>
-//       Promise.resolve({ success: true }))
+    mockAxios.post.mockImplementation(() =>
+      Promise.resolve({ success: true }))
 
-//     expect(component.find('Link#new_user').exists()).toBe(true)
-//     component.find('Link#new_user').simulate('click')
+    expect(component.find('Link#new_user').exists()).toBe(true)
+    component.find('Link#new_user').simulate('click')
 
-//     await component.find('UserSignup').update()
-//     expect(component.find('UserSignup').exists()).toBe(true)
-//     // await component.find('UserSignin').update()
-//     //
-//     // await component.find('input#ISBN').update()
-//     // await component.find('input#title').update()
-//     // await component.find('input#author').update()
+    await component.find('UserSignup').update()
+    expect(component.find('UserSignup').exists()).toBe(true)
+    // await component.find('UserSignin').update()
+    //
+    // await component.find('input#ISBN').update()
+    // await component.find('input#title').update()
+    // await component.find('input#author').update()
 
-//     component.find('input#new_username').simulate('change', { target: { value: 'username3' } })
-//     component.find('input#new_email').simulate('change', { target: { value: 'email@email' } })
-//     component.find('input#new_location').simulate('change', { target: { value: 'location' } })
-//     component.find('input#new_password').simulate('change', { target: { value: 'password' } })
-//     component.find('input#new_passwordCheck').simulate('change', { target: { value: 'password' } })
-//     component.find('form#new_user_form').simulate('submit')
+    component.find('input#new_username').simulate('change', { target: { value: 'username3' } })
+    component.find('input#new_email').simulate('change', { target: { value: 'email@email' } })
+    component.find('input#new_location').simulate('change', { target: { value: 'location' } })
+    component.find('input#new_password').simulate('change', { target: { value: 'password' } })
+    component.find('input#new_passwordCheck').simulate('change', { target: { value: 'password' } })
+    component.find('form#new_user_form').simulate('submit')
 
-//     expect(mockAxios.post).toHaveBeenCalledWith('http://localhost:3001/user-new',
-//       {
-//         username: 'username3',
-//         email: 'email@email',
-//         password: 'password',
-//         passwordCheck: 'password',
-//         location: 'location'
-//       })
+    expect(mockAxios.post).toHaveBeenCalledWith('http://localhost:3001/user-new',
+      {
+        username: 'username3',
+        email: 'email@email',
+        password: 'password',
+        passwordCheck: 'password',
+        location: 'location'
+      })
 
-//     await component.update()
-//     expect(component.find('BookForm').exists()).toBe(true)
-//   })
+    await component.update()
+    expect(component.find('BookForm').exists()).toBe(true)
+  })
+})

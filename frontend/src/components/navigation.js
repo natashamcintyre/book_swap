@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {
   Link,
-  HashRouter
+  HashRouter,
+  withRouter
 } from 'react-router-dom'
 
 import BookSearchToo from './bookSearchToo.js'
@@ -11,6 +12,7 @@ class Navigation extends React.Component {
   logout = (e) => {
     e.preventDefault()
     this.props.logout()
+    this.props.history.push('/sign-up')
   }
 
   render () {
@@ -39,7 +41,8 @@ class Navigation extends React.Component {
 
 Navigation.propTypes = {
   logout: PropTypes.func,
-  submitSearchString: PropTypes.func
+  submitSearchString: PropTypes.func,
+  history: PropTypes.string
 }
 
-export default Navigation
+export default withRouter(Navigation)
