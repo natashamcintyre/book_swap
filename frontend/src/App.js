@@ -60,7 +60,6 @@ class BookMeUp extends Component {
   }
 
   submitSearchString = (searchString) => {
-    console.log('hi from submitSearchString')
     axios.get(`${PORT}/search?searchString=${searchString}`, {
 
     })
