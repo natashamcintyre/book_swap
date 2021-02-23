@@ -85,8 +85,9 @@ class BookMeUp extends Component {
       passwordCheck: passwordCheck
     })
       .then((result) => {
-        if (result.data.success) {
-          return <Redirect to='/' />
+        if (result.status === 200) {
+          console.log(result.status)
+          return <Redirect exact to="/homepage" />
         }
       })
       .catch((err) => {
@@ -101,7 +102,7 @@ class BookMeUp extends Component {
     })
       .then((result) => {
         if (result.data.success) {
-          return <Redirect to='/' />
+          return <Redirect exact from="/sign-up" to="/" />
         }
       })
       .catch((err) => {

@@ -26,16 +26,16 @@ describe('navigation', () => {
     expect(component).toMatchSnapshot()
   })
 
-  it('logged in user can sign out', async () => {
-    const component = mount(<Navigation logout={ function (item) { return true } } />)
+  // it('logged in user can sign out', async () => {
+  //   const component = mount(<Navigation logout={ function (item) { return true } } />)
 
-    mockAxios.post.mockImplementation(() => {
-      Promise.resolve({ msg: 'You have successfully logged out' })
-    })
-    expect(component.exists('a#logout_link')).toBe(true)
-    component.find('a#logout_link').simulate('click')
-    expect(mockAxios.post).toHaveBeenCalledWith('http://localhost:3001/logout')
-    await component.update()
-    expect(component.find('UserSignin').exists()).toBe(true)
-  })
+  //   mockAxios.post.mockImplementation(() => {
+  //     Promise.resolve({ msg: 'You have successfully logged out' })
+  //   })
+  //   expect(component.exists('a#logout_link')).toBe(true)
+  //   component.find('a#logout_link').simulate('click')
+  //   expect(mockAxios.post).toHaveBeenCalledWith('http://localhost:3001/logout')
+  //   await component.update()
+  //   expect(component.find('UserSignin').exists()).toBe(true)
+  // })
 })

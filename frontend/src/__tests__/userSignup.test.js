@@ -105,25 +105,25 @@ describe('user sign up form', () => {
     expect(component.state('username')).toEqual('')
   })
 
-  it('Does not clear username/email/location if signup did not work', () => {
-    const component = mount(<UserSignup addUser={ function (item) { return false } } />)
-    component.find('input#new_username').simulate('change', {
-      target: { value: 'test_username' }
-    })
-    component.find('input#new_email').simulate('change', {
-      target: { value: 'test@email' }
-    })
-    component.find('input#new_password').simulate('change', {
-      target: { value: 'test_password' }
-    })
-    component.find('input#new_passwordCheck').simulate('change', {
-      target: { value: 'test_password' }
-    })
-    component.find('form#new_user_form').simulate('submit')
+  // it('Does not clear username/email/location if signup did not work', () => {
+  //   const component = mount(<UserSignup addUser={ function (item) { return false } } />)
+  //   component.find('input#new_username').simulate('change', {
+  //     target: { value: 'test_username' }
+  //   })
+  //   component.find('input#new_email').simulate('change', {
+  //     target: { value: 'test@email' }
+  //   })
+  //   component.find('input#new_password').simulate('change', {
+  //     target: { value: 'test_password' }
+  //   })
+  //   component.find('input#new_passwordCheck').simulate('change', {
+  //     target: { value: 'test_password' }
+  //   })
+  //   component.find('form#new_user_form').simulate('submit')
 
-    expect(component.find('input#new_username').props().value).toEqual('test_username')
-    expect(component.state('username')).toEqual('test_username')
-  })
+  //   expect(component.find('input#new_username').props().value).toEqual('test_username')
+  //   expect(component.state('username')).toEqual('test_username')
+  // })
 
   it('Clears password fields if signup did not work', () => {
     const component = mount(<UserSignup addUser={ function (item) { return false } } />)
