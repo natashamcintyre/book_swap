@@ -27,7 +27,8 @@ class BookMeUp extends Component {
       book: {},
       bookISBN: '',
       bookTitle: '',
-      bookAuthor: ''
+      bookAuthor: '',
+      currentUser: ''
     }
   }
 
@@ -97,7 +98,7 @@ class BookMeUp extends Component {
     })
       .then((result) => {
         if (result.status === 200) {
-          console.log(result.status)
+          this.setCurrentUser(result.data)
           return <Redirect exact to="/homepage" />
         }
       })
@@ -113,6 +114,7 @@ class BookMeUp extends Component {
     })
       .then((result) => {
         if (result.data.success) {
+          this.setCurrentUser(result.data)
           return <Redirect exact from="/sign-up" to="/" />
         }
       })
@@ -123,7 +125,7 @@ class BookMeUp extends Component {
 
   logout = () => {
     axios.post(`${PORT}/logout`).then((result) => {
-      console.log(result.msg)
+      this.setCurrentUser('')
       // And display on page?
       return <Redirect to='/sign-up' />
     })
@@ -166,6 +168,12 @@ class BookMeUp extends Component {
   setAuthor (author) {
     this.setState({
       bookAuthor: author
+    })
+  }
+
+  setCurrentUser (data) {
+    this.setState({
+      currentUser: data
     })
   }
 
