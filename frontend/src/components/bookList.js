@@ -9,8 +9,8 @@ class BookList extends React.Component {
         <div className='container col-12'>
           <div className="book_list" id="books_list" key='books_list'>
               <div className='row'>
-                {this.props.books.map(book =>
-                  < BookContainer key={book._id} className='book' book={book}/>
+                {this.props.books.map(data =>
+                  < BookContainer key={data._id} className='book' data={data}/>
                 )}
               </div>
           </div>
@@ -19,7 +19,7 @@ class BookList extends React.Component {
     } else {
       return (
       <div className="book_list">
-        <ul id='books_list'>no books</ul>
+        <div className='books_list'>no books</div>
       </div>
       )
     }

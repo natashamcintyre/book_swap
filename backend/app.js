@@ -52,6 +52,8 @@ app.use('/user-new', routes)
 app.use('/user', routes)
 app.use('/login', routes)
 app.use('/', routes)
+app.use('/search', routes)
+
 // this was for heroku deployment testing
 app.get('/homepage', (req, res) => {
   res.send('This is our homepage')

@@ -5,6 +5,8 @@ import {
   HashRouter
 } from 'react-router-dom'
 
+import BookSearchToo from './bookSearchToo.js'
+
 class Navigation extends React.Component {
   logout = (e) => {
     e.preventDefault()
@@ -21,12 +23,7 @@ class Navigation extends React.Component {
           </Link>
         </div>
         <div className='navbar-search col-8'>
-          <div className="searchform">
-            <form className="form-inline search-form">
-              <input className="form-control col-8 mr-sm-2" type="search" placeholder="Search author, title, ISBN number... " aria-label="Search"/>
-              <button className="btn btn-outline-secondary btn-sm col-3">Find a book</button>
-            </form>
-          </div>
+          <BookSearchToo submitSearchString={ this.props.submitSearchString }/>
         </div>
         <div className="navbar-icons col-2">
           <Link to="/sign-up" id="new_user"><i className='fas fa-sign-in-alt'></i></Link>
@@ -41,7 +38,8 @@ class Navigation extends React.Component {
 }
 
 Navigation.propTypes = {
-  logout: PropTypes.func
+  logout: PropTypes.func,
+  submitSearchString: PropTypes.func
 }
 
 export default Navigation

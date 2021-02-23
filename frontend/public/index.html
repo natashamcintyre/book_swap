@@ -17,18 +17,38 @@
         else document.addEventListener('DOMContentLoaded', callback)
       }
       ready(() => {
-        var modal = document.getElementById("howToModal");
-        var btn = document.getElementById("howToButton");
-        var close = document.getElementsByClassName("close")[0];
-        btn.onclick = function() {
-          modal.style.display = "block";
+        var howToModal = document.getElementById("howToModal");
+        var howToBtn = document.getElementById("howToButton");
+
+        var isbnSearchModal = document.getElementById("isbnSearchModal");
+        var isbnSearchBtn = document.getElementById("isbnSearchButton");
+
+        var closeHowTo = document.getElementById("closeHowTo");
+        var closeIsbnSearch = document.getElementById("closeIsbnSearch");
+
+        howToBtn.onclick = function() {
+          howToModal.style.display = "block";
         }
-        close.onclick = function() {
-          modal.style.display = "none";
+
+        closeHowTo.onclick = function() {
+          howToModal.style.display = "none";
         }
         window.onclick = function(event) {
-          if (event.target == modal) {
-            modal.style.display = "none";
+          if (event.target == howToModal) {
+            howToModal.style.display = "none";
+          }
+        }
+
+        isbnSearchBtn.onclick = function() {
+          isbnSearchModal.style.display = "block";
+        }
+
+        closeIsbnSearch.onclick = function() {
+          isbnSearchModal.style.display = "none";
+        }
+        window.onclick = function(event) {
+          if (event.target == isbnSearchModal) {
+            isbnSearchModal.style.display = "none";
           }
         }
       })

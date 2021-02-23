@@ -3,11 +3,14 @@
 import mongoose from 'mongoose'
 
 const BookSchema = mongoose.Schema({
-  data: Object
+  book: Object,
+  users: Array
 })
 
+
+
 BookSchema.post('validate', function (doc, next) {
-  if (!doc.data.title || !doc.data.author || !doc.data.isbn || !doc.data.postcode || !doc.data.phoneNumber) {
+  if (!doc.book || !doc.users) {
     next('Invalid book entry')
   }
   next()
@@ -21,5 +24,7 @@ BookSchema.post('find', function (doc, next) {
 })
 
 const BookModel = mongoose.model('books', BookSchema)
+
+BookModel.collection.createIndex( { book: "text" })
 
 export default BookModel

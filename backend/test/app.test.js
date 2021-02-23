@@ -3,23 +3,21 @@ import mongoose from 'mongoose'
 import { expect } from 'chai'
 import app from '../app.js'
 
+import BookModel from '../lib/model'
+
 describe('Books API endpoint tests', function () {
-  before(function (done) {
-    mongoose.connect('mongodb://localhost/testBooks', { useNewUrlParser: true, useFindAndModify: false }, function () {
-      mongoose.connection.db.dropDatabase(function () {
-        done()
-      })
-    })
+  before(async function () {
+    await mongoose.connect('mongodb://localhost/testBooks', { useNewUrlParser: true, useFindAndModify: false })
+
+    await BookModel.remove({})
   })
 
   it('submit a book', function (done) {
     const data = {
-      title: 'Just So Stories',
-      author: 'Rudyard Kipling',
-      isbn: 9780192822765,
-      postcode: 'test_postcode',
-      phoneNumber: 'test_phoneNumber'
+      book: JSON.stringify({ title: 'test_title', author: 'test_author' }),
+      user: { username: 'brad', email: 'brad@example', location: 'postcode' }
     }
+
     const res = request(app)
       .post('/add-book')
       .send(data)
@@ -30,17 +28,17 @@ describe('Books API endpoint tests', function () {
         if (err) {
           return done(err)
         }
-        expect(res.body.data.title).to.equal('Just So Stories')
+
+        expect(JSON.parse(res.body.book).title).to.equal('test_title')
+        expect(res.body.users[0].username).to.equal('brad')
         done()
       })
   })
 
   it('submit wrong book data and get an error', function (done) {
     const data = {
-      title: 'Just So Stories',
-      isbn: 9780192822765,
-      postcode: 'test_postcode',
-      phoneNumber: 'test_phoneNumber'
+      book: '',
+      user: { username: 'brad', email: 'brad@example', location: 'BS3 2LH' }
     }
     const res = request(app)
       .post('/add-book')
@@ -67,7 +65,36 @@ describe('Books API endpoint tests', function () {
         }
 
         expect(res.body.length).to.equal(1)
-        expect(res.body[0].data).to.deep.equal({ title: 'Just So Stories', author: 'Rudyard Kipling', isbn: 9780192822765, postcode: 'test_postcode', phoneNumber: 'test_phoneNumber' })
+        expect(JSON.parse(res.body[0].book)).to.deep.equal({ title: 'test_title', author: 'test_author' })
+        done()
+      })
+  })
+
+  it('gets from backend bookshelf with search', function (done) {
+    const data = {
+      book: JSON.stringify({ title: 'another_title', author: 'test_author' }),
+      user: { username: 'brad', email: 'brad@example', location: 'postcode' }
+    }
+
+    let res = {}
+
+    request(app)
+      .post('/add-book')
+      .send(data)
+      .set('Accept', 'application/json')
+      .then(
+        res = request(app)
+          .get('/search?searchString=test_title')
+      )
+
+    res.expect(200)
+      .end(function (err, res) {
+        if (err) {
+          return done(err)
+        }
+
+        expect(res.body.length).to.equal(1)
+        expect(JSON.parse(res.body[0].book)).to.deep.equal({ title: 'test_title', author: 'test_author' })
         done()
       })
   })
