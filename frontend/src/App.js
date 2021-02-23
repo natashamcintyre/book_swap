@@ -42,10 +42,11 @@ class BookMeUp extends Component {
       })
   }
 
-  submitBook = (title, author, isbn, postcode, phoneNumber) => {
+  submitBook = () => {
     axios.post(`${PORT}/add-book`, {
       book: JSON.stringify(this.state.book),
-      user: { username: 'brad', email: 'brad@example.com', location: 'BS3 2LH' }
+      // need to turn this into an ObjectId for mongodb somehow?? maybe backend??
+      user: this.state.currentUser.id
     })
       .then((result) => {
         this.getBooks()
@@ -191,7 +192,7 @@ class BookMeUp extends Component {
               <BooksContainer />
             </Route>
             <Route exact path="/">
-              <IsbnSearchModal submitISBN={ this.submitISBN } submitBook={ this.submitBook } bookISBN={ this.state.bookISBN } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } />
+              <IsbnSearchModal submitISBN={ this.submitISBN } submitBook={ this.submitBook } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } />
               <BookList books={ this.state.books }/>
             </Route>
           </Switch>
