@@ -10,6 +10,5 @@ describe('user finds and adds book to database', () => {
     cy.get('button[id="submit"]').click()
     cy.get('div[id="books_list"]').should('contain', 'Harry Potter and the Deathly Hallows')
     cy.get('div[id="books_list"]').should('contain', 'J. K. Rowling')
-
   })
 })
