@@ -3,13 +3,13 @@ import mongoose from 'mongoose'
 import { expect } from 'chai'
 import app from '../app.js'
 
+import BookModel from '../lib/model'
+
 describe('Books API endpoint tests', function () {
-  before(function (done) {
-    mongoose.connect('mongodb://localhost/testBooks', { useNewUrlParser: true, useFindAndModify: false }, function () {
-      mongoose.connection.db.dropDatabase(function () {
-        done()
-      })
-    })
+  before(async function () {
+    await mongoose.connect('mongodb://localhost/testBooks', { useNewUrlParser: true, useFindAndModify: false })
+
+    await BookModel.remove({})
   })
 
   it('submit a book', function (done) {
@@ -76,7 +76,7 @@ describe('Books API endpoint tests', function () {
       user: { username: 'brad', email: 'brad@example', location: 'postcode' }
     }
 
-    let res = {};
+    let res = {}
 
     request(app)
       .post('/add-book')
@@ -87,15 +87,11 @@ describe('Books API endpoint tests', function () {
           .get('/search?searchString=test_title')
       )
 
-
     res.expect(200)
       .end(function (err, res) {
         if (err) {
           return done(err)
         }
-
-        console.log('hello from test')
-        console.log(res.body)
 
         expect(res.body.length).to.equal(1)
         expect(JSON.parse(res.body[0].book)).to.deep.equal({ title: 'test_title', author: 'test_author' })

@@ -13,13 +13,7 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/search', async (req, res) => {
-
-  console.log('hello from /search route')
-  console.log(req.query)
-
-  let searchString = req.query.searchString;
-
-  console.log(searchString)
+  const searchString = req.query.searchString
 
   await bookApp.getBookshelf(searchString)
     .then((books) => res.json(books))

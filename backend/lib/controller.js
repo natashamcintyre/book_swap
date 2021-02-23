@@ -1,15 +1,11 @@
 import BookModel from './model'
 
 function getBookshelf (searchString) {
-  console.log('hello from getBookShelf')
-  console.log(searchString)
-
   if (searchString) {
-    return BookModel.find( { $text: { $search: searchString} } )
+    return BookModel.find({ $text: { $search: searchString } })
   } else {
     return BookModel.find()
   }
-
 }
 
 function addBook (data) {
