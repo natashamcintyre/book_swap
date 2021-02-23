@@ -23,9 +23,27 @@
         var isbnSearchModal = document.getElementById("isbnSearchModal");
         var isbnSearchBtn = document.getElementById("isbnSearchButton");
 
+        var userSignUpModal = document.getElementById("userSignUpModal");
+        var userSignUpModalBtn = document.getElementById("new_user");
+
         var closeHowTo = document.getElementById("closeHowTo");
         var closeIsbnSearch = document.getElementById("closeIsbnSearch");
+        var closeSignUpModal= document.getElementById("closeUserSignup");
 
+        userSignUpModalBtn.onclick = function() {
+          userSignUpModal.style.display = "block";
+        }
+
+        closeSignUpModal.onclick = function() {
+          userSignUpModal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+          if (event.target == userSignUpModal) {
+            userSignUpModal.style.display = "none";
+          }
+        }
+        // above is what we're working on 
         howToBtn.onclick = function() {
           howToModal.style.display = "block";
         }

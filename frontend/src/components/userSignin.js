@@ -31,6 +31,8 @@ class UserSignin extends React.Component {
     this.changeUsernameValue('')
     this.changePasswordValue('')
     this.props.history.push('/')
+    var userSignUpModal = document.getElementById('userSignUpModal')
+    userSignUpModal.style.display = 'none'
   }
 
   render () {

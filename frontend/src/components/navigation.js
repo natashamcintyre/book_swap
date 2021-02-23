@@ -12,7 +12,7 @@ class Navigation extends React.Component {
   logout = (e) => {
     e.preventDefault()
     this.props.logout()
-    this.props.history.push('/sign-up')
+    this.props.history.push('/')
   }
 
   render () {
@@ -42,7 +42,7 @@ class Navigation extends React.Component {
 Navigation.propTypes = {
   logout: PropTypes.func,
   submitSearchString: PropTypes.func,
-  history: PropTypes.string
+  history: PropTypes.any
 }
 
 export default withRouter(Navigation)

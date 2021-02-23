@@ -52,6 +52,8 @@ class UserSignup extends React.Component {
     this.props.addUser(this.state.username, this.state.email, this.state.location, this.state.password, this.state.passwordCheck)
     this.clearForm()
     this.props.history.push('/')
+    var userSignUpModal = document.getElementById('userSignUpModal')
+    userSignUpModal.style.display = 'none'
   }
 
   clearForm () {

@@ -4,8 +4,9 @@ import IsbnSearchModal from './components/isbnSearchModal.js'
 import ErrorHandler from './components/errorHandler.js'
 import Navigation from './components/navigation.js'
 import Header from './components/header.js'
-import UserSignup from './components/userSignup.js'
-import UserSignin from './components/userSignin.js'
+// import UserSignup from './components/userSignup.js'
+// import UserSignin from './components/userSignin.js'
+import UserSignupModal from './components/userSignUpModal.js'
 
 import {
   Switch,
@@ -125,7 +126,7 @@ class BookMeUp extends Component {
     axios.post(`${PORT}/logout`).then((result) => {
       console.log(result.msg)
       // And display on page?
-      return <Redirect to='/sign-up' />
+      // return <Redirect to='/sign-up' />
     })
   }
 
@@ -178,8 +179,9 @@ class BookMeUp extends Component {
           <Header bookISBN={ this.state.bookISBN } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor }/>
           <Switch>
             <Route path="/sign-up">
-              <UserSignup id="usersignupform" addUser={ this.addUser } />
-              <UserSignin id="usersigninform" signinUser={ this.signinUser }/>
+              {/* <UserSignup id="usersignupform" addUser={ this.addUser } /> */}
+              <UserSignupModal addUser={ this.addUser } signinUser={ this.signinUser }/>
+              {/* <UserSignin id="usersigninform" signinUser={ this.signinUser }/> */}
               <BooksContainer />
             </Route>
             <Route exact path="/">
