@@ -8,6 +8,11 @@ import {
 import BookSearchToo from './bookSearchToo.js'
 
 class Navigation extends React.Component {
+  logout = (e) => {
+    e.preventDefault()
+    this.props.logout()
+  }
+
   render () {
     return (
       <HashRouter>
@@ -21,8 +26,8 @@ class Navigation extends React.Component {
           <BookSearchToo submitSearchString={ this.props.submitSearchString }/>
         </div>
         <div className="navbar-icons col-2">
-          <Link to="/sign-up"><i className='fas fa-sign-in-alt'></i></Link>
-          <a href="#"><i className='fas fa-sign-out-alt'></i></a>
+          <Link to="/sign-up" id="new_user"><i className='fas fa-sign-in-alt'></i></Link>
+          <a id="logout_link" onClick={this.logout}><i className='fas fa-sign-out-alt'></i></a>
           <a href="#"><i className='fas fa-book'></i></a>
           <a href="#"><i className='fas fa-heart'></i></a>
         </div>
@@ -33,6 +38,7 @@ class Navigation extends React.Component {
 }
 
 Navigation.propTypes = {
+  logout: PropTypes.func,
   submitSearchString: PropTypes.func
 }
 

@@ -71,6 +71,10 @@ class BookForm extends React.Component {
   processSubmit (e) {
     e.preventDefault()
     this.props.submitBook(this.bookTitle(), this.bookAuthor(), this.bookISBN(), this.state.postcode, this.state.phoneNumber)
+    this.clearForm()
+  }
+
+  clearForm () {
     this.changeTitleValue('')
     this.changeAuthorValue('')
     this.changeISBNValue('')

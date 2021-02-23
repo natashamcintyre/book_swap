@@ -4,11 +4,14 @@ import IsbnSearchModal from './components/isbnSearchModal.js'
 import ErrorHandler from './components/errorHandler.js'
 import Navigation from './components/navigation.js'
 import Header from './components/header.js'
-import Users from './components/users.js'
+import UserSignup from './components/userSignup.js'
+import UserSignin from './components/userSignin.js'
+
 import {
   Switch,
   Route,
-  HashRouter
+  HashRouter,
+  Redirect
 } from 'react-router-dom'
 import BooksContainer from './components/booksContainer.js'
 
@@ -39,7 +42,6 @@ class BookMeUp extends Component {
   }
 
   submitBook = (title, author, isbn, postcode, phoneNumber) => {
-    // ADDRESS NEEDS CHECKING WITH BACKEND API
     axios.post(`${PORT}/add-book`, {
       book: JSON.stringify(this.state.book),
       user: { username: 'brad', email: 'brad@example.com', location: 'BS3 2LH' }
@@ -83,6 +85,48 @@ class BookMeUp extends Component {
       .catch((err) => {
         console.log(err)
       })
+  }
+
+  addUser = (username, email, location, password, passwordCheck) => {
+    axios.post(`${PORT}/user-new`, {
+      username: username,
+      email: email,
+      location: location,
+      password: password,
+      passwordCheck: passwordCheck
+    })
+      .then((result) => {
+        if (result.status === 200) {
+          console.log(result.status)
+          return <Redirect exact to="/homepage" />
+        }
+      })
+      .catch((err) => {
+        this.setError(err)
+      })
+  }
+
+  signinUser = (username, password) => {
+    axios.post(`${PORT}/login`, {
+      username: username,
+      password: password
+    })
+      .then((result) => {
+        if (result.data.success) {
+          return <Redirect exact from="/sign-up" to="/" />
+        }
+      })
+      .catch((err) => {
+        this.setError(err)
+      })
+  }
+
+  logout = () => {
+    axios.post(`${PORT}/logout`).then((result) => {
+      console.log(result.msg)
+      // And display on page?
+      return <Redirect to='/sign-up' />
+    })
   }
 
   setError (error) {
@@ -130,11 +174,12 @@ class BookMeUp extends Component {
       <HashRouter>
         <div className="homepage">
           <ErrorHandler error={ this.state.error }/>
-          <Navigation submitSearchString={ this.submitSearchString }/>
+          <Navigation submitSearchString={ this.submitSearchString } logout={ this.logout }/>
           <Header bookISBN={ this.state.bookISBN } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor }/>
           <Switch>
             <Route path="/sign-up">
-              <Users />
+              <UserSignup id="usersignupform" addUser={ this.addUser } />
+              <UserSignin id="usersigninform" signinUser={ this.signinUser }/>
               <BooksContainer />
             </Route>
             <Route exact path="/">
