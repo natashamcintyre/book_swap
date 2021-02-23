@@ -49,11 +49,11 @@ class BookMeUp extends Component {
     })
       .then((result) => {
         this.getBooks()
-        alert("Book has been added to the bookshelf. Your community thanks you.")
+        // alert("Book has been added to the bookshelf. Your community thanks you.")
       })
       .catch((err) => {
         this.setError(err)
-        alert("Book has not been added to bookshelf. Please double check the fields.")
+        // alert("Book has not been added to bookshelf. Please double check the fields.")
       })
 
     this.setISBN('')
@@ -113,7 +113,6 @@ class BookMeUp extends Component {
   }
 
   render () {
-    console.log(this.state)
     return (
       <HashRouter>
         <div className="homepage">
