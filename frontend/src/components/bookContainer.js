@@ -17,9 +17,11 @@ class BookContainer extends React.Component {
             <div className="book-isbn">
               <p>{book.identifiers.isbn_13}</p>
             </div>
-            <div className="book-current-user">
-              <p>{this.props.data.users}</p>
-            </div>
+            {/*
+            // <div className="book-current-user">
+            //   <p>{this.props.data.users[0]}</p>
+            // </div>
+            */}
           </div>
       </div>
     )

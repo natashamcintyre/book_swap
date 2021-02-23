@@ -35,6 +35,7 @@ class BookMeUp extends Component {
   getBooks = () => {
     axios.get(`${PORT}/`)
       .then((result) => {
+        console.log(result.data)
         this.setBooks(result.data)
       })
       .catch((err) => {

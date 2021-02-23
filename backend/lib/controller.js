@@ -9,7 +9,7 @@ function getBookshelf (searchString) {
 }
 
 function addBook (data) {
-  const newBook = new BookModel({ book: data.book, users: ObjectId(data.user) })
+  const newBook = new BookModel({ book: data.book, users: data.user })
   const savedBook = newBook.save()
   return savedBook
 }
