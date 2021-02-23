@@ -155,16 +155,16 @@ describe('BookMeUp erroring', () => {
 //   afterEach(() => {
 //     mockAxios.post.mockClear()
 //     mockAxios.get.mockClear()
-  // })
+// })
 
-  // it('successfully sends api request', () => {
-  //   const component = mount(<BookMeUp />)
-    
-  //   mockAxios.post.mockImplementation(() =>
-  //     Promise.resolve({ success: true }))
-    
-  //   expect(component.find())
-  // })
+// it('successfully sends api request', () => {
+//   const component = mount(<BookMeUp />)
+
+//   mockAxios.post.mockImplementation(() =>
+//     Promise.resolve({ success: true }))
+
+//   expect(component.find())
+// })
 
 //   it('redirects to homepage following successful signup', async () => {
 //     const component = mount(<BookMeUp />)
