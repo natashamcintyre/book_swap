@@ -47,7 +47,7 @@ class BookMeUp extends Component {
     axios.post(`${PORT}/add-book`, {
       book: JSON.stringify(this.state.book),
       // need to turn this into an ObjectId for mongodb somehow?? maybe backend??
-      user: this.state.currentUser.id
+      user: this.state.currentUser
     })
       .then((result) => {
         this.getBooks()

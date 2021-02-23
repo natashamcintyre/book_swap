@@ -5,6 +5,7 @@ class BookContainer extends React.Component {
   render () {
     console.log(this.props.data)
     const book = JSON.parse(this.props.data.book)
+
     return (
       <div className='book-container col-12 col-md-4 col-lg-2'>
           <div className='inner-book-container' key={this.props.data._id} id={this.props.data._id} >
@@ -14,14 +15,14 @@ class BookContainer extends React.Component {
             <div className="book-author font-italic">
               <h6>{book.authors[0].name}</h6>
             </div>
-            <div className="book-isbn">
-              <p>{book.identifiers.isbn_13}</p>
+            <div className="book-image">
+              <img src={book.cover.medium}/>
             </div>
-            {/*
-            // <div className="book-current-user">
-            //   <p>{this.props.data.users[0]}</p>
-            // </div>
-            */}
+            <div className="book-current-user">
+              <div>Name: {this.props.data.users[0].displayName}</div>
+              <div>Email: {this.props.data.users[0].email}</div>
+              <div>Location: {this.props.data.users[0].location}</div>
+            </div>
           </div>
       </div>
     )

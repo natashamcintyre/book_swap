@@ -66,7 +66,7 @@ describe('BookMeUp', () => {
     const instance = component.instance()
 
     mockAxios.post.mockImplementation(() =>
-      Promise.resolve({ data: {displayName: "User", id: "testid", success: 'Logged in as User.'}})
+      Promise.resolve({ data: { displayName: 'User', id: 'testid', success: 'Logged in as User.' } })
     )
 
     await instance.signinUser('User', 'password')
@@ -79,7 +79,7 @@ describe('BookMeUp', () => {
     const instance = component.instance()
 
     mockAxios.post.mockImplementation(() =>
-      Promise.resolve({ status: 200, data: {displayName: "User", id: "testid", success: 'Logged in as User.'}})
+      Promise.resolve({ status: 200, data: { displayName: 'User', id: 'testid', success: 'Logged in as User.' } })
     )
 
     await instance.addUser('User', 'user@bookmeup.com', 'SW1A 1AA', 'password', 'password')
@@ -106,7 +106,7 @@ describe('BookMeUp', () => {
     const instance = component.instance()
 
     mockAxios.post.mockImplementation(() =>
-      Promise.resolve({ data: {displayName: "User", id: "testid", success: 'Logged in as User.'}})
+      Promise.resolve({ data: { displayName: 'User', id: 'testid', success: 'Logged in as User.', email: 'test@example', location: 'test_postcode' } })
     )
 
     await instance.signinUser('User', 'password')
@@ -114,7 +114,7 @@ describe('BookMeUp', () => {
     expect(component.state('currentUser').displayName).toBe('User')
 
     mockAxios.get.mockImplementation(() =>
-      Promise.resolve({ data: { 'ISBN:test_ISBN': { title: 'test_title', authors: [{ name: 'test_author' }], identifiers: { isbn_13: 'test_isbn' } } } }))
+      Promise.resolve({ data: { 'ISBN:test_ISBN': { title: 'test_title', authors: [{ name: 'test_author' }], identifiers: { isbn_13: 'test_isbn' }, cover: { medium: 'test_url' } } } }))
 
     component.find('input#ISBNSearch').simulate('change', { target: { value: 'test_ISBN' } })
     component.find('form#book_search').simulate('submit')
@@ -122,18 +122,17 @@ describe('BookMeUp', () => {
     await component.find('BookSearch')
     await component.update()
     await component.find('div#book-confirmation').update()
-
+    //
     mockAxios.get.mockImplementation(() =>
-      Promise.resolve({ data: [{_id: 'book_id' , book: { title: 'test_title', authors: [{ name: 'test_author' }], identifiers: { isbn_13: 'test_isbn' } }, user: 'user_id'}] }))
-
+      Promise.resolve({ data: [{ _id: 'book_id', book: { title: 'test_title', authors: [{ name: 'test_author' }], identifiers: { isbn_13: 'test_isbn' }, cover: { medium: 'test_url' } }, user: { displayName: 'User', email: 'test@example', location: 'test_postcode' } }] }))
+    //
     component.find('form#book_form').simulate('submit')
-
-    const book = JSON.stringify({ title: 'test_title', authors: [{ name: 'test_author' }], identifiers: { isbn_13: 'test_isbn' } })
-    const user = 'testid'
+    //
+    const book = JSON.stringify({ title: 'test_title', authors: [{ name: 'test_author' }], identifiers: { isbn_13: 'test_isbn' }, cover: { medium: 'test_url' } })
+    const user = { displayName: 'User', id: 'testid', success: 'Logged in as User.', email: 'test@example', location: 'test_postcode' }
     const data = { book: book, user: user }
 
     expect(mockAxios.post).toHaveBeenCalledWith('http://localhost:3001/add-book', data)
-
   })
 })
 
@@ -159,7 +158,6 @@ describe('BookMeUp erroring', () => {
     expect(component.state().error).toEqual({ response: { data: 'error text from json mock' } })
     expect(component.find('#error').text()).toBe('Error: error text from json mock')
   })
-
 })
 
 //   it('loads err on Post err', async () => {
