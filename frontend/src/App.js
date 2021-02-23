@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import BookList from './components/bookList.js'
-import BookForm from './components/bookForm.js'
-import BookSearch from './components/bookSearch.js'
+import IsbnSearchModal from './components/isbnSearchModal.js'
 import ErrorHandler from './components/errorHandler.js'
 import Navigation from './components/navigation.js'
 import Header from './components/header.js'
@@ -49,11 +48,11 @@ class BookMeUp extends Component {
     })
       .then((result) => {
         this.getBooks()
-        alert("Book has been added to the bookshelf. Your community thanks you.")
+        // alert("Book has been added to the bookshelf. Your community thanks you.")
       })
       .catch((err) => {
         this.setError(err)
-        alert("Book has not been added to bookshelf. Please double check the fields.")
+        // alert("Book has not been added to bookshelf. Please double check the fields.")
       })
 
     this.setISBN('')
@@ -69,8 +68,8 @@ class BookMeUp extends Component {
         this.setISBN(isbn)
         this.setTitle(result.data[`ISBN:${isbn}`].title)
         this.setAuthor(result.data[`ISBN:${isbn}`].authors[0].name)
-        let titleBook = result.data[`ISBN:${isbn}`].title
-        let authorBook = result.data[`ISBN:${isbn}`].authors[0].name
+        const titleBook = result.data[`ISBN:${isbn}`].title
+        const authorBook = result.data[`ISBN:${isbn}`].authors[0].name
         // this.setImage(result.data[`ISBN:${isbn}`].cover.large)
       })
       .catch((err) => {
@@ -125,13 +124,7 @@ class BookMeUp extends Component {
               <BooksContainer />
             </Route>
             <Route exact path="/">
-              <div id="isbnSearchModal" className="modal">
-                <div className="modal-content">
-                  <span id="closeIsbnSearch" className="close">&times;</span>
-                  <BookSearch id="bookSearch" submitISBN={ this.submitISBN } />
-                  <BookForm id="bookForm" submitISBN={ this.submitISBN } submitBook={ this.submitBook } bookISBN={ this.state.bookISBN } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } />
-                </div>
-              </div>
+              <IsbnSearchModal submitISBN={ this.submitISBN } submitBook={ this.submitBook } bookISBN={ this.state.bookISBN } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } />
               <BookList books={ this.state.books }/>
             </Route>
           </Switch>

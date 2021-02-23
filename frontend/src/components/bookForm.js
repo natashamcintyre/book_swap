@@ -81,47 +81,15 @@ class BookForm extends React.Component {
   render () {
     return (
       <div className="add_book col-12 col-md-5">
-        {/* <Printer title={ this.state.title } author={ this.state.author } /> */}
-        <div id='book-confirmation'>
-            <p>The book you have selected is:</p>
-            <p>Title: {this.props.bookTitle}</p>
-            <p>Author: {this.props.bookAuthor}</p>
-        </div>
+        <Printer bookTitle={ this.props.bookTitle } bookAuthor={ this.props.bookAuthor } />
         <form id="book_form" onSubmit={ (e) => this.processSubmit(e) }>
-          <div className='row'>
-            <div className="col-sm-6">
-              <input type="text" className='col-12' name="title" id="title" placeholder="Title" onChange={(e) => this.changeTitleValue(e.target.value)} defaultValue={this.props.bookTitle} hidden />
-            </div>
-          </div>
-          <div className='row'>
-            <div className="col-sm-6">
-              <input type="text" className='col-12' name="author" id="author" placeholder="Author" onChange={(e) => this.changeAuthorValue(e.target.value)} defaultValue={this.props.bookAuthor } hidden />
-            </div>
-          </div>
-          <div className='row'>
-            <div className="col-sm-6">
-              <input type="text" className='col-12' name="ISBN" id="ISBN" placeholder="ISBN" onChange={(e) => this.changeISBNValue(e.target.value)} defaultValue={this.props.bookISBN} hidden />
-            </div>
-          </div>
-          <div className='row'>
-            <div className="col-sm-6">
-              <input type="text" className='col-12' name="phone_number" id="phone_number" onChange={(e) => this.changePhoneNumberValue(e.target.value)} value={this.state.phoneNumber} hidden />
-            </div>
-          </div>
-          <div className='row'>
-            <div className="col-sm-6">
-              <input type="text" className='col-12' name="postcode" id="postcode" onChange={(e) => this.changePostcodeValue(e.target.value)} value={this.state.postcode} hidden />
-            </div>
-          </div>
-          <div className="form-group row">
-            <div className="col-sm-6 offset-6">
-              <button className="col-12 btn btn-md" type="submit" name="submit" id="submit">Submit</button>
-            </div>
-          </div>
+          <input type="text" name="title" id="title" onChange={(e) => this.changeTitleValue(e.target.value)} defaultValue={this.props.bookTitle} hidden />
+          <input type="text" name="author" id="author" onChange={(e) => this.changeAuthorValue(e.target.value)} defaultValue={this.props.bookAuthor } hidden />
+          <input type="text" name="ISBN" id="ISBN" onChange={(e) => this.changeISBNValue(e.target.value)} defaultValue={this.props.bookISBN} hidden />
+          <input type="text" name="phone_number" id="phone_number" onChange={(e) => this.changePhoneNumberValue(e.target.value)} value={this.state.phoneNumber} hidden />
+          <input type="text" name="postcode" id="postcode" onChange={(e) => this.changePostcodeValue(e.target.value)} value={this.state.postcode} hidden />
+          <button className="col-12 btn btn-md" type="submit" name="submit" id="submit">Submit</button>
         </form>
-        {/* <p>The book you have selected is:</p>
-        <p>Title: {this.state.title}</p>
-        <p>Author: {this.state.author}</p> */}
       </div>
     )
   }
