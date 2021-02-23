@@ -205,6 +205,7 @@ class BookMeUp extends Component {
           <ErrorHandler error={ this.state.error }/>
           <Navigation submitSearchString={ this.submitSearchString } logout={ this.logout }/>
           <Header bookISBN={ this.state.bookISBN } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor }/>
+          <IsbnSearchModal submitISBN={ this.submitISBN } submitBook={ this.submitBook } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } />
           <Switch>
             <Route path="/sign-up">
               <UserSignup id="usersignupform" addUser={ this.addUser } />
@@ -212,7 +213,6 @@ class BookMeUp extends Component {
               <BooksContainer />
             </Route>
             <Route exact path="/">
-              <IsbnSearchModal submitISBN={ this.submitISBN } submitBook={ this.submitBook } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } />
               <BookList books={ this.state.books }/>
             </Route>
           </Switch>
