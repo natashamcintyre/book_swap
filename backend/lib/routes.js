@@ -57,6 +57,10 @@ router.post('/user-new', async (req, res) => {
   }
 })
 
+router.post('/logout', (req, res) => {
+  req.logout()
+  res.status(200).json({ msg: 'You have successfully logged out' })
+})
 // router.get('/user', passport.authenticate('local'), async (req, res) => {
 //   const user = await User.findById(req.user)
 //   res.json({

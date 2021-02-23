@@ -146,5 +146,4 @@ describe('user sign up form', () => {
     expect(component.find('input#new_passwordCheck').props().value).toEqual('')
     expect(component.state('passwordCheck')).toEqual('')
   })
-
 })

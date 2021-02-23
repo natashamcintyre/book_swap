@@ -1,7 +1,5 @@
 import React from 'react'
-import axios from 'axios'
-
-const PORT = 'http://localhost:3001'
+import PropTypes from 'prop-types'
 
 class UserSignup extends React.Component {
   constructor () {
@@ -79,6 +77,10 @@ class UserSignup extends React.Component {
       </div>
     )
   }
+}
+
+UserSignup.propTypes = {
+  addUser: PropTypes.func
 }
 
 export default UserSignup

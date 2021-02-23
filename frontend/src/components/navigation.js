@@ -1,10 +1,16 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {
   Link,
   HashRouter
 } from 'react-router-dom'
 
 class Navigation extends React.Component {
+  logout = (e) => {
+    e.preventDefault()
+    this.props.logout()
+  }
+
   render () {
     return (
       <HashRouter>
@@ -24,7 +30,7 @@ class Navigation extends React.Component {
         </div>
         <div className="navbar-icons col-2">
           <Link to="/sign-up" id="new_user"><i className='fas fa-sign-in-alt'></i></Link>
-          <a href="#"><i className='fas fa-sign-out-alt'></i></a>
+          <a id="logout_link" onClick={this.logout}><i className='fas fa-sign-out-alt'></i></a>
           <a href="#"><i className='fas fa-book'></i></a>
           <a href="#"><i className='fas fa-heart'></i></a>
         </div>
@@ -32,6 +38,10 @@ class Navigation extends React.Component {
       </HashRouter>
     )
   }
+}
+
+Navigation.propTypes = {
+  logout: PropTypes.func
 }
 
 export default Navigation

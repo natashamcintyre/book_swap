@@ -4,13 +4,14 @@ import BookForm from './components/bookForm.js'
 import ErrorHandler from './components/errorHandler.js'
 import Navigation from './components/navigation.js'
 import Header from './components/header.js'
-import UserSignup from './components/users.js'
+import UserSignup from './components/userSignup.js'
 import UserSignin from './components/userSignin.js'
 
 import {
   Switch,
   Route,
-  HashRouter
+  HashRouter,
+  Redirect
 } from 'react-router-dom'
 import BookSearch from './components/bookSearch.js'
 import BooksContainer from './components/booksContainer.js'
@@ -41,7 +42,6 @@ class BookMeUp extends Component {
   }
 
   submitBook = (title, author, isbn, postcode, phoneNumber) => {
-    // ADDRESS NEEDS CHECKING WITH BACKEND API
     axios.post(`${PORT}/add-book`, {
       title: title,
       author: author,
@@ -85,7 +85,9 @@ class BookMeUp extends Component {
       passwordCheck: passwordCheck
     })
       .then((result) => {
-        console.log(result)
+        if (result.data.success) {
+          return <Redirect to='/' />
+        }
       })
       .catch((err) => {
         this.setError(err)
@@ -97,14 +99,23 @@ class BookMeUp extends Component {
       username: this.state.username,
       password: this.state.password
     })
-     .then((result) => {
-        console.log(result)
-
+      .then((result) => {
+        if (result.data.success) {
+          return <Redirect to='/' />
+        }
       })
-     .catch((err) => {
+      .catch((err) => {
         this.setError(err)
       })
-   }
+  }
+
+  logout = () => {
+    axios.post(`${PORT}/logout`).then((result) => {
+      console.log(result.msg)
+      // And display on page?
+      return <Redirect to='/sign-up' />
+    })
+  }
 
   setError (error) {
     this.setState({
@@ -145,7 +156,7 @@ class BookMeUp extends Component {
       <HashRouter>
         <div className="homepage">
           <ErrorHandler error={ this.state.error }/>
-          <Navigation />
+          <Navigation logout={ this.logout } />
           <Header />
           <Switch>
             <Route path="/sign-up">
