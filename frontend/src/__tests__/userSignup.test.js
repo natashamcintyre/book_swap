@@ -8,7 +8,6 @@ import Adapter from '@wojtekmaj/enzyme-adapter-react-17'
 Enzyme.configure({ adapter: new Adapter() })
 
 describe('user sign up form', () => {
-
   // beforeEach(() => {
   //   const component = mount(
   //     <MemoryRouter>
