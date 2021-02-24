@@ -25,9 +25,25 @@ i {
   background: rgb(246, 246, 246);
 }
 
+i {
+  color: rgb(87, 195, 245);
+}
+
+i:hover {
+  color: rgb(13, 43, 109);
+}
+
+#hamburgerIcon {
+  color: rgb(246, 246, 246);
+}
+
 .header {
   background-color: rgb(13, 43, 109);
   margin-bottom: 10px;
+}
+
+.usersignupform {
+  text-align: center;
 }
 
 .header-content {
@@ -77,6 +93,14 @@ i {
   border: 1px solid rgb(13, 43, 109);
   background: rgb(13, 43, 109);
   color: r  rgb(246, 246, 246);
+}
+
+.new_user {
+  text-align: center;
+}
+
+.user_signin { 
+  text-align: center;
 }
 
 .features {
@@ -130,12 +154,4 @@ i {
   color: rgb(87, 195, 245);
   text-decoration: none;
   cursor: pointer;
-}
-
-.new_user {
-  text-align: center;
-}
-
-.user_signin {
-  text-align: center;
 }

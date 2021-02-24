@@ -12,7 +12,6 @@ import {
   HashRouter,
   Redirect
 } from 'react-router-dom'
-import BooksContainer from './components/booksContainer.js'
 
 import axios from 'axios'
 const PORT = 'http://localhost:3001'
@@ -214,12 +213,10 @@ class BookMeUp extends Component {
             <Route path="/sign-up">
               <UserSignup id="usersignupform" addUser={ this.addUser } />
               {/* <UserSignin id="usersigninform" signinUser={ this.signinUser }/> */}
-              <BooksContainer />
             </Route>
             <Route path="/sign-in">
               {/* <UserSignup id="usersignupform" addUser={ this.addUser } /> */}
               <UserSignin id="usersigninform" signinUser={ this.signinUser }/>
-              <BooksContainer />
             </Route>
             <Route exact path="/">
               <BookList books={ this.state.books }/>
