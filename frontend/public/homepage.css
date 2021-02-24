@@ -8,22 +8,6 @@ body {
   color: rgb(13, 43, 109);
 } */
 
-.book-container {
-  height: 600px;
-  padding: 6px;
-  border: 1px solid purple;
-
-}
-
-.inner-book-container {
-  background-color: rgb(246, 246, 246);
-  padding: 10px;
-  height: 100%;
-  text-align: center;
-  border: 1px solid rgb(13, 43, 109);
-  color: rgb(13, 43, 109);
-}
-
 .navbar {
   background: rgb(246, 246, 246);
 }
@@ -206,44 +190,66 @@ body {
 }
 
 .outer-book-title {
-  height: 10%;
+  height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid green;
 }
 
 .outer-book-author {
-  height: 10%;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid black;
 }
 
 .outer-book-image {
   display: flex;
-  height: 60%;
+  height: 200px;
   align-items: center;
-  border: 1px solid red;
+}
+
+.book-container {
+  height: 500px;
+  padding: 6px;
+}
+
+.inner-book-container {
+  background-color: rgb(246, 246, 246);
+  padding: 10px;
+  height: 100%;
+  text-align: center;
+  border: 1px solid rgb(13, 43, 109);
+  color: rgb(13, 43, 109);
 }
 
 .book-image img {
   width: 100%;
+  border: 1px solid rgb(13, 43, 109);
 }
 
 .book-current-location {
   display: flex;
-  height: 10%;
+  height: 40px;
   align-items: center;
-  border: 1px solid teal;
 }
 
 .book-info-button {
   display: flex;
   height: 10%;
   align-items: center;
-  border: 1px solid brown;
+}
+
+.book-info-button button {
+  border: 1px solid rgb(13, 43, 109);
+  background: rgb(13, 43, 109);
+  color: rgb(246, 246, 246);
+}
+.book-info-button button:hover {
+  border: 1px solid rgb(87, 195, 245);
+  background: rgb(87, 195, 245);
+  border-radius: 0;
+  color: rgb(13, 43, 109);
 }
 
 .new_user {
