@@ -7,6 +7,14 @@ i {
   color: rgb(87, 195, 245);
 }
 
+i:hover {
+  color: rgb(13, 43, 109);
+}
+
+#hamburgerIcon {
+  color: rgb(246, 246, 246);
+}
+
 .book-container {
   height: 250px;
   padding: 6px;
