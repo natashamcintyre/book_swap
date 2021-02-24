@@ -16,7 +16,7 @@ class Navigation extends React.Component {
   render () {
     return (
       <HashRouter>
-        <nav className="navbar navbar-expand-md sticky-top">
+        <nav className="navbar navbar-expand-lg sticky-top">
           <div className='navbar-logo mr-5'>
             <Link to="/" className="navbar-brand">
               <img src="images/bookmeup.png" width="130"></img>
@@ -27,10 +27,10 @@ class Navigation extends React.Component {
           </button>
 
           <div className='collapse navbar-collapse' id="navbarSupportedContent">
-            <div className='navbar-search form-inline mr-auto'>
+            <div className='navbar-search form-inline offset-3 mr-auto'>
               <BookSearchToo submitSearchString={ this.props.submitSearchString }/>
             </div>
-            <ul className="navbar-nav mr-auto">
+            <ul className="navbar-nav offset-2 mr-auto">
               <li className='nav-item mr-2'>
                 <Link to="/sign-up" id="new_user"><i className='fas fa-sign-in-alt'></i></Link>
               </li>
