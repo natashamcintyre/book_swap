@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import BookRequest from './bookRequest.js'
 
 class BookContainer extends React.Component {
   render () {
@@ -22,6 +23,9 @@ class BookContainer extends React.Component {
               <div>Email: {this.props.data.users[0].email}</div>
               <div>Location: {this.props.data.users[0].location}</div>
             </div>
+            <div className="book-request">
+              <BookRequest requestBook={this.props.requestBook} bookID={this.props.data._id} />
+            </div>
           </div>
       </div>
     )
@@ -29,7 +33,8 @@ class BookContainer extends React.Component {
 }
 
 BookContainer.propTypes = {
-  data: PropTypes.object
+  data: PropTypes.object,
+  requestBook: PropTypes.func
 
 }
 

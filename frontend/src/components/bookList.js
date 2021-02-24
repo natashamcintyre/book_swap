@@ -11,7 +11,7 @@ class BookList extends React.Component {
           <div className="book_list" id="books_list" key='books_list'>
               <div className='row'>
                 {this.props.books.map(data =>
-                  < BookContainer key={data._id} className='book' data={data}/>
+                  < BookContainer key={data._id} className='book' data={data} requestBook={this.props.requestBook}/>
                 )}
               </div>
           </div>
@@ -28,7 +28,8 @@ class BookList extends React.Component {
 }
 
 BookList.propTypes = {
-  books: PropTypes.array
+  books: PropTypes.array,
+  requestBook: PropTypes.func
 }
 
 export default BookList

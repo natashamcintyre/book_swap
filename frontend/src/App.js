@@ -135,6 +135,22 @@ class BookMeUp extends Component {
     })
   }
 
+  requestBook = (bookID) => {
+    axios.post(`${PORT}/request-book`, {
+      bookID: bookID,
+      // need to turn this into an ObjectId for mongodb somehow?? maybe backend??
+      user: this.state.currentUser
+    })
+      .then((result) => {
+        this.getBooks()
+        alert('You have been added to the book. Arrange collection.')
+      })
+      .catch((err) => {
+        this.setError(err)
+        alert('You have not been added to the book. Please double check the fields.')
+      })
+  }
+
   setError (error) {
     this.setState({
       error: error
@@ -222,7 +238,7 @@ class BookMeUp extends Component {
               <BooksContainer />
             </Route>
             <Route exact path="/">
-              <BookList books={ this.state.books }/>
+              <BookList books={ this.state.books } bookRequest= { this.requestBook }/>
             </Route>
           </Switch>
         </div>
