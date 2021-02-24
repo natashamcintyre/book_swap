@@ -29,6 +29,8 @@ describe('Books API endpoint tests', function () {
           return done(err)
         }
 
+        const bookID = res.body._id
+
         expect(JSON.parse(res.body.book).title).to.equal('test_title')
         expect(res.body.users[0].username).to.equal('brad')
         done()
@@ -98,4 +100,49 @@ describe('Books API endpoint tests', function () {
         done()
       })
   })
+
+  it('records a new use to an existing book', function (done) {
+    const first_book_data = {
+      book: JSON.stringify({ title: 'test_title', author: 'test_author' }),
+      user: { username: 'brad', email: 'brad@example', location: 'postcode' }
+    }
+
+    let bookID = '';
+
+    const res = request(app)
+      .post('/add-book')
+      .send(first_book_data)
+      .set('Accept', 'application/json')
+
+
+      res.expect(200)
+        .end(function (err, res) {
+          if (err) {
+            return done(err)
+          }
+
+          bookID = res.body._id
+
+          const request_book_data = {
+            bookID: bookID,
+            user: { username: 'bob', email: 'bob@example', location: 'another_postcode' }
+          }
+
+          const result_two = request(app)
+            .post('/request-book')
+            .send(request_book_data)
+            .set('Accept', 'application/json')
+
+          result_two.expect(200)
+            .end(function (err, result_two) {
+              if (err) {
+                return done(err)
+              }
+
+              expect(JSON.parse(result_two.body.book).title).to.equal('test_title')
+              expect(result_two.body.users[0].username).to.equal('bob')
+              done()
+            })
+      })
+    })
 })
