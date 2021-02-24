@@ -20,6 +20,6 @@ describe('bookContainer', () => {
     const users = [{ username: 'test_username', email: 'test_email', location: 'test_postcode' }]
     const data = { book: book, users: users }
     const component = shallow(<BookContainer className='book' data={data}/>)
-    expect(component.find('div.inner-book-container').children().length).toBe(4)
+    expect(component.find('div.inner-book-container').children().length).toBe(5)
   })
 })

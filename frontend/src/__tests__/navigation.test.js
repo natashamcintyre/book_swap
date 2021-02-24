@@ -28,8 +28,8 @@ describe('navigation', () => {
           <MemoryRouter>
             <Navigation />
           </MemoryRouter>
-        )
-      // })
+    )
+    // })
     expect(component).toMatchSnapshot()
   })
 
