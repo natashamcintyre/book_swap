@@ -17,7 +17,7 @@ class Navigation extends React.Component {
     return (
       <HashRouter>
         <nav className="navbar navbar-expand-md sticky-top">
-          <div className='navbar-logo'>
+          <div className='navbar-logo mr-5'>
             <Link to="/" className="navbar-brand">
               <img src="images/bookmeup.png" width="130"></img>
             </Link>
@@ -27,23 +27,23 @@ class Navigation extends React.Component {
           </button>
 
           <div className='collapse navbar-collapse' id="navbarSupportedContent">
+            <div className='navbar-search form-inline mr-auto'>
+              <BookSearchToo submitSearchString={ this.props.submitSearchString }/>
+            </div>
             <ul className="navbar-nav mr-auto">
-              <li className='nav-item'>
+              <li className='nav-item mr-2'>
                 <Link to="/sign-up" id="new_user"><i className='fas fa-sign-in-alt'></i></Link>
               </li>
-              <li className='nav-item'>
+              <li className='nav-item mr-2'>
                 <a id="logout_link" onClick={this.logout}><i className='fas fa-sign-out-alt'></i></a>
               </li>
-              <li className='nav-item'>
+              <li className='nav-item mr-2'>
                 <a href="#"><i className='fas fa-book'></i></a>
               </li>
-              <li className='nav-item'>
+              <li className='nav-item mr-2'>
                 <a href="#"><i className='fas fa-heart'></i></a>
               </li>
             </ul>
-            <div className='navbar-search form-inline'>
-              <BookSearchToo submitSearchString={ this.props.submitSearchString }/>
-            </div>
           </div>
         </nav>
       </HashRouter>

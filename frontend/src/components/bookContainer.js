@@ -7,6 +7,7 @@ class BookContainer extends React.Component {
     const book = JSON.parse(this.props.data.book)
     return (
       <div className='book-container col-12 col-md-4 col-lg-2'>
+        <button>
           <div className='inner-book-container' key={this.props.data._id} id={this.props.data._id} >
             <div className="book-title font-weight-bold">
               <h5>{book.title}</h5>
@@ -23,6 +24,7 @@ class BookContainer extends React.Component {
             // </div>
             */}
           </div>
+        </button>
       </div>
     )
   }
