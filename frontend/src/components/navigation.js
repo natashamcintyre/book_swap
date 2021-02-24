@@ -34,6 +34,9 @@ class Navigation extends React.Component {
           <a href="#"><i className='fas fa-book'></i></a>
           <a href="#"><i className='fas fa-heart'></i></a>
         </div>
+        <div>
+          <p>{this.props.currentUser}</p>
+        </div>
       </nav>
       </HashRouter>
     )
@@ -43,7 +46,8 @@ class Navigation extends React.Component {
 Navigation.propTypes = {
   logout: PropTypes.func,
   submitSearchString: PropTypes.func,
-  history: PropTypes.string
+  history: PropTypes.string,
+  currentUser: PropTypes.string
 }
 
 export default withRouter(Navigation)
