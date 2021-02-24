@@ -1,6 +1,7 @@
 import React from 'react'
 import Navigation from '../components/navigation.js'
 import mockAxios from '../__mocks__/axios.js'
+import { MemoryRouter } from 'react-router-dom'
 
 import Enzyme, { mount } from 'enzyme'
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17'
@@ -22,7 +23,13 @@ describe('navigation', () => {
   })
 
   it('renders without crashing', () => {
-    const component = mount(<Navigation />)
+    // const component = mount(<Navigation />)
+    const component = mount(
+          <MemoryRouter>
+            <Navigation />
+          </MemoryRouter>
+        )
+      // })
     expect(component).toMatchSnapshot()
   })
 

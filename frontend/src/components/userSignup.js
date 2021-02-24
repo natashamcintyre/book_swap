@@ -1,5 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { withRouter } from 'react-router-dom'
+// const history = async () => {
+//   await useHistory()
+// }
 
 class UserSignup extends React.Component {
   constructor () {
@@ -47,6 +51,7 @@ class UserSignup extends React.Component {
     e.preventDefault()
     this.props.addUser(this.state.username, this.state.email, this.state.location, this.state.password, this.state.passwordCheck)
     this.clearForm()
+    this.props.history.push('/')
   }
 
   clearForm () {
@@ -66,7 +71,7 @@ class UserSignup extends React.Component {
   render () {
     return (
       <div className="new_user">
-        <form id="new_user_form" onSubmit={ (e) => this.processSubmit(e) }>
+        <form href="/" id="new_user_form" onSubmit={ (e) => this.processSubmit(e) }>
           <input type="text" name="username" id="new_username" placeholder="Choose a Username" onChange={(e) => this.changeUsernameValue(e.target.value)} value={this.state.username} />
           <input type="email" name="email" id="new_email" placeholder="Enter your email address" onChange={(e) => this.changeEmailValue(e.target.value)} value={this.state.email} />
           <input type="text" name="location" id="new_location" placeholder="Enter your postcode" onChange={(e) => this.changeLocationValue(e.target.value)} value={this.state.location} />
@@ -80,7 +85,8 @@ class UserSignup extends React.Component {
 }
 
 UserSignup.propTypes = {
-  addUser: PropTypes.func
+  addUser: PropTypes.func,
+  history: PropTypes.any
 }
 
-export default UserSignup
+export default withRouter(UserSignup)
