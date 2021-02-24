@@ -18,23 +18,38 @@ class Navigation extends React.Component {
   render () {
     return (
       <HashRouter>
-      <nav className="navbar sticky-top">
-        <div className='navbar-logo col-2'>
-          <Link to="/" className="navbar-brand">
-            <img src="images/bookmeup.png" width="150"></img>
-          </Link>
-        </div>
-        <div className='navbar-search col-8'>
-          <BookSearchToo submitSearchString={ this.props.submitSearchString }/>
-        </div>
-        <div className="navbar-icons col-2">
-          <Link to="/sign-up" id="new_user"><i className='fa fa-plus-square'></i></Link>
-          <Link to="/sign-in" id="new_session"><i className='fas fa-sign-in-alt'></i></Link>
-          <a id="logout_link" onClick={this.logout}><i className='fas fa-sign-out-alt'></i></a>
-          <a href="#"><i className='fas fa-book'></i></a>
-          <a href="#"><i className='fas fa-heart'></i></a>
-        </div>
-      </nav>
+        <nav className="navbar navbar-expand-lg sticky-top">
+          <div className='navbar-logo mr-5'>
+            <Link to="/" className="navbar-brand">
+              <img src="images/bookmeup.png" width="130"></img>
+            </Link>
+          </div>
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i className='fas fa-bars' id='hamburgerIcon'></i>
+          </button>
+          <div className='collapse navbar-collapse' id="navbarSupportedContent">
+            <div className='navbar-search form-inline offset-3 mr-auto'>
+              <BookSearchToo submitSearchString={ this.props.submitSearchString }/>
+            </div>
+            <ul className="navbar-nav offset-2 mr-auto">
+              <li className='nav-item mr-2'>
+                <Link to="/sign-in" id="user_signin"><i className='fas fa-sign-in-alt fa-2x'></i></Link>
+              </li>
+              <li className='nav-item mr-2'>
+                <a id="logout_link" onClick={this.logout}><i className='fas fa-sign-out-alt fa-2x'></i></a>
+              </li>
+              <li className='nav-item mr-2'>
+                <a href="#"><i className='fas fa-book fa-2x'></i></a>
+              </li>
+              <li className='nav-item mr-2'>
+                <Link to="/sign-up" id="new_user"><i className='fa fa-plus-square fa-2x'></i></Link>
+              </li>
+              <li>
+                <p>{this.props.currentUser}</p>
+              </li>
+            </ul>
+          </div>
+        </nav>
       </HashRouter>
     )
   }
@@ -43,7 +58,8 @@ class Navigation extends React.Component {
 Navigation.propTypes = {
   logout: PropTypes.func,
   submitSearchString: PropTypes.func,
-  history: PropTypes.string
+  history: PropTypes.string,
+  currentUser: PropTypes.string
 }
 
 export default withRouter(Navigation)

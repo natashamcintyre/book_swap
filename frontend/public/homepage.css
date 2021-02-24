@@ -1,21 +1,22 @@
 body {
   padding: 0;
   margin: 0;
+  font-family: helvetica, sans-serif;
 }
 
-i {
+/* i {
   color: rgb(13, 43, 109);
-}
+} */
 
 .book-container {
-  height: 250px;
+  height: 600px;
   padding: 6px;
 }
 
 .inner-book-container {
   background-color: rgb(246, 246, 246);
-  padding: 15px;
-  height: 200px;
+  padding: 10px;
+  height: 100%;
   text-align: center;
   border: 1px solid rgb(13, 43, 109);
   color: rgb(13, 43, 109);
@@ -25,9 +26,33 @@ i {
   background: rgb(246, 246, 246);
 }
 
+.navbar i {
+  color:rgb(87, 195, 245)
+}
+
+.navbar i:hover {
+  color: rgb(13, 43, 109)
+}
+
+/* i { */
+  /* color: rgb(87, 195, 245); */
+/* } */
+
+/* i:hover {
+  color: rgb(13, 43, 109);
+} */
+
+#hamburgerIcon {
+  color: rgb(246, 246, 246);
+}
+
 .header {
   background-color: rgb(13, 43, 109);
   margin-bottom: 10px;
+}
+
+.usersignupform {
+  text-align: center;
 }
 
 .header-content {
@@ -77,6 +102,14 @@ i {
   border: 1px solid rgb(13, 43, 109);
   background: rgb(13, 43, 109);
   color: r  rgb(246, 246, 246);
+}
+
+.new_user {
+  text-align: center;
+}
+
+.user_signin { 
+  text-align: center;
 }
 
 .features {
@@ -129,6 +162,35 @@ i {
   display: none;
 }
 
+.scanbox {
+  border: 1px solid rgb(53, 64, 156);
+  background: rgb(87, 195, 245);
+  border-radius: 4px;
+  color: rgb(13, 43, 109);
+  margin-bottom: 15px;
+}
+
+.scanbox:hover {
+  border: 1px solid rgb(12, 133, 240);
+  background: rgb(246, 246, 246);
+  border-radius: 4px;
+  color: rgb(13, 6, 80);
+}
+
+#ISBNSearch {
+  border-radius: 6px;
+  margin-right: 3px;
+}
+
+.add_book button {
+  border-radius: 6px;
+}
+
+.add_book button:hover {
+  color: black;
+  background-color:rgb(87, 195, 245)
+}
+
 .close {
   color: rgb(87, 195, 245);
   font-size: 28px;
@@ -139,6 +201,31 @@ i {
   color: rgb(87, 195, 245);
   text-decoration: none;
   cursor: pointer;
+}
+
+.outer-book-title {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.outer-book-author {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.outer-book-image {
+  display: flex;
+  height: 270px;
+  align-items: center;
+}
+
+.book-image img {
+  width: 100%;
+
 }
 
 .new_user {
