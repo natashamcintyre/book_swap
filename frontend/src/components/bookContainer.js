@@ -17,12 +17,8 @@ class BookContainer extends React.Component {
       <div className='book-container col-12'>
         <div className='inner-book-container' key={this.props.data._id} id={this.props.data._id} >
           <div className='title-and-author'>
-            <div className='outer-book-title'>
-              <h5 className='book-title font-weight-bold'>{book.title}</h5>
-            </div>
-            <div className='outer-book-author'>
-              <h6 className="book-author font-italic">{book.authors[0].name}</h6>
-            </div>
+            <h5 className='book-title font-weight-bold'>{book.title}</h5>
+            <h6 className="book-author font-italic">{book.authors[0].name}</h6>
           </div>
           <div className='outer-book-image'>
             <div className='book-image col-12'>

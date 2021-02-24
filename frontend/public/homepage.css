@@ -189,16 +189,8 @@ body {
   cursor: pointer;
 }
 
-.outer-book-title {
+.title-and-author {
   height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.outer-book-author {
-  height: 60px;
-  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -210,7 +202,7 @@ body {
 }
 
 .book-container {
-  height: 500px;
+  height: 450px;
   padding: 6px;
 }
 
@@ -238,6 +230,7 @@ body {
   display: flex;
   height: 10%;
   align-items: center;
+  justify-content: center;
 }
 
 .book-info-button button {
@@ -245,6 +238,7 @@ body {
   background: rgb(13, 43, 109);
   color: rgb(246, 246, 246);
 }
+
 .book-info-button button:hover {
   border: 1px solid rgb(87, 195, 245);
   background: rgb(87, 195, 245);
