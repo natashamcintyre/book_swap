@@ -98,7 +98,6 @@ class BookMeUp extends Component {
       .then((result) => {
         if (result.status === 200) {
           console.log(result.status)
-          return <Redirect exact to="/" />
         }
       })
       .catch((err) => {
