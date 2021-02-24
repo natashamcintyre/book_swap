@@ -211,7 +211,7 @@ body {
 }
 
 .outer-book-author {
-  height: 50px;
+  height: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -219,7 +219,7 @@ body {
 
 .outer-book-image {
   display: flex;
-  height: 270px;
+  height: 350px;
   align-items: center;
 }
 

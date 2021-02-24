@@ -5,7 +5,7 @@ import BookRequest from './bookRequest.js'
 class BookContainer extends React.Component {
   render () {
     const book = JSON.parse(this.props.data.book)
-    
+
     let image
 
     if (book.cover) {
@@ -15,7 +15,7 @@ class BookContainer extends React.Component {
     }
 
     return (
-      <div className='book-container col-12 col-md-4 col-lg-2'>
+      <div className='book-container col-12'>
           <div className='inner-book-container' key={this.props.data._id} id={this.props.data._id} >
             <div className='title-and-author'>
               <div className='outer-book-title'>
