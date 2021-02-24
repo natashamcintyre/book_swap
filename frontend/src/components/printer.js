@@ -6,8 +6,8 @@ class Printer extends React.Component {
     return (
       <div id='book-confirmation'>
           <p>The book you have selected is:</p>
-          <p>Title: {this.props.bookTitle}</p>
-          <p>Author: {this.props.bookAuthor}</p>
+          <p id='book-title-confirmation'>Title: {this.props.bookTitle}</p>
+          <p id='book-author-confirmation'>Author: {this.props.bookAuthor}</p>
       </div>
     )
   }

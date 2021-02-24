@@ -27,13 +27,15 @@ class BookMeUp extends Component {
       book: {},
       bookISBN: '',
       bookTitle: '',
-      bookAuthor: ''
+      bookAuthor: '',
+      currentUser: ''
     }
   }
 
   getBooks = () => {
     axios.get(`${PORT}/`)
       .then((result) => {
+        console.log(result.data)
         this.setBooks(result.data)
       })
       .catch((err) => {
@@ -41,10 +43,11 @@ class BookMeUp extends Component {
       })
   }
 
-  submitBook = (title, author, isbn, postcode, phoneNumber) => {
+  submitBook = () => {
     axios.post(`${PORT}/add-book`, {
       book: JSON.stringify(this.state.book),
-      user: { username: 'brad', email: 'brad@example.com', location: 'BS3 2LH' }
+      // need to turn this into an ObjectId for mongodb somehow?? maybe backend??
+      user: this.state.currentUser
     })
       .then((result) => {
         this.getBooks()
@@ -97,7 +100,9 @@ class BookMeUp extends Component {
     })
       .then((result) => {
         if (result.status === 200) {
-          console.log(result.status)
+          this.setCurrentUser(result.data)
+          this.setLocalStorage(result.data)
+          return <Redirect exact to="/homepage" />
         }
       })
       .catch((err) => {
@@ -112,6 +117,8 @@ class BookMeUp extends Component {
     })
       .then((result) => {
         if (result.data.success) {
+          this.setCurrentUser(result.data)
+          this.setLocalStorage(result.data)
           return <Redirect exact from="/sign-up" to="/" />
         }
       })
@@ -122,7 +129,8 @@ class BookMeUp extends Component {
 
   logout = () => {
     axios.post(`${PORT}/logout`).then((result) => {
-      console.log(result.msg)
+      this.setCurrentUser('')
+      localStorage.clear()
       // And display on page?
       return <Redirect to='/sign-up' />
     })
@@ -141,6 +149,19 @@ class BookMeUp extends Component {
   }
 
   componentDidMount () {
+    if (localStorage.displayName) {
+      const user = {
+        displayName: localStorage.displayName,
+        id: localStorage.id,
+        success: localStorage.success,
+        email: localStorage.email,
+        location: localStorage.location
+      }
+      this.setCurrentUser(user)
+    } else {
+      this.setCurrentUser('')
+    }
+
     this.getBooks()
   }
 
@@ -168,6 +189,20 @@ class BookMeUp extends Component {
     })
   }
 
+  setCurrentUser (data) {
+    this.setState({
+      currentUser: data
+    })
+  }
+
+  setLocalStorage (data) {
+    localStorage.setItem('displayName', data.displayName)
+    localStorage.setItem('id', data.id)
+    localStorage.setItem('success', data.success)
+    localStorage.setItem('email', data.email)
+    localStorage.setItem('location', data.location)
+  }
+
   render () {
     return (
       <HashRouter>
@@ -175,6 +210,7 @@ class BookMeUp extends Component {
           <ErrorHandler error={ this.state.error }/>
           <Navigation submitSearchString={ this.submitSearchString } logout={ this.logout }/>
           <Header bookISBN={ this.state.bookISBN } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor }/>
+          <IsbnSearchModal submitISBN={ this.submitISBN } submitBook={ this.submitBook } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } />
           <Switch>
             <Route path="/sign-up">
               <UserSignup id="usersignupform" addUser={ this.addUser } />
@@ -187,7 +223,6 @@ class BookMeUp extends Component {
               <BooksContainer />
             </Route>
             <Route exact path="/">
-              <IsbnSearchModal submitISBN={ this.submitISBN } submitBook={ this.submitBook } bookISBN={ this.state.bookISBN } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } />
               <BookList books={ this.state.books }/>
             </Route>
           </Switch>

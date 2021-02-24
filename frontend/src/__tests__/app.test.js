@@ -49,14 +49,11 @@ describe('BookMeUp', () => {
     await component.update()
     await component.find('BookForm').update()
 
-    await component.find('input#ISBN').update()
-    expect(component.find('input#ISBN').props().defaultValue).toBe('test_ISBN')
+    await component.find('p#book-title-confirmation').update()
+    expect(component.find('p#book-title-confirmation').text()).toBe('Title: test_title')
 
-    await component.find('input#title').update()
-    expect(component.find('input#title').props().defaultValue).toBe('test_title')
-
-    await component.find('input#author').update()
-    expect(component.find('input#author').props().defaultValue).toBe('test_author')
+    await component.find('p#book-author-confirmation').update()
+    expect(component.find('p#book-author-confirmation').text()).toBe('Author: test_author')
   })
 
   it('renders without crashing', () => {
@@ -64,39 +61,78 @@ describe('BookMeUp', () => {
     expect(component).toMatchSnapshot()
   })
 
-  it('posts data and clears book form on submit success', async () => {
+  it('Changes the current user when user signs in', async () => {
     const component = mount(<BookMeUp />)
+    const instance = component.instance()
+
+    mockAxios.post.mockImplementation(() =>
+      Promise.resolve({ data: { displayName: 'User', id: 'testid', success: 'Logged in as User.' } })
+    )
+
+    await instance.signinUser('User', 'password')
+
+    expect(component.state('currentUser').displayName).toBe('User')
+  })
+
+  it('Changes the current user when user signs up', async () => {
+    const component = mount(<BookMeUp />)
+    const instance = component.instance()
+
+    mockAxios.post.mockImplementation(() =>
+      Promise.resolve({ status: 200, data: { displayName: 'User', id: 'testid', success: 'Logged in as User.' } })
+    )
+
+    await instance.addUser('User', 'user@bookmeup.com', 'SW1A 1AA', 'password', 'password')
+
+    expect(component.state('currentUser').displayName).toBe('User')
+  })
+
+  it('Changes the current user when user logout', async () => {
+    const component = mount(<BookMeUp />)
+    const instance = component.instance()
+
+    mockAxios.post.mockImplementation(() =>
+      Promise.resolve({ data: { success: true } })
+    )
+
+    await instance.signinUser('User', 'password')
+    await instance.logout()
+
+    expect(component.state('currentUser')).toBe('')
+  })
+
+  it('submit book posts data', async () => {
+    const component = mount(<BookMeUp />)
+    const instance = component.instance()
+
+    mockAxios.post.mockImplementation(() =>
+      Promise.resolve({ data: { displayName: 'User', id: 'testid', success: 'Logged in as User.', email: 'test@example', location: 'test_postcode' } })
+    )
+
+    await instance.signinUser('User', 'password')
+
+    expect(component.state('currentUser').displayName).toBe('User')
 
     mockAxios.get.mockImplementation(() =>
-      Promise.resolve({ data: { 'ISBN:test_ISBN': { title: 'test_title', authors: [{ name: 'test_author' }], identifiers: { isbn_13: 'test_isbn' } } } }))
+      Promise.resolve({ data: { 'ISBN:test_ISBN': { title: 'test_title', authors: [{ name: 'test_author' }], identifiers: { isbn_13: 'test_isbn' }, cover: { medium: 'test_url' } } } }))
 
     component.find('input#ISBNSearch').simulate('change', { target: { value: 'test_ISBN' } })
     component.find('form#book_search').simulate('submit')
 
     await component.find('BookSearch')
     await component.update()
-    await component.find('BookForm').update()
-
-    await component.find('input#ISBN').update()
-    await component.find('input#title').update()
-    await component.find('input#author').update()
-
-    component.find('input#postcode').simulate('change', { target: { value: 'test_postcode' } })
-    component.find('input#phone_number').simulate('change', { target: { value: 'test_phone_number' } })
-
+    await component.find('div#book-confirmation').update()
+    //
+    mockAxios.get.mockImplementation(() =>
+      Promise.resolve({ data: [{ _id: 'book_id', book: { title: 'test_title', authors: [{ name: 'test_author' }], identifiers: { isbn_13: 'test_isbn' }, cover: { medium: 'test_url' } }, user: { displayName: 'User', email: 'test@example', location: 'test_postcode' } }] }))
+    //
     component.find('form#book_form').simulate('submit')
-
-    const book = JSON.stringify({ title: 'test_title', authors: [{ name: 'test_author' }], identifiers: { isbn_13: 'test_isbn' } })
-    const user = { username: 'brad', email: 'brad@example.com', location: 'BS3 2LH' }
+    //
+    const book = JSON.stringify({ title: 'test_title', authors: [{ name: 'test_author' }], identifiers: { isbn_13: 'test_isbn' }, cover: { medium: 'test_url' } })
+    const user = { displayName: 'User', id: 'testid', success: 'Logged in as User.', email: 'test@example', location: 'test_postcode' }
     const data = { book: book, user: user }
 
     expect(mockAxios.post).toHaveBeenCalledWith('http://localhost:3001/add-book', data)
-
-    expect(component.find('input#title').props().defaultValue).toEqual('')
-    expect(component.find('input#author').props().defaultValue).toEqual('')
-    expect(component.find('input#ISBN').props().defaultValue).toEqual('')
-    expect(component.find('input#postcode').props().value).toEqual('')
-    expect(component.find('input#phone_number').props().value).toEqual('')
   })
 })
 
@@ -119,22 +155,6 @@ describe('BookMeUp erroring', () => {
 
     await component.update()
     expect(mockAxios.get).toHaveBeenCalledTimes(1)
-    expect(component.state().error).toEqual({ response: { data: 'error text from json mock' } })
-    expect(component.find('#error').text()).toBe('Error: error text from json mock')
-  })
-
-  it('loads err on Post err', async () => {
-    const component = mount(<BookMeUp />)
-
-    component.find('input#title').simulate('change', { target: { value: '' } })
-    component.find('input#author').simulate('change', { target: { value: '' } })
-    component.find('input#ISBN').simulate('change', { target: { value: '' } })
-    component.find('input#postcode').simulate('change', { target: { value: '' } })
-    component.find('input#phone_number').simulate('change', { target: { value: '' } })
-
-    await component.find('form#book_form').simulate('submit')
-    await component.update()
-    expect(mockAxios.post).toHaveBeenCalledTimes(1)
     expect(component.state().error).toEqual({ response: { data: 'error text from json mock' } })
     expect(component.find('#error').text()).toBe('Error: error text from json mock')
   })
@@ -174,11 +194,6 @@ it('successfully sends api request', () => {
 
     await component.find('UserSignup').update()
     expect(component.find('UserSignup').exists()).toBe(true)
-    // await component.find('UserSignin').update()
-    //
-    // await component.find('input#ISBN').update()
-    // await component.find('input#title').update()
-    // await component.find('input#author').update()
 
     component.find('input#new_username').simulate('change', { target: { value: 'username3' } })
     component.find('input#new_email').simulate('change', { target: { value: 'email@email' } })

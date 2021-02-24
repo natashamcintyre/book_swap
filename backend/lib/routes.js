@@ -57,7 +57,9 @@ router.post('/user-new', async (req, res) => {
       return res.status(200).json({
         success: `logged in as ${savedUser.username}`,
         displayName: savedUser.username,
-        id: savedUser._id
+        id: savedUser._id,
+        location: savedUser.location,
+        email: savedUser.email,
       })
     })
   } catch (err) {
@@ -92,7 +94,9 @@ router.post('/login', (req, res, next) => {
       return res.status(200).json({
         success: `logged in as ${user.username}`,
         displayName: user.username,
-        id: user._id
+        id: user._id,
+        location: user.location,
+        email: user.email,
       })
     })
   })(req, res, next)

@@ -10,7 +10,7 @@ class IsbnSearchModal extends Component {
         <div className="modal-content">
           <span id="closeIsbnSearch" className="close">&times;</span>
           <BookSearch id="bookSearch" submitISBN={ this.props.submitISBN } />
-          <BookForm id="bookForm" submitISBN={ this.props.submitISBN } submitBook={ this.props.submitBook } bookISBN={ this.props.bookISBN } bookTitle={ this.props.bookTitle } bookAuthor={ this.props.bookAuthor } />
+          <BookForm id="bookForm" submitISBN={ this.props.submitISBN } submitBook={ this.props.submitBook } bookTitle={ this.props.bookTitle } bookAuthor={ this.props.bookAuthor } />
         </div>
       </div>
     )
