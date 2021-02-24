@@ -1,9 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import BookRequest from './bookRequest.js'
 
 class BookContainer extends React.Component {
   render () {
     const book = JSON.parse(this.props.data.book)
+    
     let image
 
     if (book.cover) {
@@ -28,22 +30,26 @@ class BookContainer extends React.Component {
                 <img src={image}/>
               </div>
             </div>
-            <div className='book-current-user'>
+            <div className="book-current-user">
               <div className='font-weight-bold'>Current Custodian</div>
               <div className="book-current-user-details">
-                <div>{this.props.data.users[0].displayName}</div>
-                <div>{this.props.data.users[0].email}</div>
-                <div>{this.props.data.users[0].location}</div>
-              </div>
+              <div>Name: {this.props.data.users[this.props.data.users.length - 1].displayName}</div>
+              <div>Email: {this.props.data.users[this.props.data.users.length - 1].email}</div>
+              <div>Location: {this.props.data.users[this.props.data.users.length - 1].location}</div>
+            </div>
+            <div className="book-request">
+              <BookRequest requestBook={this.props.requestBook} bookID={this.props.data._id} />
+             </div>
             </div>
           </div>
-      </div>
+        </div>
     )
   }
 }
 
 BookContainer.propTypes = {
-  data: PropTypes.object
+  data: PropTypes.object,
+  requestBook: PropTypes.func
 
 }
 

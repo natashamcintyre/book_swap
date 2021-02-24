@@ -28,6 +28,12 @@ router.post('/add-book', async (req, res) => {
     .catch((err) => res.status(404).json(err))
 })
 
+router.post('/request-book', async (req, res) => {
+  await bookApp.requestBook(req.body)
+    .then((book) => res.json(book))
+    .catch((err) => res.status(404).json(err))
+})
+
 router.post('/user-new', async (req, res) => {
   try {
     const { username, email, password, passwordCheck, location } = req.body
@@ -59,7 +65,7 @@ router.post('/user-new', async (req, res) => {
         displayName: savedUser.username,
         id: savedUser._id,
         location: savedUser.location,
-        email: savedUser.email,
+        email: savedUser.email
       })
     })
   } catch (err) {
@@ -96,7 +102,7 @@ router.post('/login', (req, res, next) => {
         displayName: user.username,
         id: user._id,
         location: user.location,
-        email: user.email,
+        email: user.email
       })
     })
   })(req, res, next)

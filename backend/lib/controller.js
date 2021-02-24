@@ -1,4 +1,5 @@
 import BookModel from './model'
+import mongoose from 'mongoose'
 
 function getBookshelf (searchString) {
   if (searchString) {
@@ -14,7 +15,18 @@ function addBook (data) {
   return savedBook
 }
 
+async function requestBook (data) {
+  const id = new mongoose.Types.ObjectId(data.bookID)
+  const book = await BookModel.findOne({ _id: id })
+
+  book.users.push(data.user)
+  const updatedBook = book.save()
+
+  return updatedBook
+}
+
 module.exports = {
   getBookshelf,
-  addBook
+  addBook,
+  requestBook
 }

@@ -151,6 +151,15 @@ body {
   padding: 20px;
   border: 1px solid #fff;
   width: 80%;
+  color: white;
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
 }
 
 .scanbox {

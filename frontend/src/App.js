@@ -6,6 +6,7 @@ import Navigation from './components/navigation.js'
 import Header from './components/header.js'
 import UserSignup from './components/userSignup.js'
 import UserSignin from './components/userSignin.js'
+import BooksContainer from './components/booksContainer.js'
 import {
   Switch,
   Route,
@@ -134,6 +135,22 @@ class BookMeUp extends Component {
     })
   }
 
+  requestBook = (bookID) => {
+    axios.post(`${PORT}/request-book`, {
+      bookID: bookID,
+      // need to turn this into an ObjectId for mongodb somehow?? maybe backend??
+      user: this.state.currentUser
+    })
+      .then((result) => {
+        this.getBooks()
+        alert('You have been added to the book. Arrange collection.')
+      })
+      .catch((err) => {
+        this.setError(err)
+        alert('You have not been added to the book. Please double check the fields.')
+      })
+  }
+
   setError (error) {
     this.setState({
       error: error
@@ -217,7 +234,7 @@ class BookMeUp extends Component {
               <UserSignin id="usersigninform" signinUser={ this.signinUser }/>
             </Route>
             <Route exact path="/">
-              <BookList books={ this.state.books }/>
+              <BookList books={ this.state.books } requestBook= { this.requestBook }/>
             </Route>
           </Switch>
         </div>

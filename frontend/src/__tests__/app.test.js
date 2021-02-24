@@ -172,16 +172,16 @@ xdescribe('user routes', () => {
   afterEach(() => {
     mockAxios.post.mockClear()
     mockAxios.get.mockClear()
-})
+  })
 
-it('successfully sends api request', () => {
-  const component = mount(<BookMeUp />)
+  it('successfully sends api request', () => {
+    const component = mount(<BookMeUp />)
 
-  mockAxios.post.mockImplementation(() =>
-    Promise.resolve({ success: true }))
+    mockAxios.post.mockImplementation(() =>
+      Promise.resolve({ success: true }))
 
-  expect(component.find())
-})
+    expect(component.find())
+  })
 
   it('redirects to homepage following successful signup', async () => {
     const component = mount(<BookMeUp />)
@@ -213,5 +213,29 @@ it('successfully sends api request', () => {
 
     await component.update()
     expect(component.find('BookForm').exists()).toBe(true)
+  })
+
+  it('requests a book', async () => {
+    const component = mount(<BookMeUp />)
+    const instance = component.instance()
+
+    mockAxios.post.mockImplementation(() =>
+      Promise.resolve({ data: { displayName: 'User', id: 'testid', success: 'Logged in as User.', email: 'test@example', location: 'test_postcode' } })
+    )
+
+    await instance.signinUser('User', 'password')
+
+    expect(component.state('currentUser').displayName).toBe('User')
+
+    mockAxios.post.mockImplementation(() =>
+      Promise.resolve({ success: true }))
+
+    instance.requestBook('test_BookID')
+
+    expect(mockAxios.post).toHaveBeenCalledWith('http://localhost:3001/request-book',
+      {
+        bookID: 'test_BookID',
+        user: { displayName: 'User', id: 'testid', success: 'Logged in as User.', email: 'test@example', location: 'test_postcode' }
+      })
   })
 })

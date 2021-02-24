@@ -31,3 +31,11 @@ Cypress.Commands.add('createUser', (user) => {
     body: { username: 'testUsername', email: 'testEmail', password: 'password', passwordCheck: 'password', location: 'somewhere' }
   })
 })
+
+Cypress.Commands.add('secondUser', (user) => {
+  cy.request({
+    method: 'POST',
+    url: 'http://localhost:3001/user-new',
+    body: { username: 'secondUsername', email: 'secondEmail', password: 'secondpassword', passwordCheck: 'secondpassword', location: 'elsewhere' }
+  })
+})

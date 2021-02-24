@@ -53,6 +53,7 @@ app.use('/user', routes)
 app.use('/login', routes)
 app.use('/', routes)
 app.use('/search', routes)
+app.use('/request-book', routes)
 
 // this was for heroku deployment testing
 app.get('/homepage', (req, res) => {
