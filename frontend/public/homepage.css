@@ -4,9 +4,9 @@ body {
   font-family: helvetica, sans-serif;
 }
 
-i {
+/* i {
   color: rgb(13, 43, 109);
-}
+} */
 
 .book-container {
   height: 600px;
@@ -26,9 +26,33 @@ i {
   background: rgb(246, 246, 246);
 }
 
+.navbar i {
+  color:rgb(87, 195, 245)
+}
+
+.navbar i:hover {
+  color: rgb(13, 43, 109)
+}
+
+/* i { */
+  /* color: rgb(87, 195, 245); */
+/* } */
+
+/* i:hover {
+  color: rgb(13, 43, 109);
+} */
+
+#hamburgerIcon {
+  color: rgb(246, 246, 246);
+}
+
 .header {
   background-color: rgb(13, 43, 109);
   margin-bottom: 10px;
+}
+
+.usersignupform {
+  text-align: center;
 }
 
 .header-content {
@@ -80,6 +104,14 @@ i {
   color: r  rgb(246, 246, 246);
 }
 
+.new_user {
+  text-align: center;
+}
+
+.user_signin { 
+  text-align: center;
+}
+
 .features {
   margin: 4em auto;
   padding: 1em;
@@ -119,6 +151,35 @@ i {
   padding: 20px;
   border: 1px solid #fff;
   width: 80%;
+}
+
+.scanbox {
+  border: 1px solid rgb(53, 64, 156);
+  background: rgb(87, 195, 245);
+  border-radius: 4px;
+  color: rgb(13, 43, 109);
+  margin-bottom: 15px;
+}
+
+.scanbox:hover {
+  border: 1px solid rgb(12, 133, 240);
+  background: rgb(246, 246, 246);
+  border-radius: 4px;
+  color: rgb(13, 6, 80);
+}
+
+#ISBNSearch {
+  border-radius: 6px;
+  margin-right: 3px;
+}
+
+.add_book button {
+  border-radius: 6px;
+}
+
+.add_book button:hover {
+  color: black;
+  background-color:rgb(87, 195, 245)
 }
 
 .close {
