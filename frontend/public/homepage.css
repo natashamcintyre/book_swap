@@ -2,6 +2,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: helvetica, sans-serif;
+  color: rgb(13, 43, 109);
 }
 
 /* i {
@@ -35,6 +36,10 @@ body {
 .header {
   background-color: rgb(13, 43, 109);
   margin-bottom: 10px;
+}
+
+.header h1 {
+  color: rgb(13, 43, 109);
 }
 
 .usersignupform {
@@ -252,4 +257,10 @@ body {
 
 .user_signin {
   text-align: center;
+}
+
+.book-info-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

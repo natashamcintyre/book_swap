@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import stockBookImage from '../image/navylogo.png'
 
 class BookContainer extends React.Component {
   render () {
@@ -10,7 +11,7 @@ class BookContainer extends React.Component {
     if (book.cover) {
       image = book.cover.large
     } else {
-      image = 'https://shadycharacters.co.uk/wp/wp-content/uploads/2016/12/Book_IMG_1754-1-e1481474081467.jpg'
+      image = stockBookImage
     }
 
     return (
