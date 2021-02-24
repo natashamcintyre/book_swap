@@ -32,7 +32,7 @@ class BookList extends React.Component {
               <div className='row'>
                 {this.props.books.map(data =>
                   <div key={'bookId-' + data._id} className='book-container col-12 col-md-4 col-lg-2'>
-                    < BookContainer key={data._id} className='book' data={data}/>
+                    < BookContainer key={data._id} className='book' data={data} requestBook={this.props.requestBook}/>
                     <button type ="button" onClick={() => this.showModal(data)}>View details</button>
                   </div>
                 )}
@@ -52,7 +52,8 @@ class BookList extends React.Component {
 }
 
 BookList.propTypes = {
-  books: PropTypes.array
+  books: PropTypes.array,
+  requestBook: PropTypes.func
 }
 
 export default BookList
