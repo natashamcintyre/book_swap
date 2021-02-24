@@ -8,7 +8,7 @@ class BookContainer extends React.Component {
     let image
 
     if (book.cover) {
-      image = book.cover.medium
+      image = book.cover.large
     } else {
       image = 'https://shadycharacters.co.uk/wp/wp-content/uploads/2016/12/Book_IMG_1754-1-e1481474081467.jpg'
     }
@@ -25,17 +25,15 @@ class BookContainer extends React.Component {
             </div>
           </div>
           <div className='outer-book-image'>
-            <div className="book-image">
+            <div className='book-image col-12'>
               <img src={image}/>
             </div>
           </div>
-          <div className="book-current-user">
-            <div className='font-weight-bold'>Current Custodian</div>
-            <div className="book-current-user-details">
-              <div>Name: {this.props.data.users[this.props.data.users.length - 1].displayName}</div>
-              <div>Email: {this.props.data.users[this.props.data.users.length - 1].email}</div>
-              <div>Location: {this.props.data.users[this.props.data.users.length - 1].location}</div>
-            </div>
+          <div className="book-current-location">
+            <div>Location: {this.props.data.users[this.props.data.users.length - 1].location}</div>
+          </div>
+          <div className='book-info-button'>
+            <button type ="button" onClick={() => this.props.showModal(this.props.data)}>View details</button>
           </div>
         </div>
       </div>
@@ -45,7 +43,8 @@ class BookContainer extends React.Component {
 
 BookContainer.propTypes = {
   data: PropTypes.object,
-  requestBook: PropTypes.func
+  requestBook: PropTypes.func,
+  showModal: PropTypes.func
 
 }
 

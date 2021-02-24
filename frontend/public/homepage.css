@@ -11,6 +11,8 @@ body {
 .book-container {
   height: 600px;
   padding: 6px;
+  border: 1px solid purple;
+
 }
 
 .inner-book-container {
@@ -108,7 +110,7 @@ body {
   text-align: center;
 }
 
-.user_signin { 
+.user_signin {
   text-align: center;
 }
 
@@ -204,28 +206,44 @@ body {
 }
 
 .outer-book-title {
-  height: 120px;
+  height: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid green;
 }
 
 .outer-book-author {
-  height: 150px;
+  height: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid black;
 }
 
 .outer-book-image {
   display: flex;
-  height: 350px;
+  height: 60%;
   align-items: center;
+  border: 1px solid red;
 }
 
 .book-image img {
   width: 100%;
+}
 
+.book-current-location {
+  display: flex;
+  height: 10%;
+  align-items: center;
+  border: 1px solid teal;
+}
+
+.book-info-button {
+  display: flex;
+  height: 10%;
+  align-items: center;
+  border: 1px solid brown;
 }
 
 .new_user {

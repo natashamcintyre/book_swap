@@ -6,7 +6,7 @@ const BookInfoModal = ({ handleClose, show, data, requestBook }) => {
   if (data !== '') {
     const book = JSON.parse(data.book)
     const allUsers = data.users.reverse()
-    const user = allUsers[0]
+    const user = allUsers[allUsers.length - 1]
     return (
             <div className={showHideClassName}>
               <section className="modal-content">
