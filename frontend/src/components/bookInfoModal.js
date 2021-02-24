@@ -21,7 +21,7 @@ const BookInfoModal = ({ handleClose, show, data }) => {
                     <li>Current location: <a href={'https://www.google.com/maps?q=' + user.location} target="_blank" rel="noreferrer">{user.location}</a></li>
                     <li>Contact them at {user.email}</li>
                     <li>Excerpt: {book.excerpts[0].text}</li>
-                    <li><a href={'https://www.amazon.co.uk/dp/' + book.identifiers.goodreads[0] + '#customerReviews'} target="_blank" rel="noreferrer">Read Reviews</a></li>
+                    <li><a href={'https://www.amazon.co.uk/dp/' + book.identifiers.amazon[0] + '#customerReviews'} target="_blank" rel="noreferrer">Read Reviews</a></li>
                     <button>Reserve this book</button>
                 </ul>
                 <div className="book-lib-card">
