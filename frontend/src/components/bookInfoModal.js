@@ -1,5 +1,6 @@
 import React from 'react'
 import BookRequest from './bookRequest'
+import stockBookImage from '../image/navylogo.png'
 
 const BookInfoModal = ({ handleClose, show, data, requestBook }) => {
   const showHideClassName = show ? 'modal display-block' : 'modal display-none'
@@ -7,6 +8,26 @@ const BookInfoModal = ({ handleClose, show, data, requestBook }) => {
     const book = JSON.parse(data.book)
     const allUsers = data.users.reverse()
     const user = allUsers[allUsers.length - 1]
+    let displayExcerpt = false
+
+    if (book.excerpts) {
+      displayExcerpt = true
+    }
+
+    let displayReview = false
+
+    if (book.identifiers.amazon) {
+      displayReview = true
+    }
+
+    let image
+
+    if (book.cover) {
+      image = book.cover.large
+    } else {
+      image = stockBookImage
+    }
+
     return (
             <div className={showHideClassName}>
               <section className="modal-content">
@@ -14,7 +35,7 @@ const BookInfoModal = ({ handleClose, show, data, requestBook }) => {
               {/* <span id="closeIsbnSearch" className="close"></span> */}
               <div className='row'>
                 <div className='col-6 book-info-image'>
-                    <p><img src={book.cover.large} height='350px' /></p>
+                    <p><img src={image} className='border' height='350px' /></p>
                 </div>
                 <div className='col-6 book-info'>
                     <h3>{book.title}</h3>
@@ -22,8 +43,8 @@ const BookInfoModal = ({ handleClose, show, data, requestBook }) => {
                     <p>Current reader name: {user.displayName}</p>
                     <p className='location-link'>Current location: <a href={'https://www.google.com/maps?q=' + user.location} target="_blank" rel="noreferrer">{user.location}</a></p>
                     <p>Contact them at {user.email}</p>
-                    <p className='font-italic'><i className='fas fa-quote-left'></i> {book.excerpts[0].text} <i className='fas fa-quote-right'></i></p>
-                    <p><a href={'https://www.amazon.co.uk/dp/' + book.identifiers.amazon[0] + '#customerReviews'} target="_blank" rel="noreferrer">Read Reviews</a></p>
+                    {displayExcerpt && <p className='font-italic'><i className='fas fa-quote-left fa-lg'></i> {book.excerpts[0].text} <i className='fas fa-quote-right fa-lg'></i></p>}
+                    {displayReview && <a href={'https://www.amazon.co.uk/dp/' + book.identifiers.amazon[0] + '#customerReviews'} target="_blank" rel="noreferrer">Read Reviews</a>}
                     <div className="book-request">
                       <BookRequest requestBook={requestBook} bookID={data._id} />
                     </div>
