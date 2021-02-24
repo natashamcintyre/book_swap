@@ -5,10 +5,6 @@ body {
   color: rgb(13, 43, 109);
 }
 
-/* i {
-  color: rgb(13, 43, 109);
-} */
-
 .navbar {
   background: rgb(246, 246, 246);
 }
@@ -21,14 +17,6 @@ body {
   color: rgb(13, 43, 109)
 }
 
-/* i { */
-  /* color: rgb(87, 195, 245); */
-/* } */
-
-/* i:hover {
-  color: rgb(13, 43, 109);
-} */
-
 #hamburgerIcon {
   color: rgb(246, 246, 246);
 }
@@ -36,10 +24,6 @@ body {
 .header {
   background-color: rgb(13, 43, 109);
   margin-bottom: 10px;
-}
-
-.header h1 {
-  color: rgb(13, 43, 109);
 }
 
 .usersignupform {
