@@ -31,13 +31,13 @@ class BookList extends React.Component {
           <div className="book_list" id="books_list" key='books_list'>
               <div className='row'>
                 {this.props.books.map(data =>
-                  <div key={'bookId-' + data._id} className='book-container col-2'>
+                  <div key={'bookId-' + data._id} className='book-container col-12 col-md-4 col-lg-2'>
                     < BookContainer key={data._id} className='book' data={data} requestBook={this.props.requestBook}/>
                     <button type ="button" onClick={() => this.showModal(data)}>View details</button>
                   </div>
                 )}
               </div>
-              <BookInfoModal data={this.state.currentBook} show={this.state.show} handleClose={this.hideModal}/>
+              <BookInfoModal data={this.state.currentBook} show={this.state.show} handleClose={this.hideModal} requestBook={this.props.requestBook}/>
           </div>
         </div>
       )

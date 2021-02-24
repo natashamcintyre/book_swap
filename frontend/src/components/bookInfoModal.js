@@ -1,13 +1,12 @@
 import React from 'react'
+import BookRequest from './bookRequest'
 
-const BookInfoModal = ({ handleClose, show, data }) => {
+const BookInfoModal = ({ handleClose, show, data, requestBook }) => {
   const showHideClassName = show ? 'modal display-block' : 'modal display-none'
   if (data !== '') {
     const book = JSON.parse(data.book)
     const allUsers = data.users.reverse()
     const user = allUsers[0]
-    console.log(user)
-    console.log(book)
     return (
             <div className={showHideClassName}>
               <section className="modal-content">
@@ -22,7 +21,9 @@ const BookInfoModal = ({ handleClose, show, data }) => {
                     <li>Contact them at {user.email}</li>
                     <li>Excerpt: {book.excerpts[0].text}</li>
                     <li><a href={'https://www.amazon.co.uk/dp/' + book.identifiers.amazon[0] + '#customerReviews'} target="_blank" rel="noreferrer">Read Reviews</a></li>
-                    <button>Reserve this book</button>
+                    <div className="book-request">
+                      <BookRequest requestBook={requestBook} bookID={data._id} />
+                    </div>
                 </ul>
                 <div className="book-lib-card">
                   <h3>Previously read by:</h3>
