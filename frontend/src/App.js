@@ -238,7 +238,7 @@ class BookMeUp extends Component {
               <BooksContainer />
             </Route>
             <Route exact path="/">
-              <BookList books={ this.state.books } bookRequest= { this.requestBook }/>
+              <BookList books={ this.state.books } requestBook= { this.requestBook }/>
             </Route>
           </Switch>
         </div>
