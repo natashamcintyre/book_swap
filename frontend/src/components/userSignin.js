@@ -48,7 +48,7 @@ class UserSignin extends React.Component {
 
 UserSignin.propTypes = {
   signinUser: PropTypes.func,
-  history: PropTypes.func
+  history: PropTypes.object
 }
 
 export default withRouter(UserSignin)
