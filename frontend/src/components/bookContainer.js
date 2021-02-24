@@ -5,7 +5,6 @@ import BookRequest from './bookRequest.js'
 class BookContainer extends React.Component {
   render () {
     const book = JSON.parse(this.props.data.book)
-
     return (
       <div className='book-container col-12 col-md-4 col-lg-2'>
           <div className='inner-book-container' key={this.props.data._id} id={this.props.data._id} >
@@ -27,7 +26,7 @@ class BookContainer extends React.Component {
               <BookRequest requestBook={this.props.requestBook} bookID={this.props.data._id} />
             </div>
           </div>
-      </div>
+        </div>
     )
   }
 }
