@@ -101,7 +101,7 @@ describe('Books API endpoint tests', function () {
       })
   })
 
-  it('records a new use to an existing book', function (done) {
+  it('records a new user to an existing book', function (done) {
     const first_book_data = {
       book: JSON.stringify({ title: 'test_title', author: 'test_author' }),
       user: { username: 'brad', email: 'brad@example', location: 'postcode' }
@@ -140,7 +140,7 @@ describe('Books API endpoint tests', function () {
               }
 
               expect(JSON.parse(result_two.body.book).title).to.equal('test_title')
-              expect(result_two.body.users[0].username).to.equal('bob')
+              expect(result_two.body.users[result_two.body.users.length - 1].username).to.equal('bob')
               done()
             })
       })
