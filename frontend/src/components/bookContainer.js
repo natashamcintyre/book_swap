@@ -19,9 +19,9 @@ class BookContainer extends React.Component {
               <img src={book.cover.medium}/>
             </div>
             <div className="book-current-user">
-              <div>Name: {this.props.data.users[0].displayName}</div>
-              <div>Email: {this.props.data.users[0].email}</div>
-              <div>Location: {this.props.data.users[0].location}</div>
+              <div>Name: {this.props.data.users[this.props.data.users.length - 1].displayName}</div>
+              <div>Email: {this.props.data.users[this.props.data.users.length - 1].email}</div>
+              <div>Location: {this.props.data.users[this.props.data.users.length - 1].location}</div>
             </div>
             <div className="book-request">
               <BookRequest requestBook={this.props.requestBook} bookID={this.props.data._id} />
