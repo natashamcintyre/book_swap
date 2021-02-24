@@ -223,7 +223,7 @@ class BookMeUp extends Component {
       <HashRouter>
         <div className="homepage">
           <ErrorHandler error={ this.state.error }/>
-          <Navigation submitSearchString={ this.submitSearchString } logout={ this.logout } currentUser={ this.state.currentUser.success }/>
+          <Navigation submitSearchString={ this.submitSearchString } logout={ this.logout } currentUser={ localStorage.success }/>
           <Header bookISBN={ this.state.bookISBN } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } />
           <IsbnSearchModal submitISBN={ this.submitISBN } submitBook={ this.submitBook } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } />
           <Switch>
