@@ -28,6 +28,12 @@ router.post('/add-book', async (req, res) => {
     .catch((err) => res.status(404).json(err))
 })
 
+router.post('/request-book', async (req, res) => {
+  await bookApp.requestBook(req.body)
+    .then((book) => res.json(book))
+    .catch((err) => res.status(404).json(err))
+})
+
 router.post('/user-new', async (req, res) => {
   try {
     const { username, email, password, passwordCheck, location } = req.body
