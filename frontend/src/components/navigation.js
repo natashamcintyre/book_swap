@@ -32,16 +32,16 @@ class Navigation extends React.Component {
             </div>
             <ul className="navbar-nav offset-2 mr-auto">
               <li className='nav-item mr-2'>
-                <Link to="/sign-up" id="new_user"><i className='fas fa-sign-in-alt'></i></Link>
+                <Link to="/sign-up" id="new_user"><i className='fas fa-sign-in-alt fa-2x'></i></Link>
               </li>
               <li className='nav-item mr-2'>
-                <a id="logout_link" onClick={this.logout}><i className='fas fa-sign-out-alt'></i></a>
+                <a id="logout_link" onClick={this.logout}><i className='fas fa-sign-out-alt fa-2x'></i></a>
               </li>
               <li className='nav-item mr-2'>
-                <a href="#"><i className='fas fa-book'></i></a>
+                <a href="#"><i className='fas fa-book fa-2x'></i></a>
               </li>
               <li className='nav-item mr-2'>
-                <a href="#"><i className='fas fa-heart'></i></a>
+                <a href="#"><i className='fas fa-heart fa-2x'></i></a>
               </li>
             </ul>
           </div>
