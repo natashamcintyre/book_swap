@@ -16,7 +16,6 @@ class Header extends React.Component {
               <p>This bit will tell you how to join in with the fun.</p>
             </div>
           </div>
-
         </div>
       </div>
     )

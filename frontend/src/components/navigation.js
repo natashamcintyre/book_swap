@@ -44,6 +44,9 @@ class Navigation extends React.Component {
               <li className='nav-item mr-2'>
                 <Link to="/sign-up" id="new_user"><i className='fa fa-plus-square fa-2x'></i></Link>
               </li>
+              <li>
+                <p>{this.props.currentUser}</p>
+              </li>
             </ul>
           </div>
         </nav>
@@ -55,7 +58,8 @@ class Navigation extends React.Component {
 Navigation.propTypes = {
   logout: PropTypes.func,
   submitSearchString: PropTypes.func,
-  history: PropTypes.string
+  history: PropTypes.string,
+  currentUser: PropTypes.string
 }
 
 export default withRouter(Navigation)
