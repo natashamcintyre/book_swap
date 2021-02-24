@@ -20,7 +20,7 @@ class BookList extends React.Component {
   };
 
   hideModal = () => {
-    this.setState({ show: false });
+    this.setState({ show: false })
   };
 
   render () {
@@ -33,7 +33,7 @@ class BookList extends React.Component {
                 {this.props.books.map(data =>
                   <div key={'bookId-' + data._id} className='book-container col-12 col-md-4 col-lg-2'>
                     < BookContainer key={data._id} className='book' data={data}/>
-                    <button type ="button" onClick={()=>this.showModal(data)}>View details</button>
+                    <button type ="button" onClick={() => this.showModal(data)}>View details</button>
                   </div>
                 )}
               </div>

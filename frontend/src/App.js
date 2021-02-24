@@ -7,7 +7,6 @@ import Header from './components/header.js'
 import UserSignup from './components/userSignup.js'
 import UserSignin from './components/userSignin.js'
 import BooksContainer from './components/booksContainer.js'
-import BookInfoModal from './components/bookInfoModal.js'
 import {
   Switch,
   Route,
@@ -224,7 +223,6 @@ class BookMeUp extends Component {
             </Route>
             <Route exact path="/">
               <BookList books={ this.state.books }/>
-              {/* <BookInfoModal/> */}
             </Route>
           </Switch>
         </div>
