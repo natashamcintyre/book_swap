@@ -172,16 +172,16 @@ xdescribe('user routes', () => {
   afterEach(() => {
     mockAxios.post.mockClear()
     mockAxios.get.mockClear()
-})
+  })
 
-it('successfully sends api request', () => {
-  const component = mount(<BookMeUp />)
+  it('successfully sends api request', () => {
+    const component = mount(<BookMeUp />)
 
-  mockAxios.post.mockImplementation(() =>
-    Promise.resolve({ success: true }))
+    mockAxios.post.mockImplementation(() =>
+      Promise.resolve({ success: true }))
 
-  expect(component.find())
-})
+    expect(component.find())
+  })
 
   it('redirects to homepage following successful signup', async () => {
     const component = mount(<BookMeUp />)
@@ -235,9 +235,7 @@ it('successfully sends api request', () => {
     expect(mockAxios.post).toHaveBeenCalledWith('http://localhost:3001/request-book',
       {
         bookID: 'test_BookID',
-        user: { displayName: 'User', id: 'testid', success: 'Logged in as User.', email: 'test@example', location: 'test_postcode' },
+        user: { displayName: 'User', id: 'testid', success: 'Logged in as User.', email: 'test@example', location: 'test_postcode' }
       })
-
-
   })
 })

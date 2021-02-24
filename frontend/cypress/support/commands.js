@@ -39,4 +39,3 @@ Cypress.Commands.add('secondUser', (user) => {
     body: { username: 'secondUsername', email: 'secondEmail', password: 'secondpassword', passwordCheck: 'secondpassword', location: 'elsewhere' }
   })
 })
-

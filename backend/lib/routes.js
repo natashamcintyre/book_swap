@@ -65,7 +65,7 @@ router.post('/user-new', async (req, res) => {
         displayName: savedUser.username,
         id: savedUser._id,
         location: savedUser.location,
-        email: savedUser.email,
+        email: savedUser.email
       })
     })
   } catch (err) {
@@ -102,7 +102,7 @@ router.post('/login', (req, res, next) => {
         displayName: user.username,
         id: user._id,
         location: user.location,
-        email: user.email,
+        email: user.email
       })
     })
   })(req, res, next)
