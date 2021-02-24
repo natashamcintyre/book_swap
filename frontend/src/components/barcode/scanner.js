@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import Quagga from 'quagga'
+import PropTypes from 'prop-types'
 
 class Scanner extends Component {
-  componentDidMount() {
+  componentDidMount () {
     Quagga.init(
       {
         inputStream: {
@@ -10,31 +11,29 @@ class Scanner extends Component {
           constraints: {
             width: 640,
             height: 480,
-            facingMode: 'environment', // or user
-          },
+            facingMode: 'environment' // or user
+          }
         },
         locator: {
           patchSize: 'medium',
-          halfSample: true,
+          halfSample: true
         },
         numOfWorkers: 4,
         decoder: {
-          readers: ['ean_reader'],
+          readers: ['ean_reader']
         },
-        locate: true,
+        locate: true
       },
-      function(err) {
+      function (err) {
         if (err) {
           return console.log(err)
         }
         Quagga.start()
-      },
-    )
+      })
     Quagga.onDetected(this._onDetected)
-    Quagga.stop()
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     Quagga.offDetected(this._onDetected)
   }
 
@@ -42,9 +41,13 @@ class Scanner extends Component {
     this.props.onDetected(result)
   }
 
-  render() {
+  render () {
     return <div id="interactive" className="viewport" />
   }
+}
+
+Scanner.propTypes = {
+  onDetected: PropTypes.func
 }
 
 export default Scanner

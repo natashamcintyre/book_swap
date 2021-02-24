@@ -3,7 +3,6 @@ import BookSearch from './bookSearch.js'
 import BookForm from './bookForm.js'
 import PropTypes from 'prop-types'
 
-
 class IsbnSearchModal extends Component {
   render () {
     return (

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import Scanner from './scanner'
-import Result from './result'
+import PropTypes from 'prop-types'
 
 class BarcodeScanner extends Component {
   state = {
     scanning: false,
-    result: '',
+    result: ''
   }
 
   _scan = () => {
@@ -14,11 +14,10 @@ class BarcodeScanner extends Component {
 
   _onDetected = result => {
     this.props.changeIsbnValue(result.codeResult.code)
-    console.log(result)
     this._scan()
   }
 
-  render() {
+  render () {
     return (
       <div>
         <button onClick={this._scan}>
@@ -29,11 +28,15 @@ class BarcodeScanner extends Component {
             <Result key={result.codeResult.code + i} result={result} />
           ))}
         </ul> */}
-        
+
         {this.state.scanning ? <Scanner onDetected={this._onDetected} /> : null}
       </div>
     )
   }
+}
+
+BarcodeScanner.propTypes = {
+  changeIsbnValue: PropTypes.func
 }
 
 export default BarcodeScanner
