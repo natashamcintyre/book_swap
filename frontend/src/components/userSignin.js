@@ -1,5 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {
+  withRouter
+} from 'react-router-dom'
 
 class UserSignin extends React.Component {
   constructor () {
@@ -27,12 +30,13 @@ class UserSignin extends React.Component {
     this.props.signinUser(this.state.username, this.state.password)
     this.changeUsernameValue('')
     this.changePasswordValue('')
+    this.props.history.push('/')
   }
 
   render () {
     return (
       <div className="user_signin">
-        <form id="user_signin_form" onSubmit ={ (e) => this.processSubmit(e) }>
+        <form href="/" id="user_signin_form" onSubmit ={ (e) => this.processSubmit(e) }>
           <input type="text" name="username" id="signin_username" placeholder="Enter Username" onChange={(e) => this.changeUsernameValue(e.target.value) } value={this.state.username} />
           <input type="password" name="password" id="signin_password" placeholder="Type your password" onChange={(e) => this.changePasswordValue(e.target.value)} value={this.state.password} />
           <button type="submit" name="submit" id="signin_submit">Log In</button>
@@ -43,7 +47,8 @@ class UserSignin extends React.Component {
 }
 
 UserSignin.propTypes = {
-  signinUser: PropTypes.func
+  signinUser: PropTypes.func,
+  history: PropTypes.object
 }
 
-export default UserSignin
+export default withRouter(UserSignin)

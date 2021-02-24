@@ -27,6 +27,7 @@ i {
 
 .header {
   background-color: rgb(13, 43, 109);
+  margin-bottom: 10px;
 }
 
 .header-content {
@@ -129,4 +130,12 @@ i {
   color: rgb(87, 195, 245);
   text-decoration: none;
   cursor: pointer;
+}
+
+.new_user {
+  text-align: center;
+}
+
+.user_signin {
+  text-align: center;
 }

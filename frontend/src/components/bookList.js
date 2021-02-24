@@ -4,6 +4,7 @@ import BookContainer from './bookContainer.js'
 
 class BookList extends React.Component {
   render () {
+    console.log(this.props.books)
     if (this.props.books) {
       return (
         <div className='container col-12'>

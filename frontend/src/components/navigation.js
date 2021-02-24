@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {
   Link,
-  HashRouter
+  HashRouter,
+  withRouter
 } from 'react-router-dom'
 
 import BookSearchToo from './bookSearchToo.js'
@@ -11,6 +12,7 @@ class Navigation extends React.Component {
   logout = (e) => {
     e.preventDefault()
     this.props.logout()
+    this.props.history.push('/sign-up')
   }
 
   render () {
@@ -26,7 +28,8 @@ class Navigation extends React.Component {
           <BookSearchToo submitSearchString={ this.props.submitSearchString }/>
         </div>
         <div className="navbar-icons col-2">
-          <Link to="/sign-up" id="new_user"><i className='fas fa-sign-in-alt'></i></Link>
+          <Link to="/sign-up" id="new_user"><i className='fa fa-plus-square'></i></Link>
+          <Link to="/sign-in" id="new_session"><i className='fas fa-sign-in-alt'></i></Link>
           <a id="logout_link" onClick={this.logout}><i className='fas fa-sign-out-alt'></i></a>
           <a href="#"><i className='fas fa-book'></i></a>
           <a href="#"><i className='fas fa-heart'></i></a>
@@ -39,7 +42,8 @@ class Navigation extends React.Component {
 
 Navigation.propTypes = {
   logout: PropTypes.func,
-  submitSearchString: PropTypes.func
+  submitSearchString: PropTypes.func,
+  history: PropTypes.string
 }
 
-export default Navigation
+export default withRouter(Navigation)

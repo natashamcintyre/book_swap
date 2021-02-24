@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 
 class BookContainer extends React.Component {
   render () {
-    console.log(this.props.data)
     const book = JSON.parse(this.props.data.book)
 
     return (
