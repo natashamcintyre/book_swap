@@ -9,17 +9,18 @@ const BookInfoModal = ({ handleClose, show, data }) => {
         return (
             <div className={showHideClassName}>
               <section className="modal-content">
+              <button id="closeBookInfo" className="close" onClick={handleClose}><i class="fas fa-window-close"></i></button>
+              {/* <span id="closeIsbnSearch" className="close"></span> */}
                 <ul>
                     <li><img src={book.cover.large} /></li>
                     <li>Name of book: {book.title}</li>
                     <li>Author: {book.authors[0].name}</li>
-                    <li>Current owner name: {user.displayName}</li>
-                    <li>Current location: {user.location}</li>
-                    <li>Current owner email: {user.email}</li>
+                    <li>Current reader name: {user.displayName}</li>
+                    <li>Current location: <a href={'https://www.google.com/maps?q=' + user.location} target="_blank">{user.location}</a></li>
+                    <li>Contact them at {user.email}</li>
                     <li>Excerpt: {book.excerpts[0].text}</li>
-                    <li>Review</li>
-                    <li>a button to reserve</li>
-                    <li>map</li>
+                    <li><a href={'https://www.amazon.co.uk/dp/' + book.identifiers.goodreads[0] + '#customerReviews'} target="_blank">Read Reviews</a></li>
+                    <button>Reserve this book</button>
                 </ul>
                 <div className="book-lib-card">
                   <h3>Previously read by:</h3>
@@ -29,9 +30,9 @@ const BookInfoModal = ({ handleClose, show, data }) => {
                     </div>
                   )}
                 </div>
-                <button type="button" onClick={handleClose}>
+                {/* <button type="button" onClick={handleClose}>
                   Close
-                </button>
+                </button> */}
               </section>
             </div>
           )
