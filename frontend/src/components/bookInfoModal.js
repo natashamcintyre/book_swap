@@ -51,7 +51,7 @@ const BookInfoModal = ({ handleClose, show, data, requestBook }) => {
                 </div>
                 </div>
                 <div className="book-lib-card">
-                  <h3>Previously read by:</h3>
+                  <h5>Previously read by:</h5>
                   {allUsers.map(user =>
                     <div key={'read-by-' + user.displayName} className="">
                       <p>{user.displayName} in {user.location}</p>
