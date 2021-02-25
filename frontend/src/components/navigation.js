@@ -27,8 +27,8 @@ class Navigation extends React.Component {
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i className='fas fa-bars' id='hamburgerIcon'></i>
           </button>
-          <div className='collapse navbar-collapse' id="navbarSupportedContent">
-            <div className='navbar-search form-inline offset-3 mr-auto'>
+          <div className='collapse navbar-collapse special-nav' id="navbarSupportedContent">
+            <div className='navbar-search form-inline offset-3 mr-auto' id="navbar-search">
               <BookSearchToo submitSearchString={ this.props.submitSearchString }/>
             </div>
             <ul className="navbar-nav offset-2 mr-auto">

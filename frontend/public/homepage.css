@@ -21,6 +21,10 @@ body {
   align-self: center;
 }
 
+.navbar-nav {
+  flex-direction: row;
+}
+
 #hamburgerIcon {
   color: rgb(246, 246, 246);
 }
@@ -84,7 +88,7 @@ body {
   color: r  rgb(246, 246, 246);
 }
 
-#navbarSupportedContent {
+.special-nav {
   justify-content: flex-end;
 }
 
