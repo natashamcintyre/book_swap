@@ -28,6 +28,19 @@ describe('navigation', () => {
     expect(component).toMatchSnapshot()
   })
 
+  it('logs out when log out link is clicked', () => {
+    const logoutMock = jest.fn()
+    const component = mount(
+          <MemoryRouter>
+            <Navigation logout={logoutMock}/>
+          </MemoryRouter>
+    )
+
+    expect(component.find("a#logout_link").exists()).toBe(true)
+    component.find("a#logout_link").simulate('click')
+    expect(logoutMock.mock.calls.length).toBe(1)
+  })
+
   // it('logged in user can sign out', async () => {
   //   const component = mount(<Navigation logout={ function (item) { return true } } />)
 

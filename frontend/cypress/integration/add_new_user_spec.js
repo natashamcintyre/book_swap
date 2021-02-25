@@ -10,6 +10,6 @@ describe('signing up', () => {
     cy.get('input[name="password"]').type('testpassword').should('have.value', 'testpassword')
     cy.get('input[name="passwordCheck"]').type('testpassword').should('have.value', 'testpassword')
     cy.get('form#new_user_form').submit()
-    cy.url().should('eq', 'http://localhost:3000/#/sign-up')
+    cy.url().should('eq', 'http://localhost:3000/#/')
   })
 })
