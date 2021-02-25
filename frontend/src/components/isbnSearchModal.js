@@ -16,7 +16,7 @@ class IsbnSearchModal extends Component {
     return (
       <div id="isbnSearchModal" className={this.getClassName()}>
         <div className="modal-content">
-          <span id="closeIsbnSearch" className="close">&times;</span>
+          <span id="closeIsbnSearch" className="close" onClick={this.props.hideModal}>&times;</span>
           <BookSearch id="bookSearch" submitISBN={ this.props.submitISBN } />
           <BookForm id="bookForm" submitISBN={ this.props.submitISBN } submitBook={ this.props.submitBook } bookTitle={ this.props.bookTitle } bookAuthor={ this.props.bookAuthor } hideModal={this.props.hideModal} />
         </div>
