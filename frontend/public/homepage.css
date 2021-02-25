@@ -205,14 +205,21 @@ body {
 }
 
 .book-image img {
-  width: 100%;
-  border: 1px solid rgb(13, 43, 109);
+  max-width: 100%;
+  max-height: 200px;
+}
+
+.book-image {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .book-current-location {
   display: flex;
   height: 40px;
   align-items: center;
+  text-align: center;
+  justify-content: center;
 }
 
 .book-info-button {
