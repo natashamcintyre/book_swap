@@ -3,11 +3,6 @@ import Navigation from '../components/navigation.js'
 import mockAxios from '../__mocks__/axios.js'
 import { MemoryRouter } from 'react-router-dom'
 
-import Enzyme, { mount } from 'enzyme'
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17'
-
-Enzyme.configure({ adapter: new Adapter() })
-
 describe('navigation', () => {
   beforeEach(() => {
     mockAxios.post.mockImplementation(() =>

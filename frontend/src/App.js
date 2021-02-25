@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import BookList from './components/bookList.js'
-import IsbnSearchModal from './components/isbnSearchModal.js'
 import ErrorHandler from './components/errorHandler.js'
 import Navigation from './components/navigation.js'
 import Header from './components/header.js'
 import UserSignup from './components/userSignup.js'
 import UserSignin from './components/userSignin.js'
-
 import {
   Switch,
   Route,
@@ -34,7 +32,6 @@ class BookMeUp extends Component {
   getBooks = () => {
     axios.get(`${PORT}/`)
       .then((result) => {
-        console.log(result.data)
         this.setBooks(result.data)
       })
       .catch((err) => {
@@ -45,7 +42,6 @@ class BookMeUp extends Component {
   submitBook = () => {
     axios.post(`${PORT}/add-book`, {
       book: JSON.stringify(this.state.book),
-      // need to turn this into an ObjectId for mongodb somehow?? maybe backend??
       user: this.state.currentUser
     })
       .then((result) => {
@@ -138,7 +134,6 @@ class BookMeUp extends Component {
   requestBook = (bookID) => {
     axios.post(`${PORT}/request-book`, {
       bookID: bookID,
-      // need to turn this into an ObjectId for mongodb somehow?? maybe backend??
       user: this.state.currentUser
     })
       .then((result) => {
@@ -224,8 +219,7 @@ class BookMeUp extends Component {
         <div className="homepage">
           <ErrorHandler error={ this.state.error }/>
           <Navigation submitSearchString={ this.submitSearchString } logout={ this.logout } currentUser={ localStorage.success }/>
-          <Header bookISBN={ this.state.bookISBN } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } />
-          <IsbnSearchModal submitISBN={ this.submitISBN } submitBook={ this.submitBook } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } />
+          <Header bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } submitISBN={ this.submitISBN } submitBook={ this.submitBook } />
           <Switch>
             <Route path="/sign-up">
               <UserSignup id="usersignupform" addUser={ this.addUser } />

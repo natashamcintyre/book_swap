@@ -13,7 +13,7 @@ class BookForm extends React.Component {
       <div className="add_book col-12 col-md-5">
         <Printer bookTitle={ this.props.bookTitle } bookAuthor={ this.props.bookAuthor } />
         <form id="book_form" onSubmit={ (e) => this.processSubmit(e) }>
-          <button className="col-12 btn btn-md" type="submit" name="submit" id="submit">Submit</button>
+          <button className="col-12 btn btn-md" type="submit" name="submit" id="submit" onClick={this.props.hideModal}>Submit</button>
         </form>
       </div>
     )
@@ -22,6 +22,7 @@ class BookForm extends React.Component {
 
 BookForm.propTypes = {
   submitBook: PropTypes.func,
+  hideModal: PropTypes.func,
   bookTitle: PropTypes.string,
   bookAuthor: PropTypes.string
 }

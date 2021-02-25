@@ -1,11 +1,6 @@
 import React from 'react'
 import BookSearchToo from '../components/bookSearchToo.js'
 
-import Enzyme, { mount } from 'enzyme'
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17'
-
-Enzyme.configure({ adapter: new Adapter() })
-
 describe('bookSearchToo', () => {
   it('renders without crashing', () => {
     const component = mount(<BookSearchToo />)

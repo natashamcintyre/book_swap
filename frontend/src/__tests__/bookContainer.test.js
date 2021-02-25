@@ -1,11 +1,6 @@
 import React from 'react'
 import BookContainer from '../components/bookContainer'
 
-import Enzyme, { shallow } from 'enzyme'
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17'
-
-Enzyme.configure({ adapter: new Adapter() })
-
 describe('bookContainer', () => {
   it('renders without crashing', () => {
     const book = JSON.stringify({ title: 'test_title', authors: [{ name: 'test_author' }], identifiers: { isbn_13: 'test_isb' }, cover: { medium: 'test_url' } })

@@ -1,6 +1,23 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import IsbnSearchModal from './isbnSearchModal.js'
 
 class Header extends React.Component {
+  constructor () {
+    super()
+    this.state = { show: false }
+    this.showModal = this.showModal.bind(this)
+    this.hideModal = this.hideModal.bind(this)
+  }
+
+  showModal = () => {
+    this.setState({ show: true })
+  }
+
+  hideModal = () => {
+    this.setState({ show: false })
+  }
+
   render () {
     return (
       <div className="header col-12">
@@ -8,7 +25,8 @@ class Header extends React.Component {
           <img src="images/logonegative.png"></img>
           <h1>Welcome to Book Me Up!</h1>
           <button id="howToButton" className="btn btn-lg m-2">How to get a book!</button>
-          <button id="isbnSearchButton" className="btn btn-lg m-2">Add a new book!</button>
+          <button id="isbnSearchButton" className="btn btn-lg m-2" onClick={this.showModal}>Add a new book!</button>
+          <IsbnSearchModal submitISBN={ this.props.submitISBN } submitBook={ this.props.submitBook } bookTitle={ this.props.bookTitle } bookAuthor={ this.props.bookAuthor } show={this.state.show} hideModal={this.hideModal}/>
           <div id="howToModal" className="modal">
             <div className="modal-content">
               <span id="closeHowTo" className="close">&times;</span>
@@ -19,6 +37,13 @@ class Header extends React.Component {
       </div>
     )
   }
+}
+
+Header.propTypes = {
+  submitBook: PropTypes.func,
+  submitISBN: PropTypes.func,
+  bookTitle: PropTypes.string,
+  bookAuthor: PropTypes.string
 }
 
 export default Header

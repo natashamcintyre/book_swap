@@ -1,11 +1,6 @@
 import React from 'react'
 import BookList from '../components/bookList'
 
-import Enzyme, { mount } from 'enzyme'
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17'
-
-Enzyme.configure({ adapter: new Adapter() })
-
 describe('booklist', () => {
   xit('renders without crashing', () => {
     const component = mount(<BookList />)

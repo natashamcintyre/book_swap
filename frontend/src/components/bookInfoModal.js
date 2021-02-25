@@ -58,9 +58,6 @@ const BookInfoModal = ({ handleClose, show, data, requestBook }) => {
                     </div>
                   )}
                 </div>
-                {/* <button type="button" onClick={handleClose}>
-                  Close
-                </button> */}
               </section>
             </div>
     )
