@@ -3,6 +3,8 @@ import BookList from './components/bookList.js'
 import ErrorHandler from './components/errorHandler.js'
 import Navigation from './components/navigation.js'
 import Header from './components/header.js'
+import HeaderUser from './components/headerUser.js'
+import HeaderUserNew from './components/headerUserNew.js'
 import UserSignup from './components/userSignup.js'
 import UserSignin from './components/userSignin.js'
 import {
@@ -219,15 +221,17 @@ class BookMeUp extends Component {
         <div className="homepage">
           <ErrorHandler error={ this.state.error }/>
           <Navigation submitSearchString={ this.submitSearchString } logout={ this.logout } currentUser={ localStorage.success }/>
-          <Header bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } submitISBN={ this.submitISBN } submitBook={ this.submitBook } />
           <Switch>
             <Route path="/sign-up">
+              <HeaderUserNew addUser={ this.addUser } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } submitISBN={ this.submitISBN } submitBook={ this.submitBook } />
               <UserSignup id="usersignupform" addUser={ this.addUser } />
             </Route>
             <Route path="/sign-in">
+              <HeaderUser signinUser={ this.signinUser } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } submitISBN={ this.submitISBN } submitBook={ this.submitBook } />
               <UserSignin id="usersigninform" signinUser={ this.signinUser }/>
             </Route>
             <Route exact path="/">
+              <Header bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } submitISBN={ this.submitISBN } submitBook={ this.submitBook } />
               <BookList books={ this.state.books } requestBook= { this.requestBook }/>
             </Route>
           </Switch>
