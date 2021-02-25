@@ -1,5 +1,5 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import UserSignin from './userSignin.js'
 
 class HeaderUser extends React.Component {
@@ -24,7 +24,7 @@ class HeaderUser extends React.Component {
         <div className="header-content col-12 col-md-6 offset-md-3">
           <img src="images/logonegative.png"></img>
           <h1>Login to Book Me Up!</h1>
-          <UserSignin id="usersigninform" signinUser={ this.signinUser }/>
+          <UserSignin id="usersigninform" signinUser={ this.props.signinUser }/>
         </div>
       </div>
     )
@@ -32,7 +32,7 @@ class HeaderUser extends React.Component {
 }
 
 HeaderUser.propTypes = {
-
+  signinUser: PropTypes.func
 }
 
 export default HeaderUser

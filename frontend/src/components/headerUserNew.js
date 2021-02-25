@@ -1,5 +1,5 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import UserSignup from './userSignup.js'
 
 class HeaderUserNew extends React.Component {
@@ -23,8 +23,8 @@ class HeaderUserNew extends React.Component {
       <div className="header col-12">
         <div className="header-content col-12 col-md-6 offset-md-3">
           <img src="images/logonegative.png"></img>
-          <h1>Sign Up Book Me Up!</h1>
-          <UserSignup id="usersignupform" addUser={ this.addUser } />
+          <h1>Sign Up To Book Me Up!</h1>
+          <UserSignup id="usersignupform" addUser={ this.props.addUser } />
         </div>
       </div>
     )
@@ -32,7 +32,7 @@ class HeaderUserNew extends React.Component {
 }
 
 HeaderUserNew.propTypes = {
-
+  addUser: PropTypes.func
 }
 
 export default HeaderUserNew
