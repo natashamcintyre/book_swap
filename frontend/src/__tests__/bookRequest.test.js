@@ -9,7 +9,7 @@ describe('bookRequest', () => {
 
   it('has submit button', () => {
     const component = mount(<BookRequest bookID='1'/>)
-    expect(component.exists('button#book-request-button')).toBe(true)
+    expect(component.exists('form#book_request')).toBe(true)
   })
 
   it('has a bookID', () => {

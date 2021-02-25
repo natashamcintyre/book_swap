@@ -39,7 +39,7 @@ class Navigation extends React.Component {
                 <a id="logout_link" onClick={this.logout}><i className='fas fa-sign-out-alt fa-2x'></i></a>
               </li>
               <li className='nav-item mr-2'>
-                <a href="#"><i className='fas fa-book fa-2x'></i></a>
+                <a href="#"><i className='fas fa-book fa-2x' alt='books'></i></a>
               </li>
               <li className='nav-item mr-2'>
                 <Link to="/sign-up" id="new_user"><i className='fa fa-plus-square fa-2x'></i></Link>

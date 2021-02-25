@@ -72,12 +72,12 @@ class UserSignup extends React.Component {
     return (
       <div className="new_user">
         <form href="/" id="new_user_form" onSubmit={ (e) => this.processSubmit(e) }>
-          <input type="text" name="username" id="new_username" placeholder="Choose a Username" onChange={(e) => this.changeUsernameValue(e.target.value)} value={this.state.username} />
-          <input type="email" name="email" id="new_email" placeholder="Enter your email address" onChange={(e) => this.changeEmailValue(e.target.value)} value={this.state.email} />
-          <input type="text" name="location" id="new_location" placeholder="Enter your postcode" onChange={(e) => this.changeLocationValue(e.target.value)} value={this.state.location} />
-          <input type="password" name="password" id="new_password" placeholder="Type your password" onChange={(e) => this.changePasswordValue(e.target.value)} value={this.state.password} />
-          <input type="password" name="passwordCheck" id="new_passwordCheck" placeholder="Type your password again" onChange={(e) => this.changePasswordCheckValue(e.target.value)} value={this.state.passwordCheck} />
-          <button type="submit" name="submit" id="new_user_submit">Sign Me Up</button>
+          <input type="text" className='m-1' name="username" id="new_username" placeholder="Choose a Username" onChange={(e) => this.changeUsernameValue(e.target.value)} value={this.state.username} />
+          <input type="email" className='m-1' name="email" id="new_email" placeholder="Enter your email address" onChange={(e) => this.changeEmailValue(e.target.value)} value={this.state.email} />
+          <input type="text" className='m-1' name="location" id="new_location" placeholder="Enter your location" onChange={(e) => this.changeLocationValue(e.target.value)} value={this.state.location} />
+          <input type="password" className='m-1' name="password" id="new_password" placeholder="Type your password" onChange={(e) => this.changePasswordValue(e.target.value)} value={this.state.password} />
+          <input type="password" className='m-1' name="passwordCheck" id="new_passwordCheck" placeholder="Type your password again" onChange={(e) => this.changePasswordCheckValue(e.target.value)} value={this.state.passwordCheck} />
+          <button type="submit" className='m-1' name="submit" id="new_user_submit">Sign Me Up</button>
         </form>
       </div>
     )

@@ -6,7 +6,7 @@ describe('user sign in form', () => {
   it('renders without crashing', () => {
     const component = mount(
       <MemoryRouter>
-      <UserSignin />
+        <UserSignin />
       </MemoryRouter>
     )
     expect(component).toMatchSnapshot()
@@ -21,7 +21,7 @@ describe('user sign in form', () => {
   it('has input textbox for username', () => {
     const component = mount(
       <MemoryRouter>
-      <UserSignin />
+        <UserSignin />
       </MemoryRouter>
     )
     expect(component.exists('input#signin_username')).toBe(true)
@@ -30,7 +30,7 @@ describe('user sign in form', () => {
   it('has input textbox for password', () => {
     const component = mount(
       <MemoryRouter>
-      <UserSignin />
+        <UserSignin />
       </MemoryRouter>
     )
     expect(component.exists('input#signin_password')).toBe(true)
@@ -39,7 +39,7 @@ describe('user sign in form', () => {
   it('has submit button', () => {
     const component = mount(
       <MemoryRouter>
-      <UserSignin />
+        <UserSignin />
       </MemoryRouter>
     )
     expect(component.exists('button#signin_submit')).toBe(true)
@@ -69,7 +69,7 @@ describe('user sign in form', () => {
     component.find('input#signin_password').simulate('change', {
       target: { value: 'test_password' }
     })
-    component.find('form#user_signin_form').simulate('submit')
+    component.find('form#signInForm').simulate('submit')
 
     expect(component.find('input#signin_username').props().value).toEqual('')
     expect(component.state('username')).toEqual('')
