@@ -10,11 +10,15 @@ body {
 }
 
 .navbar i {
-  color:rgb(87, 195, 245)
+  color:rgb(87, 195, 245);
 }
 
 .navbar i:hover {
   color: rgb(13, 43, 109)
+}
+
+.navbar li {
+  align-self: center;
 }
 
 #hamburgerIcon {
@@ -78,6 +82,14 @@ body {
   border: 1px solid rgb(13, 43, 109);
   background: rgb(13, 43, 109);
   color: r  rgb(246, 246, 246);
+}
+
+#navbarSupportedContent {
+  justify-content: flex-end;
+}
+
+#book_search_too_input {
+  width: 40vw;
 }
 
 .new_user {
