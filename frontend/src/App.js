@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import BookList from './components/bookList.js'
-import IsbnSearchModal from './components/isbnSearchModal.js'
 import ErrorHandler from './components/errorHandler.js'
 import Navigation from './components/navigation.js'
 import Header from './components/header.js'
@@ -224,8 +223,7 @@ class BookMeUp extends Component {
         <div className="homepage">
           <ErrorHandler error={ this.state.error }/>
           <Navigation submitSearchString={ this.submitSearchString } logout={ this.logout } currentUser={ localStorage.success }/>
-          <Header bookISBN={ this.state.bookISBN } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } />
-          <IsbnSearchModal submitISBN={ this.submitISBN } submitBook={ this.submitBook } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } />
+          <Header bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } submitISBN={ this.submitISBN } submitBook={ this.submitBook } />
           <Switch>
             <Route path="/sign-up">
               <UserSignup id="usersignupform" addUser={ this.addUser } />

@@ -15,13 +15,12 @@ class BookList extends React.Component {
   }
 
   showModal = (currentBook) => {
-    console.log('inide showmodal method')
     this.setState({ show: true, currentBook: currentBook })
-  };
+  }
 
   hideModal = () => {
     this.setState({ show: false })
-  };
+  }
 
   render () {
     console.log(this.props.books)
