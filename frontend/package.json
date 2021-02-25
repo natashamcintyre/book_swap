@@ -53,5 +53,14 @@
     "eslint-plugin-cypress": "^2.11.2",
     "eslint-plugin-react": "^7.22.0",
     "standard": "^16.0.3"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "index.js",
+      "reportWebVitals.js"
+    ]
   }
 }

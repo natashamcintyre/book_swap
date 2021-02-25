@@ -224,7 +224,11 @@ xdescribe('user routes', () => {
     mockAxios.post.mockImplementation(() =>
       Promise.resolve({ success: true }))
 
-    instance.requestBook('test_BookID')
+    conponent.find('div#books_list').find('button').simulate('click')
+
+    await component.find('button#book-request-button').update()
+
+    component.find('button#book-request-button').simulate('click')
 
     expect(mockAxios.post).toHaveBeenCalledWith('http://localhost:3001/request-book',
       {
