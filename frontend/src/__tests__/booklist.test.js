@@ -2,7 +2,7 @@ import React from 'react'
 import BookList from '../components/bookList'
 
 describe('booklist', () => {
-  xit('renders without crashing', () => {
+  it('renders without crashing', () => {
     const component = mount(<BookList />)
     expect(component).toMatchSnapshot()
   })

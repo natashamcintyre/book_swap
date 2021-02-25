@@ -4,9 +4,9 @@ describe('user search for available books with free search', () => {
     cy.get('form[id="book_search_too"]').should('exist')
     cy.get('input[id="book_search_too_input"]').type('Sapiens').should('have.value', 'Sapiens')
     cy.get('form[id="book_search_too"]').submit()
-    cy.get('div[id="books_list"').should(($books) => {
+    cy.get('div[id="books_list"]').should(($books) => {
       expect($books.eq(0), 'first item').to.contain('Sapiens')
-      expect($books.eq(0), 'last item').to.contain('Sapiens')
+      expect($books.eq(0), 'last item').not.contain('Harry Potter')
     })
   })
 })
