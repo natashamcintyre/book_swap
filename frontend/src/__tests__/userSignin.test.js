@@ -2,11 +2,6 @@ import React from 'react'
 import UserSignin from '../components/userSignin.js'
 import { MemoryRouter } from 'react-router-dom'
 
-import Enzyme, { mount } from 'enzyme'
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17'
-
-Enzyme.configure({ adapter: new Adapter() })
-
 describe('user sign in form', () => {
   it('renders without crashing', () => {
     const component = mount(
@@ -50,16 +45,16 @@ describe('user sign in form', () => {
     expect(component.exists('button#signin_submit')).toBe(true)
   })
 
-  xit('should update state username when text entered', () => {
-    const component = mount(<UserSignin />)
+  it('should update state username when text entered', () => {
+    const component = shallow(<UserSignin.WrappedComponent />)
     component.find('input#signin_username').simulate('change', {
       target: { value: 'test_username' }
     })
     expect(component.state('username')).toEqual('test_username')
   })
 
-  xit('should update state password when text entered', () => {
-    const component = mount(<UserSignin />)
+  it('should update state password when text entered', () => {
+    const component = shallow(<UserSignin.WrappedComponent />)
     component.find('input#signin_password').simulate('change', {
       target: { value: 'test_password' }
     })

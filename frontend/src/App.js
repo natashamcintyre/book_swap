@@ -33,7 +33,6 @@ class BookMeUp extends Component {
   getBooks = () => {
     axios.get(`${PORT}/`)
       .then((result) => {
-        console.log(result.data)
         this.setBooks(result.data)
       })
       .catch((err) => {
@@ -44,7 +43,6 @@ class BookMeUp extends Component {
   submitBook = () => {
     axios.post(`${PORT}/add-book`, {
       book: JSON.stringify(this.state.book),
-      // need to turn this into an ObjectId for mongodb somehow?? maybe backend??
       user: this.state.currentUser
     })
       .then((result) => {
@@ -137,7 +135,6 @@ class BookMeUp extends Component {
   requestBook = (bookID) => {
     axios.post(`${PORT}/request-book`, {
       bookID: bookID,
-      // need to turn this into an ObjectId for mongodb somehow?? maybe backend??
       user: this.state.currentUser
     })
       .then((result) => {

@@ -1,11 +1,6 @@
 import React from 'react'
 import BookRequest from '../components/bookRequest'
 
-import Enzyme, { mount } from 'enzyme'
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17'
-
-Enzyme.configure({ adapter: new Adapter() })
-
 describe('bookRequest', () => {
   it('renders without crashing', () => {
     const component = mount(<BookRequest bookID='1' />)

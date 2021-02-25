@@ -2,11 +2,6 @@ import React from 'react'
 import UserSignup from '../components/userSignup.js'
 import { MemoryRouter } from 'react-router-dom'
 
-import Enzyme, { mount } from 'enzyme'
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17'
-
-Enzyme.configure({ adapter: new Adapter() })
-
 describe('user sign up form', () => {
   // beforeEach(() => {
   //   const component = mount(
@@ -87,40 +82,40 @@ describe('user sign up form', () => {
 
   // below this line fails
 
-  xit('should update state username when text entered', () => {
-    const component = mount(<UserSignup />)
+  it('should update state username when text entered', () => {
+    const component = shallow(<UserSignup.WrappedComponent />)
     component.find('input#new_username').simulate('change', {
       target: { value: 'test_username' }
     })
     expect(component.state('username')).toEqual('test_username')
   })
 
-  xit('should update state email when text entered', () => {
-    const component = mount(<UserSignup />)
+  it('should update state email when text entered', () => {
+    const component = shallow(<UserSignup.WrappedComponent />)
     component.find('input#new_email').simulate('change', {
       target: { value: 'test@email' }
     })
     expect(component.state('email')).toEqual('test@email')
   })
 
-  xit('should update state location when text entered', () => {
-    const component = mount(<UserSignup />)
+  it('should update state location when text entered', () => {
+    const component = shallow(<UserSignup.WrappedComponent />)
     component.find('input#new_location').simulate('change', {
       target: { value: 'test_location' }
     })
     expect(component.state('location')).toEqual('test_location')
   })
 
-  xit('should update state password when text entered', () => {
-    const component = mount(<UserSignup />)
+  it('should update state password when text entered', () => {
+    const component = shallow(<UserSignup.WrappedComponent />)
     component.find('input#new_password').simulate('change', {
       target: { value: 'test_password' }
     })
     expect(component.state('password')).toEqual('test_password')
   })
 
-  xit('should update state password when text entered', () => {
-    const component = mount(<UserSignup />)
+  it('should update state password when text entered', () => {
+    const component = shallow(<UserSignup.WrappedComponent />)
     component.find('input#new_passwordCheck').simulate('change', {
       target: { value: 'test_password' }
     })

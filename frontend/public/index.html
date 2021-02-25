@@ -20,9 +20,6 @@
         var howToModal = document.getElementById("howToModal");
         var howToBtn = document.getElementById("howToButton");
 
-        var isbnSearchModal = document.getElementById("isbnSearchModal");
-        var isbnSearchBtn = document.getElementById("isbnSearchButton");
-
         var closeHowTo = document.getElementById("closeHowTo");
         var closeIsbnSearch = document.getElementById("closeIsbnSearch");
 
@@ -36,19 +33,6 @@
         window.onclick = function(event) {
           if (event.target == howToModal) {
             howToModal.style.display = "none";
-          }
-        }
-
-        isbnSearchBtn.onclick = function() {
-          isbnSearchModal.style.display = "block";
-        }
-
-        closeIsbnSearch.onclick = function() {
-          isbnSearchModal.style.display = "none";
-        }
-        window.onclick = function(event) {
-          if (event.target == isbnSearchModal) {
-            isbnSearchModal.style.display = "none";
           }
         }
       })

@@ -1,11 +1,6 @@
 import React from 'react'
 import BookSearch from '../components/bookSearch.js'
 
-import Enzyme, { mount } from 'enzyme'
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17'
-
-Enzyme.configure({ adapter: new Adapter() })
-
 describe('bookSearch', () => {
   it('renders without crashing', () => {
     const component = mount(<BookSearch />)
