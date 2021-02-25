@@ -28,7 +28,7 @@ class BookList extends React.Component {
         <div className='container col-12'>
           <div className="book_list" id="books_list" key='books_list'>
               <div className='row'>
-                {this.props.books.map(data =>
+                {this.props.books.reverse().map(data =>
                   <div key={'bookId-' + data._id} className='book-container col-12 col-md-4 col-lg-2'>
                     < BookContainer key={data._id} className='book' data={data} requestBook={this.props.requestBook} showModal={this.showModal}/>
                   </div>
