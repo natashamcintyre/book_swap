@@ -298,3 +298,12 @@ body {
   background: rgb(246, 246, 246);
   color: rgb(13, 43, 109);
 }
+
+a {
+  color: white;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: rgb(87, 195, 245);
+}
