@@ -23,6 +23,8 @@
         var closeHowTo = document.getElementById("closeHowTo");
         var closeIsbnSearch = document.getElementById("closeIsbnSearch");
 
+        var isbnModal = document.getElementById("isbnSearchModal")
+
         howToBtn.onclick = function() {
           howToModal.style.display = "block";
         }
@@ -30,6 +32,16 @@
         closeHowTo.onclick = function() {
           howToModal.style.display = "none";
         }
+        window.onclick = function(event) {
+          if (event.target == howToModal) {
+            howToModal.style.display = "none";
+          }
+        }
+
+        closeIsbnSearch.onclick = function() {
+          isbnModal.class = "modal display-none";
+        }
+
         window.onclick = function(event) {
           if (event.target == howToModal) {
             howToModal.style.display = "none";

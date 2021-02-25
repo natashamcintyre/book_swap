@@ -61,8 +61,8 @@ describe('user sign in form', () => {
     expect(component.state('password')).toEqual('test_password')
   })
 
-  xit('Clear message box on submit', () => {
-    const component = mount(<UserSignin signinUser={ function (item) { return true } } />)
+  it('Clear message box on submit', () => {
+    const component = mount(<UserSignin.WrappedComponent signinUser={ function (item) { return true }} history={[]} />)
     component.find('input#signin_username').simulate('change', {
       target: { value: 'test_username' }
     })
