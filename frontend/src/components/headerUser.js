@@ -3,21 +3,6 @@ import PropTypes from 'prop-types'
 import UserSignin from './userSignin.js'
 
 class HeaderUser extends React.Component {
-  constructor () {
-    super()
-    this.state = { show: false }
-    this.showModal = this.showModal.bind(this)
-    this.hideModal = this.hideModal.bind(this)
-  }
-
-  showModal = () => {
-    this.setState({ show: true })
-  }
-
-  hideModal = () => {
-    this.setState({ show: false })
-  }
-
   render () {
     return (
       <div className="header col-12">
