@@ -69,7 +69,7 @@ describe('user sign in form', () => {
     component.find('input#signin_password').simulate('change', {
       target: { value: 'test_password' }
     })
-    component.find('form#user_signin_form').simulate('submit')
+    component.find('form#signInForm').simulate('submit')
 
     expect(component.find('input#signin_username').props().value).toEqual('')
     expect(component.state('username')).toEqual('')
