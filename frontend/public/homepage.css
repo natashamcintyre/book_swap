@@ -67,13 +67,25 @@ body {
 #book_form button {
   border: 1px solid rgb(87, 195, 245);
   background: rgb(87, 195, 245);
-  border-radius: 0;
+  border-radius: 6px;
   color: rgb(13, 43, 109);
 }
 #book_form button:hover {
   border: 1px solid rgb(13, 43, 109);
-  background: rgb(13, 43, 109);
-  color: rgb(246, 246, 246);
+  background: rgb(246, 246, 246);
+  color: rgb(13, 43, 109);
+}
+
+#search button {
+  border: 1px solid rgb(87, 195, 245);
+  background: rgb(87, 195, 245);
+  border-radius: 0;
+  color: rgb(13, 43, 109);
+}
+#search button:hover {
+  border: 1px solid rgb(13, 43, 109);
+  background: rgb(246, 246, 246);
+  color: rgb(13, 43, 109);
 }
 
 .navbar button {
@@ -174,13 +186,8 @@ body {
   margin-right: 3px;
 }
 
-.add_book button {
+.homepage button {
   border-radius: 6px;
-}
-
-.add_book button:hover {
-  color: black;
-  background-color:rgb(87, 195, 245)
 }
 
 .close {
