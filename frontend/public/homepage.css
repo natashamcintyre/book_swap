@@ -47,7 +47,6 @@ body {
 .header-content button {
   border: 1px solid rgb(87, 195, 245);
   background: rgb(87, 195, 245);
-  border-radius: 0;
   color: rgb(13, 43, 109);
 }
 
@@ -67,7 +66,6 @@ body {
 #book_form button {
   border: 1px solid rgb(87, 195, 245);
   background: rgb(87, 195, 245);
-  border-radius: 6px;
   color: rgb(13, 43, 109);
 }
 #book_form button:hover {
@@ -79,7 +77,6 @@ body {
 #search button {
   border: 1px solid rgb(87, 195, 245);
   background: rgb(87, 195, 245);
-  border-radius: 0;
   color: rgb(13, 43, 109);
 }
 #search button:hover {
@@ -91,13 +88,12 @@ body {
 .navbar button {
   border: 1px solid rgb(87, 195, 245);
   background: rgb(87, 195, 245);
-  border-radius: 0;
   color: rgb(13, 43, 109);
 }
 .navbar button:hover {
   border: 1px solid rgb(13, 43, 109);
   background: rgb(13, 43, 109);
-  color: r  rgb(246, 246, 246);
+  color: rgb(246, 246, 246);
 }
 
 .special-nav {
@@ -262,7 +258,6 @@ body {
 .book-info-button button:hover {
   border: 1px solid rgb(87, 195, 245);
   background: rgb(87, 195, 245);
-  border-radius: 0;
   color: rgb(13, 43, 109);
 }
 
@@ -283,7 +278,6 @@ body {
 #book_request button {
   border: 1px solid rgb(87, 195, 245);
   background: rgb(87, 195, 245);
-  border-radius: 0;
   color: rgb(13, 43, 109);
 }
 
@@ -296,7 +290,6 @@ body {
 #signInForm button {
   border: 1px solid rgb(87, 195, 245);
   background: rgb(87, 195, 245);
-  border-radius: 0;
   color: rgb(13, 43, 109);
 }
 
