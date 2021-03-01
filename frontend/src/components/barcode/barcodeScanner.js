@@ -21,9 +21,9 @@ class BarcodeScanner extends Component {
     return (
       <div>
         <button className='scanbox' onClick={this._scan} >
-          <i className='fas fa-barcode' id='barcodeIcon'>
+          <i className='fas fa-barcode' id='barcodeIcon'></i>
           {this.state.scanning ? ' Stop Scan' : ' Go on. Scan it'}
-          </i>
+
         </button>
         {this.state.scanning ? <Scanner onDetected={this._onDetected} /> : null}
       </div>

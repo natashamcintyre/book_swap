@@ -1,8 +1,8 @@
 # Book Me Up
-A web application, to allow users to offer books for use by a community of users other users.
+A web application to allow users to offer books to share with the community.
 
 ## Motivation
-To demonstrate the ability to build a high quality single page web app, in a new framework as part of a team. Also, to enjoy ourselves.
+To demonstrate the ability to build a high quality single page web app, in a new framework as part of a team practising agile development that is focused on thorough test driven development process. Also, to enjoy ourselves.
 
 ## Build status
 [![Build Status](https://travis-ci.com/argy-bargy/book_swap.svg?branch=main)](https://travis-ci.com/argy-bargy/book_swap)
@@ -11,17 +11,29 @@ To demonstrate the ability to build a high quality single page web app, in a new
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 
 ## Screenshots
-Include logo/demo screenshot etc.
+Include logo/demo screenshot etc
 
 ## Tech/framework used
-React frontend, with Express, Node.js and Mongodb backend. (MERN)
+**Built with**
+- [React](https://reactjs.org)
+- [Node.JS](https://nodejs.org)
+- [Express](https://expressjs.com)
+- [MongoDB](https://www.mongodb.com)
+- [Atom](https://atom.io)
+- [Visual Studio Code](https://code.visualstudio.com)
 
 ## Features
-What makes your project stand out?
+Key Features:
+
+* Add a book to lend with a barcode scanner
+* Search for books by any keyword in the free search field.
+* See details of each book
+* See 'virtual library card' of prior readers
+* Request to borrow a book from the community library
 
 ## Code Example
 Frontend App.JS:
-```javascript
+```js
 class BookMeUp extends Component {
   constructor () {
     super()
@@ -252,9 +264,6 @@ import express from 'express'
 import cors from 'cors'
 import bodyParse from 'body-parser'
 import mongoose from 'mongoose'
-// var passport = require('passport');
-// var crypto = require('crypto');
-// const LocalStrategy = require('passport-local').Strategy;
 
 import config from './config/config'
 import passport from './config/passportSetup'
@@ -280,8 +289,6 @@ db.on('error', err => {
   console.error('connection error:', err)
 })
 
-// app.use(express.json())
-// app.use(express.urlencoded({ extended: true }))
 app.use(bodyParse.json())
 app.use(cors())
 
@@ -318,6 +325,16 @@ export default server
 ```
 
 ## Installation
+To use locally, clone this repo, then:
+```
+$ cd book_swap/backend
+$ npm install
+$ cd ../frontend
+$ npm install
+```
+You will need npm, which is installed with Node.js. Please visit the [Node.js website](https://nodejs.org/en/download/) to download.
+
+
 ### Database Installation
 You will need homebrew, if you don't please install [Homebrew](https://brew.sh/).
 
@@ -345,10 +362,10 @@ $ npm test -- --coverage --watchAll=false
 ```
 Run the following to open the test runner for end to end testing:
 ```
-cd backend
-npm start
-cd ../frontend
-npm start
+$ cd backend
+$ npm start
+$ cd ../frontend
+$ npm start
 $ npx cypress open
 ```
 ### Linting
@@ -361,26 +378,19 @@ To run from each of the project directories:
 ## How to use?
 The frontend and backend run independently on separate servers, only in the local environment.
 
-Firstly insure all modules are installed:
+To use Book Me Up:
+
+Terminal 1:
 ```
-npm install
+$ cd backend
+$ npm start
 ```
 
-Next, spin up the back end server:
+Terminal 2:
 ```
-cd backend
-npm start
+$ cd frontend
+$ npm start
 ```
-
-Then on another terminal tab:]
-
-```
-cd ..
-cd frontend
-npm start
-```
-
-This should automatically open up a browser for viewing.
 
 Before either, ensure the mongodb is running in the background as well.
 
