@@ -34,18 +34,24 @@ $ npm install
 **Install database**\
 You will need homebrew, if you don't please install [Homebrew](https://brew.sh/).\
 Run:\
-* ```$ brew tap mongodb/brew```
-* ```$ brew install mongodb-community```
+```
+$ brew tap mongodb/brew
+$ brew install mongodb-community
+```
 
 Then:\
 MacOS Catalina or above:
-* ```$ sudo mkdir -p /System/Volumes/Data/data/db```
-* ```$ sudo chown -R `id -un` /System/Volumes/Data/data/db```
+```
+$ sudo mkdir -p /System/Volumes/Data/data/db
+$ sudo chown -R `id -un` /System/Volumes/Data/data/db
+```
 
 Or:\
 Pre Catalina:
-* ```$ sudo mkdir -p /data/db```
-* ```$ sudo chown -R `id -un` /data/db```
+```
+$ sudo mkdir -p /data/db
+$ sudo chown -R `id -un` /data/db
+```
 
 ## How to use?
 Make sure the database is running, then use separate terminals to start the backend server and the frontend server.
@@ -95,10 +101,24 @@ MERN stack
 ## Tests
 Cypress for feature tests, Enzyme for React unit tests, and Mocha-Chai for Node.js tests.
 
-Run the following to for frontend test coverage:
+Run the following for backend tests (test coverage is included)
 ```
+$ cd backend
+$ npm test
+```
+
+Run the following for frontend tests
+```
+$ cd frontend
+$ npm test
+```
+
+Run the following to include coverage for frontend tests:
+```
+$ cd frontend
 $ npm test -- --coverage --watchAll=false
 ```
+
 Run the following to open the test runner for end to end testing:
 ```
 $ cd backend
@@ -107,6 +127,7 @@ $ cd ../frontend
 $ npm start
 $ npx cypress open
 ```
+
 ### Linting
 We are using ESlint for frontend and backend linting.
 
