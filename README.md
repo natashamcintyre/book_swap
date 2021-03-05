@@ -1,6 +1,8 @@
 # Book Me Up
 A web application to allow users to offer books to share with the community.
 
+![Home Screen](https://github.com/argy-bargy/book_swap/blob/main/screenshots/Screenshot%202021-03-01%20at%2015.28.59.png)
+
 ## Motivation
 To demonstrate the ability to build a high quality single page web app, in a new framework as part of a team practising agile development that is focused on thorough test driven development process. Also, to enjoy ourselves.
 
@@ -15,9 +17,6 @@ Key Features:
 
 ## Build status
 [![Build Status](https://travis-ci.com/argy-bargy/book_swap.svg?branch=main)](https://travis-ci.com/argy-bargy/book_swap)
-
-## Screenshots
-![Home Screen](https://github.com/argy-bargy/book_swap/blob/main/screenshots/Screenshot%202021-03-01%20at%2015.28.59.png)
 
 ## Installation
 
@@ -416,7 +415,7 @@ This project utilizes the OpenLibrary Books API: https://openlibrary.org/dev/doc
 
 ## Credits
 
-Team argy-bargy:
+Team argy-bargy:\
 [Aman Tank](https://github.com/AmanTank187)\
 [Cathal Lavelle](https://github.com/calavell)\
 [Chris Whitehouse](https://github.com/chriswhitehouse)\
