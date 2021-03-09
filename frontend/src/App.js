@@ -21,8 +21,8 @@ class BookMeUp extends Component {
     super()
     this.state = {
       books: [],
-      book: { title: '', authors: [{ name: '' }]},
-      bookISBN: '',
+      book: { title: '', authors: [{ name: '' }] },
+      // bookISBN: '',
       currentUser: ''
     }
   }
@@ -51,7 +51,7 @@ class BookMeUp extends Component {
         alert('Book has not been added to bookshelf. Please double check the fields.')
       })
 
-    this.setISBN('')
+    // this.setISBN('')
   }
 
   submitSearchString = (searchString) => {
@@ -69,7 +69,7 @@ class BookMeUp extends Component {
   submitISBN = (isbn) => {
     axios.get(`${OPENLIBRARY}/api/books?bibkeys=ISBN:${isbn}&format=json&jscmd=data`)
       .then((result) => {
-        this.setISBN(isbn)
+        // this.setISBN(isbn)
         this.setBook(result.data[`ISBN:${isbn}`])
       })
       .catch((err) => {
@@ -173,11 +173,11 @@ class BookMeUp extends Component {
     })
   }
 
-  setISBN (isbn) {
-    this.setState({
-      bookISBN: isbn
-    })
-  }
+  // setISBN (isbn) {
+  //   this.setState({
+  //     bookISBN: isbn
+  //   })
+  // }
 
   setCurrentUser (data) {
     this.setState({
