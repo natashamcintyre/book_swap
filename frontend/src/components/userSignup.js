@@ -17,6 +17,14 @@ class UserSignup extends React.Component {
     }
   }
 
+  // user = {username: '', email: ''}
+  //
+  // changeUserValue (key, value) {
+  //   this.setState({
+  //     this.user[key] = value
+  //   })
+  // }
+
   changeUsernameValue (username) {
     this.setState({
       username: username
