@@ -413,3 +413,10 @@ Team argy-bargy:
 [Kiki Dawson](https://github.com/kikidawson)
 [Natasha McIntyre](https://github.com/natashamcintyre")
 [Will Dixon](https://github.com/WillDixon93)
+
+## Ideas for Refactoring:
+
+* Rename bookSearchToo
+* Combine all three header components (possibly through composition: https://reactjs.org/docs/composition-vs-inheritance.html)
+* Create generic get request function with URL parameters
+* Remove individual title, author, isbn variables from APP.js
