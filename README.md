@@ -416,7 +416,7 @@ Team argy-bargy:
 
 ## Ideas for Refactoring:
 
-* Remove individual title, author, isbn variables from APP.js
+* Remove individual title, author, isbn variables from APP.js - DONE :)
 * Combine all three header components (possibly through composition: https://reactjs.org/docs/composition-vs-inheritance.html)
 * Rename bookSearchToo
 * Create generic get request function with URL parameters
