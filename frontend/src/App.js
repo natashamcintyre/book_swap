@@ -71,9 +71,7 @@ class BookMeUp extends Component {
   }
 
   submitISBN = (isbn) => {
-    axios.get(`${OPENLIBRARY}/api/books?bibkeys=ISBN:${isbn}&format=json&jscmd=data`, {
-
-    })
+    axios.get(`${OPENLIBRARY}/api/books?bibkeys=ISBN:${isbn}&format=json&jscmd=data`)
       .then((result) => {
         this.setISBN(isbn)
         this.setBook(result.data[`ISBN:${isbn}`])
@@ -221,13 +219,13 @@ class BookMeUp extends Component {
           <Navigation submitSearchString={ this.submitSearchString } logout={ this.logout } currentUser={ localStorage.success }/>
           <Switch>
             <Route path="/sign-up">
-              <HeaderUserNew addUser={ this.addUser } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } submitISBN={ this.submitISBN } submitBook={ this.submitBook } />
+              <HeaderUserNew addUser={ this.addUser } bookTitle={ this.state.book.title } bookAuthor={ this.state.book.author[0].name } submitISBN={ this.submitISBN } submitBook={ this.submitBook } />
             </Route>
             <Route path="/sign-in">
-              <HeaderUser signinUser={ this.signinUser } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } submitISBN={ this.submitISBN } submitBook={ this.submitBook } />
+              <HeaderUser signinUser={ this.signinUser } bookTitle={ this.state.book.title } bookAuthor={ this.state.book.author[0].name } submitISBN={ this.submitISBN } submitBook={ this.submitBook } />
             </Route>
             <Route exact path="/">
-              <Header bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } submitISBN={ this.submitISBN } submitBook={ this.submitBook } />
+              <Header bookTitle={ this.state.book.title } bookAuthor={ this.state.book.author[0].name } submitISBN={ this.submitISBN } submitBook={ this.submitBook } />
               <BookList books={ this.state.books } requestBook= { this.requestBook }/>
             </Route>
           </Switch>
