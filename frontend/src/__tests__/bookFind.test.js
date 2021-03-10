@@ -1,24 +1,24 @@
 import React from 'react'
-import BookSearch from '../components/bookSearch.js'
+import BookFind from '../components/bookFind.js'
 
 describe('bookSearch', () => {
   it('renders without crashing', () => {
-    const component = mount(<BookSearch />)
+    const component = mount(<BookFind />)
     expect(component).toMatchSnapshot()
   })
 
   it('has input textbox for ISBN', () => {
-    const component = mount(<BookSearch />)
+    const component = mount(<BookFind />)
     expect(component.exists('input#ISBNSearch')).toBe(true)
   })
 
   it('has submit button', () => {
-    const component = mount(<BookSearch />)
+    const component = mount(<BookFind />)
     expect(component.exists('button#search')).toBe(true)
   })
 
   it('should update state title when text entered', () => {
-    const component = mount(<BookSearch />)
+    const component = mount(<BookFind />)
     component.find('input#ISBNSearch').simulate('change', {
       target: { value: 'test_isbn' }
     })
@@ -26,7 +26,7 @@ describe('bookSearch', () => {
   })
 
   it('Clear message box on submit', () => {
-    const component = mount(<BookSearch submitISBN={ function (item) { return true } }/>)
+    const component = mount(<BookFind submitISBN={ function (item) { return true } }/>)
     component.find('input#ISBNSearch').simulate('change', {
       target: { value: 'test_title' }
     })

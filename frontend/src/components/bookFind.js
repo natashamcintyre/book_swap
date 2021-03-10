@@ -5,7 +5,7 @@ import {
   HashRouter
 } from 'react-router-dom'
 
-class BookSearch extends React.Component {
+class BookFind extends React.Component {
   constructor () {
     super()
     this.state = {
@@ -40,8 +40,8 @@ class BookSearch extends React.Component {
   }
 }
 
-BookSearch.propTypes = {
+BookFind.propTypes = {
   submitISBN: PropTypes.func
 }
 
-export default BookSearch
+export default BookFind
