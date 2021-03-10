@@ -6,7 +6,7 @@ import {
   withRouter
 } from 'react-router-dom'
 
-import BookSearchToo from './bookSearchToo.js'
+import BookSearch from './bookSearch.js'
 
 class Navigation extends React.Component {
   logout = (e) => {
@@ -29,7 +29,7 @@ class Navigation extends React.Component {
           </button>
           <div className='collapse navbar-collapse special-nav' id="navbarSupportedContent">
             <div className='navbar-search form-inline offset-3 mr-auto' id="navbar-search">
-              <BookSearchToo submitSearchString={ this.props.submitSearchString }/>
+              <BookSearch submitSearchString={ this.props.submitSearchString }/>
             </div>
             <ul className="navbar-nav offset-2 mr-auto">
               <li className='nav-item mr-2'>

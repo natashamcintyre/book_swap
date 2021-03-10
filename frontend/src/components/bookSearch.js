@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-class BookSearchToo extends React.Component {
+class BookSearch extends React.Component {
   constructor () {
     super()
     this.state = {
@@ -32,8 +32,8 @@ class BookSearchToo extends React.Component {
   }
 }
 
-BookSearchToo.propTypes = {
+BookSearch.propTypes = {
   submitSearchString: PropTypes.func
 }
 
-export default BookSearchToo
+export default BookSearch
