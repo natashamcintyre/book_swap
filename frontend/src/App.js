@@ -22,7 +22,7 @@ class BookMeUp extends Component {
     this.state = {
       books: [],
       book: { title: '', authors: [{ name: '' }] },
-      currentUser: ''
+      currentUser: { displayName: '' }
     }
   }
 
@@ -187,7 +187,7 @@ class BookMeUp extends Component {
       <HashRouter>
         <div className="homepage">
           <ErrorHandler error={ this.state.error }/>
-          <Navigation submitSearchString={ this.submitSearchString } logout={ this.logout } currentUser={ localStorage.success }/>
+          <Navigation submitSearchString={ this.submitSearchString } logout={ this.logout } currentUser={ this.state.currentUser }/>
           <Switch>
             <Route path="/sign-up">
               <HeaderUserNew addUser={ this.addUser } />
