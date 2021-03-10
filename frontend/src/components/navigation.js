@@ -45,7 +45,7 @@ class Navigation extends React.Component {
                 <Link to="/sign-up" id="new_user"><i className='fa fa-plus-square fa-2x'></i></Link>
               </li>
               <li>
-                <p>{this.props.currentUser.displayName}</p>
+                <p>{this.props.currentUser.success}</p>
               </li>
             </ul>
           </div>

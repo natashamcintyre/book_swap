@@ -17,14 +17,6 @@ class UserSignup extends React.Component {
     }
   }
 
-  // user = {username: '', email: ''}
-  //
-  // changeUserValue (key, value) {
-  //   this.setState({
-  //     this.user[key] = value
-  //   })
-  // }
-
   changeUsernameValue (username) {
     this.setState({
       username: username
@@ -57,7 +49,7 @@ class UserSignup extends React.Component {
 
   processSubmit (e) {
     e.preventDefault()
-    this.props.addUser(this.state.username, this.state.email, this.state.location, this.state.password, this.state.passwordCheck)
+    this.props.addUser(this.state)
     this.clearForm()
     this.props.history.push('/')
   }

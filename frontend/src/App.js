@@ -73,14 +73,8 @@ class BookMeUp extends Component {
       })
   }
 
-  addUser = (username, email, location, password, passwordCheck) => {
-    axios.post(`${PORT}/user-new`, {
-      username: username,
-      email: email,
-      location: location,
-      password: password,
-      passwordCheck: passwordCheck
-    })
+  addUser = (userData) => {
+    axios.post(`${PORT}/user-new`, userData)
       .then((result) => {
         if (result.status === 200) {
           this.setCurrentUser(result.data)
