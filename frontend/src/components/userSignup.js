@@ -1,9 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
-// const history = async () => {
-//   await useHistory()
-// }
 
 class UserSignup extends React.Component {
   constructor () {
@@ -49,7 +46,7 @@ class UserSignup extends React.Component {
 
   processSubmit (e) {
     e.preventDefault()
-    this.props.addUser(this.state)
+    this.props.addUser('user-new', this.state)
     this.clearForm()
     this.props.history.push('/')
   }

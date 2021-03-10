@@ -27,7 +27,7 @@ class UserSignin extends React.Component {
 
   processSubmit (e) {
     e.preventDefault()
-    this.props.signinUser(this.state)
+    this.props.signinUser('login', this.state)
     this.changeUsernameValue('')
     this.changePasswordValue('')
     this.props.history.push('/')

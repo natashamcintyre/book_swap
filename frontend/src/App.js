@@ -73,27 +73,13 @@ class BookMeUp extends Component {
       })
   }
 
-  addUser = (userData) => {
-    axios.post(`${PORT}/user-new`, userData)
-      .then((result) => {
-        if (result.status === 200) {
-          this.setCurrentUser(result.data)
-          this.setLocalStorage(result.data)
-          return <Redirect exact to="/homepage" />
-        }
-      })
-      .catch((err) => {
-        this.setError(err)
-      })
-  }
-
-  signinUser = (userData) => {
-    axios.post(`${PORT}/login`, userData)
+  userAPI = (route, userData) => {
+    axios.post(`${PORT}/${route}`, userData)
       .then((result) => {
         if (result.data.success) {
           this.setCurrentUser(result.data)
           this.setLocalStorage(result.data)
-          return <Redirect exact from="/sign-up" to="/" />
+          return <Redirect exact to="/" />
         }
       })
       .catch((err) => {
@@ -103,7 +89,8 @@ class BookMeUp extends Component {
 
   logout = () => {
     axios.post(`${PORT}/logout`).then((result) => {
-      this.setCurrentUser('')
+      console.log(result)
+      this.setCurrentUser({ displayName: '' })
       localStorage.clear()
       return <Redirect to='/sign-up' />
     })
@@ -170,10 +157,10 @@ class BookMeUp extends Component {
           <Navigation submitSearchString={ this.submitSearchString } logout={ this.logout } currentUser={ this.state.currentUser }/>
           <Switch>
             <Route path="/sign-up">
-              <HeaderUserNew addUser={ this.addUser } />
+              <HeaderUserNew addUser={ this.userAPI } />
             </Route>
             <Route path="/sign-in">
-              <HeaderUser signinUser={ this.signinUser } />
+              <HeaderUser signinUser={ this.userAPI } />
             </Route>
             <Route exact path="/">
               <Header bookTitle={ this.state.book.title } bookAuthor={ this.state.book.authors[0].name } submitISBN={ this.submitISBN } submitBook={ this.submitBook } />
