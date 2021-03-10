@@ -147,20 +147,11 @@ class BookMeUp extends Component {
 
   componentDidMount () {
     var user = JSON.parse(localStorage.getItem('user'))
-    console.log(user)
     if (user) {
-      const currentUser = {
-        displayName: user.displayName,
-        id: user.id,
-        success: user.success,
-        email: user.email,
-        location: user.location
-      }
-      this.setCurrentUser(currentUser)
+      this.setCurrentUser(user)
     } else {
       this.setCurrentUser('')
     }
-
     this.getBooks()
   }
 
@@ -170,9 +161,9 @@ class BookMeUp extends Component {
     })
   }
 
-  setCurrentUser (data) {
+  setCurrentUser (user) {
     this.setState({
-      currentUser: data
+      currentUser: user
     })
   }
 
