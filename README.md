@@ -37,10 +37,10 @@ Frontend App.JS:
 Refactors needed:
 * Remove individual title, author, isbn variables from APP.js - DONE :)
 * Rename bookSearchToo - DONE :)
+* Refactoring a User object - DONE :)
 * Combine all three header components (possibly through composition: https://reactjs.org/docs/composition-vs-inheritance.html)
 * Create generic get request function with URL parameters
 * Error Handling Front End Set Up??
-* Refactoring a User object
 * Refactor out BookHandler.js and UserHandler.js out of APP.js as modules?
 * Is there a better way of positioning API calls in the file structure?
 ```
@@ -139,5 +139,3 @@ Team argy-bargy:
 [Kiki Dawson](https://github.com/kikidawson)
 [Natasha McIntyre](https://github.com/natashamcintyre")
 [Will Dixon](https://github.com/WillDixon93)
-
-## Ideas for Refactoring:
