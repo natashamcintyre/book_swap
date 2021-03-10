@@ -146,15 +146,17 @@ class BookMeUp extends Component {
   }
 
   componentDidMount () {
-    if (localStorage.displayName) {
-      const user = {
-        displayName: localStorage.displayName,
-        id: localStorage.id,
-        success: localStorage.success,
-        email: localStorage.email,
-        location: localStorage.location
+    var user = JSON.parse(localStorage.getItem('user'))
+    console.log(user)
+    if (user) {
+      const currentUser = {
+        displayName: user.displayName,
+        id: user.id,
+        success: user.success,
+        email: user.email,
+        location: user.location
       }
-      this.setCurrentUser(user)
+      this.setCurrentUser(currentUser)
     } else {
       this.setCurrentUser('')
     }
@@ -174,12 +176,8 @@ class BookMeUp extends Component {
     })
   }
 
-  setLocalStorage (data) {
-    localStorage.setItem('displayName', data.displayName)
-    localStorage.setItem('id', data.id)
-    localStorage.setItem('success', data.success)
-    localStorage.setItem('email', data.email)
-    localStorage.setItem('location', data.location)
+  setLocalStorage (user) {
+    localStorage.setItem('user', JSON.stringify(user))
   }
 
   render () {
