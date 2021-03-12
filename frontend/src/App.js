@@ -3,8 +3,6 @@ import BookList from './components/bookList.js'
 import ErrorHandler from './components/errorHandler.js'
 import Navigation from './components/navigation.js'
 import Header from './components/header.js'
-import HeaderUser from './components/headerUser.js'
-import HeaderUserNew from './components/headerUserNew.js'
 import {
   Switch,
   Route,
@@ -155,15 +153,9 @@ class BookMeUp extends Component {
         <div className="homepage">
           <ErrorHandler error={ this.state.error }/>
           <Navigation submitSearchString={ this.submitSearchString } logout={ this.logout } currentUser={ this.state.currentUser }/>
+          <Header addUser={ this.userAPI } signinUser={ this.userAPI } bookTitle={ this.state.book.title } bookAuthor={ this.state.book.authors[0].name } submitISBN={ this.submitISBN } submitBook={ this.submitBook } />
           <Switch>
-            <Route path="/sign-up">
-              <HeaderUserNew addUser={ this.userAPI } />
-            </Route>
-            <Route path="/sign-in">
-              <HeaderUser signinUser={ this.userAPI } />
-            </Route>
             <Route exact path="/">
-              <Header bookTitle={ this.state.book.title } bookAuthor={ this.state.book.authors[0].name } submitISBN={ this.submitISBN } submitBook={ this.submitBook } />
               <BookList books={ this.state.books } requestBook= { this.requestBook }/>
             </Route>
           </Switch>

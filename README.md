@@ -67,7 +67,7 @@ You will need homebrew, if you don't please install [Homebrew](https://brew.sh/)
 * ```$ brew tap mongodb/brew```
 * ```$ brew install mongodb-community```
 
-If you have note upgraded to MacOs Catalina or above, then;
+If you have not yet upgraded to MacOs Catalina or above:
 * ```$ sudo mkdir -p /data/db```
 * ```$ sudo chown -R `id -un` /data/db```
 

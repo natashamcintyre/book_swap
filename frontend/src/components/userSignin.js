@@ -36,6 +36,7 @@ class UserSignin extends React.Component {
   render () {
     return (
       <div className="user_signin">
+        <h1>Login to Book Me Up</h1>
         <form href="/" id="signInForm" onSubmit ={ (e) => this.processSubmit(e) }>
           <input type="text" className='mr-2' name="username" id="signin_username" placeholder="Enter Username" onChange={(e) => this.changeUsernameValue(e.target.value) } value={this.state.username} />
           <input type="password" className='mr-2' name="password" id="signin_password" placeholder="Type your password" onChange={(e) => this.changePasswordValue(e.target.value)} value={this.state.password} />
