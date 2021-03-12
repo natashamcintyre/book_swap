@@ -68,6 +68,7 @@ class UserSignup extends React.Component {
   render () {
     return (
       <div className="new_user">
+        <h1>Sign Up To Book Me Up</h1>
         <form href="/" id="new_user_form" onSubmit={ (e) => this.processSubmit(e) }>
           <input type="text" className='m-1' name="username" id="new_username" placeholder="Choose a Username" onChange={(e) => this.changeUsernameValue(e.target.value)} value={this.state.username} />
           <input type="email" className='m-1' name="email" id="new_email" placeholder="Enter your email" onChange={(e) => this.changeEmailValue(e.target.value)} value={this.state.email} />
