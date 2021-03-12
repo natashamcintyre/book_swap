@@ -55,6 +55,12 @@ describe('Books API endpoint tests', function () {
   })
 
   it('gets from backend bookshelf', function (done) {
+    const data = {
+      book: JSON.stringify({ title: 'test_title', author: 'test_author' }),
+      user: { username: 'brad', email: 'brad@example', location: 'postcode' }
+    }
+    request(app).post('/add-book').send(data).set('Accept', 'application/json')
+
     const res = request(app)
       .get('/')
 
