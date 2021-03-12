@@ -22,6 +22,13 @@ class Header extends React.Component {
   }
 
   render () {
+    const aboutUsText = `Due to the closure of many public libraries,
+      many have lost the community space once afforded to them.
+      Book Me Up is a chance for communities to create their own
+      public libraries, uploading books that have already been read
+      for others to enjoy. So upload a book, and enjoy the feeling of
+      discovering a new read from someone in your own community.`
+
     return (
       <HashRouter>
         <div className="header col-12">
@@ -42,7 +49,7 @@ class Header extends React.Component {
                 <div id="howToModal" className="modal">
                   <div className="modal-content">
                     <span id="closeHowTo" className="close">&times;</span>
-                    <p>Due to the closure of many public libraries, many have lost the community space once afforded to them. Book Me Up is a chance for communities to create their own public libraries, uploading books that have already been read for others to enjoy. So upload a book, and enjoy the feeling of discovering a new read from someone in your own community.</p>
+                    <p>{aboutUsText}</p>
                     <p> <a style={{ 'font-weight': 'bold' }} href="https://github.com/argy-bargy" target='_blank' rel='noreferrer'>Team Argy-Bargy</a> </p>
                     <p> <a href="https://github.com/AmanTank187" target='_blank' rel='noreferrer'>Aman Tank</a> </p>
                     <p> <a href="https://github.com/calavell" target='_blank' rel='noreferrer'>Cathal Lavelle</a> </p>
