@@ -1,47 +1,39 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import BarcodeScanner from './barcode/barcodeScanner.js'
-import {
-  HashRouter
-} from 'react-router-dom'
 
 class BookSearch extends React.Component {
   constructor () {
     super()
     this.state = {
-      isbn: ''
+      searchString: ''
     }
   }
 
-  changeIsbnValue (change) {
+  changeSearchStringValue (change) {
     this.setState({
-      isbn: change
+      searchString: change
     })
   }
 
   processSearch (e) {
     e.preventDefault()
-    this.props.submitISBN(this.state.isbn)
-    this.changeIsbnValue('')
+    this.props.submitSearchString(this.state.searchString)
   }
 
   render () {
     return (
-      <HashRouter>
-      <div className="add_book">
-        <BarcodeScanner changeIsbnValue={ this.changeIsbnValue.bind(this) } />
-        <form id="book_search" onSubmit={ (e) => this.processSearch(e) }>
-          <input type="text" name="ISBN" id="ISBNSearch" placeholder="ISBN" onChange={(e) => this.changeIsbnValue(e.target.value)} value={this.state.isbn} />
-          <button type="submit" name="search" id="search">Find My Book!</button>
+      <div className="searchform">
+        <form id='book_search_too' className="form-inline search-form" onSubmit={ (e) => this.processSearch(e) }>
+          <input id='book_search_too_input' className="form-control col-8 mr-sm-2" type="search" placeholder="Search author, title, ISBN number... " aria-label="Search" onChange={(e) => this.changeSearchStringValue(e.target.value)} value={this.state.searchString}/>
+          <button id='book_search_too_button' className="btn btn-outline-secondary btn-sm col-3">Find a book</button>
         </form>
       </div>
-      </HashRouter>
     )
   }
 }
 
 BookSearch.propTypes = {
-  submitISBN: PropTypes.func
+  submitSearchString: PropTypes.func
 }
 
 export default BookSearch

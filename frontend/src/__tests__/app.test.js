@@ -63,7 +63,7 @@ describe('BookMeUp', () => {
       Promise.resolve({ data: { displayName: 'User', id: 'testid', success: 'Logged in as User.' } })
     )
 
-    await instance.signinUser('User', 'password')
+    await instance.userAPI('User', 'password')
 
     expect(component.state('currentUser').displayName).toBe('User')
   })
@@ -76,7 +76,7 @@ describe('BookMeUp', () => {
       Promise.resolve({ status: 200, data: { displayName: 'User', id: 'testid', success: 'Logged in as User.' } })
     )
 
-    await instance.addUser('User', 'user@bookmeup.com', 'SW1A 1AA', 'password', 'password')
+    await instance.userAPI('User', 'user@bookmeup.com', 'SW1A 1AA', 'password', 'password')
 
     expect(component.state('currentUser').displayName).toBe('User')
   })
@@ -89,10 +89,10 @@ describe('BookMeUp', () => {
       Promise.resolve({ data: { success: true } })
     )
 
-    await instance.signinUser('User', 'password')
+    await instance.userAPI('User', 'password')
     await instance.logout()
 
-    expect(component.state('currentUser')).toBe('')
+    expect(component.state('currentUser').displayName).toBe('')
   })
 
   it('submit book posts data', async () => {
@@ -103,7 +103,7 @@ describe('BookMeUp', () => {
       Promise.resolve({ data: { displayName: 'User', id: 'testid', success: 'Logged in as User.', email: 'test@example', location: 'test_postcode' } })
     )
 
-    await instance.signinUser('User', 'password')
+    await instance.userAPI('User', 'password')
 
     expect(component.state('currentUser').displayName).toBe('User')
 

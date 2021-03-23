@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import BookSearch from './bookSearch.js'
+import BookFind from './bookFind.js'
 import BookForm from './bookForm.js'
 import PropTypes from 'prop-types'
 
@@ -17,7 +17,7 @@ class IsbnSearchModal extends Component {
       <div id="isbnSearchModal" className={this.getClassName()}>
         <div className="modal-content">
           <span id="closeIsbnSearch" className="close" onClick={this.props.hideModal}>&times;</span>
-          <BookSearch id="bookSearch" submitISBN={ this.props.submitISBN } />
+          <BookFind id="bookSearch" submitISBN={ this.props.submitISBN } />
           <BookForm id="bookForm" submitISBN={ this.props.submitISBN } submitBook={ this.props.submitBook } bookTitle={ this.props.bookTitle } bookAuthor={ this.props.bookAuthor } hideModal={this.props.hideModal} />
         </div>
       </div>

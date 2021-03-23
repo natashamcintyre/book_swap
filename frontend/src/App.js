@@ -3,8 +3,6 @@ import BookList from './components/bookList.js'
 import ErrorHandler from './components/errorHandler.js'
 import Navigation from './components/navigation.js'
 import Header from './components/header.js'
-import HeaderUser from './components/headerUser.js'
-import HeaderUserNew from './components/headerUserNew.js'
 import {
   Switch,
   Route,
@@ -21,11 +19,8 @@ class BookMeUp extends Component {
     super()
     this.state = {
       books: [],
-      book: {},
-      bookISBN: '',
-      bookTitle: '',
-      bookAuthor: '',
-      currentUser: ''
+      book: { title: '', authors: [{ name: '' }] },
+      currentUser: { displayName: '' }
     }
   }
 
@@ -52,10 +47,6 @@ class BookMeUp extends Component {
         this.setError(err)
         alert('Book has not been added to bookshelf. Please double check the fields.')
       })
-
-    this.setISBN('')
-    this.setTitle('')
-    this.setAuthor('')
   }
 
   submitSearchString = (searchString) => {
@@ -71,50 +62,22 @@ class BookMeUp extends Component {
   }
 
   submitISBN = (isbn) => {
-    axios.get(`${OPENLIBRARY}/api/books?bibkeys=ISBN:${isbn}&format=json&jscmd=data`, {
-
-    })
+    axios.get(`${OPENLIBRARY}/api/books?bibkeys=ISBN:${isbn}&format=json&jscmd=data`)
       .then((result) => {
-        this.setISBN(isbn)
         this.setBook(result.data[`ISBN:${isbn}`])
-        this.setTitle(result.data[`ISBN:${isbn}`].title)
-        this.setAuthor(result.data[`ISBN:${isbn}`].authors[0].name)
       })
       .catch((err) => {
         console.log(err)
       })
   }
 
-  addUser = (username, email, location, password, passwordCheck) => {
-    axios.post(`${PORT}/user-new`, {
-      username: username,
-      email: email,
-      location: location,
-      password: password,
-      passwordCheck: passwordCheck
-    })
-      .then((result) => {
-        if (result.status === 200) {
-          this.setCurrentUser(result.data)
-          this.setLocalStorage(result.data)
-          return <Redirect exact to="/homepage" />
-        }
-      })
-      .catch((err) => {
-        this.setError(err)
-      })
-  }
-
-  signinUser = (username, password) => {
-    axios.post(`${PORT}/login`, {
-      username: username,
-      password: password
-    })
+  userAPI = (route, userData) => {
+    axios.post(`${PORT}/${route}`, userData)
       .then((result) => {
         if (result.data.success) {
           this.setCurrentUser(result.data)
           this.setLocalStorage(result.data)
-          return <Redirect exact from="/sign-up" to="/" />
+          return <Redirect exact to="/" />
         }
       })
       .catch((err) => {
@@ -124,9 +87,9 @@ class BookMeUp extends Component {
 
   logout = () => {
     axios.post(`${PORT}/logout`).then((result) => {
-      this.setCurrentUser('')
+      console.log(result)
+      this.setCurrentUser({ displayName: '' })
       localStorage.clear()
-      // And display on page?
       return <Redirect to='/sign-up' />
     })
   }
@@ -159,19 +122,12 @@ class BookMeUp extends Component {
   }
 
   componentDidMount () {
-    if (localStorage.displayName) {
-      const user = {
-        displayName: localStorage.displayName,
-        id: localStorage.id,
-        success: localStorage.success,
-        email: localStorage.email,
-        location: localStorage.location
-      }
+    var user = JSON.parse(localStorage.getItem('user'))
+    if (user) {
       this.setCurrentUser(user)
     } else {
       this.setCurrentUser('')
     }
-
     this.getBooks()
   }
 
@@ -181,36 +137,14 @@ class BookMeUp extends Component {
     })
   }
 
-  setISBN (isbn) {
+  setCurrentUser (user) {
     this.setState({
-      bookISBN: isbn
+      currentUser: user
     })
   }
 
-  setTitle (title) {
-    this.setState({
-      bookTitle: title
-    })
-  }
-
-  setAuthor (author) {
-    this.setState({
-      bookAuthor: author
-    })
-  }
-
-  setCurrentUser (data) {
-    this.setState({
-      currentUser: data
-    })
-  }
-
-  setLocalStorage (data) {
-    localStorage.setItem('displayName', data.displayName)
-    localStorage.setItem('id', data.id)
-    localStorage.setItem('success', data.success)
-    localStorage.setItem('email', data.email)
-    localStorage.setItem('location', data.location)
+  setLocalStorage (user) {
+    localStorage.setItem('user', JSON.stringify(user))
   }
 
   render () {
@@ -218,16 +152,10 @@ class BookMeUp extends Component {
       <HashRouter>
         <div className="homepage">
           <ErrorHandler error={ this.state.error }/>
-          <Navigation submitSearchString={ this.submitSearchString } logout={ this.logout } currentUser={ localStorage.success }/>
+          <Navigation submitSearchString={ this.submitSearchString } logout={ this.logout } currentUser={ this.state.currentUser }/>
+          <Header addUser={ this.userAPI } signinUser={ this.userAPI } bookTitle={ this.state.book.title } bookAuthor={ this.state.book.authors[0].name } submitISBN={ this.submitISBN } submitBook={ this.submitBook } />
           <Switch>
-            <Route path="/sign-up">
-              <HeaderUserNew addUser={ this.addUser } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } submitISBN={ this.submitISBN } submitBook={ this.submitBook } />
-            </Route>
-            <Route path="/sign-in">
-              <HeaderUser signinUser={ this.signinUser } bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } submitISBN={ this.submitISBN } submitBook={ this.submitBook } />
-            </Route>
             <Route exact path="/">
-              <Header bookTitle={ this.state.bookTitle } bookAuthor={ this.state.bookAuthor } submitISBN={ this.submitISBN } submitBook={ this.submitBook } />
               <BookList books={ this.state.books } requestBook= { this.requestBook }/>
             </Route>
           </Switch>
